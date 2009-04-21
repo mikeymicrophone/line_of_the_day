@@ -1,0 +1,17 @@
+<h1>some of the greatest things young ladies have yet heard</h1>
+
+<table>
+
+<% @lines.each do |line| %>
+  <tr>
+    <td><%=h line.text %></td>
+    <td><%=h line.context %></td>
+    <td><%=h line.user.andand.username %></td>
+    <td><%= link_to 'coo', line %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'drop a line', new_line_path %>

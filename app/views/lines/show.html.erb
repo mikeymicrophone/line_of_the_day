@@ -1,0 +1,14 @@
+<p>
+  <%=h @line.text %>
+</p>
+
+<p>
+  <b>the context:</b>
+  <%=h @line.context %>
+</p>
+
+<p>
+  <%= link_to @line.user.andand.username, @line.user %>
+</p>
+
+<%= link_to 'celebration', lines_path %>

@@ -1,0 +1,9 @@
+<h2>
+  <%=h @user.username %>
+</h2>
+
+<% @user.lines.each do |l| %>
+  <%= l.text %>
+  <%= link_to 'yeah', l %>
+  <%= time_ago_in_words(l.created_at) %><br>
+<% end %>

@@ -4,6 +4,12 @@ module NavigationHelpers
     
     when /the homepage/
       root_path
+    when /the new account page/
+      new_account_path
+
+    when /the new posting_a_line page/
+      new_posting_a_line_path
+
     
     # Add more page name => path mappings here
     

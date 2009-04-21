@@ -1,0 +1,5 @@
+<h1>the few, the proud, the conversation starters</h1>
+
+<% @users.each do |user| %>
+  <%= link_to user.username, user, :class => 'pick-up-artist' %>
+<% end %>
