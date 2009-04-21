@@ -1,0 +1,18 @@
+<p>
+  <b>Group:</b>
+  <%=h @membership.group_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @membership.user_id %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @membership.state %>
+</p>
+
+
+<%= link_to 'Edit', edit_membership_path(@membership) %> |
+<%= link_to 'Back', memberships_path %>
