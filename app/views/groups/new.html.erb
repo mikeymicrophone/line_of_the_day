@@ -1,0 +1,19 @@
+<h1>artists of a feather flock together</h1>
+
+<% form_for(@group) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, 'group' %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :rules, 'how does this one work' %><br />
+    <%= f.select :rules, Group.rules_select %>
+  </p>
+  <p>
+    <%= f.submit 'congregate' %>
+  </p>
+<% end %>
+
+<%= link_to 'squads', groups_path %>

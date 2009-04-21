@@ -4,6 +4,9 @@ module NavigationHelpers
     
     when /the homepage/
       root_path
+    when /the new membership page/
+      new_membership_path
+
     when /the new comment page/
       new_comment_path
 

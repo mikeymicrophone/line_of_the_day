@@ -9,12 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090421050801) do
+ActiveRecord::Schema.define(:version => 20090421054132) do
 
   create_table "comments", :force => true do |t|
     t.text     "text"
     t.integer  "line_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "rules"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
