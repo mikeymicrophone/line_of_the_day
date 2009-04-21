@@ -1,24 +1,26 @@
-<h1>Editing group</h1>
+<h1>improving group</h1>
 
 <% form_for(@group) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :name %><br />
+    <%= f.label :name, 'group name' %><br />
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= f.label :rules, 'how can people become members?' %><br />
+    <%= f.select :rules, Group.rules_select %>
   </p>
   <p>
-    <%= f.label :rules %><br />
-    <%= f.text_field :rules %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'up to date' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @group %> |
-<%= link_to 'Back', groups_path %>
+<% form_remote_for Membership.new do |f| %>
+  <%= text_field_with_auto_complete :user, :username %>
+  <%= f.hidden_field :group_id, :value => @group.id %>
+  <%= f.submit :add %>
+<% end %>
+
+<%= link_to 'grouping', @group %> |
+<%= link_to 'holy mackeral', groups_path %>

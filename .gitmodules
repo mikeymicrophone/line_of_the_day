@@ -1,3 +1,6 @@
 [submodule "vendor/plugins/state_machine"]
 	path = vendor/plugins/state_machine
 	url = git://github.com/pluginaweek/state_machine.git
+[submodule "vendor/plugins/auto_complete"]
+	path = vendor/plugins/auto_complete
+	url = git://github.com/rails/auto_complete.git

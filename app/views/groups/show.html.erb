@@ -14,5 +14,5 @@
   <%= m.user.username %><br>
 <% end %>
 
-<%= link_to 'improve?', edit_group_path(@group) %> |
+<%= link_to 'improve?', edit_group_path(@group) if @group.user == current_user %> |
 <%= link_to 'enclaves', groups_path %>

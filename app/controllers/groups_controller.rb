@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
   layout 'lines'
+  auto_complete_for :user, :username
+  skip_before_filter :verify_authenticity_token, :only => :auto_complete_for_user_username
   # GET /groups
   # GET /groups.xml
   def index
