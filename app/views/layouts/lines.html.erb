@@ -10,7 +10,7 @@
 <body>
 <% form_for Line.new do |f| %>
   <%= f.text_field :text, :size => 40 %>
-  <%= f.text_area :context, :size => '20x1' %>
+  <%= f.text_area :context, :size => '20x2' %>
   <%= f.submit :save %>
 <% end %>
 <% unless current_user %>
