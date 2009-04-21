@@ -40,6 +40,7 @@ class MembershipsController < ApplicationController
   # POST /memberships
   # POST /memberships.xml
   def create
+    params[:membership][:user_id] = User.find_by_username(params[:user][:username]).id if params[:user]
     params[:membership][:user_id] ||= current_user.id
     @membership = Membership.new(params[:membership])
 
