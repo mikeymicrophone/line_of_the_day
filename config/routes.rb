@@ -1,17 +1,19 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :memberships
+  map.resources :publications, :has_one => [:line, :user, :group]
 
-  map.resources :groups
+  map.resources :memberships, :has_one => [:group, :user], :has_many => [:publications, :lines]
 
-  map.resources :comments
+  map.resources :groups, :has_many => [:publications, :lines, :memberships, :users]
 
-  map.resources :users
+  map.resources :comments, :has_one => [:line, :user]
 
-  map.root :controller => 'lines'
-  map.resources :lines
+  map.resources :users, :has_many => [:lines, :groups, :memberships, :publications, :comments]
+
+  map.resources :lines, :has_one => [:user], :has_many => [:publications, :comments, :groups], :collection => {:mine => :get}
+
   map.resource :account, :controller => "users"
   map.resource :user_session
-
+  map.root :controller => 'lines'
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

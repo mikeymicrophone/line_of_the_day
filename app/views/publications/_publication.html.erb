@@ -1,0 +1,5 @@
+<%= publication.line.text[0..30] %>
+<% form_for publication do |f| %>
+  <%= f.text_field :text %>
+  <%= f.submit 'add color commentary' %>
+<% end %>

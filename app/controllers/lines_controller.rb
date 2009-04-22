@@ -9,6 +9,11 @@ class LinesController < ApplicationController
       format.xml  { render :xml => @lines }
     end
   end
+  
+  def mine
+    @lines = current_user.andand.lines
+    render :action => :index
+  end
 
   # GET /lines/1
   # GET /lines/1.xml

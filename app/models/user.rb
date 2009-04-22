@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :lines
   has_many :groups
   has_many :memberships
+  has_many :comments
+  has_many :publications
   
   def is_a_member_of group
     group_id = id_of(group)

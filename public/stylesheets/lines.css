@@ -1,0 +1,15 @@
+.pick-up-artist {
+	margin: 4px;
+	color: #520C99;
+	float: right;
+}
+.left {
+	
+}
+.right {
+	float: right;
+	margin-left: 50px;
+}
+.clearfix {
+	clear: both;
+}

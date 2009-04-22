@@ -1,24 +1,9 @@
-<h1>Listing groups</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>User</th>
-    <th>Rules</th>
-  </tr>
+<h1>homeys</h1>
 
 <% @groups.each do |group| %>
-  <tr>
-    <td><%=h group.name %></td>
-    <td><%=h group.user_id %></td>
-    <td><%=h group.rules %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <%= link_to group.name, group %>
 <% end %>
-</table>
 
 <br />
 
-<%= link_to 'New group', new_group_path %>
+<%= link_to 'gather', new_group_path %>
