@@ -1,23 +1,13 @@
 <p>
-  <b>Text:</b>
   <%=h @publication.text %>
 </p>
 
 <p>
-  <b>Line:</b>
-  <%=h @publication.line_id %>
+  <%=h @publication.line.text %>
 </p>
 
 <p>
-  <b>Group:</b>
-  <%=h @publication.group_id %>
+  <%= link_to @publication.group.name, @publication.group %>
 </p>
 
-<p>
-  <b>User:</b>
-  <%=h @publication.user_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_publication_path(@publication) %> |
-<%= link_to 'Back', publications_path %>
+<%= link_to 'notices of valor', publications_path %>

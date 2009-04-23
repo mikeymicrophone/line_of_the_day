@@ -14,7 +14,7 @@ module NavigationHelpers
       new_comment_path
 
     when /the new account page/
-      new_account_path
+      new_user_path
 
     when /the new posting_a_line page/
       new_posting_a_line_path

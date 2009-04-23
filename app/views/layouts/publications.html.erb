@@ -8,7 +8,7 @@
   <%= stylesheet_link_tag 'scaffold' %>
 </head>
 <body>
-
+<%= render :partial => 'shared/lines_and_links', :locals => {:current_user => current_user} %>
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= yield %>

@@ -46,6 +46,7 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if @membership.save
+        @membership.group.initiate(@membership)
         flash[:notice] = 'Membership was successfully created.'
         format.html { render :text => 'fresh.' }
         format.xml  { render :xml => @membership, :status => :created, :location => @membership }

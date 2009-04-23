@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :lines, :has_one => [:user], :has_many => [:publications, :comments, :groups], :collection => {:mine => :get}
 
-  map.resource :account, :controller => "users"
+#  map.resource :account, :controller => "users"
   map.resource :user_session
   map.root :controller => 'lines'
   # The priority is based upon order of creation: first created -> highest priority.

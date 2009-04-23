@@ -9,19 +9,7 @@
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
-<% form_for Line.new do |f| %>
-  <%= f.text_field :text, :size => 40 %>
-  <%= f.text_area :context, :size => '20x2' %>
-  <%= f.submit :save %>
-<% end %>
-<% unless current_user %>
-  <%= link_to "Register!", new_account_path %> |
-  <%= link_to "Log In.", new_user_session_path %> |
-<% else %>
-  <%= link_to "my account", account_path %> |
-  <%= link_to 'my lines', mine_lines_path %>
-  <%= link_to "time to log out and go open somebody", user_session_path, :method => :delete, :confirm => "for real you want to logout?" %>
-<% end %>
+<%= render :partial => 'shared/lines_and_links', :locals => {:current_user => current_user} %>
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= yield %>

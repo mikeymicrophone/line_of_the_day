@@ -5,7 +5,12 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.xml
   def index
-    @groups = Group.all
+    @grouping = Group.open_for_application
+    @groups = if params[:user_id]
+      User.find(params[:user_id]).groups
+    else
+      Group.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

@@ -11,10 +11,10 @@
 <% @publications.each do |publication| %>
   <tr>
     <td><%=h publication.text %></td>
-    <td><%=h publication.line_id %></td>
-    <td><%=h publication.group_id %></td>
-    <td><%=h publication.user_id %></td>
-    <td><%= link_to 'Show', publication %></td>
+    <td><%= link_to publication.line.text[0..40], publication.line %></td>
+    <td><%= link_to publication.group.name, publication.group %></td>
+    <td><%= link_to publication.user.username, publication.user %></td>
+    <td><%= link_to 'show', publication %></td>
   </tr>
 <% end %>
 </table>
