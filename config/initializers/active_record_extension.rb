@@ -8,4 +8,6 @@ class ActiveRecord::Base
       raise ArgumentError
     end
   end
+  
+  named_scope :recent, :order => 'created_at desc', :limit => 20
 end

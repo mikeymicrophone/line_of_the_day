@@ -2,7 +2,7 @@ class LinesController < ApplicationController
   # GET /lines
   # GET /lines.xml
   def index
-    @lines = Line.all
+    @lines = Line.public.recent
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,6 +46,7 @@ class LinesController < ApplicationController
   # POST /lines.xml
   def create
     params[:line][:user_id] = current_user.andand.id
+    params[:line][:public] = true unless current_user
     @line = Line.new(params[:line])
 
     respond_to do |format|
