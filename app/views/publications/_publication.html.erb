@@ -1,5 +1,11 @@
 <%= publication.line.text[0..30] %>
 <% form_for publication do |f| %>
   <%= f.text_field :text %>
-  <%= f.submit 'add color commentary' %>
+  <%= f.submit 'add color commentary for ' + publication.group.name %>
+  <% if publication.line.user == current_user %>
+    <% f.fields_for :line do |l| %>
+      <%= l.check_box :repost %>
+      <%= l.label :repost, 'can this line be republished by others to other groups?' %>
+    <% end %>
+  <% end %>
 <% end %>

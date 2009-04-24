@@ -3,6 +3,6 @@
   <span class='pick-up-artist'><%=h line.user.andand.username %></span>
   <div class='clearfix'></div>
   <span class='right'><%=h line.context %></span>
-  <span class='left'><%= link_to_remote 'publish', :url => line_publications_path(line), :with => "'group_ids=' + $('publishable-groups').innerHTML", :update => 'publications', :position => 'top' %></span>
+  <span class='left'><%= link_to_remote 'publish', :url => line_publications_path(line), :with => "'group_ids=' + $('publishable-groups').innerHTML", :update => 'publications', :position => 'top' if line.user == current_user || line.repost? %></span>
 <% end %>
 <div class='clearfix'></div>

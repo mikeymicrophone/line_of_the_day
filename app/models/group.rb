@@ -8,13 +8,13 @@ class Group < ActiveRecord::Base
   def initiate membership
     case rules
     when 1
-      membership.join.default
+      membership.join && membership.approve
     when 2
       membership.join
     when 3
-      membership.join.default
+      membership.join && membership.approve
     when 4
-      membership.join.default
+      membership.join && membership.approve
     end
   end
     
