@@ -1,14 +1,14 @@
 <h1>some of the greatest things young ladies have yet heard</h1>
 
-<%= render :partial => @published_lines %>
-<%= render :partial => @lines %>
+<%= render :partial => @published_lines if @published_lines %>
+<%= render :partial => @lines if @lines %>
 <hr>
 
-<%= render :partial => @public_lines %>
+<%= render :partial => @public_lines if @public_lines %>
 
 <hr>
 
-<%= render :partial => @shared_lines %>
+<%= render :partial => @shared_lines if @shared_lines %>
 
 <%= link_to 'drop a line', new_line_path %>
 <div id='publishable-groups'></div>
