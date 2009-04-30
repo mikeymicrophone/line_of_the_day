@@ -1,4 +1,5 @@
 class MembershipsController < ApplicationController
+  before_filter :require_user, :except => [:index, :show]
   # GET /memberships
   # GET /memberships.xml
   def index

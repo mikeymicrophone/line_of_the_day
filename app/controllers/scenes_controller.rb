@@ -1,4 +1,5 @@
 class ScenesController < ApplicationController
+  before_filter :require_user, :except => [:index, :show]
   # GET /scenes
   # GET /scenes.xml
   def index

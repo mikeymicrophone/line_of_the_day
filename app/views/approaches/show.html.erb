@@ -1,4 +1,4 @@
-<%= link_to_name @approach.user, 'username' %> approached a <%=h @approach.hotness.to_i / 10.0 %> at, in, or around <%= link_to_name @approach.scene %> with the line "<%= link_to_name @approach.line, 'text' %>" and reported a result of <%= link_to_name @approach.result %>.
+<%= link_to_name @approach.user, 'username' %> approached a <%=h @approach.hotness.to_i / 10.0 %> at, in, or around <%= link_to_name @approach.scene %> with the line "<%= link_to_name @approach.line, 'phrasing' %>" and reported a result of <%= link_to_name @approach.result %>.
 <p>
   <%=h @approach.context %>
 </p>

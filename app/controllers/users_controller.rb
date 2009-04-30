@@ -39,26 +39,9 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.xml
-  def create
-    @user = User.new(params[:user])
 
-    respond_to do |format|
-      if @user.save
-        flash[:notice] = 'User was successfully created.'
-        format.html { redirect_back_or_default account_url }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
-  
-  def new
-    @user = User.new
-  end
   
   def create
     @user = User.new(params[:user])

@@ -1,4 +1,5 @@
 class LinesController < ApplicationController
+  before_filter :require_user, :only => [:edit, :update]
   # GET /lines
   # GET /lines.xml
   def index

@@ -1,8 +1,10 @@
-<% form_for Line.new do |f| %>
-  <%= f.text_field :phrasing, :size => 40 %>
-  <%= f.text_area :context, :size => '20x2' %>
-  <%= f.submit :save %>
-  &lt--you can enter a line right here.  the second box is for whatever.
+<% unless controller_name == 'approaches' && action_name == 'new' %>
+  <% form_for Line.new do |f| %>
+    <%= f.text_field :phrasing, :size => 40 %>
+    <%= f.text_area :context, :size => '20x2' %>
+    <%= f.submit :save %>
+    &lt--you can enter a line right here.  the second box is for whatever.
+  <% end %>
 <% end %>
 <% unless current_user %>
   <%= link_to "Register!", new_user_path %> |

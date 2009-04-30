@@ -1,4 +1,5 @@
 class PublicationsController < ApplicationController
+  before_filter :require_user, :except => [:index, :show]
   # GET /publications
   # GET /publications.xml
   def index
