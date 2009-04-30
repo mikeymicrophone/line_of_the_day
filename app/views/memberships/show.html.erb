@@ -1,11 +1,9 @@
 <p>
-  <b>Group:</b>
-  <%=h @membership.group_id %>
+  <%= link_to_name @membership.group %>
 </p>
 
 <p>
-  <b>User:</b>
-  <%=h @membership.user_id %>
+  <%= link_to_name @membership.user, 'username' %>
 </p>
 
 <p>

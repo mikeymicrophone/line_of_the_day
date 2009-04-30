@@ -22,8 +22,11 @@
   <%= f.submit :add %>
 <% end %>
 
+pending memberships (click to approve, the minus to deny)
+<br>
 <% @group.memberships.pending.each do |m| %>
-  <%= link_to m.user.username, membership_path(m, :membership => {:state => 'approved'}), :method => :put %>
+  [<%= link_to m.user.username, membership_path(m, :membership => {:state => 'approved'}), :method => :put %>
+  <%= link_to '-', membership_path(m, :membership => {:state => 'out'}), :method => :put %>]
 <% end %>
 
 <%= link_to 'grouping', @group %> |

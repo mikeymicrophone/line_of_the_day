@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
   def index
     @grouping = Group.open_for_application
     @groups = if params[:user_id]
-      User.find(params[:user_id]).groups
+      User.find(params[:user_id]).cliques
     else
       Group.all
     end
