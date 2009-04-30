@@ -9,7 +9,7 @@
   </p>
   <p>
     <%= f.label :line_id %><br />
-    <%= f.select :line_id, current_user.lines.map { |l| [l.name, l.id] } %>
+    <%= f.select :line_id, current_user.lines.map { |l| [l.phrasing, l.id] } %>
   </p>
   <p>
     <%= f.label :group_id %><br />
