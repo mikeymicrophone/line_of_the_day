@@ -2,11 +2,25 @@ class ActiveRecord::Base
   def id_of record
     if record.is_a? Integer
       record
+    elsif record.is_a? String
+      record.to_i
     elsif record.kind_of? ActiveRecord::Base
       record.id
     else
       raise ArgumentError
     end
+  end
+  
+  def self.id_of record
+    if record.is_a? Integer
+      record
+    elsif record.is_a? String
+      record.to_i
+    elsif record.kind_of? ActiveRecord::Base
+      record.id
+    else
+      raise ArgumentError
+    end    
   end
   
   def dom_id prefix = ''

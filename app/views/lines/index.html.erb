@@ -1,14 +1,18 @@
 <h1>some of the greatest things young ladies have yet heard</h1>
 
+<%= render :partial => @published_lines %>
 <%= render :partial => @lines %>
+<hr>
+
+<%= render :partial => @public_lines %>
 
 <hr>
 
-<%= render :partial => current_user.groups.map { |g| g.lines }.flatten.sort_by { |l| l.created_at } if current_user %>
+<%= render :partial => @shared_lines %>
 
 <%= link_to 'drop a line', new_line_path %>
 <div id='publishable-groups'></div>
-<% current_user.andand.groups.andand.each do |g| %>
+<% current_user.andand.cliques.andand.each do |g| %>
   <%= link_to_function g.name, "make_publishable(#{g.id});" %>
 <% end %>
 <div id='publications'></div>

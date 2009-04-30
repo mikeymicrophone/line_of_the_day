@@ -1,20 +1,14 @@
-<h1>Listing comments</h1>
+<h1>commentary
+<%= " on #{@line.text}" if @line %>  
+</h1>
 
 <table>
-  <tr>
-    <th>Text</th>
-    <th>Line</th>
-    <th>User</th>
-  </tr>
-
 <% @comments.each do |comment| %>
   <tr>
     <td><%=h comment.text %></td>
-    <td><%=h comment.line_id %></td>
-    <td><%=h comment.user_id %></td>
+    <td><%= link_to truncate(comment.line.text, 30), comment.line unless params[:line_id] %></td>
+    <td><%= link_to comment.user.name, comment.user unless comment.user == current_user %></td>
     <td><%= link_to 'Show', comment %></td>
-    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

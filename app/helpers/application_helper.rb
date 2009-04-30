@@ -5,4 +5,12 @@ module ApplicationHelper
       link_to resource, '/' + resource
     end.join(' ')
   end
+  
+  def link_to_name what, method = nil
+    unless method
+      link_to what.name, what rescue nil
+    else
+      link_to what.send(method), what
+    end
+  end
 end

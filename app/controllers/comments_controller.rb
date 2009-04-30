@@ -2,7 +2,13 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
   def index
-    @comments = Comment.all
+    @comments = if params[:membership_id]
+      (@membership = Membership.find(params[:membership_id])).shared_thoughts
+    elsif params[:line_id]
+      (@line = Line.find(params[:line_id])).comments
+    else
+      Comment.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

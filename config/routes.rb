@@ -7,13 +7,17 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :publications, :has_one => [:line, :user, :group]
 
-  map.resources :memberships, :has_one => [:group, :user], :has_many => [:publications, :lines]
+  map.resources :memberships, :has_one => [:group, :user], :has_many => [:publications, :lines, :comments]
 
   map.resources :groups, :has_many => [:publications, :lines, :memberships, :users]
 
   map.resources :comments, :has_one => [:line, :user]
 
-  map.resources :users, :has_many => [:lines, :groups, :memberships, :publications, :comments]
+  map.resources :users, :has_many => [:lines, :groups, :memberships, :publications, :comments] do |user|
+    user.resources :groups do |group|
+      group.resources :lines
+    end
+  end
 
   map.resources :lines, :has_one => [:user], :has_many => [:publications, :comments, :groups], :collection => {:mine => :get}
 

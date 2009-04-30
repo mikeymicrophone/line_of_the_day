@@ -1,24 +1,14 @@
-<h1>Listing memberships</h1>
+<h1>contributors & commentators</h1>
 
 <table>
-  <tr>
-    <th>Group</th>
-    <th>User</th>
-    <th>State</th>
-  </tr>
 
 <% @memberships.each do |membership| %>
   <tr>
-    <td><%=h membership.group_id %></td>
-    <td><%=h membership.user_id %></td>
-    <td><%=h membership.state %></td>
-    <td><%= link_to 'Show', membership %></td>
-    <td><%= link_to 'Edit', edit_membership_path(membership) %></td>
-    <td><%= link_to 'Destroy', membership, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to_name membership.group %></td>
+    <td><%= link_to_name membership.user, 'username' %></td>
+    <td><%= link_to pluralize(membership.user.publications.to_group(membership.group).count, 'line') + ' shared', user_group_lines_path(membership.user, membership.group) %></td>
+    <td><%= link_to pluralize(membership.shared_thoughts.length, 'thought') + ' shared', membership_comments_path(membership) %></td>
+    <td><%= link_to 'detail', membership %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New membership', new_membership_path %>

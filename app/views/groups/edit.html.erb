@@ -22,5 +22,9 @@
   <%= f.submit :add %>
 <% end %>
 
+<% @group.memberships.pending.each do |m| %>
+  <%= link_to m.user.username, membership_path(m, :membership => {:state => 'approved'}), :method => :put %>
+<% end %>
+
 <%= link_to 'grouping', @group %> |
 <%= link_to 'holy mackeral', groups_path %>

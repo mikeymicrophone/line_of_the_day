@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :comments
   has_many :publications
+  has_many :cliques, :through => :memberships, :source => :group
   
   def is_a_member_of group
     group_id = id_of(group)
