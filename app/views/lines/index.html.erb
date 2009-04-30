@@ -17,3 +17,4 @@
   <%= link_to_function g.name, "make_publishable(#{g.id});" %>
 <% end %>
 <div id='publications'></div>
+<%= render :partial => Comment.main %>
