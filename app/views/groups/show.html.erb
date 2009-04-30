@@ -4,7 +4,7 @@
 
 <div id='my-membership'>
   <% if current_user.andand.is_a_member_of @group %>
-
+    <%= "you have been a member for #{link_to(time_ago_in_words(Membership.find_by_group_id_and_user_id(@group.id, current_user.id).created_at), Membership.find_by_group_id_and_user_id(@group.id, current_user.id))}"%>
   <% elsif @group.rules != 3 %>
     <%= link_to_remote 'join', :url => memberships_path(:membership => {:group_id => @group.id}), :update => 'my-membership' %>
   <% end %>
