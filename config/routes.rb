@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :results, :has_many => [:approaches, :lines]
 
-  map.resources :approaches, :has_one => [:line, :scene, :result]
+  map.resources :approaches, :has_one => [:line, :scene, :result], :collection => {:auto_complete_for_line_magic => :post, :auto_complete_for_scene_name => :post, :auto_complete_for_result_name => :post}
 
   map.resources :scenes, :has_many => [:approaches, :lines]
 

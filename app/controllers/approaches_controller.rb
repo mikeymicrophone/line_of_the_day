@@ -1,8 +1,9 @@
 class ApproachesController < ApplicationController
-  auto_complete_for :line, :text
+  auto_complete_for :line, :magic
   auto_complete_for :scene, :name
   auto_complete_for :result, :name
   skip_before_filter :verify_authenticity_token, :only => [:auto_complete_for_line_text, :auto_complete_for_scene_name, :auto_complete_for_result_name]
+  before_filter :require_user
   # GET /approaches
   # GET /approaches.xml
   def index
@@ -44,6 +45,9 @@ class ApproachesController < ApplicationController
   # POST /approaches
   # POST /approaches.xml
   def create
+    params[:approach][:line] = Line.find_or_create_by_text(params[:line][:magic], :user => current_user)
+    params[:approach][:scene] = Scene.find_or_create_by_name(params[:scene][:name], :user => current_user)
+    params[:approach][:result] = Result.find_or_create_by_name(params[:result][:name], :user => current_user)
     @approach = Approach.new(params[:approach])
 
     respond_to do |format|
@@ -61,6 +65,9 @@ class ApproachesController < ApplicationController
   # PUT /approaches/1
   # PUT /approaches/1.xml
   def update
+    params[:approach][:line] ||= Line.find_or_create_by_text(params[:line][:magic], :user => current_user)
+    params[:approach][:scene] ||= Scene.find_or_create_by_name(params[:scene][:name], :user => current_user)
+    params[:approach][:result] ||= Result.find_or_create_by_name(params[:result][:name], :user => current_user)
     @approach = Approach.find(params[:id])
 
     respond_to do |format|

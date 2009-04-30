@@ -10,7 +10,7 @@ module ApplicationHelper
     unless method
       link_to what.name, what rescue nil
     else
-      link_to what.send(method), what
+      link_to what.send(method), what if what
     end
   end
 end

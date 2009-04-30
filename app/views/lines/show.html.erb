@@ -8,7 +8,7 @@
 </p>
 
 <p>
-  <%= link_to @line.user.andand.username, @line.user %>
+  <%= link_to_name @line.user, 'username' %>
 </p>
 
 <% form_remote_for @line.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>

@@ -1,8 +1,5 @@
-<p>
-  <b>Name:</b>
+<h2>
   <%=h @scene.name %>
-</p>
-
-
-<%= link_to 'Edit', edit_scene_path(@scene) %> |
-<%= link_to 'Back', scenes_path %>
+</h2>
+has been the scene of <%= @scene.approaches.count %> recorded incidents.  you should check it out when you're ready to be on your best behavior ;)<br>
+<%= link_to 'the world', scenes_path %>

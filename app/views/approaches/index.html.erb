@@ -4,9 +4,9 @@
 <% @approaches.each do |approach| %>
   <tr>
     <td><%=h approach.context %></td>
-    <td><%= link_to truncate(approach.line, 110), approach.line if approach.line %></td>
+    <td><%= link_to truncate(approach.line.text, 110), approach.line if approach.line %></td>
     <td><%= link_to_name approach.scene %></td>
-    <td><%=h approach.hotness %></td>
+    <td><%=h approach.hotness.to_i / 10.0 %></td>
     <td><%= link_to_name approach.result %></td>
     <td><%= link_to 'investigate', approach %></td>
   </tr>
