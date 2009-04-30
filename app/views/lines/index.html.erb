@@ -11,8 +11,9 @@
 <%= render :partial => @shared_lines if @shared_lines %>
 
 <%= link_to 'drop a line', new_line_path %>
-<i>choose which group(s) to publish to by clicking them!</i>
+
 <div id='publishable-groups'></div>
+<i>choose which group(s) to publish to by clicking them!</i>
 <% current_user.andand.cliques.andand.each do |g| %>
   <%= link_to_function g.name, "make_publishable(#{g.id});" %>
 <% end %>

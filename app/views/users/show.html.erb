@@ -3,7 +3,7 @@
 </h2>
 
 <% @user.lines.each do |l| %>
-  <%= l.text %>
+  <%= l.phrasing %>
   <%= link_to 'yeah', l %>
   <%= link_to pluralize(l.comments.count, 'thought'), line_comments_path(l) %>
   <%= time_ago_in_words(l.created_at) %><br>

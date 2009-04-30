@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
 
-    @lines = current_user.visible_lines.map { |l| [l.text[0..100], l.id]}
+    @lines = current_user.visible_lines.map { |l| [l.phrasing[0..100], l.id]}
 
     respond_to do |format|
       format.html # new.html.erb

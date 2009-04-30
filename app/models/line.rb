@@ -9,5 +9,4 @@ class Line < ActiveRecord::Base
   named_scope :novel_to, lambda { |artist|
     {:conditions => ['lines.user_id is not ?', artist.id]}
   }
-  alias_attribute :magic, :text
 end
