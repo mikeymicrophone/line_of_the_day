@@ -1,4 +1,7 @@
 <h1>good. work!</h1>
+<%= "(you said #{@approach.line.phrasing})" if @approach.line %>
+<%= "(you approached someone at #{@approach.scene.name})" if @approach.scene %>
+<%= "(you got #{@approach.result.name})" if @approach.result %>
 <%# @approach.save %>
 <% form_for(@approach) do |f| %>
   <%= f.error_messages %>
@@ -7,23 +10,35 @@
     <%= f.label :context, 'etc' %><br />
     <%= f.text_area :context, :size => '30x5' %>
   </p>
-  <p>
-    <%= f.label :line_id, 'the line' %><br />
-    <%= text_field_with_auto_complete :line, :magic %>
-  </p>
-  <p>
-    <%= f.label :scene_id, 'the scene' %><br />
-    <%= text_field_with_auto_complete :scene, :name %>
-  </p>
+  <% if @approach.line %>
+    <%= f.hidden_field :line_id %>
+  <% else %>
+    <p>
+      <%= f.label :line_id, 'the line' %><br />
+      <%= text_field_with_auto_complete :line, :phrasing, :size => 90 %>
+    </p>
+  <% end %>
+  <% if @approach.scene %>
+    <%= f.hidden_field :scene_id %>
+  <% else %>
+    <p>
+      <%= f.label :scene_id, 'the scene' %><br />
+      <%= text_field_with_auto_complete :scene, :name %>
+    </p>
+  <% end %>
   <p>
     <%= f.label :hotness, 'hotness' %><br />
     <%= slider_stylesheet %>
     <%= slider_field :approach, :hotness, :range => 1..100 %>
   </p>
-  <p>
-    <%= f.label :result_id, 'the result' %><br />
-    <%= text_field_with_auto_complete :result, :name %>
-  </p>
+  <% if @approach.result %>
+    <%= f.hidden_field :result_id %>
+  <% else %>
+    <p>
+      <%= f.label :result_id, 'the result' %><br />
+      <%= text_field_with_auto_complete :result, :name %>
+    </p>
+  <% end %>
   <p>
     <%= f.submit 'save' %>
   </p>

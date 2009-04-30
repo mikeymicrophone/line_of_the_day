@@ -1,5 +1,5 @@
 <p>
   <%=h @result.name %>
 </p>
-
+<%= link_to 'this happened to me', new_result_approach_path(@result) %>
 <%= link_to 'and if that wasn\'t good enough', results_path %>

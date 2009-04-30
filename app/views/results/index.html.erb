@@ -6,6 +6,7 @@
   <tr>
     <td><%=h result.name %></td>
     <td><%= link_to pluralize(result.approaches.count, 'time'), result_approaches_path(result) %></td>
+    <td><%= link_to 'been there', new_result_approach_path(result) %></td>
     <td><%= link_to 'hmm', result %></td>
   </tr>
 <% end %>

@@ -1,5 +1,5 @@
 <p>
-  <%=h @line.text %>
+  <%=h @line.phrasing %>
 </p>
 
 <p>
@@ -10,6 +10,7 @@
 <p>
   <%= link_to_name @line.user, 'username' %>
 </p>
+<%= link_to 'I said that', new_line_approach_path(@line)%>
 
 <% form_remote_for @line.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>
   <%= f.text_area :text, :size => '35x4' %>

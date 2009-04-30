@@ -5,6 +5,7 @@
   <tr>
     <td><%=h scene.name %></td>
     <td><%= link_to(pluralize(scene.approaches.count, 'event'), scene_approaches_path(scene)) %></td>
+    <td><%= link_to 'report an incident', new_scene_approach_path(scene) %></td>
     <td><%= link_to 'virtually go', scene %></td>
   </tr>
 <% end %>

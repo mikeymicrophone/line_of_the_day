@@ -1,18 +1,14 @@
-<p>
-  <b>Text:</b>
+<h3>
   <%=h @comment.text %>
+</h3>
+
+<p>on
+  <b><%=h @comment.line.phrasing %></b>
 </p>
 
 <p>
-  <b>Line:</b>
-  <%=h @comment.line_id %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%=h @comment.user_id %>
+  <%= link_to_name @comment.user, 'username' %>
 </p>
 
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'give me more', comments_path %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090424064411) do
+ActiveRecord::Schema.define(:version => 20090430093003) do
 
   create_table "approaches", :force => true do |t|
     t.text     "context"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20090424064411) do
     t.integer  "result_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -38,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20090424064411) do
   end
 
   create_table "lines", :force => true do |t|
-    t.text     "text"
+    t.text     "phrasing"
     t.text     "context"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -68,12 +69,14 @@ ActiveRecord::Schema.define(:version => 20090424064411) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "scenes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "sessions", :force => true do |t|

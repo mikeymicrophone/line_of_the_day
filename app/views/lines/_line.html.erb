@@ -1,5 +1,5 @@
 <% div_for line do %>
-  <span class='left'><%= link_to line.text, line %></span>
+  <span class='left'><%= link_to line.phrasing, line %></span>
   <span class='pick-up-artist'><%=h line.user.andand.username %></span>
   <div class='clearfix'></div>
   <span class='right'><%=h line.context %></span>

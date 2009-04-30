@@ -1,10 +1,10 @@
 <h1>victories</h1>
-
+<%= link_to 'did one', new_approach_path %>
 <table>
 <% @approaches.each do |approach| %>
   <tr>
     <td><%=h approach.context %></td>
-    <td><%= link_to truncate(approach.line.text, 110), approach.line if approach.line %></td>
+    <td><%= link_to truncate(approach.line.phrasing, 110), approach.line if approach.line %></td>
     <td><%= link_to_name approach.scene %></td>
     <td><%=h approach.hotness.to_i / 10.0 %></td>
     <td><%= link_to_name approach.result %></td>
@@ -15,4 +15,3 @@
 
 <br />
 
-<%= link_to 'did one', new_approach_path %>

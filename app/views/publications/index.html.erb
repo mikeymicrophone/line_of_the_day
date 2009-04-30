@@ -4,9 +4,9 @@
 <% @publications.each do |publication| %>
   <tr>
     <td><%=h publication.text %></td>
-    <td><%= link_to truncate(publication.line.text, 80), publication.line %></td>
-    <td><%= link_to publication.group.name, publication.group %></td>
-    <td><%= link_to publication.user.username, publication.user %></td>
+    <td><%= link_to truncate(publication.line.phrasing, 80), publication.line if publication.line %></td>
+    <td><%= link_to_name publication.group %></td>
+    <td><%= link_to_name publication.user, 'username' %></td>
     <td><%= link_to 'see', publication %></td>
   </tr>
 <% end %>

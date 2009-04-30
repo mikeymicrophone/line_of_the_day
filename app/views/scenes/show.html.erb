@@ -2,4 +2,5 @@
   <%=h @scene.name %>
 </h2>
 has been the scene of <%= @scene.approaches.count %> recorded incidents.  you should check it out when you're ready to be on your best behavior ;)<br>
+<%= link_to 'I was there', new_scene_approach_path(@scene) %>
 <%= link_to 'the world', scenes_path %>

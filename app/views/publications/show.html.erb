@@ -3,11 +3,11 @@
 </p>
 
 <p>
-  <%=h @publication.line.text %>
+  <%= link_to_name @publication.line, 'phrasing' %>
 </p>
 
 <p>
-  <%= link_to @publication.group.name, @publication.group %>
+  <%= link_to_name @publication.group %>
 </p>
 
 <%= link_to 'notices of valor', publications_path %>
