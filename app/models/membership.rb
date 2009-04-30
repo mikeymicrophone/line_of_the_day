@@ -7,6 +7,10 @@ class Membership < ActiveRecord::Base
     group.lines.map(&:comments).flatten.select { |c| c.user_id == user_id}
   end
   
+  def published_lines
+    group.lines.select { |l| l.user_id == user_id }
+  end
+  
   state_machine :initial => :unapproved do
     event :join do
       transition :unapproved => :ambiguous

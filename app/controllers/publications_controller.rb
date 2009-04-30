@@ -44,6 +44,7 @@ class PublicationsController < ApplicationController
     params[:publication] ||= {}
     params[:publication][:line_id] = params[:line_id]
     params[:publication][:user_id] = current_user.id
+    @publications << Publication.create(params[:publication]) if params[:publication][:group_id] && !params[:group_ids] # for use of the form rather than the link
     params[:group_ids].split(' ').each { |g| params[:publication][:group_id] = g; @publications << Publication.create(params[:publication]) }
 
     respond_to do |format|

@@ -1,20 +1,15 @@
-<h1>Listing scenes</h1>
+<h1>scenes in the story of life</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-  </tr>
-
 <% @scenes.each do |scene| %>
   <tr>
     <td><%=h scene.name %></td>
-    <td><%= link_to 'Show', scene %></td>
-    <td><%= link_to 'Edit', edit_scene_path(scene) %></td>
-    <td><%= link_to 'Destroy', scene, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to(pluralize(scene.approaches.count, 'event'), scene_approaches_path(scene)) %></td>
+    <td><%= link_to 'virtually go', scene %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New scene', new_scene_path %>
+<%= link_to 'got spot', new_scene_path %>

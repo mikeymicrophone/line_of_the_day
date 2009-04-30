@@ -1,16 +1,6 @@
 <p>
-  <%= link_to_name @membership.group %>
-</p>
-
-<p>
-  <%= link_to_name @membership.user, 'username' %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%=h @membership.state %>
+  <%= link_to_name @membership.user, 'username' %> has been a member of <%= link_to_name @membership.group %> for <%= time_ago_in_words @membership.created_at %> and has published <%= @membership.published_lines.length %> lines to the <%= @membership.group.memberships.count - 1 %> other members.  also, commented <%= @membership.shared_thoughts.length %> times.
 </p>
 
 
-<%= link_to 'Edit', edit_membership_path(@membership) %> |
 <%= link_to 'Back', memberships_path %>

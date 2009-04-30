@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :require_user, :except => [:index, :show]
   # GET /comments
   # GET /comments.xml
   def index
@@ -31,6 +32,8 @@ class CommentsController < ApplicationController
   # GET /comments/new.xml
   def new
     @comment = Comment.new
+
+    @lines = current_user.visible_lines.map { |l| [l.text[0..100], l.id]}
 
     respond_to do |format|
       format.html # new.html.erb

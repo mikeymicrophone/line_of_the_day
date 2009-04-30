@@ -1,9 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :results
+  map.resources :results, :has_many => [:approaches, :lines]
 
-  map.resources :approaches
+  map.resources :approaches, :has_one => [:line, :scene, :result]
 
-  map.resources :scenes
+  map.resources :scenes, :has_many => [:approaches, :lines]
 
   map.resources :publications, :has_one => [:line, :user, :group]
 

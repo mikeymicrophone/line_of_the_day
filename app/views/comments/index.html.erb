@@ -6,8 +6,8 @@
 <% @comments.each do |comment| %>
   <tr>
     <td><%=h comment.text %></td>
-    <td><%= link_to truncate(comment.line.text, 30), comment.line unless params[:line_id] %></td>
-    <td><%= link_to comment.user.name, comment.user unless comment.user == current_user %></td>
+    <td><%= link_to truncate(comment.line.text, 30), comment.line unless params[:line_id] || comment.line.nil? %></td>
+    <td><%= link_to_name comment.user, 'username' unless comment.user == current_user %></td>
     <td><%= link_to 'Show', comment %></td>
   </tr>
 <% end %>
@@ -15,4 +15,4 @@
 
 <br />
 
-<%= link_to 'New comment', new_comment_path %>
+<%= link_to 'comment time', new_comment_path %>

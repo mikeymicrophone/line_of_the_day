@@ -1,24 +1,17 @@
-<h1>Listing publications</h1>
+<h1>publications</h1>
 
 <table>
-  <tr>
-    <th>Text</th>
-    <th>Line</th>
-    <th>Group</th>
-    <th>User</th>
-  </tr>
-
 <% @publications.each do |publication| %>
   <tr>
     <td><%=h publication.text %></td>
-    <td><%= link_to publication.line.text[0..40], publication.line %></td>
+    <td><%= link_to truncate(publication.line.text, 80), publication.line %></td>
     <td><%= link_to publication.group.name, publication.group %></td>
     <td><%= link_to publication.user.username, publication.user %></td>
-    <td><%= link_to 'show', publication %></td>
+    <td><%= link_to 'see', publication %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New publication', new_publication_path %>
+<%= link_to 'publish one of my lines to one of my groups', new_publication_path %>

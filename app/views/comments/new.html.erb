@@ -1,23 +1,19 @@
-<h1>New comment</h1>
+<h1>your comments ARE appreciated!.</h1>
 
 <% form_for(@comment) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :text %><br />
-    <%= f.text_area :text %>
+    <%= f.label :text , '.'%><br />
+    <%= f.text_area :text, :size => '36x3' %>
   </p>
   <p>
-    <%= f.label :line_id %><br />
-    <%= f.text_field :line_id %>
+    <%= f.label :line_id, 'commenting on a line, or?' %><br />
+    <%= f.select :line_id, @lines, :include_blank => 'just post this comment to the main page' %>
   </p>
   <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'tweet' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', comments_path %>
+<%= link_to 'noise', comments_path %>

@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
     group_id = id_of(group)
     !memberships.select { |m| m.group_id == group_id }.empty?
   end
+  
+  def visible_lines
+    (groups.map(&:lines).flatten + lines + Line.public).uniq
+  end
 end
