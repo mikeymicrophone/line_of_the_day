@@ -9,5 +9,9 @@ class ActiveRecord::Base
     end
   end
   
+  def dom_id prefix = ''
+    ActionView::Base.new.dom_id self, prefix
+  end
+  
   named_scope :recent, :order => 'created_at desc', :limit => 20
 end

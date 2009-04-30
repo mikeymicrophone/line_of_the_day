@@ -13,3 +13,17 @@
 .clearfix {
 	clear: both;
 }
+
+/* voting slider */
+.handle {
+  width: 5px;
+  height: 11px;
+  background-color: #990E5F;
+}
+ 
+.track {
+  float:left;
+  width: 500px;
+  height: 2px;
+  background-color: #999;
+}

@@ -1,0 +1,30 @@
+<h1>good. work!</h1>
+<% @approach.save %>
+<% form_for(@approach) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :context %><br />
+    <%= f.text_area :context %>
+  </p>
+  <p>
+    <%= f.label :line_id %><br />
+    <%= text_field_with_auto_complete :line, :ttt %>
+  </p>
+  <p>
+    <%= f.label :scene_id %><br />
+    <%= text_field_with_auto_complete :scene, :name %>
+  </p>
+  <p>
+    <%= f.label :hotness %><br />
+    <%= slider_stylesheet %>
+    <%= slider_field :approach, :hotness, :range => 1..100 %>
+  </p>
+  <p>
+    <%= f.label :result_id %><br />
+    <%= text_field_with_auto_complete :result, :name %>
+  </p>
+  <p>
+    <%= f.submit 'save' %>
+  </p>
+<% end %>

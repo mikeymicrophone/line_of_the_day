@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090422064514) do
+ActiveRecord::Schema.define(:version => 20090424064411) do
+
+  create_table "approaches", :force => true do |t|
+    t.text     "context"
+    t.integer  "line_id"
+    t.integer  "scene_id"
+    t.integer  "hotness"
+    t.integer  "result_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.text     "text"
@@ -50,6 +60,18 @@ ActiveRecord::Schema.define(:version => 20090422064514) do
     t.integer  "line_id"
     t.integer  "group_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "results", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scenes", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

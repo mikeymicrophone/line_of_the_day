@@ -1,7 +1,7 @@
 <h2>
   <%=h @user.username %>
 </h2>
-
+<%= link_to '', new_photo_path, :class => 'uploadPhoto' %>
 <% @user.lines.each do |l| %>
   <%= l.text %>
   <%= link_to 'yeah', l %>

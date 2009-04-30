@@ -1,0 +1,32 @@
+<h1>Editing approach</h1>
+
+<% form_for(@approach) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :context %><br />
+    <%= f.text_area :context %>
+  </p>
+  <p>
+    <%= f.label :line_id %><br />
+    <%= f.text_field :line_id %>
+  </p>
+  <p>
+    <%= f.label :scene_id %><br />
+    <%= f.text_field :scene_id %>
+  </p>
+  <p>
+    <%= f.label :hotness %><br />
+    <%= f.text_field :hotness %>
+  </p>
+  <p>
+    <%= f.label :result_id %><br />
+    <%= f.text_field :result_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @approach %> |
+<%= link_to 'Back', approaches_path %>

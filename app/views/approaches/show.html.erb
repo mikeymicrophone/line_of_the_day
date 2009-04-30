@@ -1,0 +1,28 @@
+<p>
+  <b>Context:</b>
+  <%=h @approach.context %>
+</p>
+
+<p>
+  <b>Line:</b>
+  <%=h @approach.line_id %>
+</p>
+
+<p>
+  <b>Scene:</b>
+  <%=h @approach.scene_id %>
+</p>
+
+<p>
+  <b>Hotness:</b>
+  <%=h @approach.hotness %>
+</p>
+
+<p>
+  <b>Result:</b>
+  <%=h @approach.result_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_approach_path(@approach) %> |
+<%= link_to 'Back', approaches_path %>

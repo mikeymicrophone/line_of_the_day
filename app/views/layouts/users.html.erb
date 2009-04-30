@@ -6,6 +6,7 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Users: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
+  <%= javascript_include_tag :defaults %>
 </head>
 <body>
 <%= render :partial => 'shared/lines_and_links', :locals => {:current_user => current_user} %>

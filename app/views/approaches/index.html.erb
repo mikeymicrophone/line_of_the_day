@@ -1,0 +1,28 @@
+<h1>Listing approaches</h1>
+
+<table>
+  <tr>
+    <th>Context</th>
+    <th>Line</th>
+    <th>Scene</th>
+    <th>Hotness</th>
+    <th>Result</th>
+  </tr>
+
+<% @approaches.each do |approach| %>
+  <tr>
+    <td><%=h approach.context %></td>
+    <td><%=h approach.line_id %></td>
+    <td><%=h approach.scene_id %></td>
+    <td><%=h approach.hotness %></td>
+    <td><%=h approach.result_id %></td>
+    <td><%= link_to 'Show', approach %></td>
+    <td><%= link_to 'Edit', edit_approach_path(approach) %></td>
+    <td><%= link_to 'Destroy', approach, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New approach', new_approach_path %>

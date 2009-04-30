@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  context: MyText
+  line_id: 1
+  scene_id: 1
+  hotness: 1
+  result_id: 1
+
+two:
+  context: MyText
+  line_id: 1
+  scene_id: 1
+  hotness: 1
+  result_id: 1
