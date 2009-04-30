@@ -23,6 +23,7 @@ Rails::Initializer.run do |config|
   config.gem 'andand'
   config.gem "josevalim-rails-footnotes",  :lib => "rails-footnotes", :source => "http://gems.github.com"
   config.gem 'seamusabshere-scriptaculous_slider', :lib => 'scriptaculous_slider', :source => "http://gems.github.com"
+  config.gem 'rack'
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
