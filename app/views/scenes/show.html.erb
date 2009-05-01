@@ -1,6 +1,18 @@
 <h2>
   <%=h @scene.name %>
 </h2>
-has been the scene of <%= @scene.approaches.count %> recorded incidents.  you should check it out when you're ready to be on your best behavior ;)<br>
+has been the scene of <%= pluralize @scene.approaches.count, 'recorded incident' %>.  you should check it out when you're ready to be on your best behavior ;)<br>
 <%= link_to 'I was there', new_scene_approach_path(@scene) %>
 <%= link_to 'the world', scenes_path %>
+<hr>
+<%= @scene.approaches.map { |a| a.result.name }.join(' | ') %>
+<hr>
+overheard<br>
+<% 3.times do %>
+  <em style="font-size:2em;margin:18px;"><%= @scene.approaches[rand(@scene.approaches.count)].line.phrasing %></em>
+<% end %>
+<hr>
+<span style="font-size:<%= @scene.approaches.average(:hotness) / 33.33 %>em;">eye candy</span><br>
+<% @scene.approaches.each do |a| %>
+  <%= a.hotness / 10.0 %>
+<% end %>

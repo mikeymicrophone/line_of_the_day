@@ -45,11 +45,11 @@ class ApproachesController < ApplicationController
   # POST /approaches
   # POST /approaches.xml
   def create
-    params[:approach][:line] = Line.find_or_create_by_phrasing(params[:line][:phrasing], :user => current_user)
-    params[:approach][:scene] = Scene.find_or_create_by_name(params[:scene][:name], :user => current_user)
-    params[:approach][:result] = Result.find_or_create_by_name(params[:result][:name], :user => current_user)
     params[:approach][:user] = current_user
     @approach = Approach.new(params[:approach])
+    @approach.line ||= Line.find_or_create_by_phrasing(params[:line][:phrasing], :user => current_user)
+    @approach.scene ||= Scene.find_or_create_by_name(params[:scene][:name], :user => current_user)
+    @approach.result ||= Result.find_or_create_by_name(params[:result][:name], :user => current_user)
 
     respond_to do |format|
       if @approach.save
