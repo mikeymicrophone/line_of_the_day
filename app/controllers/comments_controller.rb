@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.xml
   def new
-    @comment = Comment.new
+    @comment = Comment.new :line_id => params[:line_id]
 
     @lines = current_user.visible_lines.map { |l| [l.phrasing[0..100], l.id]}
 

@@ -15,4 +15,8 @@
 
 <br />
 
-<%= link_to 'comment time', new_comment_path %>
+<% if params[:line_id] %>
+  <%= link_to 'comment time', new_line_comment_path(params[:line_id])%>
+<% else %>
+  <%= link_to 'comment time', new_comment_path %>
+<% end %>
