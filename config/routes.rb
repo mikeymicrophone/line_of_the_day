@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :messages
+
   map.resources :results, :has_many => [:approaches, :lines]
 
   map.resources :approaches, :has_one => [:line, :scene, :result], :collection => {:auto_complete_for_line_phrasing => :post, :auto_complete_for_scene_name => :post, :auto_complete_for_result_name => :post}
@@ -23,6 +25,7 @@ ActionController::Routing::Routes.draw do |map|
 
 #  map.resource :account, :controller => "users"
   map.resource :user_session
+  map.resources :password_resets
   map.root :controller => 'lines'
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -1,0 +1,24 @@
+<h1>so, what is the word</h1>
+
+<% form_for(@message) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.text_field :subject, :size => 44 %>
+  </p>
+  <p>
+    <%= f.text_area :body, :size => '46x6' %>
+  </p>
+    <%= f.hidden_field :reply_id %>
+  <p>
+  <% if @message.recipient %>
+  
+  <% else %>
+    <%= f.label :recipient_id %><br />
+    <%= f.select :recipient_id, User.map_name_and_id %>
+  <% end %>
+  </p>
+  <p>
+    <%= f.submit :send %>
+  </p>
+<% end %>

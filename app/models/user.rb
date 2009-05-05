@@ -15,4 +15,9 @@ class User < ActiveRecord::Base
   def visible_lines
     (groups.map(&:lines).flatten + lines + Line.public).uniq
   end
+  
+  def deliver_password_reset_instructions!
+    reset_perishable_token!
+    Notifier.deliver_password_reset_instructions(self)
+  end
 end
