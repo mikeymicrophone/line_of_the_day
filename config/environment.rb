@@ -44,4 +44,4 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
-Footnotes::Filter.notes << :view
+#Footnotes::Filter.notes << :view
