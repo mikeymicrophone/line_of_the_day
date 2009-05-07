@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default_url_options[:host] = "authlogicexample.binarylogic.com"
+  default_url_options[:host] = "lineoftheday.com"
   
   def password_reset_instructions(user)
     subject       "Password Reset Instructions"
