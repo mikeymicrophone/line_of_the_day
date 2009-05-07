@@ -1,4 +1,4 @@
-Feature: Manage memberships
+Feature: add to group
   In order to share thoughts with many friends
   a pick-up artists
   wants to be able to

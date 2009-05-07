@@ -1,4 +1,4 @@
-Feature: Publishing lines to groups
+Feature: publish a lines
   In order to keep friends informed enough to be accurately critical of one's progress
   a pick-up artist
   wants to be able to publish lines to groups

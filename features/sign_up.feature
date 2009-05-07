@@ -1,4 +1,4 @@
-Feature: Manage accounts
+Feature: sign up
   In order to identify himself
   a pickup artist
   wants to create an account

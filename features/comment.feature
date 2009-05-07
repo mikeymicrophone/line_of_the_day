@@ -1,4 +1,4 @@
-Feature: Manage comments
+Feature: comment
   In order to share wisdom and reflection
   a pickup artist
   wants to be able to comment on lines

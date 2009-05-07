@@ -1,4 +1,4 @@
-Feature: posting a line
+Feature: post a line
   In order to remember and share lines
   a pick-up artist
   wants his lines to be saved
