@@ -7,7 +7,11 @@ class ApproachesController < ApplicationController
   # GET /approaches
   # GET /approaches.xml
   def index
-    @approaches = Approach.all
+    if @line = Line.find_by_id(params[:line_id])
+      @approaches = @line.approaches
+    else
+      @approaches = Approach.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
