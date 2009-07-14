@@ -7,6 +7,14 @@ a.publication:hover {
 	background: #3E2999;
 }
 
+a.scene {
+	color: #317357;
+}
+
+a.result {
+	color: #A51403;
+}
+
 .pick-up-artist {
 	margin: 4px;
 	color: #520C99;

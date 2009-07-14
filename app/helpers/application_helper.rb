@@ -6,11 +6,11 @@ module ApplicationHelper
     end.join(' ')
   end
   
-  def link_to_name what, method = nil
+  def link_to_name what, method = nil, opts = {}
     unless method
-      link_to what.name, what rescue nil
+      link_to what.name, what, opts rescue nil
     else
-      link_to what.send(method), what if what
+      link_to what.send(method), what, opts if what
     end
   end
 end
