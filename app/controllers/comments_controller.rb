@@ -58,7 +58,12 @@ class CommentsController < ApplicationController
         format.html { render :partial => @comment }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
-        format.html { render :action => "new" }
+        format.html { if request.xhr?
+                        render :nothing => true
+                      else
+                        @lines = current_user.visible_lines.map { |l| [l.phrasing[0..100], l.id]}
+                        render :action => :new
+                      end }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
     end
