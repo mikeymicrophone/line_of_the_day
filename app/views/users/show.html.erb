@@ -2,7 +2,7 @@
   <%=h @user.username %>
 </h2>
 
-<% @user.lines.each do |l| %>
+<% @user.lines.public.each do |l| %>
   <%= l.phrasing %>
   <%= link_to 'yeah', l %>
   <%= link_to pluralize(l.comments.count, 'thought'), line_comments_path(l) %>
