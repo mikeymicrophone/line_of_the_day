@@ -1,12 +1,9 @@
-<% unless controller_name == 'approaches' && action_name == 'new' %>
+<% unless (controller_name == 'approaches' && action_name == 'new') || !current_user %>
   <% form_for Line.new do |f| %>
     <%= f.text_field :phrasing, :size => 40 %>
     <%= f.text_area :context, :size => '20x2' %>
     <%= f.submit :save %>
-    <% unless current_user %>
-    <div style="float:left;color: #B10049;">(you aren't logged in; all anonymous lines are public)</div>
-    <% end %>
-    &lt--you can enter a line right here.  the second box is for whatever.
+    &lt--enter line here.  the second box is for whatever.
   <% end %>
 <% end %>
 <% unless current_user %>
