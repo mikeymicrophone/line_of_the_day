@@ -10,6 +10,8 @@
 
 <%= render :partial => @shared_lines if @shared_lines %>
 
+<%= will_paginate @public_lines if @public_lines %>
+
 <%= link_to 'drop a line', new_line_path %>
 
 <div id='publishable-groups'></div>

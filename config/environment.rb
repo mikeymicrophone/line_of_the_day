@@ -24,6 +24,7 @@ Rails::Initializer.run do |config|
   config.gem "josevalim-rails-footnotes",  :lib => "rails-footnotes", :source => "http://gems.github.com"
   config.gem 'seamusabshere-scriptaculous_slider', :lib => 'scriptaculous_slider', :source => "http://gems.github.com"
   config.gem 'rack'
+  config.gem 'mislav-will_paginate', :lib => 'will_paginate'
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
