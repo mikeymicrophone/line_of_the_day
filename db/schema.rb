@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090430093003) do
+ActiveRecord::Schema.define(:version => 20090504052040) do
 
   create_table "approaches", :force => true do |t|
     t.text     "context"
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(:version => 20090430093003) do
     t.integer  "group_id"
     t.integer  "user_id"
     t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "reply_id"
+    t.integer  "recipient_id"
+    t.integer  "user_id"
+    t.datetime "read_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

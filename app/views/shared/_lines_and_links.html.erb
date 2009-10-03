@@ -1,20 +1,23 @@
 <% unless (controller_name == 'approaches' && action_name == 'new') || !current_user %>
   <% form_for Line.new do |f| %>
     <%= f.text_field :phrasing, :size => 40 %>
-    <%= f.text_area :context, :size => '20x2' %>
+    <%= f.text_field :context, :size => 40 %>
     <%= f.submit :save %>
     &lt--enter line here.  the second box is for whatever.
   <% end %>
 <% end %>
-<% unless current_user %>
-  <%= link_to "Register!", new_user_path %> |
-  <%= link_to "Log In.", new_user_session_path %> |
-<% else %>
-  <%= link_to "my account", user_path(current_user) %> |
-  <%= link_to 'lines', lines_path %> |
-  <%= link_to 'mines', mine_lines_path %> |
-  <%= link_to 'my peeps', user_groups_path(current_user) %>
-  <%= link_to "time to log out and go open somebody", user_session_path, :method => :delete, :confirm => "for real you want to logout? better go open somebody" %>
-<% end %>
+<div id="navigation">
+  <% unless current_user %>
+    <%= link_to "Register!", new_user_path %> |
+    <%= link_to "Log In.", new_user_session_path %> |
+  <% else %>
+    <%= link_to "my account", user_path(current_user) %> |
+    <%= link_to 'lines', lines_path %> |
+    <%= link_to 'mines', mine_lines_path %> |
+    <%= link_to 'my people', user_groups_path(current_user) %> |
+    <%= link_to "time to log out and go open somebody", user_session_path, :method => :delete, :confirm => "for real you want to logout? better go open somebody" %>
+  <% end %>
 <br>
+
 <%= admin_resources %>
+</div>

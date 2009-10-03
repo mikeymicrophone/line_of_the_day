@@ -1,5 +1,27 @@
+#big_box {
+	margin: 39px;
+}
+
 .line {
-	font-size: 2em;
+	font-size: 1.4em;
+	border: 1px #75C3DA solid;
+	-webkit-border-radius: 7px;
+	margin: 4px;
+	padding: 5px;
+}
+
+#navigation {
+	text-align: center;
+}
+
+#navigation a {
+	font-size: 1.11em;
+	color: #401767;
+	text-decoration: none;
+}
+
+#navigation a:hover {
+	background-color: #D4D4D4;
 }
 
 .publication {
