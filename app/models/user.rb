@@ -6,10 +6,18 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :publications
   has_many :cliques, :through => :memberships, :source => :group
+  has_many :guidances, :foreign_key => :coach_id
+  has_many :guidings, :foreign_key => :student_id, :class_name => 'Guidance'
+  has_many :students, :through => :guidances
+  has_many :coaches, :through => :guidings
   
   def is_a_member_of group
     group_id = id_of(group)
     !memberships.select { |m| m.group_id == group_id }.empty?
+  end
+  
+  def is_coached_by coach
+    guidings.find_by_coach_id(coach.id)
   end
   
   def visible_lines

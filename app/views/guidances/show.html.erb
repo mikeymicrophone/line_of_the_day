@@ -1,0 +1,18 @@
+<p>
+  <b>Coach:</b>
+  <%=h @guidance.coach %>
+</p>
+
+<p>
+  <b>Student:</b>
+  <%=h @guidance.student %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @guidance.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_guidance_path(@guidance) %> |
+<%= link_to 'Back', guidances_path %>

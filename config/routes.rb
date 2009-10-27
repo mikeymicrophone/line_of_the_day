@@ -21,6 +21,8 @@ ActionController::Routing::Routes.draw do |map|
     end
   end
 
+  map.resources :guidances
+
   map.resources :lines, :has_one => [:user], :has_many => [:publications, :comments, :groups, :approaches], :collection => {:mine => :get}
 
 #  map.resource :account, :controller => "users"

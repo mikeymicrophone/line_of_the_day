@@ -1,0 +1,24 @@
+<h1>Editing guidance</h1>
+
+<% form_for(@guidance) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :coach %><br />
+    <%= f.text_field :coach %>
+  </p>
+  <p>
+    <%= f.label :student %><br />
+    <%= f.text_field :student %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @guidance %> |
+<%= link_to 'Back', guidances_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  coach: 
+  student: 
+  status: MyString
+
+two:
+  coach: 
+  student: 
+  status: MyString

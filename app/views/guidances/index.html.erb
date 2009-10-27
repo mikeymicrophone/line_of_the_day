@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>Coach</th>
+    <th>Student</th>
+  </tr>
+
+<% @guidances.each do |guidance| %>
+  <tr>
+    <td><%=h guidance.coach.username %></td>
+    <td><%=h guidance.student.username %></td>
+    <td><%=h guidance.status %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New guidance', new_guidance_path %>
