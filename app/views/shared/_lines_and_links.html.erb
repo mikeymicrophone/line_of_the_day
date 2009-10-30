@@ -1,9 +1,8 @@
 <% unless (controller_name == 'approaches' && action_name == 'new') || !current_user %>
-  <% form_for Line.new do |f| %>
-    <%= f.text_field :phrasing, :size => 40 %>
+  <% form_remote_for Line.new, :update => 'line_bin', :position => 'top', :complete => "$('new_line').reset()" do |f| %>
+    <%= f.text_field :phrasing, :size => 40 %>&lt--enter line here.
     <%= f.text_field :context, :size => 40 %>
-    <%= f.submit :save %>
-    &lt--enter line here.  the second box is for whatever.
+    <%= f.submit :save %>  the second box is for whatever.
   <% end %>
 <% end %>
 <div id="navigation">

@@ -55,7 +55,8 @@ class LinesController < ApplicationController
 
     respond_to do |format|
       if @line.save
-        flash[:notice] = 'Line was successfully created.'
+        flash[:notice] = 'you just dropped.'
+        format.js   { render :partial => 'lines/line', :object => @line, :content_type => :html }
         format.html { redirect_to(@line) }
         format.xml  { render :xml => @line, :status => :created, :location => @line }
       else

@@ -1,17 +1,18 @@
 <h1>some of the greatest things young ladies have yet heard</h1>
 
-<%= render :partial => @published_lines if @published_lines %>
-<%= render :partial => @lines if @lines %>
-<hr>
+<div id="line_bin">
+  <%= render :partial => @published_lines if @published_lines %>
+  <%= render :partial => @lines if @lines %>
+  <hr>
 
-<%= render :partial => @public_lines if @public_lines %>
+  <%= render :partial => @public_lines if @public_lines %>
 
-<hr>
+  <hr>
 
-<%= render :partial => @shared_lines if @shared_lines %>
+  <%= render :partial => @shared_lines if @shared_lines %>
 
-<%= will_paginate @public_lines if @public_lines %>
-
+  <%= will_paginate @public_lines if @public_lines %>
+</div>
 <%= link_to 'drop a line', new_line_path %>
 
 <div id='publishable-groups'></div>

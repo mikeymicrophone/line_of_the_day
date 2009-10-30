@@ -3,7 +3,12 @@
 </h2>
 
 <div id='coaching'>
-  <%= link_to_remote 'request coaching', :url => guidances_path(:guidance => {:coach_id => @user.id, :student_id => current_user.id, :status => 'requested'}), :update => 'coaching' unless current_user.is_coached_by(@user) %>
+  <% if @user == current_user %>
+    <%= link_to 'my students', user_students_path(@user) %>
+    <%= link_to 'my coaches', user_coaches_path(@user) %>
+  <% else %>
+    <%= link_to_remote 'request coaching', :url => guidances_path(:guidance => {:coach_id => @user.id, :student_id => current_user.id, :status => 'requested'}), :update => 'coaching' unless current_user.is_coached_by(@user) %>
+  <% end %>
 </div>
 
 <% @user.lines.public.each do |l| %>

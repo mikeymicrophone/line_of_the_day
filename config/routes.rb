@@ -16,6 +16,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :comments, :has_one => [:line, :user]
 
   map.resources :users, :has_many => [:lines, :groups, :memberships, :publications, :comments] do |user|
+    user.resources :students, :controller => 'guidances' do |student|
+      student.resources :lines, :approaches, :results
+    end
+    user.resources :coaches, :controller => 'guidances' do |coach|
+      coach.resources :messages, :lines, :publications
+    end
     user.resources :groups do |group|
       group.resources :lines
     end

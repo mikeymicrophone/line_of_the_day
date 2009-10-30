@@ -2,7 +2,15 @@ class GuidancesController < ApplicationController
   # GET /guidances
   # GET /guidances.xml
   def index
-    @guidances = Guidance.all
+    @guidances = if params[:user_id]
+      if request.url =~ /coaches/
+        User.find(params[:user_id]).guidings
+      else
+        User.find(params[:user_id]).guidances
+      end
+    else
+      Guidance.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
