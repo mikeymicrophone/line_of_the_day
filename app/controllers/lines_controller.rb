@@ -4,7 +4,11 @@ class LinesController < ApplicationController
   def index
     @published_lines = User.find(params[:user_id]).publications.to_group(params[:group_id]).map &:line if params[:user_id] and params[:group_id]
     
-    @public_lines = Line.public.paginate(:page => params[:page])
+    @public_lines = if current_user
+      Line.public_to(current_user).paginate(:page => params[:page])
+    else
+      Line.public.paginate(:page => params[:page])
+    end
     @shared_lines = current_user.joined_groups.map { |g| g.lines }.flatten.select { |l| l.user_id != current_user.id }.sort_by { |l| l.created_at } if current_user
 
     respond_to do |format|
