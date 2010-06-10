@@ -31,6 +31,12 @@ describe LinesController do
         get 'show', :id => @line.id
         controller.should redirect_to(lines_path)
       end
+      
+      it 'should not display comment form' do
+        controller.integrate_views!
+        get 'show', :id => Line.make(:public).id
+        controller.response.body.should_not =~ /form action="\/comments"/
+      end
     end
   end
   
@@ -64,6 +70,14 @@ describe LinesController do
         Publication.make :group => @g, :line => @l
         get 'index'
         controller.response.body.should =~ /#{Line.first.phrasing}/
+      end
+    end
+    
+    describe 'show' do
+      it 'should show the comment form' do
+        controller.integrate_views!
+        get 'show', :id => Line.make(:public).id
+        controller.response.body.should =~ /form action="\/comments"/        
       end
     end
   end
