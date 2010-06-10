@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :lines
   has_many :groups
   has_many :memberships
+  has_many :joined_groups, :through => :memberships, :source => :group
   has_many :comments
   has_many :publications
   has_many :cliques, :through => :memberships, :source => :group
@@ -21,7 +22,7 @@ class User < ActiveRecord::Base
   end
   
   def visible_lines
-    (groups.map(&:lines).flatten + lines + Line.public).uniq
+    (joined_groups.map(&:lines).flatten + lines + Line.public).uniq
   end
   
   def deliver_password_reset_instructions!

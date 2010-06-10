@@ -1,7 +1,6 @@
 class LinesController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
-  # GET /lines
-  # GET /lines.xml
+
   def index
     @published_lines = User.find(params[:user_id]).publications.to_group(params[:group_id]).map &:line if params[:user_id] and params[:group_id]
     
@@ -9,8 +8,8 @@ class LinesController < ApplicationController
     @shared_lines = current_user.groups.map { |g| g.lines }.flatten.select { |l| l.user_id != current_user.id }.sort_by { |l| l.created_at } if current_user
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @lines }
+      format.html
+      format.xml  { render :xml => @public_lines }
     end
   end
   
@@ -19,35 +18,34 @@ class LinesController < ApplicationController
     render :action => :index
   end
 
-  # GET /lines/1
-  # GET /lines/1.xml
   def show
     @line = Line.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @line }
+    
+    if current_user
+      redirect_to lines_path unless @line.is_visible_to?(current_user)
+    else
+      redirect_to lines_path unless @line.public?
     end
+    
+    # respond_to do |format|
+    #   format.html
+    #   format.xml  { render :xml => @line }
+    # end
   end
 
-  # GET /lines/new
-  # GET /lines/new.xml
   def new
     @line = Line.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.xml  { render :xml => @line }
     end
   end
 
-  # GET /lines/1/edit
   def edit
     @line = Line.find(params[:id])
   end
 
-  # POST /lines
-  # POST /lines.xml
   def create
     params[:line][:user_id] = current_user.andand.id
     params[:line][:public] = true unless current_user
@@ -66,8 +64,6 @@ class LinesController < ApplicationController
     end
   end
 
-  # PUT /lines/1
-  # PUT /lines/1.xml
   def update
     @line = Line.find(params[:id])
 
@@ -83,8 +79,6 @@ class LinesController < ApplicationController
     end
   end
 
-  # DELETE /lines/1
-  # DELETE /lines/1.xml
   def destroy
     @line = Line.find(params[:id])
     @line.destroy

@@ -1,12 +1,30 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe GuidancesController do
+  include Authlogic::TestCase
 
   def mock_guidance(stubs={})
     @mock_guidance ||= mock_model(Guidance, stubs)
   end
   
   describe "responding to GET index" do
+    
+    describe 'a coach viewing the lines of his students' do
+      before do
+        activate_authlogic
+      end
+      
+      it 'should display ten most recent lines for each student' do
+        controller.integrate_views!
+        @coach = User.make
+        @student = User.make
+        @line = @student.lines.make
+        Guidance.make :coach => @coach, :student => @student
+        UserSession.create @coach
+        get 'index', :user_id => @coach.id
+        controller.response.body.should =~ /#{@student.lines.last.phrasing}/
+      end
+    end
 
     it "should expose all guidances as @guidances" do
       mock(Guidance).find(:all){[mock_guidance]}
