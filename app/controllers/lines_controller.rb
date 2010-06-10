@@ -5,7 +5,7 @@ class LinesController < ApplicationController
     @published_lines = User.find(params[:user_id]).publications.to_group(params[:group_id]).map &:line if params[:user_id] and params[:group_id]
     
     @public_lines = Line.public.paginate(:page => params[:page])
-    @shared_lines = current_user.groups.map { |g| g.lines }.flatten.select { |l| l.user_id != current_user.id }.sort_by { |l| l.created_at } if current_user
+    @shared_lines = current_user.joined_groups.map { |g| g.lines }.flatten.select { |l| l.user_id != current_user.id }.sort_by { |l| l.created_at } if current_user
 
     respond_to do |format|
       format.html
