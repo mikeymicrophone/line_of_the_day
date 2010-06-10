@@ -7,14 +7,13 @@
 <% end %>
 <div id="navigation">
   <% unless current_user %>
-    <%= link_to "Register!", new_user_path %> |
-    <%= link_to "Log In.", new_user_session_path %> |
+    <%= link_to image_tag('login.png'), new_user_session_path %>
   <% else %>
     <%= link_to "my account", user_path(current_user) %> |
     <%= link_to 'lines', lines_path %> |
     <%= link_to 'mines', mine_lines_path %> |
     <%= link_to 'my people', user_groups_path(current_user) %> |
-    <%= link_to "time to log out and go open somebody", user_session_path, :method => :delete, :confirm => "for real you want to logout? better go open somebody" %>
+    <%= link_to "log out", user_session_path, :method => :delete %>
   <% end %>
 <br>
 

@@ -4,11 +4,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>line of the day............            every day............            the minimum is one a day............            have you done yours yet today?</title>
+  <title>the minimum is one a day...have you said yours yet?</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
+<%= image_tag 'logo.png' %>
+<%= image_tag 'motto.png' %>
 <%= render :partial => 'shared/lines_and_links', :locals => {:current_user => current_user} %>
 <p style="color: green"><%= flash[:notice] %></p>
 <div id="big_box">

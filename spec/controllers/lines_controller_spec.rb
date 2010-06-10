@@ -37,6 +37,13 @@ describe LinesController do
         get 'show', :id => Line.make(:public).id
         controller.response.body.should_not =~ /form action="\/comments"/
       end
+      
+      it 'should not have the *i said that* link' do
+        controller.integrate_views!
+        get 'show', :id => Line.make(:public).id
+        controller.response.body.should_not =~ /I said that/       
+      end
+      
     end
   end
   
@@ -77,7 +84,13 @@ describe LinesController do
       it 'should show the comment form' do
         controller.integrate_views!
         get 'show', :id => Line.make(:public).id
-        controller.response.body.should =~ /form action="\/comments"/        
+        controller.response.body.should =~ /form action="\/comments"/
+      end
+      
+      it 'should have the *i said that* link' do
+        controller.integrate_views!
+        get 'show', :id => Line.make(:public).id
+        controller.response.body.should =~ /I said that/       
       end
     end
   end
