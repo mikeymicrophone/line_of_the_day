@@ -1,0 +1,13 @@
+#logo {
+	margin-left: 23px;
+}
+
+#login {
+	position: absolute;
+	top: 2px;
+	right: 30px;
+}
+
+#navigation #login:hover {
+	background-color: white;
+}

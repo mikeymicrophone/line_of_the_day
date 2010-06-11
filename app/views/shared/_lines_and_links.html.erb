@@ -7,7 +7,7 @@
 <% end %>
 <div id="navigation">
   <% unless current_user %>
-    <%= link_to image_tag('login.png'), new_user_session_path %>
+    <%= link_to image_tag('login.png'), new_user_session_path, :id => 'login' %>
   <% else %>
     <%= link_to current_user.username, user_path(current_user) %> |
     <%= link_to 'lines', lines_path %> |
