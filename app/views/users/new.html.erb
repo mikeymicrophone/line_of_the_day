@@ -1,26 +1,24 @@
-<h1>u r initiate</h1>
-
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :username, 'alias' %><br />
+    <%= f.label :username, image_tag('alias.png', :alt => 'alias') %>
     <%= f.text_field :username %>
   </p>
   <p>
-    <%= f.label :email, 'email' %><br />
+    <%= f.label :email, image_tag('email.png', :alt => 'email') %>
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :password, 'password' %><br />
+    <%= f.label :password, image_tag('password_entry.png', :alt => 'password') %>
     <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :password_confirmation, 'password again' %><br />
+    <%= f.label :password_confirmation, image_tag('password_again.png', :alt => 'password again') %>
     <%= f.password_field :password_confirmation %>
   </p>
   
   <p>
-    <%= f.submit 'join.!' %>
+    <%= image_submit_tag 'join.png' %>
   </p>
 <% end %>

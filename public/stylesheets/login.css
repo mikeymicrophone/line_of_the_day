@@ -1,4 +1,4 @@
-#new_user_session input {
+#new_user_session input, #new_user input {
 	position: absolute;
 	left: 350px;
 }
