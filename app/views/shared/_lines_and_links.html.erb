@@ -13,8 +13,9 @@
     <%= link_to 'lines', lines_path %> |
     <%= link_to 'mine', mine_lines_path %> |
     <%= link_to 'my groups', user_groups_path(current_user) %> |
-    <%= link_to "log out", user_session_path, :method => :delete %>
+    <%= link_to 'log out', user_session_path, :method => :delete %>
   <% end %>
+	<%= link_to 'about', about_path %>
 <br>
 
 <%#= admin_resources %>
