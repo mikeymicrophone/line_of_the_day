@@ -1,5 +1,12 @@
 <% div_for line do %>
-  <span class='left'><%= link_to h(line.phrasing), line %>[<%= link_to line.comments.count, line_comments_path(line) %>][<%= link_to line.approaches.count, line_approaches_path(line) %>]</span>
+  <span class='left'>
+		<%= link_to h(line.phrasing), line %>
+		[<%= link_to line.comments.count, line_comments_path(line) %>]
+		[<%= link_to line.approaches.count, line_approaches_path(line) %>]
+		<% if current_user.andand.admin? %>
+		  [<%= link_to 'x', line_path(line), :method => :delete %>]
+		<% end %>
+	</span>
   <span class='pick-up-artist'><%=h line.user.andand.username %></span>
   <div class='clearfix'></div>
   <span class='right'><%=h line.context %></span>
