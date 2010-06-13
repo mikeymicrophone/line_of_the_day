@@ -6,6 +6,7 @@
   <% end %>
 <% end %>
 <div id="navigation">
+	<%= link_to image_tag('affirmations.png'), affirmations_path %>
   <% unless current_user %>
     <%= link_to image_tag('login.png'), new_user_session_path, :id => 'login' %>
   <% else %>
