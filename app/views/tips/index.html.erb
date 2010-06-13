@@ -1,0 +1,5 @@
+<% @tips.each do |t| %>
+	<%= t.advice %><br>
+<% end %>
+<%= link_to 'new tip', new_tip_path %>
+<%= will_paginate @tips %>

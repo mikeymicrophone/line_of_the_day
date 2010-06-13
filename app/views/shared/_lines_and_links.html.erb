@@ -6,17 +6,16 @@
   <% end %>
 <% end %>
 <div id="navigation">
-	<%= link_to image_tag('affirmations.png'), affirmations_path %>
+	<%= link_to image_tag('affirmations.png', :alt => 'affirmations', :title => 'to psych up your confidence'), affirmations_path %>
+	<%= link_to image_tag('tips.png', :alt => 'tips'), tips_path %>
+	<%= link_to image_tag('lines.png', :alt => 'lines'), lines_path %>
   <% unless current_user %>
-    <%= link_to image_tag('login.png'), new_user_session_path, :id => 'login' %>
+    <%= link_to image_tag('login.png', :alt => 'log in / register'), new_user_session_path, :id => 'login' %>
   <% else %>
-    <%= link_to current_user.username, user_path(current_user) %> |
-    <%= link_to 'lines', lines_path %> |
-    <%= link_to 'mine', mine_lines_path %> |
-    <%= link_to 'my groups', user_groups_path(current_user) %> |
-    <%= link_to 'log out', user_session_path, :method => :delete %>
+    <%= link_to image_tag('groups.png', :alt => 'groups'), user_groups_path(current_user) %>
+    <%= link_to image_tag('logout.png', :alt => 'log out'), user_session_path, :method => :delete %>
   <% end %>
-	<%= link_to 'about', about_path %>
+	<%= link_to image_tag('about.png', :alt => 'about'), about_path %>
 <br>
 
 <%#= admin_resources %>
