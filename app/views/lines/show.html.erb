@@ -12,6 +12,8 @@
 
 <% if current_user %>
 
+	<%= link_to 'edit', edit_line_path(@line) if @line.user == current_user %>
+
 	<%= link_to 'I said that', new_line_approach_path(@line) %>
 	<%= publicize_link @line %>
 
