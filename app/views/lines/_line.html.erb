@@ -4,7 +4,7 @@
 		[<%= link_to line.comments.count, line_comments_path(line) %>]
 		[<%= link_to line.approaches.count, line_approaches_path(line) %>]
 		<% if current_user.andand.admin? || (current_user && line.user == current_user) %>
-		  [<%= link_to 'x', line_path(line), :method => :delete %>]
+		  [<%= link_to 'x', line_path(line), :method => :delete, :title => 'delete' %>]
 		<% end %>
 	</span>
   <span class='pick-up-artist'><%=h line.user.andand.username %></span>
