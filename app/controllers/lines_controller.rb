@@ -47,7 +47,8 @@ class LinesController < ApplicationController
   end
 
   def edit
-    @line = Line.find(params[:id])
+    @line = Line.find params[:id]
+    redirect_to @line unless current_user == @line.user
   end
 
   def create

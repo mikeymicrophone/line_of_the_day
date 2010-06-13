@@ -15,7 +15,7 @@ describe LinesController do
       it 'should display a Register link' do
         controller.integrate_views!
         get 'index'
-        controller.response.body.should =~ /<a href="\/users\/new">Register!<\/a>/
+        controller.response.body.should =~ /<a href="\/user_session\/new".*?<\/a>/
       end
     end
     
@@ -44,6 +44,14 @@ describe LinesController do
         controller.response.body.should_not =~ /I said that/       
       end
       
+    end
+    
+    describe 'edit' do
+      it 'should redirect to login' do
+        @line = Line.make
+        get 'edit', :id => @line.id
+        controller.should redirect_to(new_user_session_path)
+      end
     end
   end
   
@@ -91,6 +99,20 @@ describe LinesController do
         controller.integrate_views!
         get 'show', :id => Line.make(:public).id
         controller.response.body.should =~ /I said that/       
+      end
+    end
+    
+    describe 'edit' do
+      it 'should not allow you to edit someone else\'s line' do
+        @line = Line.make :user => User.make
+        get 'edit', :id => @line.id
+        controller.should redirect_to(line_path @line)
+      end
+      
+      it 'should allow you to edit your own line' do
+        @line = Line.make :user => @u
+        get 'edit', :id => @line.id
+        controller.should render_template('edit')
       end
     end
   end

@@ -1,4 +1,5 @@
 require 'machinist/active_record'
+require 'forgery'
 
 Line.blueprint do
   phrasing 'tickle me elmo!'
@@ -15,8 +16,8 @@ Membership.blueprint {}
 Publication.blueprint {}
 
 User.blueprint do
-  email 'ra@2l.com'
-  username 'rendrick'
+  email { Forgery(:internet).email_address }
+  username { Forgery(:internet).user_name }
   password 'password'
   password_confirmation 'password'
 end
