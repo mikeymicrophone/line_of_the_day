@@ -3,7 +3,7 @@
 		<%= link_to h(line.phrasing), line %>
 		[<%= link_to line.comments.count, line_comments_path(line) %>]
 		[<%= link_to line.approaches.count, line_approaches_path(line) %>]
-		<% if current_user.andand.admin? %>
+		<% if current_user.andand.admin? || (current_user && line.user == current_user) %>
 		  [<%= link_to 'x', line_path(line), :method => :delete %>]
 		<% end %>
 	</span>
