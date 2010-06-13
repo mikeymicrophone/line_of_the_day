@@ -1,0 +1,5 @@
+<% @affirmations.each do |a| %>
+	<%= a.phrase %><br>
+<% end %>
+<%= link_to 'new affirmation', new_affirmation_path %><br>
+<%= will_paginate @affirmations %>

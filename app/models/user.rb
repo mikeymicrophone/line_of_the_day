@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :guidings, :foreign_key => :student_id, :class_name => 'Guidance'
   has_many :students, :through => :guidances
   has_many :coaches, :through => :guidings
+  has_many :affirmations
   
   def is_a_member_of group
     group_id = id_of(group)
