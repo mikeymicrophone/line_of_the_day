@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100613215621) do
+ActiveRecord::Schema.define(:version => 20100614215840) do
 
   create_table "affirmations", :force => true do |t|
     t.text     "phrase"
@@ -103,6 +103,17 @@ ActiveRecord::Schema.define(:version => 20100613215621) do
     t.text     "text"
     t.integer  "line_id"
     t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ratings", :force => true do |t|
+    t.string   "target_type"
+    t.integer  "target_id"
+    t.integer  "opinion"
+    t.string   "context_type"
+    t.integer  "context_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
