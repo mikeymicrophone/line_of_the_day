@@ -1,5 +1,6 @@
 #big_box {
 	margin: 39px;
+	margin-top: 5px;
 }
 
 .line {
@@ -12,16 +13,6 @@
 
 #navigation {
 	text-align: center;
-}
-
-#navigation a {
-	font-size: 1.11em;
-	color: #401767;
-	text-decoration: none;
-}
-
-#navigation a:hover {
-	background-color: #D4D4D4;
 }
 
 .publication {

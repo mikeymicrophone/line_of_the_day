@@ -28,4 +28,7 @@
 <div id='comments'>
   <%= render :partial => @line.comments %>
 </div>
-<%= link_to 'celebration', lines_path %>
+<div id='approaches'>
+	places this line has been used:<br>
+	<%= render :partial => @line.approaches %>
+</div>
