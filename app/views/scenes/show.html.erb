@@ -1,6 +1,9 @@
 <h2>
   <%=h @scene.name %>
 </h2>
+<div class='goal'>
+	<%= link_to image_tag('goal.png', :alt => 'set a goal', :class => 'goal'), new_scene_goal_path(@scene) %>
+</div>
 has been the scene of <%= pluralize @scene.approaches.count, 'recorded incident' %>.  you should check it out when you're ready to be on your best behavior ;)<br>
 <%= link_to 'I was there', new_scene_approach_path(@scene) %>
 <%= link_to 'the world', scenes_path %>

@@ -11,6 +11,9 @@
 </p>
 
 <% if current_user %>
+<div class='goal'>
+	<%= link_to image_tag('goal.png', :alt => 'set a goal', :class => 'goal'), new_line_goal_path(@line) %>
+</div>
 
 	<%= link_to 'edit', edit_line_path(@line) if @line.user == current_user %>
 

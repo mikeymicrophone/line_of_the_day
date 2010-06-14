@@ -9,6 +9,14 @@ class GoalsController < ApplicationController
   end
   
   def new
+    params[:goal] ||= {}
+    if params[:line_id].present?
+      params[:goal][:objective_type] ||= 'Line'
+      params[:goal][:objective_id] ||= params[:line_id]
+    elsif params[:scene_id].present?
+      params[:goal][:objective_type] ||= 'Scene'
+      params[:goal][:objective_id] ||= params[:scene_id]
+    end
     @goal = Goal.new params[:goal]
   end
   

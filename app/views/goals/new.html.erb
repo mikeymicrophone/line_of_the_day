@@ -1,7 +1,12 @@
 <% form_for @goal do |f| %>
   I intend to <%= @goal.describe %>
-	<%= f.text_field :repetitions, :size => 2 %><%= f.label :repetitions, 'times' %>
-	in the next <%= f.text_field :days, :size => 2 %><%= f.label :days, 'days.' %>
+	<%= f.text_field :repetitions, :size => 2 %><%= f.label :repetitions, (@goal.objective_id.present? ? 'times ' : case @goal.objective_type;	when 'Scene' then 'locations'; when 'Line' then 'lines'; else 'times'; end) %>
+	<% if @goal.objective_type == 'Affirmation' %>
+	  each day for
+	<% else %>
+	  in
+	<% end %>
+  the next <%= f.text_field :days, :size => 2 %><%= f.label :days, 'days.' %>
 	<%= f.submit :promise %>
 	<%= f.hidden_field :objective_type %><%= f.hidden_field :objective_id %>
 <% end %>

@@ -12,7 +12,8 @@
     <%= link_to image_tag('login.png', :alt => 'log in / register'), new_user_session_path, :id => 'login' %>
   <% else %>
     <%= link_to image_tag('groups.png', :alt => 'groups'), user_groups_path(current_user) %>
-    <%= link_to image_tag('logout.png', :alt => 'log out'), user_session_path, :method => :delete %>
+		<%= link_to image_tag('goals.png', :alt => 'goals'), goals_path %>
+    <%= link_to image_tag('logout.png', :alt => 'log out'), user_session_path, :method => :delete, :id => 'login' %>
   <% end %>
 	<%= link_to image_tag('about.png', :alt => 'about'), about_path %>
 <br>

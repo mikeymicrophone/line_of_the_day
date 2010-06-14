@@ -9,13 +9,13 @@ class Goal < ActiveRecord::Base
       if objective_id.present?
         "use the line '#{objective.phrasing}'"
       else
-        "use lines in the amount of"
+        "write"
       end
     when 'Affirmation'
       if objective_id.present?
         "repeat the phrase '#{objective.phrase}'"
       else
-        "repeat distinct phrases in the amount of"
+        "repeat affirmative phrases"
       end
     when 'Tip'
       if objective_id.present?
@@ -25,10 +25,12 @@ class Goal < ActiveRecord::Base
       end
     when 'Scene'
       if objective_id.present?
-        "do approaches at #{objective.name}"
+        "approach someone at #{objective.name}"
       else
-        "do approaches at different locations in the amount of"
+        "approach people at"
       end
+    when 'Approach'
+      "approach someone new"
     end
   end
 end

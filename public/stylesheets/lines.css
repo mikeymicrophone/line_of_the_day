@@ -48,6 +48,12 @@ a.result {
 	clear: both;
 }
 
+.goal {
+	width: 100px;
+	float: right;
+	margin-left: 10px;
+}
+
 /* voting slider */
 .handle {
   width: 5px;
