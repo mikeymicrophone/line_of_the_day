@@ -16,7 +16,10 @@ class TipsController < ApplicationController
   def create
     params[:tip][:user] = current_user
     @tip = Tip.create params[:tip]
-    redirect_to @tip
+    respond_to do |format|
+      format.html { redirect_to @tip }
+      format.js { render :partial => @tip }
+    end
   end
   
   def edit

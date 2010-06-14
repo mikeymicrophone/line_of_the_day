@@ -17,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :affirmations
   
-  map.resources :tips
+  map.resources :tips, :has_many => [:goals]
   
   map.resources :goals
   

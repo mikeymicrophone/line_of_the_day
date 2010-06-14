@@ -1,7 +1,12 @@
-<% @tips.each do |t| %>
-  <% div_for t do %>
-		<%= link_to t.advice, t %>
+<div id='tips'>
+	<% @tips.each do |t| %>
+	  <% div_for t do %>
+			<%= link_to t.advice, t %>
+		<% end %>
 	<% end %>
+</div>
+<% form_remote_for Tip.new, :update => 'tips', :position => 'bottom', :loading => "$('tip_advice').clear();" do |f| %>
+  <%= f.text_area :advice, :size => '49x4' %>
+  <%= image_submit_tag 'instruct_them.png' %>
 <% end %>
-<%= link_to 'new tip', new_tip_path %>
 <%= will_paginate @tips %>
