@@ -18,8 +18,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :affirmations
   
   map.resources :tips
+  
+  map.resources :goals
+  
+  map.resources :goal_ownerships
 
-  map.resources :users, :has_many => [:lines, :groups, :memberships, :publications, :comments] do |user|
+  map.resources :users, :has_many => [:lines, :groups, :memberships, :publications, :comments, :goal_ownerships] do |user|
     user.resources :students, :controller => 'guidances' do |student|
       student.resources :lines, :approaches, :results
     end

@@ -1,0 +1,4 @@
+<% @goal_ownerships.each do |g| %>
+	<%= link_to g.goal.describe %><%= g.user.username %>
+<% end %>
+<%= will_paginate @goal_ownerships %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100613204054) do
+ActiveRecord::Schema.define(:version => 20100613215621) do
 
   create_table "affirmations", :force => true do |t|
     t.text     "phrase"
@@ -33,6 +33,23 @@ ActiveRecord::Schema.define(:version => 20100613204054) do
     t.text     "text"
     t.integer  "line_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "goal_ownerships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "goal_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "goals", :force => true do |t|
+    t.string   "objective_type"
+    t.integer  "objective_id"
+    t.integer  "user_id"
+    t.integer  "repetitions"
+    t.integer  "days"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,6 +1,6 @@
 <%= image_tag('affirmations_explanation.png')%><br>
 <% @affirmations.each do |a| %>
-	<%= a.phrase %><br>
+	<%= link_to a.phrase, a %><br>
 <% end %>
 <%= link_to 'new affirmation', new_affirmation_path %><br>
 <%= will_paginate @affirmations %>

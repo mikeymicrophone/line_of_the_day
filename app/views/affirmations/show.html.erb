@@ -1,4 +1,4 @@
-<%= @affirmation.phrase %>
-
+<h2><%= @affirmation.phrase %></h2>
+<%= link_to 'set a goal', new_goal_path(:goal => {:objective_type => 'Affirmation', :objective_id => @affirmation.id}) %>
 <br>
 <%= link_to 'all affirmations', affirmations_path %>

@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :coaches, :through => :guidings
   has_many :affirmations
   has_many :tips
+  has_many :goals
+  has_many :goal_ownerships
   
   def is_a_member_of group
     group_id = id_of(group)

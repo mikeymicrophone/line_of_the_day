@@ -1,1 +1,2 @@
-<%= @tip.advice %>
+<%= @tip.advice %><br>
+<%= link_to 'I intend to follow this advice', new_goal_path(:goal => {:objective_type => 'Tip', :objective_id => @tip.id}) %>
