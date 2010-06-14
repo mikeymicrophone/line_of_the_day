@@ -1,0 +1,11 @@
+.affirmation {
+	font-family: Trebuchet MS;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 5px;
+}
+
+.affirmation a {
+	text-decoration: none;
+	color: black;
+}
