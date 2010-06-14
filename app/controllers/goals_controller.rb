@@ -16,6 +16,9 @@ class GoalsController < ApplicationController
     elsif params[:scene_id].present?
       params[:goal][:objective_type] ||= 'Scene'
       params[:goal][:objective_id] ||= params[:scene_id]
+    elsif params[:tip_id].present?
+      params[:goal][:objective_type] ||= 'Tip'
+      params[:goal][:objective_id] ||= params[:tip_id]      
     end
     @goal = Goal.new params[:goal]
   end
