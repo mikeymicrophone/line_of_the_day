@@ -2,6 +2,12 @@
   <%=h @user.username %>
 </h2>
 
+<% if @user.avatar.present? %>
+  <%= image_tag "/images/avatars/#{@user.avatar}" %>
+<% end %><br>
+<% if current_user == @user %>
+  <%= link_to 'choose avatar', avatar_user_path(@user) %>
+<% end %>
 <div id='coaching'>
   <% if @user == current_user %>
     <%= link_to 'my students', user_students_path(@user) %>

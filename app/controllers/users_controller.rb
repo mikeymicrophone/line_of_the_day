@@ -52,6 +52,10 @@ class UsersController < ApplicationController
       render :action => :new
     end
   end
+  
+  def avatar
+    @avatars = Dir.entries(RAILS_ROOT + '/public/images/avatars').select { |a| a =~ /\.png/}.map { |a| "/images/avatars/#{a}" }
+  end
 
   # PUT /users/1
   # PUT /users/1.xml

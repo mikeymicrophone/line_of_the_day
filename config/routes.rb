@@ -25,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :ratings
 
-  map.resources :users, :has_many => [:lines, :groups, :memberships, :publications, :comments, :goal_ownerships] do |user|
+  map.resources :users, :has_many => [:lines, :groups, :memberships, :publications, :comments, :goal_ownerships], :member => {:avatar => :get} do |user|
     user.resources :students, :controller => 'guidances' do |student|
       student.resources :lines, :approaches, :results
     end
