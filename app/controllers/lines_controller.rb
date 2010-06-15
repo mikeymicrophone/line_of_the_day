@@ -5,15 +5,22 @@ class LinesController < ApplicationController
     @published_lines = User.find(params[:user_id]).publications.to_group(params[:group_id]).map &:line if params[:user_id] and params[:group_id]
     
     @public_lines = if current_user
-      Line.public_to(current_user).paginate(:page => params[:page])
+      @lines = Line.public_to(current_user)
+      if params[:sort] == 'average_rating'
+        @lines.sort_by { |l| l.average_rating }.reverse
+      else
+        @lines
+      end
     else
-      Line.public.paginate(:page => params[:page])
-    end
+      @lines = Line.public
+      if params[:sort] == 'average_rating'
+        @lines.sort_by { |l| l.average_rating }.reverse
+      else
+        @lines
+      end      
+    end.paginate(:page => params[:page])
+    
     @shared_lines = current_user.joined_groups.map { |g| g.lines }.flatten.select { |l| l.user_id != current_user.id }.sort_by { |l| l.created_at } if current_user
-
-    if params[:sort].present?
-      @public_lines = @public_lines.sort_by { |l| l.average_rating }.reverse.paginate(:page => params[:page])
-    end
 
     respond_to do |format|
       format.html
