@@ -55,6 +55,10 @@ a.result {
 	margin-left: 10px;
 }
 
+.sort {
+	float: right;
+}
+
 /* voting slider */
 .handle {
   width: 5px;

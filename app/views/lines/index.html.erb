@@ -1,4 +1,6 @@
+<%= link_to image_tag('top_rated.png'), lines_path(:sort => 'rating'), :class => 'sort' %>
 <h1>some of the greatest things young ladies have yet heard</h1>
+<div class='clearfix'></div>
 
 <div id="line_bin">
   <%= render :partial => @published_lines if @published_lines %>

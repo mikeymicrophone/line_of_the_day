@@ -11,6 +11,10 @@ class LinesController < ApplicationController
     end
     @shared_lines = current_user.joined_groups.map { |g| g.lines }.flatten.select { |l| l.user_id != current_user.id }.sort_by { |l| l.created_at } if current_user
 
+    if params[:sort].present?
+      @public_lines = @public_lines.sort_by { |l| l.average_rating }.reverse.paginate(:page => params[:page])
+    end
+
     respond_to do |format|
       format.html
       format.xml  { render :xml => @public_lines }
