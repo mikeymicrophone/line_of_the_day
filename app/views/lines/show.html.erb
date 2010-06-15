@@ -1,6 +1,9 @@
-<p class='line'>
+<div class='goal'>
+	<%= link_to image_tag('goal.png', :alt => 'set a goal', :class => 'goal'), new_line_goal_path(@line) if current_user %>
+</div>
+<div class='line'>
   <%=h @line.phrasing %>
-</p>
+</div>
 
 <p>
   <%=h @line.context %>
@@ -10,17 +13,13 @@
   <%= link_to_name @line.user, 'username' %>
 </p>
 
+<%= link_to 'edit', edit_line_path(@line) if @line.user == current_user %>
+<%= link_to 'I said that', new_line_approach_path(@line) %>
+<%= publicize_link @line %>
+
+<div class='clearfix'></div>
 <%= link_to image_tag('top_rated.png'), {:sort => 'rating'}, :class => 'sort' %>
 <% if current_user %>
-<div class='goal'>
-	<%= link_to image_tag('goal.png', :alt => 'set a goal', :class => 'goal'), new_line_goal_path(@line) %>
-</div>
-
-	<%= link_to 'edit', edit_line_path(@line) if @line.user == current_user %>
-
-	<%= link_to 'I said that', new_line_approach_path(@line) %>
-	<%= publicize_link @line %>
-
 	<% form_remote_for @line.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>
 	  <%= f.text_area :text, :size => '35x4' %>
 	  <%= f.hidden_field :target_id, :value => @line.id %>
