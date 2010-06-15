@@ -12,6 +12,6 @@
   <div class='clearfix'></div>
   <span class='right'><%=h line.context %></span>
   <span class='left'><%= link_to_remote 'publish', :url => line_publications_path(line), :with => "'group_ids=' + $('publishable-groups').innerHTML", :update => 'publications', :position => 'top', :html => {:class => 'publication'} if current_user && (line.user == current_user || line.repost?) %></span>
-  <span class='left'><%= publicize_link line %></span>
+  <span class='left', id='<%= dom_id(line, 'publicize') %>'><%= publicize_link line %></span>
 <% end %>
 <div class='clearfix'></div>
