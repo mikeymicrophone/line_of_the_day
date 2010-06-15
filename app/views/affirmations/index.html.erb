@@ -1,8 +1,13 @@
 <%= image_tag('affirmations_explanation.png')%><br>
-<% @affirmations.each do |a| %>
-  <% div_for a do %>
-		<%= link_to a.phrase, a %>
+<div id='affirmations'>
+	<% @affirmations.each do |a| %>
+	  <% div_for a do %>
+			<%= link_to a.phrase, a %>
+		<% end %>
 	<% end %>
+</div>
+<% form_remote_for Affirmation.new, :update => 'affirmations', :position => 'bottom', :loading => "$('affirmation_phrase').clear();$('affirmation_submit').writeAttribute('src', '/images/#{affirmation_submit}')" do |f| %>
+  <%= f.text_area :phrase, :size => '49x4' %>
+  <%= image_submit_tag affirmation_submit, :id => 'affirmation_submit' %>
 <% end %>
-<%= link_to 'new affirmation', new_affirmation_path %><br>
 <%= will_paginate @affirmations %>

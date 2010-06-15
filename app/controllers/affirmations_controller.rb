@@ -15,7 +15,10 @@ class AffirmationsController < ApplicationController
   def create
     params[:affirmation][:user] = current_user
     @affirmation = Affirmation.create params[:affirmation]
-    redirect_to @affirmation
+    respond_to do |format|
+      format.html { redirect_to @affirmation }
+      format.js   { render :partial => @affirmation }
+    end
   end
   
   def edit
