@@ -19,6 +19,11 @@ function vote_slider(type, id, vote) {
 		$('current_value_' + type + '_' + id).innerHTML = Math.round(value)/10.0;
 		$('fill_' + type + '_' + id).style.width = value;
 		}, 
-	  onChange:function(value){ new Ajax.Request('/ratings?id=' + id + '&opinion=' + value) }
+	  onChange:function(value){ new Ajax.Request('/ratings?rating%5Btarget_type%5D=' + capitalizeFirstLetter(type) + '&rating%5Btarget_id%5D=' + id + '&rating%5Bopinion%5D=' + value) }
 	})
+}
+
+function capitalizeFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }

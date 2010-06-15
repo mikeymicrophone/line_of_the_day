@@ -15,7 +15,7 @@ module ApplicationHelper
   end
   
   def voting_booth( target )
-    thevote = Rating.find_by_target_type_and_target_id_and_user_id(target.class.name, target.id, current_user.id) || Rating.new(:opinion => 1)
+    thevote = Rating.find_by_target_type_and_target_id_and_user_id(target.class.name, target.id, current_user.id) || Rating.new(:opinion => 0)
     vote = thevote.opinion
     type = target.class.name.downcase
     "<div class=\"vote\" id=\"#{target.dom_id('vote')}\">
