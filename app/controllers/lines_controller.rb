@@ -77,6 +77,7 @@ class LinesController < ApplicationController
         flash[:notice] = 'Line was successfully updated.'
         format.html { redirect_to(@line) }
         format.xml  { head :ok }
+        format.js   { render :partial => 'publicize_link', :locals => {:line => @line} }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @line.errors, :status => :unprocessable_entity }
