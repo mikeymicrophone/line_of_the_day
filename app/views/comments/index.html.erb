@@ -9,6 +9,9 @@
     <td><%= link_to truncate(comment.target.phrasing, 30), comment.target unless params[:line_id] || comment.target.nil? %></td>
     <td><%= link_to_name comment.user, 'username' unless comment.user == current_user %></td>
     <td><%= link_to 'permalink', comment %></td>
+		<% if current_user.andand.admin? || (current_user && line.user == current_user) %>
+		  <td><%= link_to 'x', comment_path(comment), :method => :delete, :title => 'delete' %></td>
+		<% end %>
   </tr>
 <% end %>
 </table>

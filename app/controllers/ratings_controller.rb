@@ -13,8 +13,13 @@ class RatingsController < ApplicationController
   
   def create
     params[:rating][:user] = current_user
-    @rating = Rating.create params[:rating]
-    redirect_to @rating
+    @rating = Rating.find_by_target_type_and_target_id_and_user_id(params[:rating][:target_type], params[:rating][:target_id], current_user.id)
+    if @rating
+      @rating.update_attribute :opinion, params[:rating][:opinion]
+    else
+      @rating = Rating.create params[:rating]
+    end
+    render :nothing => true
   end
   
   def edit

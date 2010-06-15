@@ -1,5 +1,5 @@
 <% div_for @tip do %>
-	<%= link_to image_tag('goal.png', :alt => 'set a goal to follow this advice', :class => 'goal'), new_tip_goal_path(@tip) %>
+	<%= link_to image_tag('goal.png', :alt => 'set a goal to follow this advice', :class => 'goal'), new_tip_goal_path(@tip) if current_user %>
 	<%= @tip.advice %>
 <% end %>
 <% if current_user %>

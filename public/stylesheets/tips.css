@@ -12,3 +12,8 @@
 #new_tip {
 	text-align: center;
 }
+
+.average_rating {
+	float: right;
+	padding-right: 2px;
+}

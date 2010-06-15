@@ -2,6 +2,7 @@
 	<% @tips.each do |t| %>
 	  <% div_for t do %>
 			<%= voting_booth t if current_user %>
+			<span class='average_rating'><%= sprintf "%0.02f", t.average_rating %></span>
 			<%= link_to t.advice, t %>
 		<% end %>
 	<% end %>

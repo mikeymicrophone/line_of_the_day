@@ -1,5 +1,6 @@
 <% div_for line do %>
 	<%= voting_booth(line) if current_user %>
+	<span class='average_rating'><%= sprintf "%0.02f", line.average_rating %></span>
   <span class='left'>
 		<%= link_to h(line.phrasing), line %>
 		[<%= link_to line.comments.count, line_comments_path(line) %>]

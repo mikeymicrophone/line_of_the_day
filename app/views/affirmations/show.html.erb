@@ -1,5 +1,5 @@
 <div class='goal'>
-	<%= link_to image_tag('goal.png', :alt =>'set a goal', :class => 'goal'), new_goal_path(:goal => {:objective_type => 'Affirmation', :objective_id => @affirmation.id}) %>
+	<%= link_to image_tag('goal.png', :alt =>'set a goal', :class => 'goal'), new_goal_path(:goal => {:objective_type => 'Affirmation', :objective_id => @affirmation.id}) if current_user %>
 </div>
 <% div_for @affirmation do %>
 	<%= @affirmation.phrase %>
