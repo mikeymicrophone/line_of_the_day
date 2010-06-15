@@ -29,7 +29,7 @@ class LinesController < ApplicationController
   end
   
   def mine
-    @lines = current_user.andand.lines
+    @public_lines = current_user.andand.lines.paginate(:page => params[:page])
     render :action => :index
   end
 
