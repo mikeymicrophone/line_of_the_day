@@ -1,7 +1,7 @@
 class Line < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :phrasing
-  has_many :comments
+  has_many :comments, :as => :target
   has_many :publications
   has_many :groups, :through => :publications
   has_many :approaches

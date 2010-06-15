@@ -22,7 +22,8 @@
 
 	<% form_remote_for @line.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>
 	  <%= f.text_area :text, :size => '35x4' %>
-	  <%= f.hidden_field :line_id, :value => @line.id %>
+	  <%= f.hidden_field :target_id, :value => @line.id %>
+	  <%= f.hidden_field :target_type, :value => 'Line' %>
 	  <%= f.submit :comment %>
 	<% end %>
 

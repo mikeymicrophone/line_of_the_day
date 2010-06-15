@@ -6,7 +6,7 @@
 <% @comments.each do |comment| %>
   <tr>
     <td><%=h comment.text %></td>
-    <td><%= link_to truncate(comment.line.phrasing, 30), comment.line unless params[:line_id] || comment.line.nil? %></td>
+    <td><%= link_to truncate(comment.target.phrasing, 30), comment.target unless params[:line_id] || comment.target.nil? %></td>
     <td><%= link_to_name comment.user, 'username' unless comment.user == current_user %></td>
     <td><%= link_to 'permalink', comment %></td>
   </tr>

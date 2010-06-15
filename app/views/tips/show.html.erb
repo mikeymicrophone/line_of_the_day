@@ -2,3 +2,15 @@
 	<%= link_to image_tag('goal.png', :alt => 'set a goal to follow this advice', :class => 'goal'), new_tip_goal_path(@tip) %>
 	<%= @tip.advice %>
 <% end %>
+<% if current_user %>
+	<% form_remote_for @tip.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>
+	  <%= f.text_area :text, :size => '35x4' %>
+	  <%= f.hidden_field :target_id, :value => @tip.id %>
+	  <%= f.hidden_field :target_type, :value => 'Tip' %>
+	  <%= f.submit :comment %>
+	<% end %>
+<% end %>
+
+<div id='comments'>
+  <%= render :partial => @tip.comments %>
+</div>
