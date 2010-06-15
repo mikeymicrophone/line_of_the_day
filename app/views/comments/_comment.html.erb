@@ -1,4 +1,18 @@
 <%= voting_booth comment if current_user %>
 <%= comment.text %>
 <%= link_to comment.user.username, comment.user %>
+<%= link_to_function 'reply', "$('#{dom_id(comment, 'reply')}').toggle();" %>
+<% div_for comment, 'reply', :style => 'display:none' do %>
+	<% if current_user %>
+		<% form_remote_for comment.comments.new, :update => dom_id(comment, 'replies'), :position => 'top', :loading => "$(#{dom_id(comment, 'reply_form')}).reset();", :html => {:id => dom_id(comment, 'reply_form')} do |f| %>
+		  <%= f.text_area :text, :size => '35x4' %>
+		  <%= f.hidden_field :target_id, :value => comment.id %>
+		  <%= f.hidden_field :target_type, :value => 'Comment' %>
+		  <%= f.submit :comment %>
+		<% end %>
+	<% end %>
+<% end %>
+<% div_for comment, 'replies', :class => 'comments' do %>
+	<%= render :partial => comment.comments %>
+<% end %>
 <hr>
