@@ -54,16 +54,15 @@ class LinesController < ApplicationController
   def create
     params[:line][:user_id] = current_user.andand.id
     params[:line][:public] = true unless current_user
-    @line = Line.new(params[:line])
+    @line = Line.new params[:line]
 
     respond_to do |format|
       if @line.save
-        flash[:notice] = 'you just dropped.'
         format.js   { render :partial => 'lines/line', :object => @line, :content_type => :html }
-        format.html { redirect_to(@line) }
+        format.html { redirect_to @line }
         format.xml  { render :xml => @line, :status => :created, :location => @line }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => 'new' }
         format.xml  { render :xml => @line.errors, :status => :unprocessable_entity }
       end
     end
@@ -74,12 +73,11 @@ class LinesController < ApplicationController
 
     respond_to do |format|
       if @line.update_attributes(params[:line])
-        flash[:notice] = 'Line was successfully updated.'
-        format.html { redirect_to(@line) }
+        format.html { redirect_to @line }
         format.xml  { head :ok }
         format.js   { render :partial => 'publicize_link', :locals => {:line => @line} }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => 'edit' }
         format.xml  { render :xml => @line.errors, :status => :unprocessable_entity }
       end
     end
@@ -90,7 +88,7 @@ class LinesController < ApplicationController
     @line.destroy
 
     respond_to do |format|
-      format.html { redirect_to(lines_url) }
+      format.html { redirect_to lines_url }
       format.xml  { head :ok }
     end
   end
