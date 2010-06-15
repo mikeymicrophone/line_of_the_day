@@ -4,16 +4,12 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :name, 'group' %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :size => 47 %>    <%= f.label :name, 'name' %>
   </p>
   <p>
-    <%= f.label :rules, 'how does this one work' %><br />
-    <%= f.select :rules, Group.rules_select %>
+    <%= f.select :rules, Group.rules_select %>    <%= f.label :rules, 'entry policy' %>
   </p>
   <p>
-    <%= f.submit 'congregate' %>
+    <%= image_submit_tag 'save_group.png' %>
   </p>
 <% end %>
-
-<%= link_to 'squads', groups_path %>

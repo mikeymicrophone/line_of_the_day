@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :memberships, :has_one => [:group, :user], :has_many => [:publications, :lines, :comments]
 
-  map.resources :groups, :has_many => [:publications, :lines, :memberships, :users]
+  map.resources :groups, :has_many => [:publications, :lines, :memberships, :users], :member => {:avatar => :get}
 
   map.resources :comments, :has_one => [:line, :user]
   

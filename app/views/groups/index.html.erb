@@ -1,9 +1,7 @@
-<h1>homeys</h1>
-
 <% @groups.each do |group| %>
-  <%= link_to group.name, group %>
+  <% div_for group do %>
+	  <%= link_to group.name, group %>
+  <% end %>
 <% end %>
 
-<br />
-
-<%= link_to 'gather', new_group_path %>
+<%= link_to image_tag('form_group.png'), new_group_path %>
