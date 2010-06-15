@@ -6,14 +6,14 @@ class LinesController < ApplicationController
     
     @public_lines = if current_user
       @lines = Line.public_to(current_user)
-      if params[:sort] == 'average_rating'
+      if params[:sort] == 'rating'
         @lines.sort_by { |l| l.average_rating }.reverse
       else
         @lines
       end
     else
       @lines = Line.public
-      if params[:sort] == 'average_rating'
+      if params[:sort] == 'rating'
         @lines.sort_by { |l| l.average_rating }.reverse
       else
         @lines
