@@ -1,7 +1,7 @@
 <% @posts.each do |post| %>
 	<% div_for post do %>
 	  <%= voting_booth post %>
-	  <h2><%= link_to post.name, post %></h2>
+	  <h2><%= link_to post.name, post %><%= add_to_list post %></h2>
 	  <%= post.content %>
 	<% end %>
 <% end %>

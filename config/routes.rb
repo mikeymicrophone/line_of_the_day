@@ -42,7 +42,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :lines, :has_one => [:user], :has_many => [:publications, :comments, :groups, :approaches, :goals, :list_items], :collection => {:mine => :get}
 
   map.resources :blogs, :has_many => [:posts, :list_items], :member => {:fetch => :get}
-  map.resources :posts, :has_one => [:blog, :list_items]
+  map.resources :posts, :has_one => [:blog], :has_many => [:list_items]
   
   map.resources :lists, :has_many => [:list_items], :member => {:elevate => :put, :lower => :put}
   map.resources :list_items, :has_one => [:list], :member => {:elevate => :put, :lower => :put}

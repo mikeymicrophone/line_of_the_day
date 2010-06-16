@@ -2,6 +2,7 @@
 	<% div_for blog do %>
 	  <%= voting_booth blog %>
 		<%= link_to blog.name, blog %>
+		<%= add_to_list blog %>
 	<% end %>
 <% end %>
 <%= will_paginate @blogs %>
