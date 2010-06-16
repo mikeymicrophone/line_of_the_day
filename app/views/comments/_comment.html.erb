@@ -1,5 +1,4 @@
-<%= voting_booth comment if current_user %>
-<span class='average_rating'><%= comment.printed_average_rating %></span>
+<%= voting_booth comment %>
 <%= comment.text %>
 <%= link_to comment.user.username, comment.user %>
 <%= link_to_function 'reply', "$('#{dom_id(comment, 'reply')}').toggle();" %>

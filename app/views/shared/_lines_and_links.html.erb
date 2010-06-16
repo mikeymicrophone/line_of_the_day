@@ -13,11 +13,10 @@
   <% else %>
     <%= link_to image_tag('groups.png', :alt => 'groups'), user_groups_path(current_user) %>
 		<%= link_to image_tag('goals.png', :alt => 'goals'), goals_path %>
+		<%= link_to image_tag('lists.png', :alt => 'lists'), lists_path %>
+		<%= link_to image_tag('blogs.png', :alt => 'blogs'), blogs_path %>
     <%= link_to image_tag('logout.png', :alt => 'log out'), user_session_path, :method => :delete, :id => 'login' %>
 		<%= link_to current_user.username, current_user, :id => 'profile' %>
   <% end %>
 	<%= link_to image_tag('about.png', :alt => 'about'), about_path %>
-<br>
-
-<%#= admin_resources %>
 </div>

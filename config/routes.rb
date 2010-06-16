@@ -15,17 +15,17 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :comments, :has_one => [:line, :user]
   
-  map.resources :affirmations
+  map.resources :affirmations, :has_many => [:list_items]
   
-  map.resources :tips, :has_many => [:goals]
+  map.resources :tips, :has_many => [:goals, :list_items]
   
-  map.resources :goals
+  map.resources :goals, :has_many => [:goal_ownerships, :list_items]
   
   map.resources :goal_ownerships
   
   map.resources :ratings
 
-  map.resources :users, :has_many => [:lines, :groups, :memberships, :publications, :comments, :goal_ownerships], :member => {:avatar => :get} do |user|
+  map.resources :users, :has_many => [:lines, :groups, :memberships, :publications, :comments, :goal_ownerships, :lists], :member => {:avatar => :get} do |user|
     user.resources :students, :controller => 'guidances' do |student|
       student.resources :lines, :approaches, :results
     end
@@ -39,10 +39,13 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :guidances
 
-  map.resources :lines, :has_one => [:user], :has_many => [:publications, :comments, :groups, :approaches, :goals], :collection => {:mine => :get}
+  map.resources :lines, :has_one => [:user], :has_many => [:publications, :comments, :groups, :approaches, :goals, :list_items], :collection => {:mine => :get}
 
-  map.resources :blogs, :has_many => [:posts], :member => {:fetch => :get}
-  map.resources :posts, :has_one => [:blog]
+  map.resources :blogs, :has_many => [:posts, :list_items], :member => {:fetch => :get}
+  map.resources :posts, :has_one => [:blog, :list_items]
+  
+  map.resources :lists, :has_many => [:list_items], :member => {:elevate => :put, :lower => :put}
+  map.resources :list_items, :has_one => [:list], :member => {:elevate => :put, :lower => :put}
 
   map.resource :user_session
   map.resources :password_resets

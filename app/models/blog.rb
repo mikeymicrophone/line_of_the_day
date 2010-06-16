@@ -1,4 +1,5 @@
 class Blog < ActiveRecord::Base
+  include Ratable
   has_many :posts
   belongs_to :user
   belongs_to :author
@@ -8,5 +9,9 @@ class Blog < ActiveRecord::Base
     feed.entries.each do |post|
       posts.find_or_create_by_name :name => post.title, :content => post.content, :posted_at => post.published, :url => post.url
     end
+  end
+  
+  def list_display
+    "Blog: #{name}"
   end
 end

@@ -13,3 +13,6 @@
 [submodule "vendor/plugins/rspec_rr"]
 	path = vendor/plugins/rspec_rr
 	url = git://github.com/josephwilk/rspec-rr.git
+[submodule "vendor/plugins/acts_as_list"]
+	path = vendor/plugins/acts_as_list
+	url = git://github.com/rails/acts_as_list.git

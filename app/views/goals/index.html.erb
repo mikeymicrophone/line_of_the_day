@@ -6,11 +6,14 @@
 </div>
 <div class='clearfix'></div>
 <% @goals.each do |g| %>
-  <%= link_to g.describe, g %><%= pluralize g.repetitions, 'time' %>
-  <% if g.objective_type == 'Affirmation' %>
-    for
-	<% else %>
-	  in
+  <% div_for g do %>
+	  <%= link_to g.describe, g %><%= pluralize g.repetitions, 'time' %>
+	  <% if g.objective_type == 'Affirmation' %>
+	    for
+		<% else %>
+		  in
+		<% end %>
+	  <%= pluralize g.days, 'day' %>
+	  <%= add_to_list g %>
 	<% end %>
-  <%= pluralize g.days, 'day' %><br>
 <% end %>

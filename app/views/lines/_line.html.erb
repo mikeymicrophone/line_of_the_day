@@ -1,10 +1,10 @@
 <% div_for line do %>
-	<%= voting_booth(line) if current_user %>
-	<span class='average_rating'><%= line.printed_average_rating %></span>
+	<%= voting_booth line %>
   <span class='left'>
 		<%= link_to h(line.phrasing), line %>
 		[<%= link_to line.comments.count, line_comments_path(line) %>]
 		[<%= link_to line.approaches.count, line_approaches_path(line) %>]
+		<%= add_to_list line %>
 		<% if current_user.andand.admin? || (current_user && line.user == current_user) %>
 		  [<%= link_to 'x', line_path(line), :method => :delete, :title => 'delete' %>]
 		<% end %>

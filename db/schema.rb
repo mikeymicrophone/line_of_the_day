@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100615233227) do
+ActiveRecord::Schema.define(:version => 20100616173851) do
 
   create_table "affirmations", :force => true do |t|
     t.text     "phrase"
@@ -90,6 +90,28 @@ ActiveRecord::Schema.define(:version => 20100615233227) do
     t.datetime "updated_at"
     t.boolean  "repost"
     t.boolean  "public"
+  end
+
+  create_table "list_items", :force => true do |t|
+    t.string   "item_type"
+    t.integer  "item_id"
+    t.integer  "private"
+    t.integer  "highlight"
+    t.integer  "user_id"
+    t.integer  "list_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lists", :force => true do |t|
+    t.string   "name"
+    t.integer  "private"
+    t.integer  "highlight"
+    t.integer  "position"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "memberships", :force => true do |t|

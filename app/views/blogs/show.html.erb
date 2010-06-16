@@ -1,4 +1,6 @@
+<%= voting_booth @blog %>
 <%= @blog.name %>
 <%= link_to @blog.url %>
 <%= link_to pluralize(@blog.posts.count, 'post'), blog_posts_path(@blog) %>
-<%= link_to 'fetch', fetch_blog_path(@blog) %>
+<%= link_to 'fetch', fetch_blog_path(@blog) %><br>
+<%= post_display @blog.posts.last %>

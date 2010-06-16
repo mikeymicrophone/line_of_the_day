@@ -22,4 +22,8 @@ class Line < ActiveRecord::Base
       false
     end
   end
+  
+  def list_display
+    "Line: #{phrasing}"
+  end
 end

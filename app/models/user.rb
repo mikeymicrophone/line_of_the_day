@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   has_many :tips
   has_many :goals
   has_many :goal_ownerships
+  has_many :blogs
+  has_many :lists
+  has_many :list_items
   
   def is_a_member_of group
     group_id = id_of(group)

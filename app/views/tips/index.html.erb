@@ -3,9 +3,9 @@
 <div id='tips'>
 	<% @tips.each do |t| %>
 	  <% div_for t do %>
-			<%= voting_booth t if current_user %>
-			<span class='average_rating'><%= t.printed_average_rating %></span>
+			<%= voting_booth t %>
 			<%= link_to t.advice, t %>
+			<%= add_to_list t %>
 		<% end %>
 	<% end %>
 </div>

@@ -7,4 +7,8 @@ class Tip < ActiveRecord::Base
   def phrasing
     advice
   end
+  
+  def list_display
+    "Tip: #{advice}"
+  end
 end
