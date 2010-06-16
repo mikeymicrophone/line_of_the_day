@@ -1,0 +1,7 @@
+<% @blogs.each do |blog| %>
+	<% div_for blog do %>
+		<%= link_to blog.name, blog %>
+	<% end %>
+<% end %>
+<%= will_paginate @blogs %>
+<%= link_to 'add a blog', new_blog_path %>

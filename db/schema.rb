@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100615184849) do
+ActiveRecord::Schema.define(:version => 20100615233227) do
 
   create_table "affirmations", :force => true do |t|
     t.text     "phrase"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(:version => 20100615184849) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "blogs", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "feed_url"
+    t.integer  "author_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "comments", :force => true do |t|
@@ -97,6 +107,16 @@ ActiveRecord::Schema.define(:version => 20100615184849) do
     t.integer  "recipient_id"
     t.integer  "user_id"
     t.datetime "read_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.text     "content"
+    t.integer  "blog_id"
+    t.datetime "posted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

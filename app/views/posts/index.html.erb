@@ -1,0 +1,6 @@
+<% @posts.each do |post| %>
+	<% div_for post do %>
+	  <h2><%= link_to post.name, post %></h2>
+	  <%= post.content %>
+	<% end %>
+<% end %>

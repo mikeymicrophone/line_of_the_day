@@ -41,6 +41,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :lines, :has_one => [:user], :has_many => [:publications, :comments, :groups, :approaches, :goals], :collection => {:mine => :get}
 
+  map.resources :blogs, :has_many => [:posts], :member => {:fetch => :get}
+  map.resources :posts, :has_one => [:blog]
+
   map.resource :user_session
   map.resources :password_resets
   map.root :controller => 'lines'
