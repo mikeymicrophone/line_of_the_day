@@ -51,6 +51,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :password_resets
   map.root :controller => 'lines'
   
+  map.resources :videos, :collection => {:disco => :get, :different => :get, :traits => :get, :lines => :get}
+  
   map.about '/about', :controller => 'static', :action => 'about'
 
   map.connect ':controller/:action/:id'
