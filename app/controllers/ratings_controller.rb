@@ -1,6 +1,10 @@
 class RatingsController < ApplicationController
   def index
-    @ratings = Rating.paginate :page => params[:page]
+    @ratings = if params[:user_id]
+      User.find(params[:user_id]).ratings
+    else
+      Rating
+    end.paginate :page => params[:page], :order => 'created_at desc'
   end
   
   def show

@@ -1,0 +1,6 @@
+<% div_for rating do %>
+	<%= rating.opinion / 10.0 %>:
+	[<%= rating.target_type %>]
+	<strong><%= link_to rating.target.name, rating.target %></strong>
+	(<%= time_ago_in_words rating.updated_at %> ago)
+<% end %>

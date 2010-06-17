@@ -2,10 +2,18 @@ class TipsController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
   
   def index
-    @tips = if params[:sort] == 'rating'
-      Tip.all.sort_by(&:average_rating).reverse
+    @tips = if params[:user_id]
+      if params[:sort] == 'rating'
+        User.find(params[:user_id]).tips.sort_by(&:average_rating).reverse
+      else
+        User.find(params[:user_id]).tips
+      end
     else
-      Tip
+      if params[:sort] == 'rating'
+        Tip.all.sort_by(&:average_rating).reverse
+      else
+        Tip
+      end
     end.paginate :page => params[:page]
   end
   

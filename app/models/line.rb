@@ -26,4 +26,8 @@ class Line < ActiveRecord::Base
   def list_display
     "Line: #{phrasing}"
   end
+  
+  def name
+    phrasing
+  end
 end

@@ -1,7 +1,11 @@
 class AffirmationsController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
   def index
-    @affirmations = Affirmation.paginate :page => params[:page]
+    @affirmations = if params[:user_id]
+      User.find(params[:user_id]).affirmations
+    else
+      Affirmation
+    end.paginate :page => params[:page]
   end
   
   def show

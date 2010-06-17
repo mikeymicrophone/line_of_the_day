@@ -9,4 +9,8 @@ class Comment < ActiveRecord::Base
   def phrasing
     text
   end
+  
+  def name
+    text
+  end
 end

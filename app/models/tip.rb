@@ -13,4 +13,8 @@ class Tip < ActiveRecord::Base
   def list_display
     "Tip: #{advice}"
   end
+  
+  def name
+    advice
+  end
 end

@@ -3,7 +3,7 @@
 </h2>
 
 <% if @user.avatar.present? %>
-  <%= image_tag "/images/avatars/#{@user.avatar}" %>
+  <%= image_tag "/images/avatars/#{@user.avatar}", :class => 'avatar' %>
 <% end %><br>
 <% if current_user == @user %>
   <%= link_to 'choose avatar', avatar_user_path(@user) %>
@@ -17,9 +17,9 @@
   <% end %>
 </div>
 
-<% @user.lines.public.each do |l| %>
-  <%= l.phrasing %>
-  <%= link_to 'yeah', l %>
-  <%= link_to pluralize(l.comments.count, 'thought'), line_comments_path(l) %>
-  <%= time_ago_in_words(l.created_at) %><br>
-<% end %>
+<%= link_to pluralize(@user.lines.public.count, 'public line'), user_lines_path(@user) %><br>
+<%= link_to pluralize(@user.tips.count, 'tip'), user_tips_path(@user) %><br>
+<%= link_to pluralize(@user.affirmations.count, 'affirmation'), user_affirmations_path(@user) %><br>
+<%= link_to pluralize(@user.nicknames.count, 'nickname'), user_nicknames_path(@user) %><br>
+<%= link_to pluralize(@user.lists.count, 'list'), user_lists_path(@user) %><br>
+<%= link_to pluralize(@user.ratings.count, 'rating'), user_ratings_path(@user) %>
