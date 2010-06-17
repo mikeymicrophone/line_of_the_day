@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   def index
     @posts = if params[:blog_id]
-      Blog.find(params[:blog_id]).posts.paginate :page => params[:page]
+      Blog.find(params[:blog_id]).posts
     else
-      Post.paginate :page => params[:page]
-    end
+      Post
+    end.paginate :page => params[:page]
   end
   
   def show

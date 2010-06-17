@@ -2,6 +2,8 @@
 	<% div_for post do %>
 	  <%= voting_booth post %>
 	  <h2><%= link_to post.name, post %><%= add_to_list post %></h2>
+	  <h3><%= link_to post.blog.name, post.blog %></h3>
 	  <%= post.content %>
 	<% end %>
 <% end %>
+<%= will_paginate @posts %>

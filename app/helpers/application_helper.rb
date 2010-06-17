@@ -36,6 +36,6 @@ module ApplicationHelper
   end
   
   def add_to_list target
-    link_to '+', send("new_#{target.class.name.downcase}_list_item_path", target) if current_user
+    link_to '+', send("new_#{target.class.name.downcase}_list_item_path", target), :title => 'add to a list' if current_user
   end  
 end

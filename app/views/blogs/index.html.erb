@@ -1,9 +1,13 @@
+<div class='all_posts'>
+	<%= link_to image_tag('all_posts.png', :alt => 'see all posts together'), posts_path %>
+</div>
 <% @blogs.each do |blog| %>
 	<% div_for blog do %>
 	  <%= voting_booth blog %>
 		<%= link_to blog.name, blog %>
+		<%= link_to pluralize(blog.posts.count, 'post'), blog_posts_path(blog) %>
 		<%= add_to_list blog %>
 	<% end %>
 <% end %>
 <%= will_paginate @blogs %>
-<%= link_to 'add a blog', new_blog_path %>
+<%= link_to image_tag('add_blog.png'), new_blog_path %>
