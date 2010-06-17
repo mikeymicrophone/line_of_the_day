@@ -1,12 +1,13 @@
-<%= @list.name %><br>
+<%= voting_booth @list %>
+<h2><%= @list.name %></h2>
 <% div_for @list, 'items' do %>
 	<% @list.list_items.public_to(current_user).each do |item| %>
 	  <%= voting_booth item %>
 	  <% if @list.user == current_user %>
-		  <%= link_to '+', elevate_list_item_path(item), :method => :put unless item.first? %>
-		  <%= link_to '-', lower_list_item_path(item), :method => :put unless item.last? %>
+		  <%= link_to '+', elevate_list_item_path(item), :method => :put, :title => 'move up' unless item.first? %>
+		  <%= link_to '-', lower_list_item_path(item), :method => :put, :title => 'move down' unless item.last? %>
 		<% end %>
 	  <%= link_to item.item.list_display, item.item %>
-	  <%= link_to 'x', list_item_path(item), :method => :delete if current_user == @list.user %>
+	  <%= link_to 'x', list_item_path(item), :method => :delete, :title => 'remove' if current_user == @list.user %>
   <% end %>
 <% end %>
