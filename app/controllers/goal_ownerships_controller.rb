@@ -6,9 +6,9 @@ class GoalOwnershipsController < ApplicationController
   
   def index
     @goal_ownerships = if params[:user_id]
-      GoalOwnership.paginate_all_by_user_id(params[:user_id], :page => params[:page])
+      User.find(params[:user_id]).goal_ownerships
     else
-      GoalOwnership.paginate :page => params[:page]
-    end
+      GoalOwnership
+    end.paginate :page => params[:page]
   end
 end

@@ -22,4 +22,5 @@
 <%= link_to pluralize(@user.affirmations.count, 'affirmation'), user_affirmations_path(@user) %><br>
 <%= link_to pluralize(@user.nicknames.count, 'nickname'), user_nicknames_path(@user) %><br>
 <%= link_to pluralize(@user.lists.count, 'list'), user_lists_path(@user) %><br>
-<%= link_to pluralize(@user.ratings.count, 'rating'), user_ratings_path(@user) %>
+<%= link_to pluralize(@user.ratings.count, 'rating'), user_ratings_path(@user) %><br>
+<%= link_to pluralize(@user.goal_ownerships.count, 'goal'), user_goal_ownerships_path(@user) %>

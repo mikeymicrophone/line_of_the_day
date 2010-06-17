@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
   has_many :nicknames
   has_many :ratings
   
+  def current_goals
+    GoalOwnership.current_for self
+  end
+  
   def is_a_member_of group
     group_id = id_of(group)
     !memberships.select { |m| m.group_id == group_id }.empty?
