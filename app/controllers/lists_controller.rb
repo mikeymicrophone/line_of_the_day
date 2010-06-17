@@ -1,9 +1,9 @@
 class ListsController < ApplicationController
   def index
     @lists = if params[:user_id]
-      User.find(params[:user_id]).lists.ordered
+      User.find(params[:user_id]).lists.public_to(current_user).ordered
     else
-      List
+      List.public_to(current_user)
     end.paginate :page => params[:page]
   end
   

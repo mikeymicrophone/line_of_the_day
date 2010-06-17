@@ -30,6 +30,7 @@ class ListItemsController < ApplicationController
   end
   
   def create
+    params[:list_item][:user] = current_user
     @list_item = ListItem.create params[:list_item]
     redirect_to @list_item.list
   end

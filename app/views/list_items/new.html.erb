@@ -1,5 +1,6 @@
 <% form_for @list_item do |f| %>
 	<%= f.hidden_field :item_type %><%= f.hidden_field :item_id %>
-	<%= f.select :list_id, current_user.lists.map { |l| [l.name, l.id] } %>
+	<%= f.select :list_id, current_user.lists.map { |l| [l.name, l.id] } %><br>
+	<%= f.check_box :private %><%= f.label :private, 'private' %><br>
 	<%= f.submit :add %>
 <% end %>

@@ -5,7 +5,7 @@
 	<%= f.label :url %><br>
 	<%= f.text_field :feed_url %>
 	<%= f.label :feed_url %><br>
-	<%= f.select :author_id, User.all.map { |u| [u.username, u.id] } %>
+	<%= f.select :author_id, User.all.map { |u| [u.username, u.id] }, :include_blank => true %>
 	<%= f.label :author_id %><br>
 	<%= f.submit :add %>
 <% end %>
