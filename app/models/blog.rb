@@ -16,4 +16,8 @@ class Blog < ActiveRecord::Base
   def list_display
     "Blog: #{name}"
   end
+  
+  def recent_update
+    posts.map(&:posted_at).sort.last
+  end
 end

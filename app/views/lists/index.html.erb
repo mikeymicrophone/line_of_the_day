@@ -1,11 +1,16 @@
 <% if params[:user_id] %>
   <%= "lists by #{User.find(params[:user_id]).username}" %>
 <% end %>
+<%= link_to image_tag('top_rated.png', :all => 'top rated'), {:sort => 'rating'}, :class => 'sort' %>
+<%= link_to image_tag('updated.png', :alt => 'recently updated'), {:sort => 'recent'}, :class => 'sort' %>
+<div class='clearfix'></div>
 <% @lists.each do |list| %>
 	<% div_for list do %>
+	  <%= voting_booth list %>
 	  <%= link_to list.name, list, :class => 'list_name' %>
 	  <%= link_to pluralize(list.list_items.count, 'item'), list_list_items_path(list) %>
-	  <% if params[:user_id] %>
+	  updated: <%= time_ago_in_words list.recent_update(current_user) %> ago
+	  <% if current_user && current_user.andand.id == params[:user_id] %>
 	    <%= link_to 'up', elevate_list_path(list), :method => :put unless list.first? %> <%= link_to 'down', lower_list_path(list), :method => :put unless list.last? %>
 	  <% else %>
 		  <%= link_to list.user.username, user_lists_path(list.user), :class => 'pick-up-artist' %>

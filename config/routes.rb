@@ -25,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :ratings
 
-  map.resources :users, :has_many => [:lines, :groups, :memberships, :publications, :comments, :goal_ownerships, :lists], :member => {:avatar => :get} do |user|
+  map.resources :users, :has_many => [:lines, :groups, :memberships, :publications, :comments, :goal_ownerships, :lists, :nicknames], :member => {:avatar => :get} do |user|
     user.resources :students, :controller => 'guidances' do |student|
       student.resources :lines, :approaches, :results
     end
@@ -52,6 +52,8 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'lines'
   
   map.resources :videos, :collection => {:disco => :get, :different => :get, :traits => :get, :lines => :get}
+  
+  map.resources :nicknames
   
   map.about '/about', :controller => 'static', :action => 'about'
 

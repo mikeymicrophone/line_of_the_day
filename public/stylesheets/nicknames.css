@@ -1,0 +1,13 @@
+.new_nickname {
+	text-align: center;
+}
+
+.nickname {
+	font-size: 20px;
+	padding: 4px;
+}
+
+#name_button {
+	position: relative;
+	top: 13px;
+}

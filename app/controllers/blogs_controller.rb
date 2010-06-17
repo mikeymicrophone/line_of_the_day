@@ -6,7 +6,13 @@ class BlogsController < ApplicationController
   end
   
   def index
-    @blogs = Blog.paginate :page => params[:page]
+    @blogs = if params[:sort] == 'rating'
+      Blog.all.sort_by { |b| b.average_rating }.reverse
+    elsif params[:sort] == 'recent'
+      Blog.all.sort_by { |b| b.recent_update }.reverse
+    else
+      Blog
+    end.paginate :page => params[:page]
   end
   
   def show

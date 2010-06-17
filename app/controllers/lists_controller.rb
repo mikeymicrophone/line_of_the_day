@@ -1,9 +1,21 @@
 class ListsController < ApplicationController
   def index
     @lists = if params[:user_id]
-      User.find(params[:user_id]).lists.public_to(current_user).ordered
+      if params[:sort] == 'rating'
+        User.find(params[:user_id]).lists.public_to(current_user).ordered.not_empty.sort_by(&:average_rating).reverse
+      elsif params[:sort] == 'recent'
+       User.find(params[:user_id]).lists.public_to(current_user).ordered.not_empty.sort_by { |l| l.recent_update(current_user) }.reverse
+      else
+        User.find(params[:user_id]).lists.public_to(current_user).ordered.not_empty
+      end
     else
-      List.public_to(current_user)
+      if params[:sort] == 'rating'
+        List.public_to(current_user).not_empty.sort_by(&:average_rating).reverse
+      elsif params[:sort] == 'recent'
+        List.public_to(current_user).not_empty.sort_by { |l| l.recent_update(current_user) }.reverse
+      else
+        List.public_to(current_user).not_empty
+      end
     end.paginate :page => params[:page]
   end
   
