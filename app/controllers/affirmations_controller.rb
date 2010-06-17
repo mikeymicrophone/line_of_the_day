@@ -17,7 +17,7 @@ class AffirmationsController < ApplicationController
     @affirmation = Affirmation.create params[:affirmation]
     respond_to do |format|
       format.html { redirect_to @affirmation }
-      format.js   { render :partial => @affirmation }
+      format.js   { render :partial => @affirmation, :content_type => :html }
     end
   end
   

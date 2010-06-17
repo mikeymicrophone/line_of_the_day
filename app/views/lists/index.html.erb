@@ -1,3 +1,6 @@
+<% if params[:user_id] %>
+  <%= "lists by #{User.find(params[:user_id]).username}" %>
+<% end %>
 <% @lists.each do |list| %>
 	<% div_for list do %>
 	  <%= link_to list.name, list, :class => 'list_name' %>

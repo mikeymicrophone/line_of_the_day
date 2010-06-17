@@ -22,7 +22,7 @@ class TipsController < ApplicationController
     @tip = Tip.create params[:tip]
     respond_to do |format|
       format.html { redirect_to @tip }
-      format.js { render :partial => @tip }
+      format.js { render :partial => @tip, :content_type => :html }
     end
   end
   
