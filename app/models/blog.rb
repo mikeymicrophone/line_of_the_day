@@ -4,6 +4,8 @@ class Blog < ActiveRecord::Base
   belongs_to :user
   belongs_to :author
   
+  validates_uniqueness_of :url, :feed_url, :allow_nil => true
+  
   def fetch_posts
     feed = Feedzirra::Feed.fetch_and_parse feed_url
     feed.entries.each do |post|

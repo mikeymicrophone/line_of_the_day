@@ -21,3 +21,7 @@ User.blueprint do
   password 'password'
   password_confirmation 'password'
 end
+
+Blog.blueprint do
+  
+end
