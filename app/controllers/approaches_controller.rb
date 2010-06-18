@@ -50,7 +50,6 @@ class ApproachesController < ApplicationController
 
     respond_to do |format|
       if @approach.save
-        flash[:notice] = 'Approach was successfully created.'
         format.html { redirect_to @approach }
         format.xml  { render :xml => @approach, :status => :created, :location => @approach }
       else
@@ -65,7 +64,6 @@ class ApproachesController < ApplicationController
 
     respond_to do |format|
       if @approach.update_attributes(params[:approach])
-        flash[:notice] = 'Approach was successfully updated.'
         format.html { redirect_to @approach }
         format.xml  { head :ok }
       else
