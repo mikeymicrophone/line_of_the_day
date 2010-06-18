@@ -1,1 +1,4 @@
 <%= @concept.name %>
+<% @concept.applied_tags.map(&:target).each do |s| %>
+	<%= link_to s.name, s %>
+<% end %>
