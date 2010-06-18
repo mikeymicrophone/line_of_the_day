@@ -14,6 +14,9 @@
 		  in
 		<% end %>
 	  <%= pluralize g.days, 'day' %>
+	  <%= link_to 'do', goal_ownerships_path(:goal_ownership => {:goal_id => g.id}), :method => :post %>
 	  <%= add_to_list g %>
+	  <%= tagger g %>
+	  <%= tag_display g %>
 	<% end %>
 <% end %>
