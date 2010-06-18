@@ -14,7 +14,15 @@ class TagsController < ApplicationController
   
   def create
     params[:tag][:user] = current_user
-    @tag = Tag.create params[:tag]
+    if params[:concept].present?
+      params[:concept].split(',').each do |concept|
+        c = Concept.find_or_create_by_name concept.strip
+        params[:tag][:subject] = c
+        Tag.create params[:tag]
+      end
+    else
+      @tag = Tag.create params[:tag]
+    end
     render :text => 'tagged'
   end
   

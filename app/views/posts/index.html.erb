@@ -3,13 +3,15 @@
 <% @posts.each do |post| %>
 	<% div_for post do %>
 	  <%= voting_booth post %>
-	  <h2><%= link_to post.name, post %><%= add_to_list post %></h2>
+	  <h2><%= link_to_function post.name, "$('#{dom_id(post, 'content')}').toggle();" %><%= add_to_list post %></h2>
 	  <h3><%= link_to post.blog.name, post.blog %>, <%= post.posted_at.to_s(:short) %></h3>
-	  <%= post.content %>
-	  <div class='clearfix'></div>
-	  <%= voting_booth post %>
-	  <em class='average_rating'>rate the above post, <%= post.name %>:</em>
-	  <div class='clearfix'></div>
+		<% div_for post, 'content', :style => 'display:none' do %>
+		  <%= post.content %>
+		  <div class='clearfix'></div>
+		  <%= voting_booth post %>
+		  <em class='average_rating'>rate the above post, <%= post.name %>:</em>
+		  <div class='clearfix'></div>
+		<% end %>
 	<% end %>
 <% end %>
 <%= will_paginate @posts %>

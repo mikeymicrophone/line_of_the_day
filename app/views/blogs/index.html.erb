@@ -8,6 +8,7 @@
 	<% div_for blog do %>
 	  <%= voting_booth blog %>
 		<%= link_to blog.name, blog %>
+		<%= tagger blog %>
 		<%= link_to pluralize(blog.posts.count, 'post'), blog_posts_path(blog) %>
 		<%= "updated: #{time_ago_in_words blog.recent_update} ago."%>
 		<%= add_to_list blog %>
