@@ -29,7 +29,7 @@ class TipsController < ApplicationController
     params[:tip][:user] = current_user
     @tip = Tip.create params[:tip]
     respond_to do |format|
-      format.html { redirect_to @tip }
+      format.html { render :text => 'tag created' }
       format.js { render :partial => @tip, :content_type => :html }
     end
   end

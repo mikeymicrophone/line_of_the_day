@@ -1,5 +1,6 @@
 class Blog < ActiveRecord::Base
   include Ratable
+  include Taggable
   has_many :posts
   belongs_to :user
   belongs_to :author

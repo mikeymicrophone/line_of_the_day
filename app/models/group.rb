@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+  include Taggable
   belongs_to :user
   has_many :memberships
   has_many :publications

@@ -25,6 +25,8 @@ class ListItemsController < ApplicationController
       ['Post', params[:post_id]]
     elsif params[:goal_id]
       ['Goal', params[:goal_id]]
+    elsif params[:list_id]
+      ['List', params[:list_id]]
     end
     @list_item = ListItem.new params[:list_item]
   end

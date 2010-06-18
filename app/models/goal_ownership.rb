@@ -1,4 +1,5 @@
 class GoalOwnership < ActiveRecord::Base
+  include Taggable
   belongs_to :goal
   belongs_to :user
   

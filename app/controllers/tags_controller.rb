@@ -15,7 +15,7 @@ class TagsController < ApplicationController
   def create
     params[:tag][:user] = current_user
     @tag = Tag.create params[:tag]
-    render :action => 'show'
+    render :text => 'tagged'
   end
   
   def edit

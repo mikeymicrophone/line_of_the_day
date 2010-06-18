@@ -1,5 +1,6 @@
 class Tip < ActiveRecord::Base
   include Ratable
+  include Taggable  
   belongs_to :user
   has_many :goals, :as => :objective
   has_many :comments, :as => :target

@@ -1,4 +1,5 @@
 class Membership < ActiveRecord::Base
+  include Taggable
   belongs_to :group
   belongs_to :user
   named_scope :pending, :conditions => {:state => 'ambiguous'}

@@ -1,4 +1,5 @@
 class Affirmation < ActiveRecord::Base
+  include Taggable
   belongs_to :user
   has_many :goals, :as => :objective
   

@@ -1,4 +1,5 @@
 class Publication < ActiveRecord::Base
+  include Taggable
   belongs_to :user
   belongs_to :line
   belongs_to :group

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_authentic
+  include Taggable
   has_many :lines
   has_many :groups
   has_many :memberships

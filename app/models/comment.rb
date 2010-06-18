@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   include Ratable
+  include Taggable
   belongs_to :target, :polymorphic => true
   belongs_to :user
   has_many :comments, :as => :target

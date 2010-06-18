@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   include Ratable
+  include Taggable
   belongs_to :blog
   default_scope :order => 'posted_at desc'
   

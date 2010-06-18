@@ -1,4 +1,5 @@
 class Goal < ActiveRecord::Base
+  include Taggable
   belongs_to :user
   belongs_to :objective, :polymorphic => true
   has_many :goal_ownerships
@@ -67,5 +68,9 @@ class Goal < ActiveRecord::Base
   
   def list_display
     "Goal: #{full_description}"
+  end
+  
+  def name
+    full_description
   end
 end

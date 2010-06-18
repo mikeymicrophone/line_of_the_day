@@ -8,6 +8,7 @@
 	<% div_for list do %>
 	  <%= voting_booth list %>
 	  <%= link_to list.name, list, :class => 'list_name' %>
+	  <%= add_to_list list %>
 	  <%= link_to pluralize(list.list_items.count, 'item'), list_list_items_path(list) %>
 	  updated: <%= time_ago_in_words list.recent_update(current_user) %> ago
 	  <% if current_user && current_user.andand.id == params[:user_id] %>

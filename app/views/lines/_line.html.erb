@@ -4,9 +4,7 @@
 		<%= link_to h(line.phrasing), line %>
 		[<%= link_to line.comments.count, line_comments_path(line), :title => 'comments on this line' %>]
 		[<%= link_to line.approaches.count, line_approaches_path(line), :title => 'number of times this line has been used' %>]
-		<%= link_to_remote 't', :url => new_tag_path(:tag => {:target_type => 'Line', :target_id => line.id}), :update => dom_id(line, 'taggable_lists') %>
-		<% div_for line, 'taggable_lists' do %>
-		<% end %>
+		<%= tagger line %>
 		<%= add_to_list line %>
 		<% if current_user.andand.admin? || (current_user && line.user == current_user) %>
 		  [<%= link_to 'x', line_path(line), :method => :delete, :title => 'delete' %>]

@@ -1,5 +1,6 @@
 class ListItem < ActiveRecord::Base
   include Ratable
+  include Taggable
   belongs_to :list
   belongs_to :user
   belongs_to :item, :polymorphic => true

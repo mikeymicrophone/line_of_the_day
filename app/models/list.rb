@@ -1,5 +1,6 @@
 class List < ActiveRecord::Base
   include Ratable
+  include Taggable
   has_many :list_items, :order => :position
   belongs_to :user
   named_scope :ordered, {:order => :position}
@@ -12,5 +13,9 @@ class List < ActiveRecord::Base
   
   def self.not_empty
     all.select { |l| l.list_items.count > 0 }
+  end
+  
+  def list_display
+    "List: #{name}"
   end
 end
