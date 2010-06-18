@@ -61,7 +61,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.about '/about', :controller => 'static', :action => 'about'
   map.terms '/terms', :controller => 'static', :action => 'terms'
-  map.about '/faq', :controller => 'static', :action => 'faq'
+  map.faq '/faq', :controller => 'static', :action => 'faq'
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
