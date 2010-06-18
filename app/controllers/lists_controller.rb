@@ -23,6 +23,11 @@ class ListsController < ApplicationController
     @list = List.find params[:id]
   end
   
+  def tag
+    @list = List.find params[:id]
+    render :layout => false
+  end
+  
   def new
     @list = List.new params[:list]
   end

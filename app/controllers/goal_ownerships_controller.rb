@@ -1,5 +1,6 @@
 class GoalOwnershipsController < ApplicationController
   def create
+    params[:goal_ownership][:user] = current_user
     @goal_ownership = GoalOwnership.create params[:goal_ownership]
     redirect_to user_goal_ownerships_path(current_user)
   end

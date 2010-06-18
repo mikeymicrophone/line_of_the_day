@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    params[:comment][:user_id] = current_user.id
+    params[:comment][:user] = current_user
     @comment = Comment.new params[:comment]
 
     respond_to do |format|

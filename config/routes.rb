@@ -44,16 +44,20 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :blogs, :has_many => [:posts, :list_items], :member => {:fetch => :get}
   map.resources :posts, :has_one => [:blog], :has_many => [:list_items]
   
-  map.resources :lists, :has_many => [:list_items], :member => {:elevate => :put, :lower => :put}
+  map.resources :lists, :has_many => [:list_items], :member => {:elevate => :put, :lower => :put, :tag => :get}
   map.resources :list_items, :has_one => [:list], :member => {:elevate => :put, :lower => :put}
 
   map.resource :user_session
   map.resources :password_resets
   map.root :controller => 'lines'
   
-  map.resources :videos, :collection => {:disco => :get, :different => :get, :traits => :get, :lines => :get}
+  map.resources :videos
   
   map.resources :nicknames
+  
+  map.resources :tags
+  
+  map.resources :concepts
   
   map.about '/about', :controller => 'static', :action => 'about'
 

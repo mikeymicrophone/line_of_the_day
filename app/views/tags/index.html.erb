@@ -1,0 +1,7 @@
+<% @tags.each do |t| %>
+	<% div_for t do %>
+	  <%= link_to t.target.name, t.target %>
+	  <%= link_to t.subject.name, t.subject %>
+	<% end %>
+<% end %>
+<%= will_paginate @tags%>

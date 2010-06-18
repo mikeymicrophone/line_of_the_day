@@ -1,0 +1,6 @@
+<% div_for @list, 'items' do %>
+	<% @list.list_items.public_to(current_user).each do |item| %>
+	  <%= link_to_remote item.item.list_display, :url => tags_path(:tag => {:subject_id => item.item_id, :subject_type => item.item_type, :target_id => params[:tag][:target_id], :target_type => params[:tag][:target_type]}), :update => 'created_tags' %><br>
+	<div id='created_tags'></div>
+  <% end %>
+<% end %>

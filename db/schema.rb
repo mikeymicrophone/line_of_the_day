@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100617193725) do
+ActiveRecord::Schema.define(:version => 20100618180221) do
 
   create_table "affirmations", :force => true do |t|
     t.text     "phrase"
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(:version => 20100617193725) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "target_type"
+  end
+
+  create_table "concepts", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "goal_ownerships", :force => true do |t|
@@ -193,6 +200,17 @@ ActiveRecord::Schema.define(:version => 20100617193725) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "tags", :force => true do |t|
+    t.string   "target_type"
+    t.integer  "target_id"
+    t.string   "subject_type"
+    t.integer  "subject_id"
+    t.integer  "user_id"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tips", :force => true do |t|
     t.text     "advice"

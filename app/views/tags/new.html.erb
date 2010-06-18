@@ -1,0 +1,7 @@
+<% form_for @tag do |f| %>
+	<% current_user.lists.each do |l| %>
+	  <%= link_to_remote l.name, :url => tag_list_path(l, :tag => {:target_type => @tag.target_type, :target_id => @tag.target_id}), :update => dom_id(@tag.target, 'subjects'), :method => :get %>
+  <% end %>
+  <% div_for @tag.target, 'subjects' do %>
+  <% end %>
+<% end %>

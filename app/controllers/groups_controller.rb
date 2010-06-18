@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    params[:group][:user_id] = current_user.id
+    params[:group][:user] = current_user
     @group = Group.new params[:group]
 
     respond_to do |format|

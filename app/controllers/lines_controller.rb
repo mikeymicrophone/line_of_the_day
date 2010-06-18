@@ -63,8 +63,7 @@ class LinesController < ApplicationController
   end
 
   def create
-    params[:line][:user_id] = current_user.andand.id
-    params[:line][:public] = true unless current_user
+    params[:line][:user] = current_user
     @line = Line.new params[:line]
 
     respond_to do |format|

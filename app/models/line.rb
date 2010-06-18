@@ -1,5 +1,6 @@
 class Line < ActiveRecord::Base
   include Ratable
+  include Taggable
   belongs_to :user
   validates_presence_of :phrasing
   has_many :comments, :as => :target
