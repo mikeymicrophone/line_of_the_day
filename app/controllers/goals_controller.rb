@@ -24,8 +24,13 @@ class GoalsController < ApplicationController
   end
   
   def create
+    params[:goal][:user] = current_user
     @goal = Goal.create params[:goal]
-    redirect_to @goal
+    if params[:goal_ownership] == 'set'
+      current_user.goal_ownerships.create :goal => @goal
+      @set = true
+    end
+    render :action => 'show'
   end
   
   def edit

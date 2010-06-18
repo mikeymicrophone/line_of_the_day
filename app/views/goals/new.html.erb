@@ -6,7 +6,9 @@
 	<% else %>
 	  in
 	<% end %>
-  the next <%= f.text_field :days, :size => 2 %><%= f.label :days, 'days.' %>
-	<%= f.submit :promise %>
+  the next <%= f.text_field :days, :size => 2 %><%= f.label :days, 'days.' %><br>
+	<%= radio_button_tag :goal_ownership, :set, true %><%= label :goal_ownership, :set, 'I will do this myself' %><br>
+	<%= radio_button_tag :goal_ownership, :make, false %><%= label :goal_ownership, :make, 'I am just setting this up for others to pursue' %><br>
+	<%= f.submit :ok %>
 	<%= f.hidden_field :objective_type %><%= f.hidden_field :objective_id %>
 <% end %>
