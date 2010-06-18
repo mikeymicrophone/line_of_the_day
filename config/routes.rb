@@ -60,6 +60,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :concepts
   
   map.about '/about', :controller => 'static', :action => 'about'
+  map.terms '/terms', :controller => 'static', :action => 'terms'
+  map.about '/faq', :controller => 'static', :action => 'faq'
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

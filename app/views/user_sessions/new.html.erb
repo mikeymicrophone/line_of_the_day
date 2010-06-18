@@ -10,3 +10,34 @@
 <br><br><br>
 <%= link_to image_tag('new.png', :alt => "I'm new!"), new_user_path, :id => 'im_new' %>
 <%= link_to image_tag('forgot.png', :alt => 'I forgot.'), new_password_reset_path, :id => 'i_forgot' %>
+<hr>
+<% form_for(User.new) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :username, image_tag('alias.png', :alt => 'alias') %>
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :email, image_tag('email.png', :alt => 'email') %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :password, image_tag('password_entry.png', :alt => 'password') %>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation, image_tag('password_again.png', :alt => 'password again') %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  
+  <p>
+    <%= image_submit_tag 'join.png' %>
+  </p>
+<br><br>
+  <p>
+	  By clicking "join!" you indicate that you have read and agreed to these <%= link_to_remote 'terms', :url => terms_path, :update => 'terms' %>.
+	</p>
+<% end %>
+
+<div id='terms'></div>

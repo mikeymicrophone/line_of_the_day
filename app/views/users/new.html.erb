@@ -21,4 +21,10 @@
   <p>
     <%= image_submit_tag 'join.png' %>
   </p>
+<br><br>
+  <p>
+	  By clicking "join!" you indicate that you have read and agreed to these <%= link_to_remote 'terms', :url => terms_path, :update => 'terms' %>.
+	</p>
 <% end %>
+
+<div id='terms'></div>
