@@ -1,10 +1,12 @@
-<% form_remote_for @tag, :update => dom_id(@tag.target, 'subjects') do |f| %>
-	<%= f.hidden_field :target_type %><%= f.hidden_field :target_id %>
-	<%= text_field_tag :concept, nil, :size => 20 %><%= f.submit 'comma separated tags' %>
-<% end %>
-(or choose an item from one of your lists)
-<% current_user.lists.each do |l| %>
-  <%= link_to_remote l.name, :url => tag_list_path(l, :tag => {:target_type => @tag.target_type, :target_id => @tag.target_id}), :update => dom_id(@tag.target, 'subjects'), :method => :get %>
-<% end %>
-<% div_for @tag.target, 'subjects' do %>
-<% end %>
+<div class='tag_creation'>
+	<% form_remote_for @tag, :update => dom_id(@tag.target, 'subjects'), :loading => "$('new_tag').reset();" do |f| %>
+		<%= f.hidden_field :target_type %><%= f.hidden_field :target_id %>
+		<%= text_field_tag :concept, nil, :size => 20 %><%= f.submit 'comma separated tags' %>
+	<% end %>
+	(or choose an item from one of your lists)<br>
+	<% current_user.lists.each do |l| %>
+	  <%= link_to_remote l.name, :url => tag_list_path(l, :tag => {:target_type => @tag.target_type, :target_id => @tag.target_id}), :update => dom_id(@tag.target, 'subjects'), :method => :get %>
+	<% end %>
+	<% div_for @tag.target, 'subjects' do %>
+	<% end %>
+</div>

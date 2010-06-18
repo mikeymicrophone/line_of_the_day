@@ -1,10 +1,11 @@
 <%= link_to image_tag('top_rated.png'), {:sort => 'rating'}, :class => 'sort' %>
-<div class='clearfix'></div>
+<div class='clearfix'>click the title to expand a post.</div>
 <% @posts.each do |post| %>
 	<% div_for post do %>
 	  <%= voting_booth post %>
-	  <h2><%= link_to_function post.name, "$('#{dom_id(post, 'content')}').toggle();" %><%= add_to_list post %></h2>
+	  <h2><%= link_to '.', post, :title => 'permalink' %> <%= link_to_function post.name, "$('#{dom_id(post, 'content')}').toggle();" %> <%= add_to_list post %> <%= tagger post %></h2>
 	  <h3><%= link_to post.blog.name, post.blog %>, <%= post.posted_at.to_s(:short) %></h3>
+	  <%= tag_display post %>
 		<% div_for post, 'content', :style => 'display:none' do %>
 		  <%= post.content %>
 		  <div class='clearfix'></div>

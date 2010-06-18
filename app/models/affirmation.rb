@@ -8,4 +8,8 @@ class Affirmation < ActiveRecord::Base
   def list_display
     "Affirmation: #{phrase}"
   end
+  
+  def name
+    phrase
+  end
 end
