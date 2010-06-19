@@ -5,8 +5,6 @@ class Tip < ActiveRecord::Base
   has_many :goals, :as => :objective
   has_many :comments, :as => :target
   
-  default_scope :order => 'created_at desc'
-  
   extend Random
   named_scope :randomized, :order => db_random
 

@@ -3,8 +3,6 @@ class Affirmation < ActiveRecord::Base
   belongs_to :user
   has_many :goals, :as => :objective
   
-  default_scope :order => 'created_at desc'
-  
   extend Random
   named_scope :randomized, :order => db_random
   

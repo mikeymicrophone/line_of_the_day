@@ -5,13 +5,13 @@ class AffirmationsController < ApplicationController
       if params[:sort] == 'random'
         User.find(params[:user_id]).affirmations.randomized
       else
-        User.find(params[:user_id]).affirmations
+        User.find(params[:user_id]).affirmations.recent
       end
     else
       if params[:sort] == 'random'
         Affirmation.randomized
       else
-        Affirmation
+        Affirmation.recent
       end
     end.paginate :page => params[:page]
   end

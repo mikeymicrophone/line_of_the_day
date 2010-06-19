@@ -27,7 +27,7 @@ class ActiveRecord::Base
     ActionView::Base.new.dom_id self, prefix
   end
   
-  named_scope :recent, :order => 'created_at desc', :limit => 20
+  named_scope :recent, :order => 'created_at desc'
   
   # extend Random
   # named_scope :randomized, :order => db_random

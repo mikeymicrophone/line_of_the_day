@@ -8,7 +8,7 @@ class TipsController < ApplicationController
       elsif params[:sort] == 'random'
         User.find(params[:user_id]).tips.randomized
       else
-        User.find(params[:user_id]).tips
+        User.find(params[:user_id]).tips.recent
       end
     else
       if params[:sort] == 'rating'
@@ -16,7 +16,7 @@ class TipsController < ApplicationController
       elsif params[:sort] == 'random'
         Tip.randomized
       else
-        Tip
+        Tip.recent
       end
     end.paginate :page => params[:page]
   end
