@@ -1,0 +1,18 @@
+<%= voting_booth @question %>
+<%= @question.name %>
+<%= add_to_list @question %>
+<%= tagger @question %>
+<%= tag_display @question %>
+
+<% if current_user %>
+	<% form_remote_for @question.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>
+	  <%= f.text_area :text, :size => '35x4' %>
+	  <%= f.hidden_field :target_id, :value => @question.id %>
+	  <%= f.hidden_field :target_type, :value => 'Question' %>
+	  <%= image_submit_tag 'weigh_in.png' %>
+	<% end %>
+<% end %>
+
+<div id='comments'>
+	<%= render :partial => @question.comments %>
+</div>

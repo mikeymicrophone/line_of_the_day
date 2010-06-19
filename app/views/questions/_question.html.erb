@@ -1,0 +1,8 @@
+<% div_for question do %>
+  <%= voting_booth question %>
+	<%= link_to question.name, question %>
+	<%= link_to question.comments.count, question %>
+	<%= tagger question %>
+	<%= tag_display question %>
+	<%= add_to_list question %>
+<% end %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100618180221) do
+ActiveRecord::Schema.define(:version => 20100619171630) do
 
   create_table "affirmations", :force => true do |t|
     t.text     "phrase"
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(:version => 20100618180221) do
 
   create_table "concepts", :force => true do |t|
     t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "exercises", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -166,6 +174,13 @@ ActiveRecord::Schema.define(:version => 20100618180221) do
     t.datetime "updated_at"
   end
 
+  create_table "questions", :force => true do |t|
+    t.text     "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "ratings", :force => true do |t|
     t.string   "target_type"
     t.integer  "target_id"
@@ -200,6 +215,16 @@ ActiveRecord::Schema.define(:version => 20100618180221) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "stories", :force => true do |t|
+    t.string   "name"
+    t.text     "telling"
+    t.integer  "user_id"
+    t.integer  "scene_id"
+    t.datetime "occurred_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tags", :force => true do |t|
     t.string   "target_type"
