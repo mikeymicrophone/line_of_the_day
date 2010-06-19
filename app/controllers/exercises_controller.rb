@@ -12,6 +12,7 @@ class ExercisesController < ApplicationController
   end
   
   def create
+    params[:exercise][:user] = current_user
     @exercise = Exercise.create params[:exercise]
     respond_to do |format|
       format.js { render :partial => 'exercises/exercise', :object => @exercise, :content_type => :html}

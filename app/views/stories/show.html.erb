@@ -1,0 +1,18 @@
+<%= voting_booth @story %>
+<h2><%= @story.name %></h2>
+<%= 'at ' + link_to(@story.scene.name, @story.scene) if @story.scene %>
+<%= add_to_list @story %> <%= tagger @story %> <%= tag_display @story %><hr>
+<%= @story.telling %>
+
+<% if current_user %>
+	<% form_remote_for @story.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>
+	  <%= f.text_area :text, :size => '35x4' %>
+	  <%= f.hidden_field :target_id, :value => @story.id %>
+	  <%= f.hidden_field :target_type, :value => 'Story' %>
+	  <%= image_submit_tag 'weigh_in.png' %>
+	<% end %>
+<% end %>
+
+<div id='comments'>
+	<%= render :partial => @story.comments %>
+</div>

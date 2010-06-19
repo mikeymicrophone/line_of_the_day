@@ -12,6 +12,7 @@ class QuestionsController < ApplicationController
   end
   
   def create
+    params[:question][:user] = current_user
     @question = Question.create params[:question]
     respond_to do |format|
       format.js { render :partial => 'questions/question', :object => @question, :content_type => :html }
