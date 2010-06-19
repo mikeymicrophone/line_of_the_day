@@ -20,7 +20,7 @@ class NicknamesController < ApplicationController
     @nickname = Nickname.create params[:nickname]
     respond_to do |format|
       format.html { redirect_to @nickname }
-      format.js   { render :partial => @nickname, :content_type => :html }
+      format.js   { render :partial => 'nicknames/nickname', :object => @nickname, :content_type => :html }
     end
   end
   
