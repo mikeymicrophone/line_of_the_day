@@ -1,4 +1,4 @@
-<%= @concept.name %>
+<h1 class='concept'><%= @concept.name %></h1>
 <% @concept.applied_tags.map(&:target).each do |s| %>
-	<%= link_to s.name, s %>
+	<%= link_to s.name, s %> <%= add_to_list s %> <%= tagger s %> <%= tag_display s %><br>
 <% end %>

@@ -1,0 +1,17 @@
+<% div_for @exercise do %>
+  <%= voting_booth @exercise %>
+	<%= link_to @exercise.name, @exercise %>
+	<%= @exercise.description %>
+	<%= add_to_list @exercise %>
+	<%= tagger @exercise %>
+	<%= tag_display @exercise %>
+<% end %>
+
+<% if current_user %>
+	<% form_remote_for @exercise.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>
+	  <%= f.text_area :text, :size => '35x4' %>
+	  <%= f.hidden_field :target_id, :value => @exercise.id %>
+	  <%= f.hidden_field :target_type, :value => 'Exercise' %>
+	  <%= image_submit_tag 'weigh_in.png' %>
+	<% end %>
+<% end %>
