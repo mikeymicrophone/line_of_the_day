@@ -5,8 +5,8 @@ class Affirmation < ActiveRecord::Base
   
   default_scope :order => 'created_at desc'
   
-  # extend Random
-  # named_scope :randomized, :order => db_random
+  extend Random
+  named_scope :randomized, :order => db_random
   
   def list_display
     "Affirmation: #{phrase}"

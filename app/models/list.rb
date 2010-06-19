@@ -7,6 +7,9 @@ class List < ActiveRecord::Base
   named_scope :public_to, lambda { |u| {:conditions => ['private is null or user_id = ?', u.andand.id]} }
   acts_as_list :scope => :user
   
+  extend Random
+  named_scope :randomized, :order => db_random
+  
   def recent_update usr
     list_items.public_to(usr).last.created_at
   end
