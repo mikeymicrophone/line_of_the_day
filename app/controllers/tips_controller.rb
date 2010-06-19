@@ -34,7 +34,7 @@ class TipsController < ApplicationController
     @tip = Tip.create params[:tip]
     respond_to do |format|
       format.html { render :text => 'tag created' }
-      format.js { render :partial => @tip, :content_type => :html }
+      format.js { render :partial => 'tips/tip', :object => @tip, :content_type => :html }
     end
   end
   
