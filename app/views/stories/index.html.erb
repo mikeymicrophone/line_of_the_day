@@ -3,9 +3,14 @@
 </div>
 <%= will_paginate @stories %>
 <% form_remote_for Story.new, :update => 'stories', :position => 'bottom', :loading => "$('new_story').reset()" do |f| %>
-  <%= f.text_field :name, :size => 68 %><br>
-	<%= f.text_area :telling, :size => '49x5' %><br>
-	<%= text_field_with_auto_complete :scene, :name %><%= label :scene, :name, 'where' %><br>
-	<%= f.datetime_select :occurred_at %>
-	<%= f.submit :tell %>
+  <div style='float:left'>
+	  <%= f.text_field :name, :size => 68 %><br>
+		<%= f.text_area :telling, :size => '49x5' %><br>
+		<%= text_field_with_auto_complete :scene, :name %><%= label :scene, :name, 'where' %><br>
+		<%= f.datetime_select :occurred_at %>
+	</div>
+	<div style='float:left'>
+		<%= image_submit_tag 'tell.png' %>
+	</div>
+	<div class='clearfix'></div>
 <% end %>

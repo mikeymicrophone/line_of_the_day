@@ -3,5 +3,5 @@
 	<%= link_to story.name, story %>
   <%= 'at ' + link_to(story.scene.name, story.scene) if story.scene %>
 	<%= add_to_list story %> <%= tagger story %> <%= tag_display story %><hr>
-	<%= story.telling %>
+	<%= story.telling %><hr>
 <% end %>
