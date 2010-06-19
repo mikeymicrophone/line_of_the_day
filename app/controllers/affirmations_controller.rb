@@ -2,9 +2,17 @@ class AffirmationsController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
   def index
     @affirmations = if params[:user_id]
-      User.find(params[:user_id]).affirmations
+      if params[:sort] == 'random'
+        User.find(params[:user_id]).affirmations.randomized
+      else
+        User.find(params[:user_id]).affirmations
+      end
     else
-      Affirmation
+      if params[:sort] == 'random'
+        Affirmation.randomized
+      else
+        Affirmation
+      end
     end.paginate :page => params[:page]
   end
   

@@ -28,4 +28,7 @@ class ActiveRecord::Base
   end
   
   named_scope :recent, :order => 'created_at desc', :limit => 20
+  
+  extend Random
+  named_scope :randomized, :order => db_random
 end

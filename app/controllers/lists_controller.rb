@@ -2,9 +2,11 @@ class ListsController < ApplicationController
   def index
     @lists = if params[:user_id]
       if params[:sort] == 'rating'
-        User.find(params[:user_id]).lists.public_to(current_user).ordered.not_empty.sort_by(&:average_rating).reverse
+        User.find(params[:user_id]).lists.public_to(current_user).not_empty.sort_by(&:average_rating).reverse
       elsif params[:sort] == 'recent'
-       User.find(params[:user_id]).lists.public_to(current_user).ordered.not_empty.sort_by { |l| l.recent_update(current_user) }.reverse
+       User.find(params[:user_id]).lists.public_to(current_user).not_empty.sort_by { |l| l.recent_update(current_user) }.reverse
+      elsif params[:sort] == 'random'
+        User.find(params[:user_id]).lists.randomized.public_to(current_user).not_empty
       else
         User.find(params[:user_id]).lists.public_to(current_user).ordered.not_empty
       end
@@ -13,6 +15,8 @@ class ListsController < ApplicationController
         List.public_to(current_user).not_empty.sort_by(&:average_rating).reverse
       elsif params[:sort] == 'recent'
         List.public_to(current_user).not_empty.sort_by { |l| l.recent_update(current_user) }.reverse
+      elsif params[:sort] == 'random'
+        List.randomized.public_to(current_user).not_empty
       else
         List.public_to(current_user).not_empty
       end

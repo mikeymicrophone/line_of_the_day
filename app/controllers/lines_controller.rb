@@ -8,6 +8,8 @@ class LinesController < ApplicationController
       @lines = Line.public_to(current_user)
       if params[:sort] == 'rating'
         @lines.sort_by { |l| l.average_rating }.reverse
+      elsif params[:sort] == 'random'
+        @lines.sort_by { |l| rand }
       else
         @lines
       end
@@ -15,6 +17,8 @@ class LinesController < ApplicationController
       @lines = Line.public
       if params[:sort] == 'rating'
         @lines.sort_by { |l| l.average_rating }.reverse
+      elsif params[:sort] == 'random'
+        @lines.sort_by { |l| rand }
       else
         @lines
       end      

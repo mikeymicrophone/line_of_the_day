@@ -1,0 +1,11 @@
+<%= link_to image_tag('randomize.png'), {:sort => 'random'}, :class => 'sort' %>
+<div class='clearfix'></div>
+<h2><%= List.find(params[:list_id]).name %></h2>
+<% @list_items.each do |item| %>
+  <% div_for item do %>
+	  <%= voting_booth item %>
+		<%= link_to item.item.list_display, item.item %>
+		<%= add_to_list item.item %>
+	<% end %>
+<% end %>
+<%= will_paginate @list_items %>

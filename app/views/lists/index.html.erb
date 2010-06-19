@@ -3,6 +3,7 @@
 <% end %>
 <%= link_to image_tag('top_rated.png', :all => 'top rated'), {:sort => 'rating'}, :class => 'sort' %>
 <%= link_to image_tag('updated.png', :alt => 'recently updated'), {:sort => 'recent'}, :class => 'sort' %>
+<%= link_to image_tag('randomize.png', :alt => 'randomized'), {:sort => 'random'}, :class => 'sort' %>
 <div class='clearfix'></div>
 <% @lists.each do |list| %>
 	<% div_for list do %>

@@ -1,7 +1,11 @@
 class ListItemsController < ApplicationController
   def index
     @list_items = if params[:list_id]
-      List.find(params[:list_id]).list_items
+      if params[:sort] == 'random'
+        ListItem.randomized.find_all_by_list_id(params[:list_id])
+      else
+        List.find(params[:list_id]).list_items
+      end
     else
       ListItem
     end.paginate :page => params[:page]
