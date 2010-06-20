@@ -10,7 +10,7 @@
 		  [<%= link_to 'x', line_path(line), :method => :delete, :title => 'delete' %>]
 		<% end %>
 	</span>
-  <span class='pick-up-artist'><%=h line.user.andand.username %></span>
+  <span class='pick-up-artist'><%#=h line.user.andand.username %></span>
   <div class='clearfix'></div>
   <span class='right'><%=h line.context %></span>
   <span class='left'><%= link_to_remote 'publish', :url => line_publications_path(line), :with => "'group_ids=' + $('publishable-groups').innerHTML", :update => 'publications', :position => 'top', :html => {:class => 'publication'} if current_user && (line.user == current_user || line.repost?) %></span>

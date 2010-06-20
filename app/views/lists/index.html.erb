@@ -16,7 +16,7 @@
 	  <% if current_user && current_user.andand.id == params[:user_id] %>
 	    <%= link_to 'up', elevate_list_path(list), :method => :put unless list.first? %> <%= link_to 'down', lower_list_path(list), :method => :put unless list.last? %>
 	  <% else %>
-		  <%= link_to list.user.username, user_lists_path(list.user), :class => 'pick-up-artist' %>
+		  <%#= link_to list.user.username, user_lists_path(list.user), :class => 'pick-up-artist' %>
 	  <% end %>
 	<% end %>
 <% end %>

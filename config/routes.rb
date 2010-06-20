@@ -51,7 +51,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :password_resets
   map.root :controller => 'lines'
   
-  map.resources :videos
+  map.resources :videos, :has_many => [:list_items]
   
   map.resources :nicknames
   

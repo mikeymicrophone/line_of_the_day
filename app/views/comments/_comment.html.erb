@@ -1,6 +1,6 @@
 <%= voting_booth comment %>
 <%= comment.text %>
-<%= link_to comment.user.username, comment.user %>
+<%#= link_to comment.user.username, comment.user %>
 <%= link_to_function 'reply', "$('#{dom_id(comment, 'reply')}').toggle();" %>
 <% div_for comment, 'reply', :style => 'display:none' do %>
 	<% if current_user %>
