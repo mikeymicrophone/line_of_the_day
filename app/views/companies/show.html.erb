@@ -1,0 +1,33 @@
+<h2><%= @company.name %></h2>
+<%= link_to @company.url, @company.url %>
+
+<% @company.artists.each do |a| %>
+  <% div_for a do %>
+    <%= link_to a.preferred_name, a %>
+  <% end %>
+<% end %>
+
+<% @company.products.each do |p| %>
+  <% div_for p do %>
+    <%= link_to p.name, p %>
+  <% end %>
+<% end %>
+
+<% @company.websites.each do |w| %>
+  <% div_for w do %>
+    <%= link_to w.name, w %>
+  <% end %>
+<% end %>
+
+<% if current_user %>
+	<% form_remote_for @company.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>
+	  <%= f.text_area :text, :size => '35x4' %>
+	  <%= f.hidden_field :target_id, :value => @company.id %>
+	  <%= f.hidden_field :target_type, :value => 'Company' %>
+	  <%= image_submit_tag 'weigh_in.png' %>
+	<% end %>
+<% end %>
+
+<div id='comments'>
+	<%= render :partial => @company.comments %>
+</div>

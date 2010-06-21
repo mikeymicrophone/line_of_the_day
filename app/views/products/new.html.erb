@@ -1,0 +1,8 @@
+<% form_for @product do |f| %>
+	<%= f.text_field :name %><%= f.label :name %><br>
+	<%= f.text_field :price %><%= f.label :price %><br>
+	<%= f.text_field :url %><%= f.label :url %><br>
+	<%= f.text_area :description, :size => '49x3' %><%= f.label :description %><br>
+	<%= f.select :company_id, Company.all.map { |c| [c.name, c.id] }, :include_blank => true %><%= f.label :company_id %><br>
+	<%= f.submit :save %>
+<% end %>

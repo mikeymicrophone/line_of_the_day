@@ -1,0 +1,16 @@
+<h2><%= @website.name %></h2>
+<%= link_to @website.company.name, @website.company if @website.company %><br>
+<%= link_to 'go to site', @website.url %>
+
+<% if current_user %>
+	<% form_remote_for @website.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>
+	  <%= f.text_area :text, :size => '35x4' %>
+	  <%= f.hidden_field :target_id, :value => @website.id %>
+	  <%= f.hidden_field :target_type, :value => 'Website' %>
+	  <%= image_submit_tag 'weigh_in.png' %>
+	<% end %>
+<% end %>
+
+<div id='comments'>
+	<%= render :partial => @website.comments %>
+</div>

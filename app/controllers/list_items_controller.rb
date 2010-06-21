@@ -39,6 +39,14 @@ class ListItemsController < ApplicationController
       ['Exercise', params[:exercise_id]]
     elsif params[:story_id]
       ['Story', params[:story_id]]
+    elsif params[:artist_id]
+      ['Artist', params[:artist_id]]
+    elsif params[:website_id]
+      ['Website', params[:website_id]]
+    elsif params[:company_id]
+      ['Company', params[:company_id]]
+    elsif params[:product_id]
+      ['Product', params[:product_id]]
     end
     @list_item = ListItem.new params[:list_item]
   end

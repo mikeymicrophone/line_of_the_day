@@ -64,6 +64,14 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :exercises, :has_many => [:list_items]
   
   map.resources :stories, :has_many => [:list_items]
+
+  map.resources :artists, :has_many => [:list_items]
+  
+  map.resources :companies, :has_many => [:list_items]
+  
+  map.resources :products, :has_many => [:list_items]
+  
+  map.resources :websites, :has_many => [:list_items]
   
   map.about '/about', :controller => 'static', :action => 'about'
   map.terms '/terms', :controller => 'static', :action => 'terms'

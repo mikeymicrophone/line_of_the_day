@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100619171630) do
+ActiveRecord::Schema.define(:version => 20100620000056) do
 
   create_table "affirmations", :force => true do |t|
     t.text     "phrase"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(:version => 20100619171630) do
     t.integer  "user_id"
   end
 
+  create_table "artists", :force => true do |t|
+    t.string   "name"
+    t.string   "alias"
+    t.string   "email"
+    t.integer  "identity_id"
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "blogs", :force => true do |t|
     t.string   "name"
     t.string   "url"
@@ -46,6 +57,14 @@ ActiveRecord::Schema.define(:version => 20100619171630) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "target_type"
+  end
+
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "concepts", :force => true do |t|
@@ -165,6 +184,17 @@ ActiveRecord::Schema.define(:version => 20100619171630) do
     t.datetime "updated_at"
   end
 
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.float    "price"
+    t.string   "url"
+    t.text     "description"
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "publications", :force => true do |t|
     t.text     "text"
     t.integer  "line_id"
@@ -261,6 +291,22 @@ ActiveRecord::Schema.define(:version => 20100619171630) do
     t.datetime "updated_at"
     t.integer  "admin"
     t.string   "avatar"
+  end
+
+  create_table "videos", :force => true do |t|
+    t.text     "embed"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "websites", :force => true do |t|
+    t.string   "url"
+    t.string   "name"
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
