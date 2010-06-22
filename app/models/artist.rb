@@ -12,4 +12,8 @@ class Artist < ActiveRecord::Base
   def preferred_name
     self.alias.present? ? self.alias : name
   end
+  
+  def list_display
+    "Artist: #{preferred_name}"
+  end
 end

@@ -2,7 +2,7 @@
 <%= link_to image_tag('randomize.png'), {:sort => 'random'}, :class => 'sort' %>
 <div class='clearfix'></div>
 
-Artist is a word that I'm using to refer to conversation coaches and bloggers.
+"Artist" = conversation coach/blogger
 <% @artists.each do |a| %>
   <% div_for a do %>
 	  <%= voting_booth a %>

@@ -8,4 +8,8 @@ class Website < ActiveRecord::Base
   named_scope :randomized, :order => db_random
   
   validates_uniqueness_of :url
+  
+  def list_display
+    "Website: #{name}"
+  end
 end

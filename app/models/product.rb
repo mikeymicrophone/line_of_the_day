@@ -6,4 +6,8 @@ class Product < ActiveRecord::Base
   belongs_to :user
   belongs_to :company
   named_scope :randomized, :order => db_random
+  
+  def list_display
+    "Product: #{name}"
+  end
 end

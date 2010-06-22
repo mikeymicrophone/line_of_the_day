@@ -10,4 +10,8 @@ class Company < ActiveRecord::Base
   has_many :comments, :as => :target
   
   named_scope :randomized, :order => db_random
+  
+  def list_display
+    "Company: #{name}"
+  end
 end
