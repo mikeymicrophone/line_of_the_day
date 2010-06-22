@@ -78,3 +78,8 @@ img.goal {
 	position: absolute;
 	left: 13px;
 }
+
+.random_line {
+	font-size: 20px;
+	text-align: center;
+}

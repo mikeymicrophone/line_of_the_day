@@ -8,6 +8,10 @@ class Tip < ActiveRecord::Base
   extend Random
   named_scope :randomized, :order => db_random
 
+  def self.random
+    first :order => db_random
+  end
+
   def phrasing
     advice
   end

@@ -1,5 +1,10 @@
 class LinesController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
+  
+  def random
+    @line = Line.random
+    @tip = Tip.random
+  end
 
   def index
     @published_lines = User.find(params[:user_id]).publications.to_group(params[:group_id]).map &:line if params[:user_id] and params[:group_id]

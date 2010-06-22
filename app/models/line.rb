@@ -1,6 +1,7 @@
 class Line < ActiveRecord::Base
   include Ratable
   include Taggable
+  extend Random
   belongs_to :user
   validates_presence_of :phrasing
   has_many :comments, :as => :target
@@ -30,5 +31,9 @@ class Line < ActiveRecord::Base
   
   def name
     phrasing
+  end
+  
+  def self.random
+    first :order => db_random
   end
 end

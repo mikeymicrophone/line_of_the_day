@@ -11,12 +11,13 @@
 </head>
 <body>
 <%= link_to image_tag('logo.png', :id => 'logo'), lines_path %>
-<%= render :partial => 'shared/lines_and_links', :locals => {:current_user => current_user} %>
+<%= render :partial => 'shared/lines_and_links', :locals => {:current_user => current_user} unless action_name == 'random' %>
 <p style="color: green"><%= flash[:notice] %></p>
 <div id="big_box">
 <%= yield %>
 </div>
 <div style="text-align:center" id='footer'>
+	<%= link_to 'random line', random_lines_path %>
 	<%= link_to 'terms', terms_path %>
 	<%= link_to 'faq', faq_path %>
 </div>

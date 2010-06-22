@@ -2,10 +2,11 @@
 	<%= voting_booth line %>
   <span class='left'>
 		<%= link_to h(line.phrasing), line %>
-		[<%= link_to line.comments.count, line_comments_path(line), :title => 'comments on this line' %>]
-		[<%= link_to line.approaches.count, line_approaches_path(line), :title => 'number of times this line has been used' %>]
-		<%= tagger line %>
+		<%='[' + link_to(line.comments.count, line_path(line), :title => 'comments on this line') + ']' if line.comments.present? %>
+		<%= '[' + link_to(line.approaches.count, line_approaches_path(line), :title => 'number of times this line has been used') + ']' if line.approaches.present? %>
 		<%= add_to_list line %>
+		<%= tagger line %>
+		<%= tag_display line %>
 		<% if current_user.andand.admin? || (current_user && line.user == current_user) %>
 		  [<%= link_to 'x', line_path(line), :method => :delete, :title => 'delete' %>]
 		<% end %>

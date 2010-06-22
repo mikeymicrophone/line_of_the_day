@@ -6,4 +6,6 @@ body, p, ol, ul, td {
   line-height: 18px;
 }
 
-a { color: #000; }
+a { 
+  color: #060066;
+}
