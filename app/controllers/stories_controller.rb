@@ -3,7 +3,13 @@ class StoriesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:auto_complete_for_scene_name]
   
   def index
-    @stories = Story.paginate :page => params[:page]
+    @stories = if params[:sort] == 'random'
+      Story.randomized
+    elsif params[:sort] == 'rating'
+      Story.all.sort_by { |s| s.average_rating }.reverse
+    else
+      Story
+    end.paginate :page => params[:page]
   end
   
   def show

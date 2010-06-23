@@ -1,7 +1,11 @@
+<%= link_to image_tag('top_rated.png', :alt => 'show top rated'), {:sort => 'rating'}, :class => 'sort' %>
+<%= link_to image_tag('randomize.png', :alt => 'randomize'), {:sort => 'random'}, :class => 'sort' %>
+<div class='clearfix'></div>
 <div id='stories'>
 	<%= render :partial => @stories %>
 </div>
 <%= will_paginate @stories %>
+Your story can be either a funny or poignant story you would tell in a conversation, or just a story about what happened to you when you started a conversation.
 <% form_remote_for Story.new, :update => 'stories', :position => 'bottom', :loading => "$('new_story').reset()" do |f| %>
   <div style='float:left'>
 	  <%= f.text_field :name, :size => 68 %><br>
