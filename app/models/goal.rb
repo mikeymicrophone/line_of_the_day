@@ -73,4 +73,8 @@ class Goal < ActiveRecord::Base
   def name
     full_description
   end
+  
+  def self.one_a_day
+    find_or_create_by_objective_type_and_repetitions_and_days 'Approach', 30, 30
+  end
 end

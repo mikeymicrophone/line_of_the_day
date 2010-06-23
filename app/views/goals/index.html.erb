@@ -5,6 +5,7 @@
 	<%= link_to image_tag('goal_lines.png', :alt => 'set a goal to write x lines', :class => 'goal'), new_goal_path(:goal => {:objective_type => 'Line'}) %>
 </div>
 <div class='clearfix'></div>
+<%= link_to 'my goals', user_goal_ownerships_path(current_user) %>
 <% @goals.each do |g| %>
   <% div_for g do %>
 	  <%= link_to g.describe, g %><%= pluralize g.repetitions, 'time' %>

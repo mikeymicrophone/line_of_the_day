@@ -1,9 +1,15 @@
-<h2><%= User.find(params[:user_id]).username + "'s goals" if params[:user_id] %></h2>
+<% if params[:user_id] %>
+  <h2><% if params[:user_id] == current_user.andand.id.to_s %>
+		Your goals:
+  <% else %>
+		<%= User.find(params[:user_id]).username + "'s goals:" %>
+  <% end %></h2>
+<% end %>
 <% @goal_ownerships.each do |g| %>
   <% div_for g do %>
-		<%= link_to g.goal.describe, g.goal %>
-		<%= g.current? ? '(current)' : '(finished)'%>
-		<%= link_to g.user.username, user_goal_ownerships_path(g.user), :class => 'pick-up-artist' unless params[:user_id] %>
+		<%= link_to g.describe, g %>
+		(<%= g.completion_status %>)
+		<%#= link_to g.user.username, user_goal_ownerships_path(g.user), :class => 'pick-up-artist' unless params[:user_id] %>
 	<% end %>
 <% end %>
 <%= will_paginate @goal_ownerships %>

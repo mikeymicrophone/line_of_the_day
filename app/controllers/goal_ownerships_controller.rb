@@ -12,4 +12,14 @@ class GoalOwnershipsController < ApplicationController
       GoalOwnership
     end.paginate :page => params[:page]
   end
+  
+  def show
+    @goal_ownership = GoalOwnership.find params[:id]
+  end
+  
+  def update
+    @goal_ownership = GoalOwnership.find params[:id]
+    @goal_ownership.update_attributes params[:goal_ownership]
+    redirect_to user_goal_ownerships_path(current_user)
+  end
 end

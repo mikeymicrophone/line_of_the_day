@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100620000056) do
+ActiveRecord::Schema.define(:version => 20100622232246) do
 
   create_table "affirmations", :force => true do |t|
     t.text     "phrase"
@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(:version => 20100620000056) do
     t.integer  "goal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "complete"
+    t.integer  "progress"
   end
 
   create_table "goals", :force => true do |t|

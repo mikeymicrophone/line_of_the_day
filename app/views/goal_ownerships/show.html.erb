@@ -1,4 +1,11 @@
-<%= @goal_ownership.describe %>
+You made it a goal to <%= @goal_ownership.describe %>.<br>
+That was <%= time_ago_in_words @goal_ownership.created_at %> ago, and <% if @goal_ownership.current? %>
+	you have <%= @goal_ownership.remaining_days %> days left.
+<% else %>
+  your target date has already passed.
+<% end %>
 <% form_for @goal_ownership do |f| %>
-	<%= f.%>
+	<%= f.check_box :complete %><%= f.label :complete %><br>
+	<%= f.text_field :progress, :size => 5 %><%= f.label :progress %>(out of <%= @goal_ownership.total_repetitions %>)<br>
+	<%= f.submit :update %>
 <% end %>
