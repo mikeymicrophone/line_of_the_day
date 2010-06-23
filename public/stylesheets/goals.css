@@ -6,3 +6,7 @@
 	width: 140px;
 	float: none;
 }
+
+a.commit {
+	color: #991822;
+}

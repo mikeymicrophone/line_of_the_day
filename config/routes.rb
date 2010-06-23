@@ -61,7 +61,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :questions, :has_many => [:list_items]
   
-  map.resources :exercises, :has_many => [:list_items]
+  map.resources :exercises, :has_many => [:list_items, :goals]
   
   map.resources :stories, :has_many => [:list_items]
 

@@ -1,3 +1,4 @@
+<%= link_to image_tag('goal.png', :class => 'goal'), new_exercise_goal_path(@exercise) %>
 <% div_for @exercise do %>
   <%= voting_booth @exercise %>
 	<%= link_to @exercise.name, @exercise %>

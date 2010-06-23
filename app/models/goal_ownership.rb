@@ -4,7 +4,7 @@ class GoalOwnership < ActiveRecord::Base
   belongs_to :user
   
   def due_date
-    created_at + goal.days.days
+    created_at + goal.days.days # note: days.days is not a typo
   end
   
   def remaining_days

@@ -32,6 +32,12 @@ class Goal < ActiveRecord::Base
       end
     when 'Approach'
       "approach someone new"
+    when 'Exercise'
+      if objective_id.present?
+        "do the exercise #{objective.name}"
+      else
+        "do exercises"
+      end
     end
   end
   
@@ -63,7 +69,14 @@ class Goal < ActiveRecord::Base
       end
     when 'Approach'
       "approach #{repetitions} people (to whom you have not been introduced)"
+    when 'Exercise'
+      if objective_id.present?
+        "do the exercise #{objective.name} #{repetitions} times in #{days} days"
+      else
+        "do #{repetitions} exercises in the #{days} days"
+      end
     end
+  
   end
   
   def list_display

@@ -8,14 +8,13 @@
 <%= link_to 'my goals', user_goal_ownerships_path(current_user) %>
 <% @goals.each do |g| %>
   <% div_for g do %>
-	  <%= link_to g.describe, g %><%= pluralize g.repetitions, 'time' %>
-	  <% if g.objective_type == 'Affirmation' %>
-	    for
-		<% else %>
-		  in
+	  <%= link_to g.full_description, g %>
+	  <% if current_user.goals.include? g %>
+	    You are doing this.
+	  <% else %>
+		  <%= link_to 'I will do this.', goal_ownerships_path(:goal_ownership => {:goal_id => g.id}), :method => :post, :class => 'commit' %>
 		<% end %>
-	  <%= pluralize g.days, 'day' %>
-	  <%= link_to 'do', goal_ownerships_path(:goal_ownership => {:goal_id => g.id}), :method => :post %>
+	  <%= g.goal_ownerships.count %> <%= g.goal_ownerships.count == 1 ? 'has' : 'have' %> done it.
 	  <%= add_to_list g %>
 	  <%= tagger g %>
 	  <%= tag_display g %>

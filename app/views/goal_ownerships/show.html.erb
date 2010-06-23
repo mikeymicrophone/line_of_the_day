@@ -1,3 +1,4 @@
+<%= link_to 'my goals', user_goal_ownerships_path(current_user) %><br>
 You made it a goal to <%= @goal_ownership.describe %>.<br>
 That was <%= time_ago_in_words @goal_ownership.created_at %> ago, and <% if @goal_ownership.current? %>
 	you have <%= @goal_ownership.remaining_days %> days left.
