@@ -9,7 +9,9 @@ module TagsHelper
     unless target.tags.empty?
       pluralize(target.tags.count, 'tag') + ': ' +
       target.tags.map do |t|
-        link_to t.subject.name, t.subject
+        div_for t, :class => t.subject_type.downcase do
+          link_to truncate(t.subject.name), t.subject, :title => t.subject.name
+        end
       end.to_sentence
     end
   end

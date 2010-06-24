@@ -1,3 +1,11 @@
 .tag_creation {
 	border: 2px solid black;
 }
+
+.tag {
+	display: inline;
+}
+
+.tip {
+	background-color: #8B575B;
+}
