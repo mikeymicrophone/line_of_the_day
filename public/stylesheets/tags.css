@@ -2,10 +2,31 @@
 	border: 2px solid black;
 }
 
-.tag {
+.tags {
 	display: inline;
 }
 
-.tip {
+.line .list {
+	font-size: 13px;
+}
+
+.tag {
+	display: inline;
+	padding: 1px;
+}
+
+.tags .tip {
 	background-color: #8B575B;
+}
+
+.tags .list {
+	background-color: #5B6C99;
+}
+
+.tags .concept {
+	background-color: #87D6CB;
+}
+
+.tags .goal {
+	background-color: #998357;
 }

@@ -7,12 +7,18 @@ module TagsHelper
   
   def tag_display target
     unless target.tags.empty?
-      pluralize(target.tags.count, 'tag') + ': ' +
-      target.tags.map do |t|
-        div_for t, :class => t.subject_type.downcase do
-          link_to truncate(t.subject.name), t.subject, :title => t.subject.name
-        end
-      end.to_sentence
+      content_tag(:div, :class => 'tags') do
+        pluralize(target.tags.count, 'tag') + ': ' +
+        target.tags.map do |t|
+          display_tag t
+        end.to_sentence
+      end
+    end
+  end
+  
+  def display_tag tag
+    div_for tag, :class => tag.subject_type.downcase do
+      link_to truncate(tag.subject.name), tag.subject, :title => tag.subject.name
     end
   end
 end
