@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.iphone '/iphone', :controller => 'iphone', :action => 'initial'
+  
   map.resources :messages
 
   map.resources :results, :has_many => [:approaches, :lines]
