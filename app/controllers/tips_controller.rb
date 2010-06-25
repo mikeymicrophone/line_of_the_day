@@ -19,6 +19,11 @@ class TipsController < ApplicationController
         Tip.recent
       end
     end.paginate :page => params[:page]
+    
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @tips }
+    end
   end
   
   def show

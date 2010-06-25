@@ -1,6 +1,11 @@
 class ExercisesController < ApplicationController
   def index
     @exercises = Exercise.paginate :page => params[:page]
+    
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @exercises }
+    end
   end
   
   def show
