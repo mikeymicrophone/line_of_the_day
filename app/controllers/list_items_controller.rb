@@ -64,7 +64,7 @@ class ListItemsController < ApplicationController
   def update
     @list_item = ListItem.find params[:id]
     @list_item.update_attributes params[:list_item]
-    redirect_to @list_item
+    redirect_to @list_item.list
   end
   
   def elevate

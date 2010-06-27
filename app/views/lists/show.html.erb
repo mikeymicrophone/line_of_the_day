@@ -8,6 +8,11 @@
 		  <%= link_to '-', lower_list_item_path(item), :method => :put, :title => 'move down' unless item.last? %>
 		<% end %>
 	  <%= link_to item.item.list_display, item.item %>
+	  <% if item.private? %>
+			<%= link_to 'o', list_item_path(item, :list_item => {:private => 0}), :method => :put %>
+	  <% else %>
+			<%= link_to 'p', list_item_path(item, :list_item => {:private => 1}), :method => :put %>
+		<% end %>
 	  <%= link_to 'x', list_item_path(item), :method => :delete, :title => 'remove' if current_user == @list.user %>
   <% end %>
 <% end %>
