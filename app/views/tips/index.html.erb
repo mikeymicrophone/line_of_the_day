@@ -11,6 +11,9 @@
 			<%= link_to t.comments.count, t %>
 			<%= tagger t %>
 			<%= tag_display t %>
+			<% if current_user.andand.admin? %>
+			  [<%= link_to 'x', tip_path(t), :method => :delete, :title => 'delete' %>]
+			<% end %>
 		<% end %>
 	<% end %>
 </div>
