@@ -7,9 +7,9 @@
 	  <% div_for t do %>
 			<%= voting_booth t %>
 			<%= link_to t.advice, t %>
-			<%= tagger t %>
 			<%= add_to_list t %>
 			<%= link_to t.comments.count, t %>
+			<%= tagger t %>
 			<%= tag_display t %>
 		<% end %>
 	<% end %>

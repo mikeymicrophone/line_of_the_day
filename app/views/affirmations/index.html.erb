@@ -1,5 +1,6 @@
 <%= image_tag('affirmations_explanation.png')%><br>
 <%= link_to image_tag('randomize.png'), {:sort => 'random'}, :class => 'sort' %>
+<%= link_to image_tag('recent.png'), {:sort => 'recent'}, :class => 'sort' %>
 <div id='affirmations'>
 	<% @affirmations.each do |a| %>
 	  <% div_for a do %>

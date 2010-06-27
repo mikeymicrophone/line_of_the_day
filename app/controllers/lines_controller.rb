@@ -13,19 +13,19 @@ class LinesController < ApplicationController
       @lines = Line.public_to(current_user)
       if params[:sort] == 'rating'
         @lines.sort_by { |l| l.average_rating }.reverse
-      elsif params[:sort] == 'random'
-        @lines.sort_by { |l| rand }
+      elsif params[:sort] == 'recent'
+        @lines.recent#sort_by { |l| l.created_at }.reverse
       else
-        @lines
+        @lines.sort_by { |l| rand }
       end
     else
       @lines = Line.public
       if params[:sort] == 'rating'
         @lines.sort_by { |l| l.average_rating }.reverse
-      elsif params[:sort] == 'random'
-        @lines.sort_by { |l| rand }
+      elsif params[:sort] == 'recent'
+        @lines.recent
       else
-        @lines
+        @lines.sort_by { |l| rand }
       end      
     end.paginate(:page => params[:page])
     
