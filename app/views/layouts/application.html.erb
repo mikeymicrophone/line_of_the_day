@@ -22,10 +22,10 @@
 	<%= link_to image_tag('products.png', :alt => 'products'), products_path %>
 	<%= link_to image_tag('websites.png', :alt => 'websites'), websites_path %>
 	<br>
-	<%= link_to 'random line', random_lines_path %>
-	<%= link_to 'terms', terms_path %>
-	<%= link_to 'faq', faq_path %>
-	<%= mail_to 'info@lineoftheday.com', 'contact', :encode => 'javascript' %>
+	<%= link_to image_tag('random_line.png', :alt => 'random line'), random_lines_path %>
+	<%= link_to image_tag('terms.png', :alt => 'terms'), terms_path %>
+	<%= link_to image_tag('faq.png', :alt => 'faq'), faq_path %>
+	<%= mail_to 'info@lineoftheday.com', image_tag('contact.png', :alt => 'contact'), :encode => 'javascript' %>
 </div>
 </body>
 </html>
