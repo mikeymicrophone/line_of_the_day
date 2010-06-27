@@ -5,18 +5,18 @@ class TipsController < ApplicationController
     @tips = if params[:user_id]
       if params[:sort] == 'rating'
         User.find(params[:user_id]).tips.sort_by(&:average_rating).reverse
-      elsif params[:sort] == 'random'
-        User.find(params[:user_id]).tips.randomized
-      else
+      elsif params[:sort] == 'recent'
         User.find(params[:user_id]).tips.recent
+      else
+        User.find(params[:user_id]).tips.randomized
       end
     else
       if params[:sort] == 'rating'
         Tip.all.sort_by(&:average_rating).reverse
-      elsif params[:sort] == 'random'
-        Tip.randomized
-      else
+      elsif params[:sort] == 'recent'
         Tip.recent
+      else
+        Tip.randomized
       end
     end.paginate :page => params[:page]
     
