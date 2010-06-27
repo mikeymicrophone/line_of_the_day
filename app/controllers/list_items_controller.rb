@@ -49,6 +49,7 @@ class ListItemsController < ApplicationController
       ['Product', params[:product_id]]
     end
     @list_item = ListItem.new params[:list_item]
+    render :layout => false
   end
   
   def create
