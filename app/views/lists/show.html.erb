@@ -9,9 +9,9 @@
 		<% end %>
 	  <%= link_to item.item.list_display, item.item %>
 	  <% if item.private? %>
-			<%= link_to 'o', list_item_path(item, :list_item => {:private => 0}), :method => :put %>
+			<%= link_to 'o', list_item_path(item, :list_item => {:private => 0}), :method => :put, :title => 'make public' %>
 	  <% else %>
-			<%= link_to 'p', list_item_path(item, :list_item => {:private => 1}), :method => :put %>
+			<%= link_to 'p', list_item_path(item, :list_item => {:private => 1}), :method => :put, :title => 'make private' %>
 		<% end %>
 	  <%= link_to 'x', list_item_path(item), :method => :delete, :title => 'remove' if current_user == @list.user %>
   <% end %>
