@@ -4,4 +4,6 @@
 <% div_for @affirmation do %>
 	<%= @affirmation.phrase %>
 	<%= add_to_list @affirmation %>
+	<%= tagger @affirmation %>
+	<%= tag_display @affirmation %>
 <% end %>
