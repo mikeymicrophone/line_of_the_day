@@ -14,8 +14,10 @@
 		<% end %>
 	<% end %>
 </div>
-<% form_remote_for Tip.new, :update => 'tips', :position => 'bottom', :loading => "$('tip_advice').clear();$('tip_submit').writeAttribute('src', '/images/#{tip_submit}')" do |f| %>
-  <%= f.text_area :advice, :size => '49x4' %>
-  <%= image_submit_tag tip_submit, :id => 'tip_submit' %>
+<% if current_user %>
+	<% form_remote_for Tip.new, :update => 'tips', :position => 'bottom', :loading => "$('tip_advice').clear();$('tip_submit').writeAttribute('src', '/images/#{tip_submit}')" do |f| %>
+	  <%= f.text_area :advice, :size => '49x4' %>
+	  <%= image_submit_tag tip_submit, :id => 'tip_submit' %>
+	<% end %>
 <% end %>
 <%= will_paginate @tips %>

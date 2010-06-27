@@ -11,8 +11,10 @@
 		<% end %>
 	<% end %>
 </div>
-<% form_remote_for Affirmation.new, :update => 'affirmations', :position => 'bottom', :loading => "$('affirmation_phrase').clear();$('affirmation_submit').writeAttribute('src', '/images/#{affirmation_submit}')" do |f| %>
-  <%= f.text_area :phrase, :size => '49x4' %>
-  <%= image_submit_tag affirmation_submit, :id => 'affirmation_submit' %>
+<% if current_user %>
+	<% form_remote_for Affirmation.new, :update => 'affirmations', :position => 'bottom', :loading => "$('affirmation_phrase').clear();$('affirmation_submit').writeAttribute('src', '/images/#{affirmation_submit}')" do |f| %>
+	  <%= f.text_area :phrase, :size => '49x4' %>
+	  <%= image_submit_tag affirmation_submit, :id => 'affirmation_submit' %>
+	<% end %>
 <% end %>
 <%= will_paginate @affirmations %>
