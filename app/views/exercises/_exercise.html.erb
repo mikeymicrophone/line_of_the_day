@@ -5,4 +5,7 @@
 	<%= add_to_list exercise %>
 	<%= tagger exercise %>
 	<%= tag_display exercise %>
+	<% if current_user.andand.admin? %>
+	  [<%= link_to 'x', exercise_path(exercise), :method => :delete, :title => 'delete' %>]
+	<% end %>
 <% end %>

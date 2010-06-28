@@ -3,7 +3,9 @@
 </div>
 <%= will_paginate @nicknames %>
 <div class='clearfix'></div>
-<% form_remote_for Nickname.new, :update => 'nicknames', :position => 'bottom', :loading => "$('new_nickname').reset();" do |f| %>
-	<%= f.text_field :name %>
-	<%= image_submit_tag 'name.png', :id => 'name_button' %>
+<% if current_user %>
+	<% form_remote_for Nickname.new, :update => 'nicknames', :position => 'bottom', :loading => "$('new_nickname').reset();" do |f| %>
+		<%= f.text_field :name %>
+		<%= image_submit_tag 'name.png', :id => 'name_button' %>
+	<% end %>
 <% end %>

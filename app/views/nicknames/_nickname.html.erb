@@ -1,4 +1,7 @@
 <% div_for nickname do %>
   <%= link_to nickname.name, nickname %>
+	<% if current_user.andand.admin? %>
+	  [<%= link_to 'x', nickname_path(nickname), :method => :delete, :title => 'delete' %>]
+	<% end %>
   <%#= link_to nickname.user.username, user_nicknames_path(nickname.user), :class => 'pick-up-artist' %>
 <% end %>

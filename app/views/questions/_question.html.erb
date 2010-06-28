@@ -5,4 +5,7 @@
 	<%= tagger question %>
 	<%= tag_display question %>
 	<%= add_to_list question %>
+	<% if current_user.andand.admin? %>
+	  [<%= link_to 'x', question_path(question), :method => :delete, :title => 'delete' %>]
+	<% end %>
 <% end %>

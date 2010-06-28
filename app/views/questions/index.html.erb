@@ -3,7 +3,9 @@
 </div>
 <%= will_paginate @questions %>
 
-<% form_remote_for Question.new, :update => 'questions', :position => 'bottom', :loading => "$('question_name').clear();" do |f| %>
-  <%= f.text_area :name, :size => '49x4' %>
-  <%= image_submit_tag 'ask.png' %>
+<% if current_user %>
+	<% form_remote_for Question.new, :update => 'questions', :position => 'bottom', :loading => "$('question_name').clear();" do |f| %>
+	  <%= f.text_area :name, :size => '49x4' %>
+	  <%= image_submit_tag 'ask.png' %>
+	<% end %>
 <% end %>
