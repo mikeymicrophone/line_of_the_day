@@ -27,6 +27,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :ratings
   
+  map.resources :books, :has_many => [:list_items]
+  
   map.resources :articles, :has_many => [:list_items]
 
   map.resources :users, :has_many => [:lines, :tips, :affirmations, :groups, :memberships, :publications, :comments, :goal_ownerships, :lists, :nicknames, :ratings], :member => {:avatar => :get} do |user|

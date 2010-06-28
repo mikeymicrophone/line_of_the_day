@@ -1,0 +1,6 @@
+<% form_for @book do |f| %>
+	<%= f.text_field :title %><%= f.label :title %><br>
+  <%= f.text_field :author %><%= f.label :author %><br>
+  <%= f.text_field :isbn %><%= f.label :isbn, 'ISBN' %><br>
+  <%= f.submit %>
+<% end %>

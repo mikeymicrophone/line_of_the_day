@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100628023822) do
+ActiveRecord::Schema.define(:version => 20100628030046) do
 
   create_table "affirmations", :force => true do |t|
     t.text     "phrase"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(:version => 20100628023822) do
     t.string   "url"
     t.string   "feed_url"
     t.integer  "author_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "books", :force => true do |t|
+    t.string   "title"
+    t.string   "author"
+    t.string   "isbn"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

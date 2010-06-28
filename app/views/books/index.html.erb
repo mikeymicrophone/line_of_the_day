@@ -1,0 +1,12 @@
+<% @books.each do |b| %>
+	<% div_for b do %>
+	  <%= voting_booth b %>
+	  <%= link_to b.title, b %>
+	  by <%= b.author %>
+	  <%= add_to_list b %>
+	  <%= tagger b %>
+	  <%= tag_display b %>
+	<% end %>
+<% end %>
+<%= will_paginate @books %>
+<%= link_to 'new book', new_book_path %>
