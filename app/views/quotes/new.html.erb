@@ -1,0 +1,6 @@
+<% form_for @quote do |f| %>
+  <%= f.hidden_field :source_id %><%= f.hidden_field :source_type %>
+	<%= f.text_area :text, :size => '49x4' %><%= f.label :text %><br>
+	<%= f.text_field :page_number, :size => 4 %><%= f.label :page_number, 'page number/place'%><br>
+	<%= f.submit %>
+<% end %>

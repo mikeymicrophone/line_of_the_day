@@ -1,3 +1,5 @@
+
+<%= add_quote @video %>
 <% if current_user %>
 	<% form_remote_for @video.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>
 	  <%= f.text_area :text, :size => '35x4' %>

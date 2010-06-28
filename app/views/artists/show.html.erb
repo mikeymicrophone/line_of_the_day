@@ -1,6 +1,7 @@
 <%= @artist.alias %><br>
 <%= @artist.name %><br>
-<%= @artist.email %>
+<%= @artist.email %><br>
+<%= add_quote @artist %>
 
 <% if current_user %>
 	<% form_remote_for @artist.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>

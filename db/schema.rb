@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100628030046) do
+ActiveRecord::Schema.define(:version => 20100628030625) do
 
   create_table "affirmations", :force => true do |t|
     t.text     "phrase"
@@ -227,6 +227,16 @@ ActiveRecord::Schema.define(:version => 20100628030046) do
 
   create_table "questions", :force => true do |t|
     t.text     "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "quotes", :force => true do |t|
+    t.text     "text"
+    t.string   "page_number"
+    t.string   "source_type"
+    t.integer  "source_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

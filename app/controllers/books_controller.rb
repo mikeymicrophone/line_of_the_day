@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_filter :require_user, :only => [:new, :create]
   def index
     @books = Book.paginate :page => params[:page]
   end

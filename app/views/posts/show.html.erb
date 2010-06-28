@@ -2,4 +2,5 @@
 <h2><%= @post.name %><%= add_to_list @post %></h2>
 <h3><%= link_to @post.blog.name, @post.blog %></h3>
 <%= tag_display @post %>
+<%= add_quote @post %>
 <%= @post.content %>

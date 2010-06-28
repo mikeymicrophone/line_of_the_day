@@ -1,0 +1,10 @@
+<% @quotes.each do |q| %>
+  <% div_for q do %>
+		<% voting_booth q %>
+		<%= link_to q.text, q %>
+		<%= add_to_list q %>
+		<%= tagger q %>
+		<%= tag_display q %>
+	<% end %>
+<% end %>
+<%= will_paginate @quotes %>

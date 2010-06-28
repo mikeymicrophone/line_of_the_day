@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_filter :require_user, :only => [:new, :create]
   def index
     @articles = Article.paginate :page => params[:page]
   end

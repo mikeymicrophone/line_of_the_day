@@ -4,4 +4,5 @@
 <%= link_to pluralize(@blog.posts.count, 'post'), blog_posts_path(@blog) %>
 <%= link_to 'fetch any updates', fetch_blog_path(@blog) %><br>
 <%= tag_display @blog %><br>
+<%= add_quote @blog %>
 <%= post_display @blog.posts.first unless @blog.posts.empty? %>

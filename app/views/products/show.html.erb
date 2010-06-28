@@ -2,7 +2,8 @@
 <%= link_to @product.company.name, @product.company if @product.company %><br>
 <%= link_to 'view on site', @product.url if @product.url.present? %><br>
 <%= @product.description %><br>
-<%= @product.price %>
+<%= @product.price %><br>
+<%= add_quote @product %>
 
 <% if current_user %>
 	<% form_remote_for @product.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>

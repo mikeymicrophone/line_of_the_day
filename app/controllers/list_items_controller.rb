@@ -51,6 +51,8 @@ class ListItemsController < ApplicationController
       ['Article', params[:article_id]]
     elsif params[:book_id]
       ['Book', params[:book_id]]
+    elsif params[:quote_id]
+      ['Quote', params[:quote_id]]
     end
     @list_item = ListItem.new params[:list_item]
     render :layout => false
