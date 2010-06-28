@@ -55,7 +55,7 @@ class ListItemsController < ApplicationController
   def create
     params[:list_item][:user] = current_user
     @list_item = ListItem.create params[:list_item]
-    redirect_to @list_item.list
+    render :template => 'list_items/close_box', :layout => false
   end
   
   def edit

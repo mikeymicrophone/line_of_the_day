@@ -1,8 +1,4 @@
-<%= javascript_include_tag :all %>
-<script type="text/javascript">
-Shadowbox.init();
-</script>
-<% form_remote_for @list_item, :complete => "Shadowbox.close();" do |f| %>
+<% form_for @list_item do |f| %>
 	<%= f.hidden_field :item_type %><%= f.hidden_field :item_id %>
 	<%= f.select :list_id, current_user.lists.map { |l| [l.name, l.id] }, :include_blank => 'new list' %>
 	<%= f.check_box :private %><%= f.label :private, 'private' %><br>
