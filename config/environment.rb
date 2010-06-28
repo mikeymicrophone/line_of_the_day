@@ -21,7 +21,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'authlogic'
   config.gem 'andand'
-  config.gem "josevalim-rails-footnotes",  :lib => "rails-footnotes", :source => "http://gems.github.com"
+  #config.gem "josevalim-rails-footnotes",  :lib => "rails-footnotes", :source => "http://gems.github.com"
   config.gem 'seamusabshere-scriptaculous_slider', :lib => 'scriptaculous_slider', :source => "http://gems.github.com"
   config.gem 'rack'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate'
