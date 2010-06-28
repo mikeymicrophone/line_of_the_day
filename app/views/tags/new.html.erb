@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :all %>
 <div class='tag_creation'>
 	<% form_remote_for @tag, :update => dom_id(@tag.target, 'subjects'), :loading => "$('new_tag').reset();" do |f| %>
 		<%= f.hidden_field :target_type %><%= f.hidden_field :target_id %>

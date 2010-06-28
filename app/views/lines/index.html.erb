@@ -15,13 +15,3 @@
 
   <%= will_paginate @public_lines if @public_lines %>
 </div>
-<%= link_to 'drop a line', new_line_path %>
-
-<div id='publishable-groups'></div>
-<i>choose which group(s) to publish to by clicking them!</i>
-<% current_user.andand.cliques.andand.each do |g| %>
-  <%= link_to_function g.name, "make_publishable(#{g.id});" %>
-<% end %>
-<div id='publications'></div>
-<%= render :partial => Comment.main %>
-<%= slider_stylesheet %>

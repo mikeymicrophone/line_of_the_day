@@ -21,11 +21,13 @@
 <%= yield %>
 </div>
 <div style="text-align:center" id='footer'>
-	<%= link_to image_tag('artists.png', :alt => 'artists'), artists_path %>
-	<%= link_to image_tag('companies.png', :alt => 'companies'), companies_path %>
-	<%= link_to image_tag('products.png', :alt => 'products'), products_path %>
-	<%= link_to image_tag('websites.png', :alt => 'websites'), websites_path %>
-	<br>
+	<% unless action_name == 'random' %>
+		<%= link_to image_tag('artists.png', :alt => 'artists'), artists_path %>
+		<%= link_to image_tag('companies.png', :alt => 'companies'), companies_path %>
+		<%= link_to image_tag('products.png', :alt => 'products'), products_path %>
+		<%= link_to image_tag('websites.png', :alt => 'websites'), websites_path %>
+		<br>
+	<% end %>
 	<%= link_to image_tag('random_line.png', :alt => 'random line'), random_lines_path %>
 	<%= link_to image_tag('terms.png', :alt => 'terms'), terms_path %>
 	<%= link_to image_tag('faq.png', :alt => 'faq'), faq_path %>

@@ -47,6 +47,8 @@ class ListItemsController < ApplicationController
       ['Company', params[:company_id]]
     elsif params[:product_id]
       ['Product', params[:product_id]]
+    elsif params[:article_id]
+      ['Article', params[:article_id]]
     end
     @list_item = ListItem.new params[:list_item]
     render :layout => false

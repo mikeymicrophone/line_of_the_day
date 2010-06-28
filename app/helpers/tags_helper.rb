@@ -1,8 +1,6 @@
 module TagsHelper
   def tagger target
-    link_to_remote('t', :url => new_tag_path(:tag => {:target_type => target.class.name, :target_id => target.id}), :update => dom_id(target, 'taggable_lists'), :html => {:title => 'tag'}) +
-		content_tag(:span, :id => dom_id(target, 'taggable_lists')) do
-	  end
+    link_to 't', new_tag_path(:tag => {:target_type => target.class.name, :target_id => target.id}), :title => 'tag', :rel => 'shadowbox;height=300;width=300'
   end
   
   def tag_display target
