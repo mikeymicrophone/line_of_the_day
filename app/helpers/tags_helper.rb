@@ -1,6 +1,6 @@
 module TagsHelper
   def tagger target
-    link_to 't', new_tag_path(:tag => {:target_type => target.class.name, :target_id => target.id}), :title => 'tag', :rel => 'shadowbox;height=300;width=300'
+    link_to 't', new_tag_path(:tag => {:target_type => target.class.name, :target_id => target.id}), :title => 'tag', :rel => 'shadowbox;height=300;width=300' if current_user
   end
   
   def tag_display target
