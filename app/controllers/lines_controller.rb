@@ -40,10 +40,10 @@ class LinesController < ApplicationController
   def inspect_content
     @line = Line.find params[:id]
     if @line
-      @comments = @line.comments
-      @tags = @line.tags
-      @ratings = @line.ratings
-      render :xml => @line.to_xml(:include => [:comments, :ratings, :tags])
+      # @comments = @line.comments
+      # @tags = @line.tags
+      # @ratings = @line.ratings
+      render :xml => @line.to_xml(:methods => [:average_rating, :rating_count, :tag_count, :recent_tags, :comment_count, :recent_comment])
     else
       render :nothing => true
     end

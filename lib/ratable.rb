@@ -10,4 +10,8 @@ module Ratable
   def printed_average_rating
     sprintf("%0.02f", average_rating) unless ratings.count == 0
   end
+  
+  def rating_count
+    ratings.count
+  end
 end
