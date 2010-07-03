@@ -43,7 +43,7 @@ class LinesController < ApplicationController
       @comments = @line.comments
       @tags = @line.tags
       @ratings = @line.ratings
-      render :xml => {'line' => @line.attributes.merge('comments' => @comments, 'tags' => @tags, 'ratings' => @ratings, 'comment_count' => @comments.count, 'tag_count' => @tags.count, 'average_rating' => @line.average_rating, 'rating_count' => @ratings.count)}
+      render :xml => @line.to_xml(:include => [:comments, :ratings, :tags])
     else
       render :nothing => true
     end
@@ -61,6 +61,15 @@ class LinesController < ApplicationController
       redirect_to lines_path unless @line.is_visible_to?(current_user)
     else
       redirect_to lines_path unless @line.public?
+      respond_to do |format|
+        format.html
+        format.xml { render :xml => (@line.to_xml :include => [:comments, :ratings, :tags]) # do |xml|
+        #           xml.comments @line.comments.map(&:attributes)
+        #           xml.tags @line.tags.to_xml
+        #           xml.ratings @line.ratings.to_xml
+        # end) 
+        }
+      end
     end
     
     # respond_to do |format|
