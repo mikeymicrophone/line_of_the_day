@@ -38,12 +38,10 @@ class LinesController < ApplicationController
   end
   
   def inspect_content
-    @line = Line.find params[:id]
-    if @line
-      # @comments = @line.comments
-      # @tags = @line.tags
-      # @ratings = @line.ratings
-      render :xml => @line.to_xml(:methods => [:average_rating, :rating_count, :tag_count, :recent_tags, :comment_count, :recent_comment])
+    klass = controller_name.classify.constantize
+    @content = klass.send(:find, params[:id])
+    if @content
+      render :xml => @content.to_xml(:methods => [:average_rating, :rating_count, :tag_count, :recent_tags, :comment_count, :recent_comment])
     else
       render :nothing => true
     end

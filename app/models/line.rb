@@ -1,10 +1,10 @@
 class Line < ActiveRecord::Base
   include Ratable
   include Taggable
+  include Commendable
   extend Random
   belongs_to :user
   validates_presence_of :phrasing
-  has_many :comments, :as => :target
   has_many :publications
   has_many :groups, :through => :publications
   has_many :approaches
@@ -12,14 +12,6 @@ class Line < ActiveRecord::Base
   named_scope :public, :conditions => {:public => true}, :order => 'created_at desc'
   named_scope :public_to, lambda { |artist| {:conditions => ['lines.public = ? or lines.user_id = ?', true, artist.id], :order => 'created_at desc' } }
   named_scope :novel_to, lambda { |artist| {:conditions => ['lines.user_id is not ?', artist.id], :order => 'created_at desc' } }
-  
-  def comment_count
-    comments.count
-  end
-  
-  def recent_comment
-    comments.last.andand.text
-  end
   
   def is_visible_to? usr
     if public?
