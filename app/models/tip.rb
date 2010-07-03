@@ -1,9 +1,9 @@
 class Tip < ActiveRecord::Base
   include Ratable
-  include Taggable  
+  include Taggable
+  include Commendable
   belongs_to :user
   has_many :goals, :as => :objective
-  has_many :comments, :as => :target
   
   extend Random
   named_scope :randomized, :order => db_random
