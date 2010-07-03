@@ -18,7 +18,7 @@ class Line < ActiveRecord::Base
   end
   
   def recent_comment
-    comments.last.text
+    comments.last.andand.text
   end
   
   def is_visible_to? usr
