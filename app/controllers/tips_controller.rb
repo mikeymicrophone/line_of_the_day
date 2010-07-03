@@ -1,5 +1,6 @@
 class TipsController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
+  include ExposedContent
   
   def index
     @tips = if params[:user_id]

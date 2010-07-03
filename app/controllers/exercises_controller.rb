@@ -1,4 +1,5 @@
 class ExercisesController < ApplicationController
+  include ExposedContent
   def index
     @exercises = Exercise.paginate :page => params[:page]
     

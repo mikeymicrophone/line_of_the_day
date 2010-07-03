@@ -19,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :affirmations, :has_many => [:list_items]
   
-  map.resources :tips, :has_many => [:goals, :list_items]
+  map.resources :tips, :has_many => [:goals, :list_items], :member => {:inspect_content => :get}
   
   map.resources :goals, :has_many => [:goal_ownerships, :list_items]
   
@@ -69,7 +69,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :questions, :has_many => [:list_items]
   
-  map.resources :exercises, :has_many => [:list_items, :goals]
+  map.resources :exercises, :has_many => [:list_items, :goals], :member => {:inspect_content => :get}
   
   map.resources :stories, :has_many => [:list_items]
 
