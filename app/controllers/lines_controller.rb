@@ -37,6 +37,18 @@ class LinesController < ApplicationController
     end
   end
   
+  def inspect_content
+    @line = Line.find params[:id]
+    if @line
+      @comments = @line.comments
+      @tags = @line.tags
+      @ratings = @line.ratings
+      render :xml => {'line' => @line.attributes.merge('comments' => @comments, 'tags' => @tags, 'ratings' => @ratings, 'comment_count' => @comments.count, 'tag_count' => @tags.count, 'average_rating' => @line.average_rating, 'rating_count' => @ratings.count)}
+    else
+      render :nothing => true
+    end
+  end
+  
   def mine
     @public_lines = current_user.andand.lines.paginate(:page => params[:page])
     render :action => :index
