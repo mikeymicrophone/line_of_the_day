@@ -1,5 +1,5 @@
 module Commendable
-  def self.included
+  def self.included base
     base.has_many :comments, :as => :target
   end
   
