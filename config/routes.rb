@@ -52,6 +52,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :blogs, :has_many => [:posts, :list_items], :member => {:fetch => :get}
   map.resources :posts, :has_one => [:blog], :has_many => [:list_items]
   
+  map.resources :newsletters
+  
   map.resources :lists, :has_many => [:list_items], :member => {:elevate => :put, :lower => :put, :tag => :get}
   map.resources :list_items, :has_one => [:list], :member => {:elevate => :put, :lower => :put}
 
