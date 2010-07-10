@@ -83,6 +83,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :websites, :has_many => [:list_items]
   
+  map.resources :feedbacks
+  
   map.about '/about', :controller => 'static', :action => 'about'
   map.terms '/terms', :controller => 'static', :action => 'terms'
   map.faq '/faq', :controller => 'static', :action => 'faq'
