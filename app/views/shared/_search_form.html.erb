@@ -1,3 +1,3 @@
-<% form_tag '/search' do %>
+<% form_tag '/search', :id => 'search' do %>
 	<%= text_field_tag :query %><%= submit_tag :search %>
 <% end %>
