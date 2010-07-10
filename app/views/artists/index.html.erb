@@ -10,6 +10,9 @@
 		<%= add_to_list a %>
 		<%= tagger a %>
 		<%= tag_display a %>
+		<% if current_user.andand.admin? %>
+		  [<%= link_to 'x', artist_path(a), :method => :delete, :title => 'delete' %>]
+		<% end %>
 	<% end %>
 <% end %>
 <%= will_paginate @artists %>

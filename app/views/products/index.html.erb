@@ -9,6 +9,9 @@
 		<%= add_to_list p %>
 		<%= tagger p %>
 		<%= tag_display p %>
+		<% if current_user.andand.admin?  %>
+		  [<%= link_to 'x', product_path(p), :method => :delete, :title => 'delete' %>]
+		<% end %>
 	<% end %>
 <% end %>
 <%= will_paginate @products %>

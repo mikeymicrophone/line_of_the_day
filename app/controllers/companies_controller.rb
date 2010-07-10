@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_filter :require_user, :only => [:new, :create]
   def index
     @companies = if params[:sort] == 'rating'
       Company.all.sort_by(&:average_rating).reverse

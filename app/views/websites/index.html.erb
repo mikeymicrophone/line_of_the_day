@@ -9,6 +9,9 @@
 	  <%= add_to_list w %>
 	  <%= tagger w %>
 	  <%= tag_display w %>
+	  <% if current_user.andand.admin? %>
+		  [<%= link_to 'x', website_path(w), :method => :delete, :title => 'delete' %>]
+		<% end %>
 	<% end %>
 <% end %>
 <%= will_paginate @websites %>

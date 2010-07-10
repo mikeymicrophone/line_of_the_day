@@ -1,4 +1,5 @@
 class WebsitesController < ApplicationController
+  before_filter :require_user, :only => [:new, :create]
   def index
     @websites = if params[:sort] == 'rating'
       Website.all.sort_by(&:average_rating).reverse
