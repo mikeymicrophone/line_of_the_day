@@ -25,7 +25,6 @@ Rails::Initializer.run do |config|
   config.gem 'seamusabshere-scriptaculous_slider', :lib => 'scriptaculous_slider', :source => "http://gems.github.com"
   config.gem 'rack'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate'
-  require 'mail'
   # config.gem 'mail'
   
   config.gem 'feedzirra'
