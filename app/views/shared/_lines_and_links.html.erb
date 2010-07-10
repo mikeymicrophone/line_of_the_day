@@ -4,6 +4,7 @@
     <%= f.submit "drop a line" %>
   <% end %>
 <% end %>
+<%= render :partial => 'shared/search_form' %>
 <div id="navigation">
 	<%= link_to image_tag('videos.png', :alt => 'videos'), videos_path %>
 	<%= link_to image_tag('affirmations.png', :alt => 'affirmations', :title => 'to psych up your confidence'), affirmations_path %>
