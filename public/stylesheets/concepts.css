@@ -2,10 +2,6 @@ h1.concept {
 	text-align: center;
 }
 
-.concept {
-	font-size: 1.4em;
+.concept.borderedbox {
 	border: 1px #CE041A solid;
-	-webkit-border-radius: 7px;
-	margin: 4px;
-	padding: 9px;
 }

@@ -1,4 +1,4 @@
-<% div_for concept do %>
+<% div_for concept, :class => 'borderedbox' do %>
 	<%= link_to concept.name, concept %>
 	<%= link_to concept.applied_tags.count, concept %>
 <% end %>

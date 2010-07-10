@@ -1,7 +1,3 @@
-.article {
-	font-size: 1.4em;
+.article.borderedbox {
 	border: 1px #7C20DA solid;
-	-webkit-border-radius: 7px;
-	margin: 4px;
-	padding: 9px;
 }

@@ -1,7 +1,4 @@
-.post {
-/*	font-size: 1.4em;*/
+.post.borderedbox {
 	border: 1px black solid;
-	-webkit-border-radius: 7px;
-	margin: 4px;
-	padding: 9px;
+	font-size: 1em;
 }

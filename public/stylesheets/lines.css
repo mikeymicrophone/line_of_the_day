@@ -4,12 +4,8 @@
 	font-family: Trebuchet MS;
 }
 
-.line {
-	font-size: 1.4em;
+.line.borderedbox {
 	border: 1px #75C3DA solid;
-	-webkit-border-radius: 7px;
-	margin: 4px;
-	padding: 9px;
 }
 
 #navigation {

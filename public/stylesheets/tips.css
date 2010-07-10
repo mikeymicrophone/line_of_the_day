@@ -1,9 +1,5 @@
-.tip {
-	font-size: 1.4em;
+.tip.borderedbox {
 	border: 1px #6E030C solid;
-	-webkit-border-radius: 7px;
-	margin: 4px;
-	padding: 9px;
 }
 
 .tip a {

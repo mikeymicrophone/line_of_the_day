@@ -29,3 +29,10 @@
 	float: left;
 	margin-left: 25px;
 }
+
+.borderedbox {
+	font-size: 1.4em;
+	-webkit-border-radius: 7px;
+	margin: 4px;
+	padding: 9px;
+}

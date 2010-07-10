@@ -1,7 +1,3 @@
-.quote {
-	font-size: 1.4em;
+.quote.borderedbox {
 	border: 1px #A0A19B solid;
-	-webkit-border-radius: 7px;
-	margin: 4px;
-	padding: 9px;
 }

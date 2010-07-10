@@ -2,10 +2,6 @@
 	text-align: center;
 }
 
-.question {
-	font-size: 1.4em;
+.question.borderedbox {
 	border: 1px #DA5D16 solid;
-	-webkit-border-radius: 7px;
-	margin: 4px;
-	padding: 9px;
 }

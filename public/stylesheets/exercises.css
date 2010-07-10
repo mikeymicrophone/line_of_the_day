@@ -2,10 +2,6 @@
 	text-align: center;
 }
 
-.exercise {
-	font-size: 1.4em;
+.exercise.borderedbox {
 	border: 1px #1D6D19 solid;
-	-webkit-border-radius: 7px;
-	margin: 4px;
-	padding: 9px;
 }

@@ -1,4 +1,4 @@
-<% div_for story do %>
+<% div_for story, :class => 'borderedbox' do %>
 	<%= voting_booth story %>
 	<%= link_to story.name, story %>
   <%= 'at ' + link_to(story.scene.name, story.scene) if story.scene %>
@@ -6,5 +6,5 @@
 	<% if current_user.andand.admin? || (current_user && story.user == current_user) %>
 	  [<%= link_to 'x', story_path(story), :method => :delete, :title => 'delete' %>]
 	<% end %><hr>
-	<%= story.telling %><hr>
+	<%= story.telling %>
 <% end %>

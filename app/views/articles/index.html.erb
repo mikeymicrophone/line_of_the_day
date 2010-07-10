@@ -1,11 +1,3 @@
-<% @articles.each do |a| %>
-	<% div_for a do %>
-	  <%= voting_booth a %>
-	  <%= link_to a.title, a %>
-	  <%= add_to_list a %>
-	  <%= tagger a %>
-	  <%= tag_display a %>
-	<% end %>
-<% end %>
+<%= render :partial => @articles %>
 <%= will_paginate @articles %>
 <%= link_to 'new article', new_article_path %>

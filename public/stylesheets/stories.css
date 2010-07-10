@@ -1,7 +1,3 @@
-.story {
-	font-size: 1.4em;
+.story.borderedbox {
 	border: 1px #011154 solid;
-	-webkit-border-radius: 7px;
-	margin: 4px;
-	padding: 9px;
 }

@@ -1,4 +1,4 @@
-<% div_for question do %>
+<% div_for question, :class => 'borderedbox' do %>
   <%= voting_booth question %>
 	<%= link_to question.name, question %>
 	<%= link_to question.comments.count, question %>
