@@ -8,6 +8,12 @@
 	right: 30px;
 }
 
+#invite {
+	position: absolute;
+	top: 0px;
+	right: 120px;
+}
+
 #profile {
 	position: absolute;
 	top: 30px;

@@ -85,6 +85,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :feedbacks
   
+  map.resources :invitations
+  
   map.search '/search', :controller => 'search', :action => 'index', :method => :post
   
   map.about '/about', :controller => 'static', :action => 'about'

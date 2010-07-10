@@ -22,6 +22,7 @@
     <%= link_to image_tag('logout.png', :alt => 'log out'), user_session_path, :method => :delete, :id => 'login' %>
 		<%= link_to current_user.username, current_user, :id => 'profile' %>
   <% end %>
+	<%= link_to image_tag('invite.png', :alt => 'invite'), new_invitation_path, :id => 'invite', :style => (current_user ? '' : 'top: 12px; right: 236px') %>
 	<%= link_to image_tag('newsletters.png', :alt => 'newsletters'), newsletters_path %>
 	<br>
 	<%= link_to image_tag('articles.png', :alt => 'articles'), articles_path %>
