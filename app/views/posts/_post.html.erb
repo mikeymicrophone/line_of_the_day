@@ -1,0 +1,16 @@
+<% div_for post do %>
+  <%= voting_booth post %>
+  <h2><%= link_to '.', post, :title => 'permalink' %> <%= link_to_function post.name, "$('#{dom_id(post, 'content')}').toggle();" %> <%= add_to_list post %> <%= tagger post %></h2>
+  <h3><%= link_to post.blog.name, post.blog %>, <%= post.posted_at.to_s(:short) %></h3>
+  <%= tag_display post %>
+	<% div_for post, 'content', :style => 'display:none' do %>
+	  <%= link_to 'view post on original site', post.url %><br>
+	  <%= post.content %>
+	  <div class='clearfix'></div>
+	  <%= voting_booth post %>
+	  <% if current_user %>
+		  <em class='average_rating'>rate the above post, <%= post.name %>:</em>
+	  <% end %>
+	  <div class='clearfix'></div>
+	<% end %>
+<% end %>

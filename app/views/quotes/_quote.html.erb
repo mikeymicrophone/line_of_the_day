@@ -1,0 +1,7 @@
+<% div_for quote do %>
+	<% voting_booth quote %>
+	<%= link_to quote.text, quote %>
+	<%= add_to_list quote %>
+	<%= tagger quote %>
+	<%= tag_display quote %>
+<% end %>

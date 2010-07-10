@@ -1,5 +1,11 @@
 <% div_for tip do %>
-  <%= voting_booth tip %>
+	<%= voting_booth tip %>
 	<%= link_to tip.advice, tip %>
 	<%= add_to_list tip %>
+	<%= link_to tip.comments.count, tip %>
+	<%= tagger tip %>
+	<%= tag_display tip %>
+	<% if current_user.andand.admin? %>
+	  [<%= link_to 'x', tip_path(tip), :method => :delete, :title => 'delete' %>]
+	<% end %>
 <% end %>

@@ -1,6 +1,2 @@
-<% @concepts.each do |c| %>
-  <% div_for c do %>
-		<%= link_to c.name, c %>
-	<% end %>
-<% end %>
+<% render :partial => @concepts %>
 <%= will_paginate @concepts %>
