@@ -1,10 +1,6 @@
-h1.concept {
-	text-align: center;
-}
-
-.concept {
+.story {
 	font-size: 1.4em;
-	border: 1px #CE041A solid;
+	border: 1px #011154 solid;
 	-webkit-border-radius: 7px;
 	margin: 4px;
 	padding: 9px;

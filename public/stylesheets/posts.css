@@ -1,0 +1,7 @@
+.post {
+/*	font-size: 1.4em;*/
+	border: 1px black solid;
+	-webkit-border-radius: 7px;
+	margin: 4px;
+	padding: 9px;
+}

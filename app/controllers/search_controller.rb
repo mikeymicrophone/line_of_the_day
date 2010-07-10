@@ -9,6 +9,6 @@ class SearchController < ApplicationController
     @questions = Question.find :all, :conditions => ["name like ?", query]
     @articles = Article.find :all, :conditions => ["title like ? or source like ?", query, query]
     @quotes = Quote.find :all, :conditions => ["text like ?", query]
-    @tags = Concept.find :all, :conditions => ["name like ?", query]
+    @concepts = Concept.find :all, :conditions => ["name like ?", query]
   end
 end

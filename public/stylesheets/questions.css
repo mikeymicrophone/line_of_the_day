@@ -1,3 +1,11 @@
 .new_question {
 	text-align: center;
 }
+
+.question {
+	font-size: 1.4em;
+	border: 1px #DA5D16 solid;
+	-webkit-border-radius: 7px;
+	margin: 4px;
+	padding: 9px;
+}

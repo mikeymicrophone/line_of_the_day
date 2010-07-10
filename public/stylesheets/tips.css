@@ -1,7 +1,9 @@
 .tip {
-	font-family: Trebuchet MS;
-	padding: 5px;
-	font-size: 16px;
+	font-size: 1.4em;
+	border: 1px #6E030C solid;
+	-webkit-border-radius: 7px;
+	margin: 4px;
+	padding: 9px;
 }
 
 .tip a {
