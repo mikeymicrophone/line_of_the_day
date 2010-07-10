@@ -19,10 +19,10 @@ class PublicationsController < ApplicationController
   end
 
   def new
-    @publication = Publication.new
+    @publication = Publication.new :line_id => params[:line_id]
 
     respond_to do |format|
-      format.html
+      format.html { render :layout => false }
       format.xml  { render :xml => @publication }
     end
   end
@@ -33,15 +33,12 @@ class PublicationsController < ApplicationController
 
   def create
     @publications = []
-    params[:publication] ||= {}
-    params[:publication][:line_id] = params[:line_id]
     params[:publication][:user] = current_user
-    @publications << Publication.create(params[:publication]) if params[:publication][:group_id] && !params[:group_ids] # for use of the form rather than the link
-    params[:group_ids].split(' ').each { |g| params[:publication][:group_id] = g; @publications << Publication.create(params[:publication]) }
+    params[:publication][:group_id].each { |g| @publications << Publication.create(params[:publication].merge(:group_id => g)) }
 
     respond_to do |format|
       if !@publications.empty?
-        format.html { render :partial => @publications }
+        format.html { render :partial => 'shared/close_box' }
         format.xml  { render :xml => @publications, :status => :created, :location => @publications }
       else
         format.html { render :action => 'new' }

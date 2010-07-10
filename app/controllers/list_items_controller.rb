@@ -61,7 +61,7 @@ class ListItemsController < ApplicationController
   def create
     params[:list_item][:user] = current_user
     @list_item = ListItem.create params[:list_item]
-    render :template => 'list_items/close_box', :layout => false
+    render :partial => 'shared/close_box'
   end
   
   def edit

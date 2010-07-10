@@ -8,4 +8,8 @@ module LinesHelper
       end
     end
   end
+  
+  def publish_link line
+    link_to 'publish', new_line_publication_path(line), :class => 'publication', :rel => 'shadowbox;height=240;width=200' if current_user && (line.user == current_user || line.repost?)
+  end
 end

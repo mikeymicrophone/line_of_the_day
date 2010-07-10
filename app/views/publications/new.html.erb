@@ -1,23 +1,16 @@
-<h1>got a line you're proud of? publish it to your people then.</h1>
-
 <% form_for(@publication) do |f| %>
-  <%= f.error_messages %>
-
+  <%= @publication.line.phrasing %>
   <p>
-    <%= f.label :text, 'your introduction or advice if any' %><br />
-    <%= f.text_area :text, :size => '40x3' %>
+    <%= f.label :text, 'your introduction or advice' %><br>
+    <%= f.text_area :text, :size => '20x3' %>
+  </p>
+    <%= f.hidden_field :line_id %>
+  <p>
+		<% current_user.cliques.each do |group| %>
+		  <%= check_box_tag 'publication[group_id][]', group.id, nil, {} %><%= f.label :group_id, group.name %><br>
+		<% end %>
   </p>
   <p>
-    <%= f.label :line_id %><br />
-    <%= f.select :line_id, current_user.lines.map { |l| [l.phrasing, l.id] } %>
-  </p>
-  <p>
-    <%= f.label :group_id %><br />
-    <%= f.select :group_id, current_user.cliques.map { |g| [g.name, g.id] } %>
-  </p>
-  <p>
-    <%= f.submit 'yep, share' %>
+    <%= f.submit 'share' %>
   </p>
 <% end %>
-
-<%= link_to 'other shouts', publications_path %>
