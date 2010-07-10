@@ -4,11 +4,11 @@ class StoriesController < ApplicationController
   
   def index
     @stories = if params[:sort] == 'random'
-      Story.randomized
+      Story.randomized.public_to(current_user)
     elsif params[:sort] == 'rating'
-      Story.all.sort_by { |s| s.average_rating }.reverse
+      Story.public_to(current_user).sort_by { |s| s.average_rating }.reverse
     else
-      Story
+      Story.public_to(current_user)
     end.paginate :page => params[:page]
   end
   

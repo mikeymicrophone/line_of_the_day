@@ -11,8 +11,8 @@ Your story can be either a funny or poignant story you would tell in a conversat
 	  <div style='float:left'>
 		  <%= f.text_field :name, :size => 68 %><br>
 			<%= f.text_area :telling, :size => '49x5' %><br>
-			<%= text_field_with_auto_complete :scene, :name %><%= label :scene, :name, 'where' %><br>
-			<%= f.datetime_select :occurred_at %>
+			<%= text_field_with_auto_complete :scene, :name %><%= label :scene, :name, 'where' %>&nbsp;&nbsp;<%= f.check_box :private %><%= f.label :private, 'private' %><br>
+			<%= f.datetime_select :occurred_at %><br>
 		</div>
 		<div style='float:left'>
 			<%= image_submit_tag 'tell.png' %>

@@ -15,7 +15,7 @@ class LinesController < ApplicationController
       if params[:sort] == 'rating'
         @lines.sort_by { |l| l.average_rating }.reverse
       elsif params[:sort] == 'recent'
-        @lines.recent#sort_by { |l| l.created_at }.reverse
+        @lines.recent
       else
         @lines.sort_by { |l| rand }
       end
@@ -52,19 +52,9 @@ class LinesController < ApplicationController
       redirect_to lines_path unless @line.public?
       respond_to do |format|
         format.html
-        format.xml { render :xml => (@line.to_xml :include => [:comments, :ratings, :tags]) # do |xml|
-        #           xml.comments @line.comments.map(&:attributes)
-        #           xml.tags @line.tags.to_xml
-        #           xml.ratings @line.ratings.to_xml
-        # end) 
-        }
+        format.xml { render :xml => (@line.to_xml :include => [:comments, :ratings, :tags]) }
       end
     end
-    
-    # respond_to do |format|
-    #   format.html
-    #   format.xml  { render :xml => @line }
-    # end
   end
 
   def new
@@ -98,10 +88,10 @@ class LinesController < ApplicationController
   end
 
   def update
-    @line = Line.find(params[:id])
+    @line = Line.find params[:id]
 
     respond_to do |format|
-      if @line.update_attributes(params[:line])
+      if @line.update_attributes params[:line]
         format.html { redirect_to @line }
         format.xml  { head :ok }
         format.js   { render :partial => 'publicize_link', :locals => {:line => @line} }
@@ -113,7 +103,7 @@ class LinesController < ApplicationController
   end
 
   def destroy
-    @line = Line.find(params[:id])
+    @line = Line.find params[:id]
     @line.destroy
 
     respond_to do |format|

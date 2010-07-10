@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100710161935) do
+ActiveRecord::Schema.define(:version => 20100710175630) do
 
   create_table "affirmations", :force => true do |t|
     t.text     "phrase"
@@ -308,6 +308,7 @@ ActiveRecord::Schema.define(:version => 20100710161935) do
     t.datetime "occurred_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "private"
   end
 
   create_table "tags", :force => true do |t|

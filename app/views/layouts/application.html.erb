@@ -2,38 +2,38 @@
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>the minimum is one a day......done yours yet?</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-	<%= javascript_include_tag 'shadowbox' %>
-	<script type="text/javascript">
-	Shadowbox.init();
-	</script>
-  <%= google_analytics %>
-</head>
-<body>
-<%= link_to image_tag('logo.png', :id => 'logo'), lines_path %>
-<%= render :partial => 'shared/lines_and_links', :locals => {:current_user => current_user} unless action_name == 'random' %>
-<p style="color: green"><%= flash[:notice] %></p>
-<div id="big_box">
-<%= yield %>
-</div>
-<div style="text-align:center" id='footer'>
-	<% unless action_name == 'random' %>
-		<%= link_to image_tag('artists.png', :alt => 'artists'), artists_path %>
-		<%= link_to image_tag('companies.png', :alt => 'companies'), companies_path %>
-		<%= link_to image_tag('products.png', :alt => 'products'), products_path %>
-		<%= link_to image_tag('websites.png', :alt => 'websites'), websites_path %>
-		<br>
-	<% end %>
-	<%= link_to image_tag('terms.png', :alt => 'terms'), terms_path %>
-	<%= link_to image_tag('faq.png', :alt => 'faq'), faq_path %>
-	<%= link_to image_tag('about.png', :alt => 'about'), about_path %>
-	<%= link_to image_tag('feedback.png', :alt => 'feedback'), new_feedback_path %>
-	<%= mail_to 'info@lineoftheday.com', image_tag('contact.png', :alt => 'contact'), :encode => 'javascript' %>
-	<br><%= link_to image_tag('random_line.png', :alt => 'random line'), random_lines_path %>
-</div>
-</body>
+	<head>
+	  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	  <title>the minimum is one a day......done yours yet?</title>
+	  <%= stylesheet_link_tag :all %>
+	  <%= javascript_include_tag :defaults %>
+		<%= javascript_include_tag 'shadowbox' %>
+		<script type="text/javascript">
+			Shadowbox.init();
+		</script>
+	  <%= google_analytics %>
+	</head>
+	<body>
+		<%= link_to image_tag('logo.png', :id => 'logo'), lines_path %>
+		<%= render :partial => 'shared/lines_and_links', :locals => {:current_user => current_user} unless action_name == 'random' %>
+		<p style="color: green"><%= flash[:notice] %></p>
+		<div id="big_box">
+		<%= yield %>
+		</div>
+		<div style="text-align:center" id='footer'>
+			<% unless action_name == 'random' %>
+				<%= link_to image_tag('artists.png', :alt => 'artists'), artists_path %>
+				<%= link_to image_tag('companies.png', :alt => 'companies'), companies_path %>
+				<%= link_to image_tag('products.png', :alt => 'products'), products_path %>
+				<%= link_to image_tag('websites.png', :alt => 'websites'), websites_path %>
+				<br>
+			<% end %>
+			<%= link_to image_tag('terms.png', :alt => 'terms'), terms_path %>
+			<%= link_to image_tag('faq.png', :alt => 'faq'), faq_path %>
+			<%= link_to image_tag('about.png', :alt => 'about'), about_path %>
+			<%= link_to image_tag('feedback.png', :alt => 'feedback'), new_feedback_path %>
+			<%= mail_to 'info@lineoftheday.com', image_tag('contact.png', :alt => 'contact'), :encode => 'javascript' %>
+			<br><%= link_to image_tag('random_line.png', :alt => 'random line'), random_lines_path %>
+		</div>
+	</body>
 </html>
