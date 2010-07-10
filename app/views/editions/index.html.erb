@@ -1,0 +1,5 @@
+<% @editions.each do |e| %>
+	<% div_for e do %>
+	  <%= link_to e.subject, e %>
+	<% end %>
+<% end %>

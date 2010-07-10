@@ -1,0 +1,7 @@
+<%= @newsletter.name %>
+<% @newsletter.editions.each do |e| %>
+	<% div_for e do %>
+	  <%= link_to e.subject, e %>
+	  <%= e.subject.to_s %>
+	<% end %>
+<% end %>
