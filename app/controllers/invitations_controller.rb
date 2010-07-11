@@ -10,4 +10,9 @@ class InvitationsController < ApplicationController
     end
     render :text => 'Thank you for inviting those people!'
   end
+  
+  def show
+    @invitation = Invitation.find params[:id]
+    redirect_to new_user_path(:user => {:email => @invitation.email})
+  end
 end
