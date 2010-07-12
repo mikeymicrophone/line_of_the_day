@@ -15,4 +15,5 @@
 	<% end %>
 <% end %>
 <%= will_paginate @blogs %>
-<%= link_to image_tag('add_blog.png'), new_blog_path %>
+<%= link_to image_tag('add_blog.png'), new_blog_path %><br>
+<%= link_to 'fetch any new posts (could take a while but you do not need to wait for it once you click it)', fetch_all_blogs_path %>

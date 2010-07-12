@@ -1,7 +1,7 @@
 <% div_for question, :class => 'borderedbox' do %>
   <%= voting_booth question %>
 	<%= link_to question.name, question %>
-	<%= link_to question.comments.count, question %>
+	<%= link_to pluralize(question.comments.count, 'comment'), question unless question.comments.count == 0 %>
 	<%= tagger question %>
 	<%= tag_display question %>
 	<%= add_to_list question %>

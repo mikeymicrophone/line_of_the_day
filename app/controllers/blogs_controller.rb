@@ -39,6 +39,13 @@ class BlogsController < ApplicationController
     redirect_to @blog
   end
   
+  def fetch_all
+    Blog.all.each do |b|
+      b.fetch_posts
+    end
+    redirect_to blogs_path
+  end
+  
   def destroy
     @blog = Blog.find params[:id]
     @blog.destroy
