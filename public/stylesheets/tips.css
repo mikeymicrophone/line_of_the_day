@@ -7,6 +7,10 @@
 	color: black;
 }
 
+.tip h2 {
+	text-align: center;
+}
+
 #new_tip {
 	text-align: center;
 }

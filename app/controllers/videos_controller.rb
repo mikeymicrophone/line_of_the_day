@@ -1,5 +1,7 @@
 class VideosController < ApplicationController
+  before_filter :require_user, :only => [:new, :create]
   def index
+    @videos = Video.paginate :page => params[:page]
   end
   
   def show
@@ -12,5 +14,6 @@ class VideosController < ApplicationController
   
   def create
     @video = Video.create params[:video]
+    render :action => 'show'
   end
 end

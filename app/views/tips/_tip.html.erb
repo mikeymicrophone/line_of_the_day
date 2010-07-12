@@ -2,7 +2,7 @@
 	<%= voting_booth tip %>
 	<%= link_to tip.advice, tip %>
 	<%= add_to_list tip %>
-	<%= link_to tip.comments.count, tip %>
+	<%= link_to pluralize(tip.comments.count, 'comment'), tip unless tip.comments.count == 0 %>
 	<%= tagger tip %>
 	<%= tag_display tip %>
 	<% if current_user.andand.admin? %>

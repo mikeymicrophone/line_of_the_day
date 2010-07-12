@@ -1,0 +1,5 @@
+<% form_for @video do |f| %>
+  <%= f.text_field :name %><%= f.label :name, 'name' %><br>
+	<%= f.text_field :embed %><%= f.label :embed, 'embed code' %><br>
+	<%= f.submit :submit %>
+<% end %>

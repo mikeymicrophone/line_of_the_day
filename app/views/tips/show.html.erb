@@ -1,11 +1,12 @@
 <% div_for @tip do %>
 	<%= link_to image_tag('goal.png', :alt => 'set a goal to follow this advice', :class => 'goal'), new_tip_goal_path(@tip) if current_user %>
-	<%= @tip.advice %>
+	<h2><%= @tip.advice %></h2>
 <% end %>
 <%= tagger @tip %>
 <%= tag_display @tip %>
 <div class='clearfix'></div>
-<%= link_to image_tag('top_rated.png'), {:sort => 'rating'}, :class => 'sort' %>
+<%= link_to image_tag('top_rated.png'), {:sort => 'rating'}, :class => 'sort' unless @tip.comments.count == 0%>
+<div class='clearfix'></div>
 <% if current_user %>
 	<% form_remote_for @tip.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>
 	  <%= f.text_area :text, :size => '35x4' %>
