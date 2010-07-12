@@ -1,5 +1,6 @@
 class TipsController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
+  skip_before_filter :verify_authenticity_token
   include ExposedContent
   
   def index
@@ -36,6 +37,8 @@ class TipsController < ApplicationController
   end
   
   def create
+    params[:tip] ||= {}
+    params[:tip][:advice] ||= params[:advice]
     params[:tip][:user] = current_user
     @tip = Tip.create params[:tip]
     respond_to do |format|
