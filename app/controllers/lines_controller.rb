@@ -1,5 +1,6 @@
 class LinesController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
+  skip_before_filter :verify_authenticity_token
   include ExposedContent
   
   def random
@@ -72,6 +73,8 @@ class LinesController < ApplicationController
   end
 
   def create
+    params[:line] ||= {}
+    params[:line][:phrasing] ||= params[:phrasing]
     params[:line][:user] = current_user
     @line = Line.new params[:line]
 
