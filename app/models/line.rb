@@ -33,6 +33,12 @@ class Line < ActiveRecord::Base
     phrasing
   end
   
+  def publicize
+    self.public = 1 unless user_id.present?
+  end
+  
+  before_create :publicize
+  
   def self.random
     first :order => db_random
   end

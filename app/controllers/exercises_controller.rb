@@ -1,4 +1,5 @@
 class ExercisesController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   include ExposedContent
   def index
     @exercises = Exercise.paginate :page => params[:page]
@@ -18,6 +19,8 @@ class ExercisesController < ApplicationController
   end
   
   def create
+    params[:exercise] ||= {}
+    params[:exercise][:description] ||= params[:description]
     params[:exercise][:user] = current_user
     @exercise = Exercise.create params[:exercise]
     respond_to do |format|
