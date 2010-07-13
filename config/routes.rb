@@ -58,6 +58,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :list_items, :has_one => [:list], :member => {:elevate => :put, :lower => :put}
 
   map.resource :user_session
+  map.resources :user_sessions
   map.resources :password_resets
   map.root :controller => 'lines'
   
