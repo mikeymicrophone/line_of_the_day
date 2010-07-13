@@ -59,6 +59,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :user_session
   map.resources :user_sessions
+  map.identify_user '/users/:username/identity', :controller => 'users', :action => 'identify'
+  
   map.resources :password_resets
   map.root :controller => 'lines'
   

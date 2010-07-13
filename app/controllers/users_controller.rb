@@ -71,4 +71,9 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def identify # for iphone users
+    @user = User.find_by_username params[:username]
+    render :text => @user.id
+  end
 end
