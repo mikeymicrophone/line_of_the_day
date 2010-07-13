@@ -1,3 +1,7 @@
+.goal.borderedbox {
+	border: 1px #235F73 solid;
+}
+
 #big_goals {
 	text-align: center;
 }

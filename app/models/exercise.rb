@@ -6,4 +6,8 @@ class Exercise < ActiveRecord::Base
   
   extend Random
   named_scope :randomized, :order => db_random
+  
+  def list_display
+    "Exercise: #{name}"
+  end
 end

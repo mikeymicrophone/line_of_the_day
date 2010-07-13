@@ -1,4 +1,6 @@
-<% div_for affirmation do %>
+<% div_for affirmation, :class => 'borderedbox' do %>
 	<%= link_to affirmation.phrase, affirmation %>
 	<%= add_to_list affirmation %>
+	<%= tagger affirmation %>
+	<%= tag_display affirmation %>
 <% end %>

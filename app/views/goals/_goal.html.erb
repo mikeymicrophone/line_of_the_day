@@ -1,0 +1,12 @@
+<% div_for goal, :class => 'borderedbox' do %>
+  <%= link_to goal.full_description, goal %>
+  <% if current_user.goals.include? goal %>
+    You are doing this.
+  <% else %>
+	  <%= link_to 'I will do this.', goal_ownerships_path(:goal_ownership => {:goal_id => goal.id}), :method => :post, :class => 'commit' %>
+	<% end %>
+  <%= goal.goal_ownerships.count %> <%= goal.goal_ownerships.count == 1 ? 'person has' : 'people have' %> done it.
+  <%= add_to_list goal %>
+  <%= tagger goal %>
+  <%= tag_display goal %>
+<% end %>

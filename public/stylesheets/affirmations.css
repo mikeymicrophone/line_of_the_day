@@ -1,8 +1,10 @@
+.affirmation.borderedbox {
+	border: 1px #FFF6D6 solid;
+}
+
 .affirmation {
-	font-family: Trebuchet MS;
 	font-weight: bold;
 	font-size: 18px;
-	padding: 5px;
 }
 
 .affirmation a {
