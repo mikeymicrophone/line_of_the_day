@@ -12,6 +12,6 @@ module Ratable
   end
   
   def rating_count
-    ratings.count
+    "#{ratings.count} ratings"
   end
 end

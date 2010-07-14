@@ -8,6 +8,6 @@ module Commendable
   end
   
   def comment_count
-    comments.count
+    "#{comments.count} comments"
   end
 end

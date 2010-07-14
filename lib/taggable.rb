@@ -9,6 +9,6 @@ module Taggable
   end
   
   def tag_count
-    tags.count
+    "#{tags.count} tags"
   end
 end
