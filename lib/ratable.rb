@@ -12,6 +12,6 @@ module Ratable
   end
   
   def rating_count
-    "#{ratings.count} ratings"
+    "#{ratings.count} ratings" + (ratings.count == 1 ? '' : 's')
   end
 end

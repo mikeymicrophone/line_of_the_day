@@ -8,6 +8,6 @@ module Commendable
   end
   
   def comment_count
-    "#{comments.count} comments"
+    "#{comments.count} comment" + (comments.count == 1 ? '' : 's')
   end
 end
