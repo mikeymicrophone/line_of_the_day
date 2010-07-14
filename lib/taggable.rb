@@ -9,6 +9,6 @@ module Taggable
   end
   
   def tag_count
-    "#{tags.count} tags" + (tags.count == 1 ? '' : 's')
+    "#{tags.count} tag" + (tags.count == 1 ? '' : 's')
   end
 end
