@@ -1,3 +1,15 @@
 <h2><%= @article.title %></h2>
 <%= add_quote @article %>
 <%= link_to 'view on page', @article.url %>
+
+<% if current_user %>
+	<% form_remote_for @article.comments.new, :update => 'comments', :position => 'top', :loading => "$('comment_text').clear();" do |f| %>
+	  <%= f.text_area :text, :size => '35x4' %>
+	  <%= f.hidden_field :target_id, :value => @article.id %>
+	  <%= f.hidden_field :target_type, :value => 'Article' %>
+	  <%= image_submit_tag 'weigh_in.png' %>
+	<% end %>
+<% end %>
+<div id='comments'>
+	<%= render :partial => @article.comments %>
+</div>
