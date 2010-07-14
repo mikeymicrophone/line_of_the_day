@@ -20,7 +20,7 @@ class ExercisesController < ApplicationController
   
   def create
     params[:exercise] ||= {}
-    params[:exercise][:description] ||= params[:description]
+    params[:exercise][:instruction] ||= params[:instruction]
     params[:exercise][:user] = current_user
     @exercise = Exercise.create params[:exercise]
     respond_to do |format|

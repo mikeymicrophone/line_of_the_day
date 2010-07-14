@@ -1,7 +1,7 @@
 <% div_for exercise, :class => 'borderedbox' do %>
   <%= voting_booth exercise %>
 	<%= link_to exercise.name, exercise %>
-	<%= exercise.description %>
+	<%= exercise.instruction %>
 	<%= add_to_list exercise %>
 	<%= tagger exercise %>
 	<%= tag_display exercise %>

@@ -3,7 +3,7 @@ class SearchController < ApplicationController
     query = "%#{params[:query]}%"
     @lines = Line.find :all, :conditions => ["phrasing like ?", query]
     @tips = Tip.find :all, :conditions => ["advice like ?", query]
-    @exercises = Exercise.find :all, :conditions => ["name like ? or description like ?", query, query]
+    @exercises = Exercise.find :all, :conditions => ["name like ? or instruction like ?", query, query]
     @stories = Story.find :all, :conditions => ["name like ? or telling like ?", query, query]
     @posts = Post.find :all, :conditions => ["name like ? or content like ?", query, query]
     @questions = Question.find :all, :conditions => ["name like ?", query]

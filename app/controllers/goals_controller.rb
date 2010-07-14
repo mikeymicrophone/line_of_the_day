@@ -6,7 +6,7 @@ class GoalsController < ApplicationController
     respond_to do |format|
       format.html
       format.xml do
-        render :xml => {:goals => User.first.goal_ownerships.map { |g| {:id => g.id, :description => g.describe, :progress => g.progress, :complete => g.complete }}}
+        render :xml => {:goals => User.first.goal_ownerships.map { |g| {:id => g.id, :derived_description => g.describe, :progress => g.progress, :complete => g.complete }}}
       end
     end
   end
