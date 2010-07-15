@@ -8,6 +8,10 @@ class Exercise < ActiveRecord::Base
   named_scope :randomized, :order => db_random
   
   def list_display
-    "Exercise: #{name}"
+    "Exercise: #{moniker}"
+  end
+  
+  def name
+    moniker
   end
 end

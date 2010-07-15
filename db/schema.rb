@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(:version => 20100714000225) do
   end
 
   create_table "exercises", :force => true do |t|
-    t.string   "name"
+    t.string   "moniker"
     t.text     "instruction"
     t.integer  "user_id"
     t.datetime "created_at"
