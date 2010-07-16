@@ -11,6 +11,11 @@ class GoalOwnershipsController < ApplicationController
     else
       GoalOwnership
     end.paginate :page => params[:page]
+    
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @goal_ownerships.to_xml(:methods => [:derived_description]) }
+    end
   end
   
   def show

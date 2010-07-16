@@ -2,13 +2,6 @@ class GoalsController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
   def index
     @goals = Goal.paginate :page => params[:page]
-    
-    respond_to do |format|
-      format.html
-      format.xml do
-        render :xml => {:goals => User.first.goal_ownerships.map { |g| {:id => g.id, :derived_description => g.describe, :progress => g.progress, :complete => g.complete }}}
-      end
-    end
   end
   
   def show

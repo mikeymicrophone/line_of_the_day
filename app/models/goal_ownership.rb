@@ -23,6 +23,8 @@ class GoalOwnership < ActiveRecord::Base
     goal.full_description
   end
   
+  alias :derived_description :describe
+  
   def total_repetitions
     if goal.objective_type == 'Affirmation'
       goal.repetitions.to_i * goal.days.to_i

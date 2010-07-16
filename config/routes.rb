@@ -33,7 +33,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :articles, :has_many => [:list_items]
 
-  map.resources :users, :has_many => [:lines, :tips, :affirmations, :groups, :memberships, :publications, :comments, :goal_ownerships, :lists, :nicknames, :ratings], :member => {:avatar => :get} do |user|
+  map.resources :users, :has_many => [:lines, :tips, :affirmations, :groups, :memberships, :publications, :comments, :goal_ownerships, :lists, :nicknames, :ratings, :goals], :member => {:avatar => :get} do |user|
     user.resources :students, :controller => 'guidances' do |student|
       student.resources :lines, :approaches, :results
     end
