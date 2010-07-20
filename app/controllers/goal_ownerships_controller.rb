@@ -14,7 +14,7 @@ class GoalOwnershipsController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.xml { render :xml => @goal_ownerships.to_xml(:methods => [:derived_description]) }
+      format.xml { render :xml => @goal_ownerships.to_xml(:methods => [:derived_description, :completion_status, :remaining_days_text]) }
     end
   end
   

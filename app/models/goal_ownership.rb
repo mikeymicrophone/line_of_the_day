@@ -11,6 +11,10 @@ class GoalOwnership < ActiveRecord::Base
     ((due_date - Time.now) / 1.day).to_i
   end
   
+  def remaining_days_text
+    "#{remaining_days} day#{'s' unless remaining_days == 1} left"
+  end
+  
   def current?
     due_date > Time.now
   end
@@ -38,7 +42,7 @@ class GoalOwnership < ActiveRecord::Base
       'completed'
     else
       if progress?
-        "#{progress.to_f * 100 / total_repetitions}% complete"
+        "#{progress * 100 / total_repetitions}% complete"
       else
         'no progress/progress unknown'
       end
