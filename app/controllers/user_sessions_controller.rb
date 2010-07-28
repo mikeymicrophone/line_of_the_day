@@ -9,9 +9,15 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      redirect_back_or_default lines_path
+      respond_to do |format|
+        format.html { redirect_back_or_default lines_path }
+        format.iphone { render :text => 'login successful' }
+      end
     else
-      render :action => :new
+      respond_to do |format|
+        format.html { render :action => :new }
+        format.iphone { render :text => 'login unsuccessful', :status => 401 }
+      end
     end
   end
   

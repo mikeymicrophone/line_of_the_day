@@ -25,6 +25,9 @@ class GoalOwnershipsController < ApplicationController
   def update
     @goal_ownership = GoalOwnership.find params[:id]
     @goal_ownership.update_attributes params[:goal_ownership]
-    redirect_to user_goal_ownerships_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to user_goal_ownerships_path(current_user) }
+      format.xml { render :text => 'progress updated' }
+    end
   end
 end
