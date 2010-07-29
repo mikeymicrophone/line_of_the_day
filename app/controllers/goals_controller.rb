@@ -27,13 +27,19 @@ class GoalsController < ApplicationController
   end
   
   def create
-    params[:goal][:user] = current_user
+    params[:goal][:user] = current_user unless request.format == Mime::XML
     @goal = Goal.create params[:goal]
     if params[:goal_ownership] == 'set'
       current_user.goal_ownerships.create :goal => @goal
       @set = true
     end
-    render :action => 'show'
+    respond_to do |format|
+      format.html { render :action => 'show' }
+      format.xml do
+        GoalOwnership.create(:goal => @goal, :user => @goal.user)
+        render :xml => @goal
+      end
+    end
   end
   
   def edit
