@@ -44,17 +44,29 @@ class CommentsController < ApplicationController
     @comment = Comment.new params[:comment]
 
     respond_to do |format|
-      if @comment.save
-        format.html { render :partial => @comment }
-        format.xml  { render :xml => @comment, :status => :created, :location => @comment }
-      else
-        format.html { if request.xhr?
-                        render :nothing => true
-                      else
-                        @lines = current_user.visible_lines.map { |l| [l.phrasing[0..100], l.id]}
-                        render :action => :new
-                      end }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+      format.js do
+        if @comment.save
+          render :partial => @comment
+        end
+      end
+      format.html do
+        if @comment.save
+          render :partial => @comment
+        else
+          if request.xhr?
+            render :nothing => true
+          else
+            @lines = current_user.visible_lines.map { |l| [l.phrasing[0..100], l.id]}
+            render :action => :new
+          end
+        end
+      end
+      format.xml do
+        if @comment.save
+          render :xml => @comment, :status => :created, :location => @comment
+        else
+          render :xml => @comment.errors, :status => :unprocessable_entity
+        end
       end
     end
   end

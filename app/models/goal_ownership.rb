@@ -37,6 +37,8 @@ class GoalOwnership < ActiveRecord::Base
     end
   end
   
+  alias :repetitions :total_repetitions
+  
   def completion_status
     if complete?
       'completed'

@@ -5,7 +5,7 @@ module Taggable
   end
   
   def recent_tags
-    tags.find(:all, :limit => 3, :order => 'created_at desc').map { |t| t.subject.name }.to_sentence
+    tags.find(:all, :order => 'created_at desc').map { |t| t.subject.name }.to_sentence
   end
   
   def tag_count
