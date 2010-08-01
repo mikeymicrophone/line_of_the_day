@@ -14,4 +14,6 @@ module Ratable
   def rating_count
     "#{ratings.count} rating" + (ratings.count == 1 ? '' : 's')
   end
+  
+  attr_accessor :my_rating
 end
