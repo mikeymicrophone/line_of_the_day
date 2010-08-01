@@ -13,7 +13,12 @@ class TagsController < ApplicationController
   end
   
   def create
-    params[:tag][:user] = current_user
+    if request.format == Mime::XML
+      params[:concept] = params[:tag].delete(:concept)
+    else
+      params[:tag][:user] = current_user
+    end
+
     @tags = []
     if params[:concept].present?
       params[:concept].split(',').each do |concept|
@@ -25,7 +30,11 @@ class TagsController < ApplicationController
       @tag = Tag.create params[:tag]
       @tags << @tag
     end
-    render :partial => 'tags/tag', :collection => @tags
+    respond_to do |format|
+      format.js { render :partial => 'tags/tag', :collection => @tags }
+      format.html { render @tags.first.subject }
+      format.xml { render :text => 'tags saved' }
+    end
   end
   
   def edit

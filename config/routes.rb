@@ -58,7 +58,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :list_items, :has_one => [:list], :member => {:elevate => :put, :lower => :put}
 
   map.resource :user_session
-  map.resources :user_sessions
+  map.resources :user_sessions, :collection => {:iphone_login => :get}
   map.identify_user '/users/:username/identity', :controller => 'users', :action => 'identify'
   
   map.resources :password_resets

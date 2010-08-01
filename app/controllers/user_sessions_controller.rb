@@ -6,6 +6,10 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new
   end
   
+  def iphone_login
+    create
+  end
+  
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save

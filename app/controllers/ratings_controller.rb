@@ -16,8 +16,12 @@ class RatingsController < ApplicationController
   end
   
   def create
-    params[:rating][:user] = current_user
-    @rating = Rating.find_by_target_type_and_target_id_and_user_id(params[:rating][:target_type], params[:rating][:target_id], current_user.id)
+    if request.format == Mime::XML
+      @rating = Rating.find_by_target_type_and_target_id_and_user_id(params[:rating][:target_type], params[:rating][:target_id], params[:rating][:user_id])     
+    else
+      params[:rating][:user] = current_user
+      @rating = Rating.find_by_target_type_and_target_id_and_user_id(params[:rating][:target_type], params[:rating][:target_id], current_user.id)      
+    end
     if @rating
       @rating.update_attribute :opinion, params[:rating][:opinion]
     else
