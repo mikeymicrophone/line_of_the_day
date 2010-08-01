@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :require_user, :except => [:index, :show]
+  before_filter :require_user, :except => [:index, :show, :create]
   def index
     @comments = if params[:membership_id]
       (@membership = Membership.find(params[:membership_id])).shared_thoughts
@@ -40,7 +40,10 @@ class CommentsController < ApplicationController
   end
 
   def create
-    params[:comment][:user] = current_user
+    if request.format == Mime::XML
+    else
+      params[:comment][:user] = current_user      
+    end
     @comment = Comment.new params[:comment]
 
     respond_to do |format|
