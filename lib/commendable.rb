@@ -4,7 +4,7 @@ module Commendable
   end
   
   def recent_comment
-    comments.randomized.all(:limit => 5).map(&:text).join("\n---------------------------------------------------\n")
+    comments.randomized.all(:limit => 5).map(&:text).join("\n------------------------------------------------\n")
   end
   
   def comment_count
