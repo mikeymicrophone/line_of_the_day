@@ -1,4 +1,7 @@
 <h1 class='concept'><%= @concept.name %></h1>
+<% if current_user.andand.admin? %>
+  <%= link_to 'edit', edit_concept_path(@concept) %><br>
+<% end %>
 <% @concept.applied_tags.map(&:target).each do |s| %>
   <% div_for s, :class => 'borderedbox' do %>
 		<%= link_to s.name, s %> <%= add_to_list s %> <%= tagger s %> <%= tag_display s %>

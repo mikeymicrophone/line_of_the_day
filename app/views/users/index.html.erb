@@ -2,4 +2,7 @@
 
 <% @users.each do |user| %>
   <%= link_to user.username, user, :class => 'pick-up-artist' %>
+	<% if current_user.andand.admin? %>
+	  [<%= link_to 'x', user_path(user), :method => :delete, :title => 'delete' %>]
+	<% end %>
 <% end %>
