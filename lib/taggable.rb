@@ -1,7 +1,7 @@
 module Taggable
   def self.included base
     base.has_many :tags, :as => :target, :dependent => :destroy
-    base.has_many :applied_tags, :as => :subject, :class_name => 'Tag'
+    base.has_many :applied_tags, :as => :subject, :class_name => 'Tag', :dependent => :destroy
   end
   
   def recent_tags
