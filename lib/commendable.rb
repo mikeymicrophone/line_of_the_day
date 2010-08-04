@@ -1,6 +1,6 @@
 module Commendable
   def self.included base
-    base.has_many :comments, :as => :target
+    base.has_many :comments, :as => :target, :dependent => :destroy
   end
   
   def recent_comment

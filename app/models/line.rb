@@ -5,9 +5,9 @@ class Line < ActiveRecord::Base
   extend Random
   belongs_to :user
   validates_presence_of :phrasing
-  has_many :publications
+  has_many :publications, :dependent => :destroy
   has_many :groups, :through => :publications
-  has_many :approaches
+  has_many :approaches, :dependent => :nullify
   has_many :goals, :as => :objective
   named_scope :public, :conditions => {:public => true}, :order => 'created_at desc'
   named_scope :public_to, lambda { |artist| {:conditions => ['lines.public = ? or lines.user_id = ?', true, artist.id], :order => 'created_at desc' } }

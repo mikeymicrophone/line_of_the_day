@@ -1,6 +1,6 @@
 module Ratable
   def self.included base
-    base.has_many :ratings, :as => :target
+    base.has_many :ratings, :as => :target, :dependent => :destroy
   end
   
   def average_rating
