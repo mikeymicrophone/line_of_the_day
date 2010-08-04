@@ -1,4 +1,7 @@
 <% div_for concept, :class => 'borderedbox' do %>
 	<%= link_to concept.name, concept %>
 	<%= link_to concept.applied_tags.count, concept %>
+	<% if current_user.andand.admin? %>
+	  [<%= link_to 'x', concept_path(concept), :method => :delete, :title => 'delete' %>]
+	<% end %>
 <% end %>
