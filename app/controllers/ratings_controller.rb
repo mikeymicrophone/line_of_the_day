@@ -1,10 +1,21 @@
 class RatingsController < ApplicationController
   def index
-    @ratings = if params[:user_id]
+    @ratings = if params[:line_id]
+      Line.find(params[:line_id]).ratings
+    elsif params[:tip_id]
+      Tip.find(params[:tip_id]).ratings
+    elsif params[:exercise_id]
+      Exercise.find(params[:exercise_id]).ratings
+    elsif params[:user_id]
       User.find(params[:user_id]).ratings
     else
       Rating
     end.paginate :page => params[:page], :order => 'created_at desc'
+    
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @ratings }
+    end
   end
   
   def show

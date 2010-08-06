@@ -19,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :affirmations, :has_many => [:list_items]
   
-  map.resources :tips, :has_many => [:goals, :list_items]
+  map.resources :tips, :has_many => [:goals, :list_items, :ratings, :comments]
   
   map.resources :goals, :has_many => [:goal_ownerships, :list_items]
   
@@ -47,7 +47,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :guidances
 
-  map.resources :lines, :has_one => [:user], :has_many => [:publications, :comments, :groups, :approaches, :goals, :list_items], :collection => {:mine => :get, :random => :get}
+  map.resources :lines, :has_one => [:user], :has_many => [:publications, :comments, :groups, :approaches, :goals, :list_items, :ratings], :collection => {:mine => :get, :random => :get}
 
   map.resources :blogs, :has_many => [:posts, :list_items], :member => {:fetch => :get}, :collection => {:fetch_all => :get}
   map.resources :posts, :has_one => [:blog], :has_many => [:list_items]
@@ -74,7 +74,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :questions, :has_many => [:list_items]
   
-  map.resources :exercises, :has_many => [:list_items, :goals]
+  map.resources :exercises, :has_many => [:list_items, :goals, :ratings, :comments]
   map.connect "/:controller/:id/inspect_content/:user_id", :action => 'inspect_content'
   
   map.resources :stories, :has_many => [:list_items]

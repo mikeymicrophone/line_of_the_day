@@ -5,6 +5,10 @@ class CommentsController < ApplicationController
       (@membership = Membership.find(params[:membership_id])).shared_thoughts
     elsif params[:line_id]
       (@line = Line.find(params[:line_id])).comments
+    elsif params[:tip_id]
+      (@tip = Tip.find(params[:tip_id])).comments
+    elsif params[:exercise_id]
+      (@exercise = Exercise.find(params[:exercise_id])).comments
     else
       Comment.all
     end
