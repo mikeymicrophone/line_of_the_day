@@ -5,6 +5,11 @@ class ConceptsController < ApplicationController
   
   def show
     @concept = Concept.find params[:id]
+    
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @concept }
+    end
   end
   
   def new
@@ -12,9 +17,13 @@ class ConceptsController < ApplicationController
   end
   
   def create
-    params[:concept][:user] = current_user
+    params[:concept][:user] = current_user unless request.format == Mime::XML
     @concept = Concept.create params[:concept]
-    render :action => 'show'
+    
+    respond_to do |format|
+      format.html { render :action => 'show' }
+      format.xml { render :xml => @concept }
+    end
   end
   
   def edit

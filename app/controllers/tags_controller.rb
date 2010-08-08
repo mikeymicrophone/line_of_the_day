@@ -1,6 +1,19 @@
 class TagsController < ApplicationController
   def index
-    @tags = Tag.paginate :page => params[:page]
+    @tags = if params[:line_id]
+      Line.find(params[:line_id]).tags
+    elsif params[:tip_id]
+      Tip.find(params[:tip_id]).tags
+    elsif params[:exercise_id]
+      Exercise.find(params[:exercise_id]).tags
+    else 
+      Tag.paginate :page => params[:page]
+    end
+
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @tags }
+    end
   end
   
   def show
