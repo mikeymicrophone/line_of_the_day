@@ -3,4 +3,7 @@
 	<%= add_to_list affirmation %>
 	<%= tagger affirmation %>
 	<%= tag_display affirmation %>
+	<% if current_user.andand.admin? %>
+	  <%= link_to 'x', affirmation_path(affirmation), :method => :delete %>
+	<% end %>
 <% end %>

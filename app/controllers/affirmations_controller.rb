@@ -46,6 +46,7 @@ class AffirmationsController < ApplicationController
   
   def destroy
     @affirmation = Affirmation.find params[:id]
+    @affirmation.destroy
     redirect_to affirmations_path
   end
 end
