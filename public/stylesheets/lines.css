@@ -13,12 +13,13 @@
 }
 
 #navigation a, #footer a {
-	-webkit-border-radius: 10px;
+	border-radius: 11px;
 	margin: 2px;
 	padding: 9px;
 	padding-top: 20px;
 	padding-bottom: 0px;
 	background-color: #fff;
+	border: 1px solid #C9C9C9;
 }
 
 .publication {

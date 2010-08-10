@@ -24,7 +24,7 @@
   <% end %>
 	<%= link_to image_tag('invite.png', :alt => 'invite'), new_invitation_path, :id => 'invite', :style => (current_user ? '' : 'top: 12px; right: 236px') %>
 	<%= link_to image_tag('newsletters.png', :alt => 'newsletters'), newsletters_path %>
-	<br>
+	<div class='spacer'></div>
 	<%= link_to image_tag('articles.png', :alt => 'articles'), articles_path %>
 	<%= link_to image_tag('nicknames.png', :alt => 'nicknames'), nicknames_path %>
 	<%= link_to image_tag('questions.png', :alt => 'questions'), questions_path %>
