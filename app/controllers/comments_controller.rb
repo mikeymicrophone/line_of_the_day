@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
   before_filter :require_user, :except => [:index, :show, :create]
   def index
-    @comments = if params[:membership_id]
+    @comments = if ([params[:line_id], params[:tip_id], params[:exercise_id]].include?("(null)"))
+      []
+    elsif params[:membership_id]
       (@membership = Membership.find(params[:membership_id])).shared_thoughts
     elsif params[:line_id]
       (@line = Line.find(params[:line_id])).comments
@@ -12,7 +14,6 @@ class CommentsController < ApplicationController
     else
       Comment.all
     end
-
     respond_to do |format|
       format.html
       format.xml  { render :xml => @comments }

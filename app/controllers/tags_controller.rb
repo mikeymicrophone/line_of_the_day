@@ -1,6 +1,8 @@
 class TagsController < ApplicationController
   def index
-    @tags = if params[:line_id]
+    @tags = if ([params[:line_id], params[:tip_id], params[:exercise_id]].include?("(null)"))
+      []
+    elsif params[:line_id]
       Line.find(params[:line_id]).tags
     elsif params[:tip_id]
       Tip.find(params[:tip_id]).tags
