@@ -26,15 +26,14 @@
 				<%= link_to image_tag('companies.png', :alt => 'companies'), companies_path %>
 				<%= link_to image_tag('products.png', :alt => 'products'), products_path %>
 				<%= link_to image_tag('websites.png', :alt => 'websites'), websites_path %>
-				<div class="spacer"></div>
+				<div class="spacer"></div><div class="spacer"></div><div class="spacer"></div>
 			<% end %>
-			<%= link_to image_tag('terms.png', :alt => 'terms'), terms_path %>
-			<%= link_to image_tag('faq.png', :alt => 'faq'), faq_path %>
-			<%= link_to image_tag('about.png', :alt => 'about'), about_path %>
-			<%= link_to image_tag('feedback.png', :alt => 'feedback'), new_feedback_path %>
-			<%= mail_to 'info@lineoftheday.com', image_tag('contact.png', :alt => 'contact'), :encode => 'javascript' %>
-			<div class="spacer"></div>
-			<%= link_to image_tag('random_line.png', :alt => 'random line'), random_lines_path %>
+			<%= link_to 'terms', terms_path, :class => 'info' %>
+			<%= link_to 'faq', faq_path, :class => 'info' %>
+			<%= link_to 'about', about_path, :class => 'info' %>
+			<%= link_to 'feedback', new_feedback_path, :class => 'info' %>
+			<%= mail_to 'info@lineoftheday.com', 'contact', :encode => 'javascript', :class => 'info' %>
+			<%= link_to 'random line', random_lines_path, :class => 'info' %>
 		</div>
 	</body>
 </html>
