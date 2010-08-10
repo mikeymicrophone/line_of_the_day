@@ -12,6 +12,15 @@
 	text-align: center;
 }
 
+#navigation a, #footer a {
+	-webkit-border-radius: 10px;
+	margin: 2px;
+	padding: 9px;
+	padding-top: 20px;
+	padding-bottom: 0px;
+	background-color: #fff;
+}
+
 .publication {
 	font-size: .79em;
 	color: #3E2999;
