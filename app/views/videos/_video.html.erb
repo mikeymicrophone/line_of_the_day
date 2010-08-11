@@ -1,4 +1,8 @@
 <% div_for video do %>
+	<%= voting_booth video %>
 	<h3><%= video.name %></h3>
 	<%= video.embed %>
+ 	<%= add_to_list video %>
+ 	<%= tagger video %>
+ 	<%= tag_display video %>
 <% end %>
