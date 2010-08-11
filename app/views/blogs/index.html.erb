@@ -1,19 +1,8 @@
 <div class='all_posts'>
 	<%= link_to image_tag('all_posts.png', :alt => 'see all posts together'), posts_path %>
 </div>
-<%= link_to image_tag('top_rated.png', :all => 'top rated'), {:sort => 'rating'}, :class => 'sort' %>
-<%= link_to image_tag('updated.png', :alt => 'recently updated'), {:sort => 'recent'}, :class => 'sort' %>
-<div class='clearfix'></div>
-<% @blogs.each do |blog| %>
-	<% div_for blog do %>
-	  <%= voting_booth blog %>
-		<%= link_to blog.name, blog %>
-		<%= tagger blog %>
-		<%= link_to pluralize(blog.posts.count, 'post'), blog_posts_path(blog) %>
-		<%= "updated: #{time_ago_in_words blog.recent_update} ago." if blog.recent_update %>
-		<%= add_to_list blog %>
-	<% end %>
-<% end %>
+<%= sort_buttons %>
+<%= render :partial => @blogs %>
 <%= will_paginate @blogs %>
 <%= link_to image_tag('add_blog.png'), new_blog_path %><br>
 <%= link_to 'fetch any new posts (could take a while but you do not need to wait for it once you click it)', fetch_all_blogs_path %>

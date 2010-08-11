@@ -1,7 +1,4 @@
-<%= link_to image_tag('top_rated.png'), {:sort => 'rating'}, :class => 'sort' %>
-<%= link_to image_tag('randomize.png'), {:sort => 'random'}, :class => 'sort' %>
-<div class='clearfix'></div>
-
+<%= sort_buttons %>
 <%= render :partial => @artists %>
 <%= will_paginate @artists %>
 <%= link_to 'add an artist', new_artist_path %>

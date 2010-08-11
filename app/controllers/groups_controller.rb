@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
       User.find(params[:user_id]).cliques
     else
       Group.all
-    end
+    end.paginate :page => params[:page]
 
     respond_to do |format|
       format.html

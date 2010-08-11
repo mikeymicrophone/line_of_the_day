@@ -1,6 +1,4 @@
-<%= link_to image_tag('top_rated.png', :alt => 'show top rated'), {:sort => 'rating'}, :class => 'sort' %>
-<%= link_to image_tag('randomize.png', :alt => 'randomize'), {:sort => 'random'}, :class => 'sort' %>
-<div class='clearfix'></div>
+<%= sort_buttons %>
 <div id='stories'>
 	<%= render :partial => @stories %>
 </div>
