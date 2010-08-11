@@ -2,18 +2,6 @@
 <%= link_to image_tag('randomize.png'), {:sort => 'random'}, :class => 'sort' %>
 <div class='clearfix'></div>
 
-"Artist" = conversation coach/blogger
-<% @artists.each do |a| %>
-  <% div_for a do %>
-	  <%= voting_booth a %>
-		<%= link_to a.preferred_name, a %>
-		<%= add_to_list a %>
-		<%= tagger a %>
-		<%= tag_display a %>
-		<% if current_user.andand.admin? %>
-		  [<%= link_to 'x', artist_path(a), :method => :delete, :title => 'delete' %>]
-		<% end %>
-	<% end %>
-<% end %>
+<%= render :partial => @artists %>
 <%= will_paginate @artists %>
 <%= link_to 'add an artist', new_artist_path %>

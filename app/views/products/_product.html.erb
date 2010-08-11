@@ -1,0 +1,10 @@
+<% div_for product, :class => 'borderedbox' do %>
+  <%= voting_booth product %>
+	<%= link_to product.name, product %>
+	<%= add_to_list product %>
+	<%= tagger product %>
+	<%= tag_display product %>
+	<% if current_user.andand.admin?  %>
+	  [<%= link_to 'x', product_path(product), :method => :delete, :title => 'delete' %>]
+	<% end %>
+<% end %>

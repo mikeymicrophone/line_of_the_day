@@ -2,9 +2,8 @@
 	text-align: center;
 }
 
-.nickname {
-	font-size: 20px;
-	padding: 4px;
+.nickname.borderedbox {
+	border: 1px #69010B solid;
 }
 
 #name_button {

@@ -3,6 +3,6 @@
 	color: #0B005B;
 }
 
-.list {
-	padding: 3px;
+.list.borderedbox {
+	border: 1px #110969 solid;
 }

@@ -1,4 +1,4 @@
-<% div_for nickname do %>
+<% div_for nickname, :class => 'borderedbox' do %>
   <%= link_to nickname.name, nickname %>
 	<% if current_user.andand.admin? %>
 	  [<%= link_to 'x', nickname_path(nickname), :method => :delete, :title => 'delete' %>]

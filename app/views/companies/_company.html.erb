@@ -1,0 +1,10 @@
+<% div_for company, :class => 'borderedbox' do %>
+	<%= voting_booth company %>
+	<%= link_to company.name, company %>
+	<%= add_to_list company %>
+	<%= tagger company %>
+	<%= tag_display company %>
+	<% if current_user.andand.admin? %>
+	  [<%= link_to 'x', company_path(company), :method => :delete, :title => 'delete' %>]
+	<% end %>
+<% end %>

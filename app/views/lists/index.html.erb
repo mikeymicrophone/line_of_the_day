@@ -5,27 +5,6 @@
 <%= link_to image_tag('updated.png', :alt => 'recently updated'), {:sort => 'recent'}, :class => 'sort' %>
 <%= link_to image_tag('randomize.png', :alt => 'randomized'), {:sort => 'random'}, :class => 'sort' %>
 <div class='clearfix'></div>
-<% @lists.each do |list| %>
-	<% div_for list do %>
-	  <%= voting_booth list %>
-	  <%= link_to list.name, list, :class => 'list_name' %>
-	  <%= add_to_list list %>
-	  <%= link_to pluralize(list.list_items.count, 'item'), list_list_items_path(list) %>
-	  updated: <%= time_ago_in_words list.recent_update(current_user) %> ago
-	  <%= tagger list %> <%= tag_display list %>
-		<% if list.user == current_user %>
-		  <% if list.private? %>
-		    <%= link_to 'o', list_path(list, :list => {:private => 0}), :method => :put, :title => 'make public' %>
-		  <% else %>
-				<%= link_to 'p', list_path(list, :list => {:private => 1}), :method => :put, :title => 'make private' %>
-		  <% end %>
-		<% end %>
-	  <% if current_user && current_user.andand.id == params[:user_id] %>
-	    <%= link_to 'up', elevate_list_path(list), :method => :put unless list.first? %> <%= link_to 'down', lower_list_path(list), :method => :put unless list.last? %>
-	  <% else %>
-		  <%#= link_to list.user.username, user_lists_path(list.user), :class => 'pick-up-artist' %>
-	  <% end %>
-	<% end %>
-<% end %>
+<%= render :partial => @lists %>
 <%= will_paginate @lists %>
 <%= link_to image_tag('make_list.png', :alt => 'make a list'), new_list_path %>

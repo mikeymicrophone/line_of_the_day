@@ -2,17 +2,6 @@
 <%= link_to image_tag('randomize.png'), {:sort => 'random'}, :class => 'sort' %>
 <div class='clearfix'></div>
 
-<% @companies.each do |c| %>
-	<% div_for c do %>
-		<%= voting_booth c %>
-		<%= link_to c.name, c %>
-		<%= add_to_list c %>
-		<%= tagger c %>
-		<%= tag_display c %>
-		<% if current_user.andand.admin? %>
-		  [<%= link_to 'x', company_path(c), :method => :delete, :title => 'delete' %>]
-		<% end %>
-	<% end %>
-<% end %>
+<%= render :partial => @companies %>
 <%= will_paginate @companies %>
 <%= link_to 'new company', new_company_path %>

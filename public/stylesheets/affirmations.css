@@ -15,3 +15,11 @@
 #new_affirmation {
 	text-align: center;
 }
+
+.affirmation_explanation {
+	text-align: center;
+	margin: 4px;
+	border: solid 1px #C9C9C9;
+	border-radius: 10px;
+	background-color: white;
+}

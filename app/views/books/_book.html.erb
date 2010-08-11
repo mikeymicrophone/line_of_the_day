@@ -1,0 +1,8 @@
+<% div_for book, :class => 'borderedbox' do %>
+  <%= voting_booth book %>
+  <%= link_to book.title, book %>
+  by <%= book.author %>
+  <%= add_to_list book %>
+  <%= tagger book %>
+  <%= tag_display book %>
+<% end %>

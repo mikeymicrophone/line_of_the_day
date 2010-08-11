@@ -1,0 +1,10 @@
+<% div_for artist, :class => 'borderedbox' do %>
+  <%= voting_booth artist %>
+	<%= link_to artist.preferred_name, artist %>
+	<%= add_to_list artist %>
+	<%= tagger artist %>
+	<%= tag_display artist %>
+	<% if current_user.andand.admin? %>
+	  [<%= link_to 'x', artist_path(artist), :method => :delete, :title => 'delete' %>]
+	<% end %>
+<% end %>

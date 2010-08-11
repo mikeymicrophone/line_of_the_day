@@ -2,17 +2,6 @@
 <%= link_to image_tag('randomize.png'), {:sort => 'random'}, :class => 'sort' %>
 <div class='clearfix'></div>
 
-<% @websites.each do |w| %>
-	<% div_for w do %>
-	  <%= voting_booth w %>
-	  <%= link_to w.name, w %>
-	  <%= add_to_list w %>
-	  <%= tagger w %>
-	  <%= tag_display w %>
-	  <% if current_user.andand.admin? %>
-		  [<%= link_to 'x', website_path(w), :method => :delete, :title => 'delete' %>]
-		<% end %>
-	<% end %>
-<% end %>
+<%= render :partial => @websites %>
 <%= will_paginate @websites %>
 <%= link_to 'new website', new_website_path %>
