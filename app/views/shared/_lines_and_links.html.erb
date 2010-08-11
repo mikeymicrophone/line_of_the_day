@@ -10,23 +10,25 @@
 <iframe src="http://www.facebook.com/plugins/likebox.php?id=139372379436714&amp;width=292&amp;connections=0&amp;stream=false&amp;header=false&amp;height=62" scrolling="no" frameborder="0" style="border:1px solid #C9C9C9; border-radius: 10px; background-color: #fff; overflow:hidden; width:292px; height:62px;" allowTransparency="true"></iframe>
 
 <div class='clearfix'></div>
+<% unless current_user %>
+  <%= link_to image_tag('login.png', :alt => 'log in / register'), new_user_session_path, :id => 'login', :class => 'borderedbox' %>
+<% else %>
+  <%= link_to image_tag('logout.png', :alt => 'log out'), user_session_path, :method => :delete, :id => 'login', :class => 'borderedbox' %>
+<% end %>
+<%= link_to image_tag('invite.png', :alt => 'invite'), new_invitation_path, :id => 'invite', :class => 'borderedbox', :style => (current_user ? '' : 'right: 240px') %>
+
 <div id="navigation">
 	<div class="spacer"></div>
 	<%= link_to image_tag('videos.png', :alt => 'videos'), videos_path %>
 	<%= link_to image_tag('affirmations.png', :alt => 'affirmations', :title => 'to psych up your confidence'), affirmations_path %>
 	<%= link_to image_tag('tips.png', :alt => 'tips'), tips_path %>
 	<%= link_to image_tag('lines.png', :alt => 'lines'), lines_path %>
-  <% unless current_user %>
-    <%= link_to image_tag('login.png', :alt => 'log in / register'), new_user_session_path, :id => 'login' %>
-  <% else %>
+  <% if current_user %>
     <%= link_to image_tag('groups.png', :alt => 'groups'), user_groups_path(current_user) %>
 		<%= link_to image_tag('goals.png', :alt => 'goals'), goals_path %>
 		<%= link_to image_tag('lists.png', :alt => 'lists'), lists_path %>
 		<%= link_to image_tag('blogs.png', :alt => 'blogs'), blogs_path %>
-    <%= link_to image_tag('logout.png', :alt => 'log out'), user_session_path, :method => :delete, :id => 'login' %>
-		<%= link_to current_user.username, current_user, :id => 'profile' %>
   <% end %>
-	<%= link_to image_tag('invite.png', :alt => 'invite'), new_invitation_path, :id => 'invite', :style => (current_user ? '' : 'top: 12px; right: 236px') %>
 	<%= link_to image_tag('newsletters.png', :alt => 'newsletters'), newsletters_path %>
 	<div class='spacer'></div>
 	<%= link_to image_tag('articles.png', :alt => 'articles'), articles_path %>

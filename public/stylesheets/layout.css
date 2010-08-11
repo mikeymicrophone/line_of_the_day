@@ -6,12 +6,13 @@
 	position: absolute;
 	top: 2px;
 	right: 30px;
+	margin: 1px;
 }
 
 #invite {
 	position: absolute;
 	top: 0px;
-	right: 120px;
+	right: 145px;
 }
 
 #profile {
@@ -21,10 +22,6 @@
 	font-family: Trebuchet MS;
 	text-decoration: none;
 	font-size: 17px;
-}
-
-#navigation #login:hover {
-	background-color: white;
 }
 
 .spacer {
