@@ -39,11 +39,12 @@ class TipsController < ApplicationController
   def create
     params[:tip] ||= {}
     params[:tip][:advice] ||= params[:advice]
-    params[:tip][:user] = current_user
+    params[:tip][:user] = current_user unless request.format == Mime::XML
     @tip = Tip.create params[:tip]
     respond_to do |format|
-      format.html { render :text => 'tag created' }
+      format.html { render :text => 'tip created' }
       format.js { render :partial => 'tips/tip', :object => @tip, :content_type => :html }
+      format.xml { render :xml => @tip, :status => :created, :location => @tip }
     end
   end
   

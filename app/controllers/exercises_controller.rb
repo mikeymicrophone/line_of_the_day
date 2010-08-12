@@ -21,11 +21,12 @@ class ExercisesController < ApplicationController
   def create
     params[:exercise] ||= {}
     params[:exercise][:instruction] ||= params[:instruction]
-    params[:exercise][:user] = current_user
+    params[:exercise][:user] = current_user unless request.format == Mime::XML
     @exercise = Exercise.create params[:exercise]
     respond_to do |format|
       format.js { render :partial => 'exercises/exercise', :object => @exercise, :content_type => :html}
       format.html { render :action => 'show' }
+      format.xml { render :xml => @exercise, :status => :created, :location => @exercise }
     end
   end
   

@@ -40,7 +40,11 @@ class RatingsController < ApplicationController
     else
       @rating = Rating.create params[:rating]
     end
-    render :nothing => true
+    respond_to do |format|
+      format.html { render :nothing => true }
+      format.js { render :nothing => true }
+      format.xml { render :xml => @rating, :status => :created, :location => @rating }
+    end
   end
   
   def edit
