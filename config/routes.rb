@@ -97,6 +97,7 @@ ActionController::Routing::Routes.draw do |map|
   map.terms '/terms', :controller => 'static', :action => 'terms'
   map.faq '/faq', :controller => 'static', :action => 'faq'
 
+  map.connect 'talktoher/:action', :controller => 'talktoher'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

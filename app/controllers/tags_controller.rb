@@ -48,7 +48,7 @@ class TagsController < ApplicationController
     respond_to do |format|
       format.js { render :partial => 'tags/tag', :collection => @tags }
       format.html { render @tags.first.subject }
-      format.xml { render :xml => @tags, :status => :created }
+      format.xml { render :xml => @tags.first, :status => :created }
     end
   end
   
