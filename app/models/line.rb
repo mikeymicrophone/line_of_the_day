@@ -34,7 +34,7 @@ class Line < ActiveRecord::Base
   end
   
   def publicize
-    self.public = 1 unless user_id.present?
+    self.public = 1
   end
   
   before_create :publicize
