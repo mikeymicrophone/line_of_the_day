@@ -3,6 +3,10 @@
 	left: 350px;
 }
 
+input#recaptcha_response_field { 
+	left: 0px;
+}
+
 #im_new {
 	margin-left: 80px;
 	margin-right: 80px;
