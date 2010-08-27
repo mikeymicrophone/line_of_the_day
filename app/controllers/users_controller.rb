@@ -34,10 +34,9 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [:show, :edit, :update]
   
   def create
-    if verify_recaptcha
-      @user = User.new(params[:user])
-    end
-    if @user.save
+    @user = User.new params[:user]
+    
+    if verify_recaptcha && @user.save
       flash[:notice] = 'Account registered! no way man! cool!'
       redirect_back_or_default lines_path
     else
