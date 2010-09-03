@@ -213,6 +213,7 @@ ActiveRecord::Schema.define(:version => 20100902233630) do
   create_table "locations", :force => true do |t|
     t.integer  "position_id"
     t.integer  "scene_id"
+    t.integer  "neighborhood_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

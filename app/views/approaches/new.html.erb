@@ -5,23 +5,19 @@
 <%# @approach.save %>
 <% form_for(@approach) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :context, 'etc' %><br />
-    <%= f.text_area :context, :size => '30x5' %>
-  </p>
-  <% if @approach.line %>
-    <%= f.hidden_field :line_id %>
-  <% else %>
-      <%= f.label :line_id, 'the line' %><br />
-      <%= text_field_with_auto_complete :line, :phrasing, :size => 90, :autocomplete => :off %>
-  <% end %>
   <% if @approach.scene %>
     <%= f.hidden_field :scene_id %>
   <% else %>
       <br>
       <%= f.label :scene_id, 'the scene' %><br />
-      <%= text_field_with_auto_complete :scene, :name %>
+      <%= text_field_with_auto_complete :scene, :name %><br>
+  <% end %>
+
+  <% if @approach.line %>
+    <%= f.hidden_field :line_id %>
+  <% else %>
+      <%= f.label :line_id, 'the line' %><br />
+      <%= text_field_with_auto_complete :line, :phrasing, :size => 90, :autocomplete => :off %>
   <% end %>
   <p>
     <%= f.label :hotness, 'hotness' %><br />
@@ -34,6 +30,11 @@
       <%= f.label :result_id, 'the result' %><br />
       <%= text_field_with_auto_complete :result, :name %>
   <% end %>
+  <p>
+    <%= f.label :context, 'etc' %><br />
+    <%= f.text_area :context, :size => '30x5' %>
+  </p>
+
   <p>
     <%= f.submit 'save' %>
   </p>

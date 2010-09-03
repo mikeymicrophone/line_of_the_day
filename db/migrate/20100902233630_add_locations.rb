@@ -3,6 +3,7 @@ class AddLocations < ActiveRecord::Migration
     create_table :locations do |t|
       t.integer :position_id
       t.integer :scene_id
+      t.integer :neighborhood_id
       t.integer :user_id
       t.timestamps
     end
