@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100804183938) do
+ActiveRecord::Schema.define(:version => 20100902233630) do
 
   create_table "affirmations", :force => true do |t|
     t.text     "phrase"
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(:version => 20100804183938) do
     t.datetime "updated_at"
   end
 
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.integer  "population"
+    t.integer  "state_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", :force => true do |t|
     t.text     "text"
     t.integer  "target_id"
@@ -87,6 +96,13 @@ ActiveRecord::Schema.define(:version => 20100804183938) do
   end
 
   create_table "concepts", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -194,6 +210,14 @@ ActiveRecord::Schema.define(:version => 20100804183938) do
     t.datetime "updated_at"
   end
 
+  create_table "locations", :force => true do |t|
+    t.integer  "position_id"
+    t.integer  "scene_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "memberships", :force => true do |t|
     t.integer  "group_id"
     t.integer  "user_id"
@@ -213,6 +237,14 @@ ActiveRecord::Schema.define(:version => 20100804183938) do
     t.datetime "updated_at"
   end
 
+  create_table "neighborhoods", :force => true do |t|
+    t.string   "name"
+    t.integer  "city_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "newsletters", :force => true do |t|
     t.string   "name"
     t.string   "sender_email"
@@ -222,6 +254,14 @@ ActiveRecord::Schema.define(:version => 20100804183938) do
 
   create_table "nicknames", :force => true do |t|
     t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "positions", :force => true do |t|
+    t.decimal  "latitude",   :precision => 15, :scale => 10
+    t.decimal  "longitude",  :precision => 15, :scale => 10
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -308,6 +348,14 @@ ActiveRecord::Schema.define(:version => 20100804183938) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "states", :force => true do |t|
+    t.string   "name"
+    t.integer  "country_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "stories", :force => true do |t|
     t.string   "name"
