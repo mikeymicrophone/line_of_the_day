@@ -1,0 +1,5 @@
+<% @neighborhoods.each do |n| %>
+	<% div_for n do %>
+	  <%= link_to n.name, n %>
+	<% end %>
+<% end %>

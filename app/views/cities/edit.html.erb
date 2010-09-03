@@ -1,0 +1,5 @@
+<% form_for @city do |f| %>
+	<%= f.text_field :name %><br>
+	<%= f.select :state, States.all.map { |s| [s.name, s.id] } %><br>
+	<%= f.submit %>
+<% end %>

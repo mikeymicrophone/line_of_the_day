@@ -1,0 +1,5 @@
+<% @countries.each do |c| %>
+	<% div_for c do %>
+		<%= link_to c, c.name %>
+	<% end %>
+<% end %>
