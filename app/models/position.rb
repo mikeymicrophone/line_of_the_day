@@ -1,4 +1,4 @@
-class Position < ActiceRecord::Base
+class Position < ActiveRecord::Base
   has_many :locations
   belongs_to :user
   

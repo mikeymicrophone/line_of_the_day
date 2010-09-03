@@ -91,6 +91,13 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :invitations
   
+  map.resources :countries
+  map.resources :states
+  map.resources :cities
+  map.resources :neighborhoods
+  map.resources :positions
+  map.resources :locations
+  
   map.search '/search', :controller => 'search', :action => 'index', :method => :post
   
   map.about '/about', :controller => 'static', :action => 'about'
