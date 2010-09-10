@@ -1,7 +1,7 @@
 <div id='draggable_lists'>
 	<% current_user.lists.each do |list| %>
 	  <% div_for list, :class => 'borderedbox' do %>
-			<%= link_to_function list.name, "$('#{dom_id(list, 'items')}').toggle()", :class => 'list_toggle' %>
+			<%= link_to_function list.name, "Effect.toggle($('#{dom_id(list, 'items')}'), 'slide')", :class => 'list_toggle' %>
 			<% div_for list, 'items' do %>
 			  <%= render :partial => 'shared/list_items', :locals => {:list_items => list.list_items} %>
 			<% end %>
