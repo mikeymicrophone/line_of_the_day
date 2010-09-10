@@ -11,6 +11,11 @@ class ListItemsController < ApplicationController
     else
       ListItem
     end.paginate :page => params[:page]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => 'shared/list_items' }
+    end
   end
   
   def show
