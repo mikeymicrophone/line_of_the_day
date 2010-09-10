@@ -19,7 +19,7 @@
 <% end %>
 <div class='clearfix'></div>
 <script type='text/javascript'>
-	new Draggable('line_' + <%= line.id %>, {scroll: window});
+	new Draggable('line_' + <%= line.id %>, {revert: true, scroll: window});
 
   Droppables.add('line_' + <%= line.id %>, {
 	  hoverclass: 'tagging',
