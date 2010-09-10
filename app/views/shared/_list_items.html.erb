@@ -3,6 +3,6 @@
 	  <%= item.item.name %>
   <% end %>
   <script type='text/javascript'>
-		new Draggable(<%= dom_id(item.item) %>, {revert: true});
+		new Draggable(<%= dom_id(item.item) %>, {revert: true, scroll: window});
   </script>
 <% end %>
