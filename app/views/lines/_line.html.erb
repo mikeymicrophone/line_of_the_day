@@ -18,3 +18,10 @@
   <span class='left', id='<%= dom_id(line, 'publicize') %>'><%= publicize_link line %></span>
 <% end %>
 <div class='clearfix'></div>
+<script type='text/javascript'>
+  Droppables.add('line_' + <%= line.id %>, {
+		onDrop: function(dragged, dropped, event) {
+			new Ajax.Request('/tags?tag[target_type]=Line&tag[target_id]=' + <%= line.id %> + '&tag[subject_type]=' + dragged.className.split(' ')[0].capitalize() + '&tag[subject_id]=' + dragged.id.split('_')[1]);
+		}
+	});
+</script>

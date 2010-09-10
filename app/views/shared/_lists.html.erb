@@ -1,8 +1,9 @@
 <div id='draggable_lists'>
 	<% current_user.lists.each do |list| %>
 	  <% div_for list, :class => 'borderedbox' do %>
-			<%= link_to_remote list.name, :url => list_list_items_path(list), :update => dom_id(list, 'items'), :method => :get %>
+			<%= list.name %>
 			<% div_for list, 'items' do %>
+			  <%= render :partial => 'shared/list_items', :locals => {:list_items => list.list_items} %>
 			<% end %>
 		<% end %>
 	<% end %>

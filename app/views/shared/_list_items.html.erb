@@ -1,5 +1,9 @@
 <% list_items.each do |item| %>
-  <% div_for item, :class => 'borderedbox' do %>
+  <% div_for item.item do %>
 	  <%= item.item.name %>
   <% end %>
+  <script type='text/javascript'>
+	  Element.extend(<%= dom_id(item.item) %>);
+		new Draggable(<%= dom_id(item.item) %>, {});
+  </script>
 <% end %>
