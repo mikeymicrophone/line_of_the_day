@@ -18,10 +18,14 @@
 		<%= render :partial => 'shared/lines_and_links', :locals => {:current_user => current_user} unless action_name == 'random' %>
 		<p style="color: green"><%= flash[:notice] %></p>
 		<div id="big_box">
-			<%= render :partial => 'shared/lists' %>
-			<div style="float:left; width:60%">
-				<%= yield %>
-			</div>
+			<% if current_user %>
+				<%= render :partial => 'shared/lists' %>
+				<div style="float:left; width:60%">
+			<% end %>
+			<%= yield %>
+			<% if current_user %>
+				</div>
+			<% end %>
 			<div class='clearfix'></div>
 		</div>
 		<div style="text-align:center" id='footer'>

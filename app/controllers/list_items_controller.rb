@@ -96,8 +96,9 @@ class ListItemsController < ApplicationController
   
   def destroy
     @list_item = ListItem.find params[:id]
+    @list = @list_item.list
     # do I need to call #remove_from_list
     @list_item.destroy
-    redirect_to list_items_path
+    redirect_to list_list_items_path(@list)
   end
 end

@@ -15,4 +15,11 @@
 		  });
 		</script>
 	<% end %>
+	
+	<div class='borderedbox' id='listmaker' style='text-align:center'>
+		<% form_remote_for List.new, :update => 'listmaker', :position => :before, :loading => "$('new_list').reset();" do |f| %>
+			<%= f.text_field :name %>
+			<%= f.submit 'new list' %>
+		<% end %>
+	</div>
 </div>

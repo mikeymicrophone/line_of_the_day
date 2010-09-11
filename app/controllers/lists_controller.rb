@@ -39,7 +39,10 @@ class ListsController < ApplicationController
   def create
     params[:list][:user] = current_user
     @list = List.create params[:list]
-    redirect_to @list
+    respond_to do |format|
+      format.html { redirect_to @list }
+      format.js { render :partial => 'new_list', :locals => {:list => @list} }
+    end
   end
   
   def edit
