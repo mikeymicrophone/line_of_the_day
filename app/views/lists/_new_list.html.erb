@@ -1,10 +1,11 @@
-<% div_for list, :class => 'borderedbox' do %>
+<% div_for list, :class => 'borderedbox', :style => 'display:none;' do %>
 	<%= link_to_function list.name, "Effect.toggle($('#{dom_id(list, 'items')}'), 'slide')", :class => 'list_toggle' %>
 	<% div_for list, 'items' do %>
 	  <%= render :partial => 'shared/list_items', :locals => {:list_items => list.list_items} %>
 	<% end %>
 <% end %>
 <script type='text/javascript'>
+  new Effect.Appear('<%= dom_id(list) %>');
   Droppables.add('<%= dom_id(list) %>', {
 		hoverclass: 'this_list',
 		onDrop: function(dragged, dropped, event) {
