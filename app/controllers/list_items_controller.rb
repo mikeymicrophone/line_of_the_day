@@ -70,7 +70,7 @@ class ListItemsController < ApplicationController
     params[:list_item][:list_id] ||= params[:list_id]
     @list_item = ListItem.create params[:list_item]
     if @list_item.valid?
-      render :partial => 'shared/list_items', :locals => {:list_items => [@list_item]}
+      render :partial => 'shared/list_items', :locals => {:list_items => [@list_item], :list => @list_item.list}
     else
       render :nothing => true
     end

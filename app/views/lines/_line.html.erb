@@ -24,7 +24,7 @@
   Droppables.add('line_' + <%= line.id %>, {
 	  hoverclass: 'tagging',
 		onDrop: function(dragged, dropped, event) {
-			new Ajax.Request('/tags?tag[target_type]=Line&tag[target_id]=' + <%= line.id %> + '&tag[subject_type]=' + dragged.className.split(' ')[0].capitalize() + '&tag[subject_id]=' + dragged.id.split('_')[1]);
+			new Ajax.Request('/tags?tag[target_type]=Line&tag[target_id]=' + <%= line.id %> + '&tag[subject_type]=' + dragged.className.split(' ')[0].capitalize() + '&tag[subject_id]=' + dragged.id.split('_')[dragged.id.split('_').length - 1]);
 		}
 	});
 </script>

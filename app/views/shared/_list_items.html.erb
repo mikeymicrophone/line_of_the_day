@@ -1,9 +1,9 @@
 <% list_items.each do |item| %>
   <hr>
-  <% div_for item.item do %>
+  <% div_for item.item, dom_id(list) do %>
 	  <%= item.item.name %>
   <% end %>
   <script type='text/javascript'>
-		new Draggable(<%= dom_id(item.item) %>, {revert: true, scroll: window});
+		new Draggable(<%= dom_id(item.item, dom_id(list)) %>, {revert: true, scroll: window});
   </script>
 <% end %>
