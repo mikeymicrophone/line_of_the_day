@@ -10,7 +10,10 @@
 		  Droppables.add('<%= dom_id(list) %>', {
 				hoverclass: 'this_list',
 				onDrop: function(dragged, dropped, event) {
-					new Ajax.Request('lists/<%= list.id %>/list_items?list_item[item_type]=' + dragged.className.split(' ')[0].capitalize() + '&list_item[item_id]=' + dragged.id.split('_')[1]);
+					new Ajax.Updater('<%= dom_id(list) %>', 'lists/<%= list.id %>/list_items?list_item[item_type]=' + dragged.className.split(' ')[0].capitalize() + '&list_item[item_id]=' + dragged.id.split('_')[1], {
+						insertion: 'bottom',
+						evalScripts: true
+					});
 				}
 		  });
 		</script>
