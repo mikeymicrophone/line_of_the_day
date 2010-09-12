@@ -6,9 +6,7 @@ module TagsHelper
   end
   
   def tag_display target
-    unless target.tags.empty?
-      link_to_remote pluralize(target.tags.count, 'tag'), :url => tags_path(:target_type => target.class.name, :target_id => target.id), :id => dom_id(target, 'tag_count'), :update => dom_id(target, 'tags'), :method => :get, :complete => visual_effect(:toggle_slide, dom_id(target, 'tags'))
-    end
+    link_to_remote pluralize(target.tags.count, 'tag'), :url => tags_path(:target_type => target.class.name, :target_id => target.id), :html => {:id => dom_id(target, 'tag_count')}, :update => dom_id(target, 'tags'), :method => :get, :complete => visual_effect(:toggle_slide, dom_id(target, 'tags'))
   end
   
   def display_tag tag

@@ -38,6 +38,7 @@
 	  hoverclass: 'tagging',
 		onDrop: function(dragged, dropped, event) {
 			new Ajax.Request('/tags?tag[target_type]=Line&tag[target_id]=' + <%= line.id %> + '&tag[subject_type]=' + dragged.className.split(' ')[0].capitalize() + '&tag[subject_id]=' + dragged.id.split('_')[dragged.id.split('_').length - 1]);
+			$('<%= dom_id(line, 'tag_count') %>').innerHTML = $('<%= dom_id(line, 'tag_count') %>').innerHTML.gsub(/(\d+)/, function(match) {return match[1]*1 + 1});
 		}
 	});
 </script>
