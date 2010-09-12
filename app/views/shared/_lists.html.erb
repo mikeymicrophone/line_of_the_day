@@ -6,7 +6,7 @@
 			  <%= render :partial => 'shared/list_items', :locals => {:list_items => list.list_items, :list => list} %>
 			<% end %>
 		<% end %>
-		<script type='text/javascript'>
+		<!-- <script type='text/javascript'>
 		  Droppables.add('<%= dom_id(list) %>', {
 				hoverclass: 'this_list',
 				onDrop: function(dragged, dropped, event) {
@@ -16,7 +16,7 @@
 					});
 				}
 		  });
-		</script>
+		</script> -->
 	<% end %>
 	
 	<div class='borderedbox' id='listmaker' style='text-align:center'>
@@ -26,3 +26,4 @@
 		<% end %>
 	</div>
 </div>
+<%= sortable_element 'draggable_lists', :tag => :div, :url => sort_lists_path %>

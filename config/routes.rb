@@ -54,7 +54,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :newsletters
   
-  map.resources :lists, :has_many => [:list_items], :member => {:elevate => :put, :lower => :put, :tag => :get}
+  map.resources :lists, :has_many => [:list_items], :member => {:elevate => :put, :lower => :put, :tag => :get}, :collection => {:sort => :post}
   map.resources :list_items, :has_one => [:list], :member => {:elevate => :put, :lower => :put}
 
   map.resource :user_session

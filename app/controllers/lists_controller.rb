@@ -68,6 +68,13 @@ class ListsController < ApplicationController
     redirect_to user_lists_path(current_user)
   end
   
+  def sort  
+    params[:draggable_lists].each_with_index do |id, index|  
+      List.update_all(['position=?', index+1], ['id=?', id])  
+    end  
+    render :nothing => true  
+  end
+  
   def destroy
     @list = List.find params[:id]
     @list.destroy
