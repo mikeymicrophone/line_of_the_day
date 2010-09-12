@@ -12,7 +12,7 @@
 }
 
 div.this_list.list.borderedbox {
-	border-width: 3px;
+	border-color: red;
 }
 
 a.list_toggle {

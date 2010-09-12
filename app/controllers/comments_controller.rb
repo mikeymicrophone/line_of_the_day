@@ -15,7 +15,8 @@ class CommentsController < ApplicationController
       Comment.all
     end
     respond_to do |format|
-      format.html
+      format.js { render :partial => @comments }
+      format.html { render :partial => @comments }
       format.xml  { render :xml => @comments }
     end
   end

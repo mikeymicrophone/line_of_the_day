@@ -8,11 +8,14 @@ class TagsController < ApplicationController
       Tip.find(params[:tip_id]).tags
     elsif params[:exercise_id]
       Exercise.find(params[:exercise_id]).tags
+    elsif params[:target_type]
+      params[:target_type].constantize.send(:find, params[:target_id]).tags
     else 
       Tag.paginate :page => params[:page]
     end
 
     respond_to do |format|
+      format.js { render :partial => @tags }
       format.html
       format.xml { render :xml => @tags }
     end
@@ -46,7 +49,7 @@ class TagsController < ApplicationController
       @tags << @tag
     end
     respond_to do |format|
-      format.js { render :partial => 'tags/tag', :collection => @tags }
+      format.js { render :text => "#{@tags.first.target.tags.count} tag" + (@tags.first.target.tags.count == 1 ? '' : 's') }
       format.html { render @tags.first.subject }
       format.xml { render :xml => @tags.first, :status => :created }
     end

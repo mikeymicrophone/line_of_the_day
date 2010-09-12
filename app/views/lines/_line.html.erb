@@ -2,10 +2,8 @@
 	<%= voting_booth line %>
   <span class='left'>
 		<%= link_to h(line.phrasing), line %>
-		<%='[' + link_to(line.comments.count, line_path(line), :title => 'comments on this line') + ']' if line.comments.present? %>
-		<%= '[' + link_to(line.approaches.count, line_approaches_path(line), :title => 'number of times this line has been used') + ']' if line.approaches.present? %>
-		<%= add_to_list line %>
-		<%= tagger line %>
+		<%= link_to_remote pluralize(line.comments.count, 'comment'), :url => line_comments_path(line), :title => 'comments', :method => :get, :update => dom_id(line, 'comments') %>
+		<%#= '[' + link_to(line.approaches.count, line_approaches_path(line), :title => 'number of times this line has been used') + ']' if line.approaches.present? %>
 		<%= tag_display line %>
 		<% if current_user.andand.admin? || (current_user && line.user == current_user) %>
 		  [<%= link_to 'x', line_path(line), :method => :delete, :title => 'delete' %>]
@@ -16,6 +14,11 @@
   <span class='right'><%=h line.context %></span>
   <span class='left'><%= publish_link line %></span>
   <span class='left', id='<%= dom_id(line, 'publicize') %>'><%= publicize_link line %></span>
+	<%= tagger line %>
+	<% div_for line, 'tags' do %>
+	<% end %>
+	<% div_for line, 'comments' do %>
+	<% end %>
 <% end %>
 <div class='clearfix'></div>
 <script type='text/javascript'>

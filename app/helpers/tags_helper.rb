@@ -1,22 +1,19 @@
 module TagsHelper
   def tagger target
-    link_to 't', new_tag_path(:tag => {:target_type => target.class.name, :target_id => target.id}), :title => 'tag', :rel => 'shadowbox;height=300;width=300' if current_user
+    div_for target, 'tagger', :class => 'tagger' do
+      link_to_remote 't', :url => new_tag_path(:tag => {:target_type => target.class.name, :target_id => target.id}), :title => 'tag', :update => dom_id(target, 'tagger') if current_user
+    end
   end
   
   def tag_display target
     unless target.tags.empty?
-      content_tag(:div, :class => 'tags') do
-        pluralize(target.tags.count, 'tag') + ': ' +
-        target.tags.map do |t|
-          display_tag t
-        end.to_sentence
-      end
+      link_to_remote pluralize(target.tags.count, 'tag'), :url => tags_path(:target_type => target.class.name, :target_id => target.id), :id => dom_id(target, 'tag_count'), :update => dom_id(target, 'tags'), :method => :get
     end
   end
   
   def display_tag tag
     div_for tag, :class => tag.subject_type.downcase do
-      link_to truncate(tag.subject.name), tag.subject, :title => tag.subject.name
+      link_to_remote tag.subject.name, :url => tag.subject, :title => tag.subject.name
     end
   end
 end
