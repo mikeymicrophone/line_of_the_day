@@ -2,13 +2,13 @@
 <%= voting_booth comment %>
 <%= comment.text %>
 <%#= link_to comment.user.username, comment.user %>
-<%= link_to_function 'reply', "$('#{dom_id(comment, 'reply')}').toggle();" %>
+<%= link_to_function 'reply', visual_effect(:toggle_slide, dom_id(comment, 'reply')) %>
 <% div_for comment, 'replies', :class => 'comments' do %>
 	<%= render :partial => comment.comments %>
 <% end %>
 <% div_for comment, 'reply', :style => 'display:none' do %>
 	<% if current_user %>
-		<% form_remote_for comment.comments.new, :update => dom_id(comment, 'replies'), :position => 'bottom', :loading => "$(#{dom_id(comment, 'reply_form')}).hide();", :html => {:id => dom_id(comment, 'reply_form')} do |f| %>
+		<% form_remote_for comment.comments.new, :update => dom_id(comment, 'replies'), :position => 'bottom', :loading => visual_effect(:slide_up, dom_id(comment, 'reply_form')), :complete => visual_effect(:slide_down, dom_id(comment, 'replies')), :html => {:id => dom_id(comment, 'reply_form')} do |f| %>
 		  <%= f.text_area :text, :size => '35x4' %>
 		  <%= f.hidden_field :target_id, :value => comment.id %>
 		  <%= f.hidden_field :target_type, :value => 'Comment' %>

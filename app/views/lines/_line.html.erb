@@ -2,7 +2,7 @@
 	<%= voting_booth line %>
   <span class='left'>
 		<%= link_to h(line.phrasing), line %>
-		<%= link_to_remote pluralize(line.comments.count, 'comment'), :url => line_comments_path(line), :title => 'comments', :method => :get, :update => dom_id(line, 'comments') %>
+		<%= link_to_remote pluralize(line.comments.count, 'comment'), :url => line_comments_path(line), :title => 'comments', :method => :get, :update => dom_id(line, 'replies'), :complete => visual_effect(:toggle_slide, dom_id(line, 'comments')) %>
 		<%#= '[' + link_to(line.approaches.count, line_approaches_path(line), :title => 'number of times this line has been used') + ']' if line.approaches.present? %>
 		<%= tag_display line %>
 		<% if current_user.andand.admin? || (current_user && line.user == current_user) %>
@@ -15,9 +15,19 @@
   <span class='left'><%= publish_link line %></span>
   <span class='left', id='<%= dom_id(line, 'publicize') %>'><%= publicize_link line %></span>
 	<%= tagger line %>
-	<% div_for line, 'tags' do %>
+	<% div_for line, 'tags', :style => 'display:none;' do %>
 	<% end %>
-	<% div_for line, 'comments' do %>
+	<% div_for line, 'comments', :style => 'display:none;' do %>
+		<% if current_user %>
+			<% form_remote_for line.comments.new, :update => dom_id(line, 'replies'), :position => 'bottom', :loading => "$('#{dom_id(line, 'comment_text')}').clear();" do |f| %>
+			  <%= f.text_area :text, :size => '35x4', :id => dom_id(line, 'comment_text') %>
+			  <%= f.hidden_field :target_id, :value => line.id %>
+			  <%= f.hidden_field :target_type, :value => 'Line' %>
+			  <%= image_submit_tag 'weigh_in.png' %>
+			<% end %>
+		<% end %>
+		<% div_for line, 'replies' do %>
+		<% end %>
 	<% end %>
 <% end %>
 <div class='clearfix'></div>

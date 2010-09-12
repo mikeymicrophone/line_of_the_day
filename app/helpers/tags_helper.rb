@@ -7,12 +7,13 @@ module TagsHelper
   
   def tag_display target
     unless target.tags.empty?
-      link_to_remote pluralize(target.tags.count, 'tag'), :url => tags_path(:target_type => target.class.name, :target_id => target.id), :id => dom_id(target, 'tag_count'), :update => dom_id(target, 'tags'), :method => :get
+      link_to_remote pluralize(target.tags.count, 'tag'), :url => tags_path(:target_type => target.class.name, :target_id => target.id), :id => dom_id(target, 'tag_count'), :update => dom_id(target, 'tags'), :method => :get, :complete => visual_effect(:toggle_slide, dom_id(target, 'tags'))
     end
   end
   
   def display_tag tag
-    div_for tag, :class => tag.subject_type.downcase do
+    '<hr>' +
+    div_for(tag, :class => tag.subject_type.downcase) do
       link_to_remote tag.subject.name, :url => tag.subject, :title => tag.subject.name
     end
   end
