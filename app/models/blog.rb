@@ -10,7 +10,7 @@ class Blog < ActiveRecord::Base
   def fetch_posts
     if feed_url.present?
       feed = Feedzirra::Feed.fetch_and_parse feed_url
-      feed.entries.each do |post|
+      feed.andand.entries.andand.each do |post|
         posts.find_or_create_by_name :name => post.title, :content => post.content, :posted_at => post.published, :url => post.url
       end
     end
