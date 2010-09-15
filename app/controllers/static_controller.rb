@@ -1,4 +1,8 @@
 class StaticController < ApplicationController
+  def triad
+    render :layout => false
+  end
+  
   def about
 		render :template => 'shared/about'
   end
