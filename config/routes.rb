@@ -98,6 +98,7 @@ ActionController::Routing::Routes.draw do |map|
   map.faq '/faq', :controller => 'static', :action => 'faq'
 
   map.connect 'talktoher/:action', :controller => 'talktoher'
+  map.connect 'static/:action', :controller => 'static'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
