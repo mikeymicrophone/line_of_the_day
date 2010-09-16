@@ -16,6 +16,20 @@
 	<body>
 		<%= link_to image_tag('logo.png', :id => 'logo'), lines_path %>
 		<%= render :partial => 'shared/lines_and_links', :locals => {:current_user => current_user} unless action_name == 'random' %>
+		<% unless current_user %>
+			<div id='login_space'>
+				<% form_for UserSession.new, :url => user_session_path do |f| %>
+				  <%= f.error_messages %>
+				  <%= f.label :username, image_tag('username.png', :alt => 'username'), :class => 'borderedbox' %>
+				  <%= f.text_field :username %><br />
+				  <%= f.label :password, image_tag('password.png', :alt => 'password'), :class => 'borderedbox' %>
+				  <%= f.password_field :password %><br>
+				  <%= f.check_box :remember_me %><%= f.label :remember_me, image_tag('remember.png', :alt => 'remember me'), :class => 'borderedbox' %><br />
+				  <%= image_submit_tag('new.png', :class => 'borderedbox') %>
+				  <%= image_submit_tag('login_button.png', :class => 'borderedbox') %>
+				<% end %>
+			</div>
+		<% end %>
 		<p style="color: green"><%= flash[:notice] %></p>
 		<div id="big_box">
 			<% if current_user %>
