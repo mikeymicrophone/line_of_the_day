@@ -15,11 +15,9 @@ module ApplicationHelper
   end
   
   def sort_buttons
-    "<div class='clearfix'></div>" +
     link_to(image_tag('top_rated.png'), {:sort => 'rating'}, :class => 'sort borderedbox') +
     link_to(image_tag('recent.png'), {:sort => 'recent'}, :class => 'sort borderedbox') +
-    link_to(image_tag('randomize.png'), {:sort => 'random'}, :class => 'sort borderedbox') +
-    "<div class='clearfix'></div>"
+    link_to(image_tag('randomize.png'), {:sort => 'random'}, :class => 'sort borderedbox')
   end
   
   def voting_booth target
@@ -61,5 +59,13 @@ module ApplicationHelper
       })();
 
     </script>!
+  end
+  
+  def will_paginate_unless_random collection, opts = {}
+    if params[:sort] == 'random'
+      link_to 'refresh', {:sort => params[:sort]}, :class => 'refresh'
+    else
+      will_paginate collection, opts
+    end
   end
 end

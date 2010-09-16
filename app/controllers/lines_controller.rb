@@ -11,6 +11,8 @@ class LinesController < ApplicationController
   def index
     @published_lines = User.find(params[:user_id]).publications.to_group(params[:group_id]).map &:line if params[:user_id] and params[:group_id]
     
+    params[:sort] ||= 'random'
+    
     @public_lines = if current_user
       @lines = Line.public_to(current_user)
       if params[:sort] == 'rating'

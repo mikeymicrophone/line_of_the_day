@@ -1,6 +1,9 @@
-.pagination {
+.pagination, .refresh {
 	font-weight: bold;
 	font-size: 20px;
 	color: black;
 	text-align: center;
+	float:right;
+	margin: 4px;
+	padding: 9px;
 }

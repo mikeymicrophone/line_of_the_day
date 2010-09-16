@@ -2,13 +2,15 @@
 	<% current_user.lists.each do |list| %>
 	  <% div_for list, :class => 'borderedbox' do %>
 			<%= link_to_function list.name, "Effect.toggle($('#{dom_id(list, 'items')}'), 'slide')", :class => 'list_toggle' %>
-			<% div_for list, 'items' do %>
+			<% div_for list, 'items', :style => 'display:none;' do %>
 			  <%= render :partial => 'shared/list_items', :locals => {:list_items => list.list_items, :list => list} %>
 			<% end %>
 		<% end %>
-		<!-- <script type='text/javascript'>
+		<script type='text/javascript'>
 		  Droppables.add('<%= dom_id(list) %>', {
 				hoverclass: 'this_list',
+				overlap: 'vertical',
+				snap: [100, 100],
 				onDrop: function(dragged, dropped, event) {
 					new Ajax.Updater('<%= dom_id(list) %>', 'lists/<%= list.id %>/list_items?list_item[item_type]=' + dragged.className.split(' ')[0].capitalize() + '&list_item[item_id]=' + dragged.id.split('_')[dragged.id.split('_').length - 1], {
 						insertion: 'bottom',
@@ -16,7 +18,7 @@
 					});
 				}
 		  });
-		</script> -->
+		</script>
 	<% end %>
 	
 	<div class='borderedbox' id='listmaker' style='text-align:center'>
@@ -26,4 +28,4 @@
 		<% end %>
 	</div>
 </div>
-<%= sortable_element 'draggable_lists', :tag => :div, :url => sort_lists_path %>
+<%#= sortable_element 'draggable_lists', :tag => :div, :url => sort_lists_path %>
