@@ -1,9 +1,16 @@
 .pagination, .refresh, .per_page {
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 16px;
 	color: black;
 	text-align: center;
 	float:right;
 	margin: 4px;
 	padding: 9px;
+}
+
+.per_page, .refresh, .pagination {
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
 }

@@ -15,9 +15,9 @@ module ApplicationHelper
   end
   
   def sort_buttons
-    link_to(image_tag('top_rated.png'), {:sort => 'rating'}, :class => 'sort borderedbox') +
-    link_to(image_tag('recent.png'), {:sort => 'recent'}, :class => 'sort borderedbox') +
-    link_to(image_tag('randomize.png'), {:sort => 'random'}, :class => 'sort borderedbox')
+    link_to(image_tag('top_rated.png'), {:sort => 'rating', :per_page => params[:per_page]}, :class => 'sort borderedbox') +
+    link_to(image_tag('recent.png'), {:sort => 'recent', :per_page => params[:per_page]}, :class => 'sort borderedbox') +
+    link_to(image_tag('randomize.png'), {:sort => 'random', :per_page => params[:per_page]}, :class => 'sort borderedbox')
   end
   
   def voting_booth target
@@ -62,13 +62,13 @@ module ApplicationHelper
   end
   
   def will_paginate_unless_random collection, opts = {}
-    if params[:sort] == 'random'
+    (if params[:sort] == 'random'
       link_to 'refresh', {:sort => params[:sort]}, :class => 'refresh'
     else
       will_paginate collection, opts
-    end + 
+    end || '') + 
     content_tag(:div, :class => 'per_page') do
-      raw("<span class='per_page_count'>#{params[:per_page] || 25}</span> per page   ") +
+      raw("<span class='per_page_count'>#{params[:per_page] || 25}</span>") +
       raw(%Q{<input type="range" min="1" max="100" value="#{params[:per_page] || 25}" class='per_page_slider' onchange="update_per_page(this.value)"/>})
     end
   end
