@@ -48,4 +48,8 @@ function ajaxify_links() {
 
 document.observe('dom:loaded', function() {
 	ajaxify_links();
+	Event.observe($('login'), 'click', function(event) {
+		new Effect.SlideDown('login_space');
+		event.stop();
+	});
 })

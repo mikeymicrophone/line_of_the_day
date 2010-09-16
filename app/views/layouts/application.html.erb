@@ -17,7 +17,7 @@
 		<%= link_to image_tag('logo.png', :id => 'logo'), lines_path %>
 		<%= render :partial => 'shared/lines_and_links', :locals => {:current_user => current_user} unless action_name == 'random' %>
 		<% unless current_user %>
-			<div id='login_space'>
+			<div id='login_space' style="display:none">
 				<% form_for UserSession.new, :url => user_session_path do |f| %>
 				  <%= f.error_messages %>
 				  <%= f.label :username, image_tag('username.png', :alt => 'username'), :class => 'borderedbox' %>
