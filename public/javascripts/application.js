@@ -46,6 +46,18 @@ function ajaxify_links() {
 	});
 }
 
+function transform_login_form(event) {
+	new Effect.Appear($('sign_up_fields'));
+	new Effect.Fade($('remember_box'));
+	$('new_user_session').action = "/users";
+	$('user_session_username').name = "user[username]";
+	$('user_session_password').name = "user[password]";
+	new Effect.Fade($('i_m_new'));
+	$('login_button').src = "/images/join.png";
+	new Effect.Appear($('terms_link'));
+	event.stop();
+}
+
 document.observe('dom:loaded', function() {
 	ajaxify_links();
 	Event.observe($('login'), 'click', function(event) {

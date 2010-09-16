@@ -24,10 +24,54 @@
 				  <%= f.text_field :username %><br />
 				  <%= f.label :password, image_tag('password.png', :alt => 'password'), :class => 'borderedbox' %>
 				  <%= f.password_field :password %><br>
-				  <%= f.check_box :remember_me %><%= f.label :remember_me, image_tag('remember.png', :alt => 'remember me'), :class => 'borderedbox' %><br />
-				  <%= image_submit_tag('new.png', :class => 'borderedbox') %>
-				  <%= image_submit_tag('login_button.png', :class => 'borderedbox') %>
+				  <span id="remember_box">
+				  <%= f.check_box :remember_me %><%= f.label :remember_me, image_tag('remember.png', :alt => 'remember me'), :class => 'borderedbox' %></span>
+				  <span id="sign_up_fields" style="display:none">
+				    <%= label :user, :email, image_tag('email.png', :alt => 'email'), :class => 'borderedbox' %>
+				    <%= text_field :user,  :email %><br>
+				    <%= label :user, :password_confirmation, image_tag('password_again.png', :alt => 'password again'), :class => 'borderedbox' %>
+				    <%= password_field :user, :password_confirmation %><br>
+					  <%= recaptcha_tags %>
+					</span>
+				  <br />
+				  <%= image_submit_tag('new.png', :class => 'borderedbox', :id => 'i_m_new', :onclick => "transform_login_form(event)") %>
+				  <%= image_submit_tag('login_button.png', :class => 'borderedbox', :id => 'login_button') %>
 				<% end %>
+				  <p id='terms_link' class='borderedbox' style="display:none">
+					  By clicking "join" you indicate that you have read and agreed to these <%= link_to_function 'terms', "new Effect.SlideDown($('terms_conditions'));" %>.
+					</p>
+				<div id='terms_conditions' style="display:none" class='borderedbox'>
+					<p>
+					By joining and using this site you agree to the following legal and cultural stipulations:
+					</p>
+					<p>
+					1. I am responsible for my own words.
+					</p>
+					<p>
+
+					2. lineoftheday.com and its creators, hosts, and owners are not liable or responsible for the content submitted by members of the site.
+					</p>
+					<p>
+
+					3. I will strive to show respect for my peers at all times.
+					</p>
+					<p>
+
+					4. I do not have a right to participate.  Rather, my ability to participate is a privilege that can be revoked for any reason.
+					</p>
+					<p>
+
+					5. Some content can be marked as private.  However, that does not prevent it from being viewed or published by the administrator of lineoftheday.com.
+					</p>
+					<p>
+
+					6. I will be honest when I indicate whether I have completed my goals.
+					</p>
+
+					<p>
+					7. I understand that these terms may change at any time, with or without my knowledge, and I will still be bound to honor them to the best of my ability.
+					</p>
+				</div>
 			</div>
 		<% end %>
 		<p style="color: green"><%= flash[:notice] %></p>
