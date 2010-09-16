@@ -17,18 +17,7 @@
 	<%= tagger line %>
 	<% div_for line, 'tags', :style => 'display:none;' do %>
 	<% end %>
-	<% div_for line, 'comments', :style => 'display:none;' do %>
-		<% if current_user %>
-			<% form_remote_for line.comments.new, :update => dom_id(line, 'replies'), :position => 'bottom', :loading => "$('#{dom_id(line, 'comment_text')}').clear(); $('#{dom_id(line, 'comment_count')}').innerHTML = $('#{dom_id(line, 'comment_count')}').innerHTML.gsub(/(\d+)/, function(match) {return match[1]*1 + 1});" do |f| %>
-			  <%= f.text_area :text, :size => '35x4', :id => dom_id(line, 'comment_text') %>
-			  <%= f.hidden_field :target_id, :value => line.id %>
-			  <%= f.hidden_field :target_type, :value => 'Line' %>
-			  <%= image_submit_tag 'weigh_in.png' %>
-			<% end %>
-		<% end %>
-		<% div_for line, 'replies' do %>
-		<% end %>
-	<% end %>
+	<%= comment_section_for line %>
 <% end %>
 <div class='clearfix'></div>
 <script type='text/javascript'>

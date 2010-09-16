@@ -42,34 +42,28 @@
 					</p>
 				<div id='terms_conditions' style="display:none" class='borderedbox'>
 					<p>
-					By joining and using this site you agree to the following legal and cultural stipulations:
+						By joining and using this site you agree to the following legal and cultural stipulations:
 					</p>
 					<p>
-					1. I am responsible for my own words.
+						1. I am responsible for my own words.
 					</p>
 					<p>
-
-					2. lineoftheday.com and its creators, hosts, and owners are not liable or responsible for the content submitted by members of the site.
+						2. lineoftheday.com and its creators, hosts, and owners are not liable or responsible for the content submitted by members of the site.
 					</p>
 					<p>
-
-					3. I will strive to show respect for my peers at all times.
+						3. I will strive to show respect for my peers at all times.
 					</p>
 					<p>
-
-					4. I do not have a right to participate.  Rather, my ability to participate is a privilege that can be revoked for any reason.
+						4. I do not have a right to participate.  Rather, my ability to participate is a privilege that can be revoked for any reason.
 					</p>
 					<p>
-
-					5. Some content can be marked as private.  However, that does not prevent it from being viewed or published by the administrator of lineoftheday.com.
+						5. Some content can be marked as private.  However, that does not prevent it from being viewed or published by the administrator of lineoftheday.com.
 					</p>
 					<p>
-
-					6. I will be honest when I indicate whether I have completed my goals.
+						6. I will be honest when I indicate whether I have completed my goals.
 					</p>
-
 					<p>
-					7. I understand that these terms may change at any time, with or without my knowledge, and I will still be bound to honor them to the best of my ability.
+						7. I understand that these terms may change at any time, with or without my knowledge, and I will still be bound to honor them to the best of my ability.
 					</p>
 				</div>
 			</div>
@@ -78,7 +72,9 @@
 		<div id="big_box">
 			<% if current_user %>
 				<%= render :partial => 'shared/lists' %>
-				<div style="float:left; width:60%">
+				<div id="content_home" style="float:left; width:63%">
+			<% else %>
+			  <div id="content_home">
 			<% end %>
 			<%= yield %>
 			<% if current_user %>

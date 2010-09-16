@@ -72,4 +72,28 @@ module ApplicationHelper
       raw(%Q{<input type="range" min="1" max="100" value="#{params[:per_page] || 25}" class='per_page_slider' onchange="update_per_page(this.value)"/>})
     end
   end
+  
+  def pagination_and_sorting_for collection, &block
+    concat(raw(sort_buttons) +
+    raw(will_paginate_unless_random(collection)) +
+    raw("<div class='clearfix'></div>") +
+    raw(capture(&block)) +
+    raw(sort_buttons) +
+    raw(will_paginate_unless_random(collection)) +
+    raw("<div class='clearfix'></div>"))
+  end
+  
+  def draggable_and_droppable_for obj
+    "<script type='text/javascript'>
+    	new Draggable('#{obj.dom_id(nil)}', {revert: true, scroll: window});
+
+      Droppables.add('#{obj.dom_id(nil)}', {
+    	  hoverclass: 'tagging',
+    		onDrop: function(dragged, dropped, event) {
+    			new Ajax.Request('/tags?tag[target_type]=#{obj.class.name}&tag[target_id]=' + #{obj.id} + '&tag[subject_type]=' + dragged.className.split(' ')[0].capitalize() + '&tag[subject_id]=' + dragged.id.split('_')[dragged.id.split('_').length - 1]);
+    			$('#{dom_id(obj, 'tag_count')}').innerHTML = $('#{dom_id(obj, 'tag_count')}').innerHTML.gsub(/(\d+)/, function(match) {return match[1]*1 + 1});
+    		}
+    	});
+    </script>"
+  end
 end

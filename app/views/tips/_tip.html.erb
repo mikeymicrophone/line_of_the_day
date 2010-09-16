@@ -2,10 +2,12 @@
 	<%= voting_booth tip %>
 	<%= link_to tip.advice, tip %>
 	<%= add_to_list tip %>
-	<%= link_to pluralize(tip.comments.count, 'comment'), tip unless tip.comments.count == 0 %>
+	<%= link_to_comment_section_for tip %>
 	<%= tagger tip %>
 	<%= tag_display tip %>
 	<% if current_user.andand.admin? %>
 	  [<%= link_to 'x', tip_path(tip), :method => :delete, :title => 'delete' %>]
 	<% end %>
+	<%= comment_section_for tip %>
 <% end %>
+<%= draggable_and_droppable_for tip %>

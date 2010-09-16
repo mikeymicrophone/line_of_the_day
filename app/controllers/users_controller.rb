@@ -37,7 +37,6 @@ class UsersController < ApplicationController
     @user = User.new params[:user]
     
     if verify_recaptcha && @user.save
-      flash[:notice] = 'Account registered! no way man! cool!'
       redirect_back_or_default lines_path
     else
       render :action => :new
