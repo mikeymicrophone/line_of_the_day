@@ -31,7 +31,7 @@ class LinesController < ApplicationController
       else
         @lines.sort_by { |l| rand }
       end      
-    end.paginate(:page => params[:page])
+    end.paginate(:page => params[:page], :per_page => params[:per_page])
     
     @shared_lines = current_user.joined_groups.map { |g| g.lines }.flatten.select { |l| l.user_id != current_user.id }.sort_by { |l| l.created_at } if current_user
 

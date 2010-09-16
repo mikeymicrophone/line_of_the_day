@@ -69,7 +69,7 @@ module ApplicationHelper
     end + 
     content_tag(:div, :class => 'per_page') do
       raw("<span class='per_page_count'>25</span> per page   ") +
-      raw(%Q{<input type="range" min="1" max="100" value="25" class='per_page_slider' onchange="$$('.per_page_count').each(function(s){s.innerHTML = this.value}, this); $$('.per_page_slider').each(function(s){s.value = this.value}, this)"/>})
+      raw(%Q{<input type="range" min="1" max="100" value="25" class='per_page_slider' onchange="update_per_page(this.value)"/>})
     end
   end
 end

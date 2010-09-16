@@ -23,7 +23,12 @@ function vote_slider(type, id, vote) {
 	})
 }
 
-function capitalizeFirstLetter(string)
-{
+function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function update_per_page(count) {
+	$$('.per_page_count').each(function(s){s.innerHTML = count});
+	$$('.per_page_slider').each(function(s){s.value = count});
+	$$('.sort').each(function(s){s.href = s.href.concat("&per_page=" + count)});
 }
