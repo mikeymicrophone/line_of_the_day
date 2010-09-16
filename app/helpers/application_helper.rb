@@ -68,8 +68,8 @@ module ApplicationHelper
       will_paginate collection, opts
     end + 
     content_tag(:div, :class => 'per_page') do
-      raw("<span class='per_page_count'>25</span> per page   ") +
-      raw(%Q{<input type="range" min="1" max="100" value="25" class='per_page_slider' onchange="update_per_page(this.value)"/>})
+      raw("<span class='per_page_count'>#{params[:per_page] || 25}</span> per page   ") +
+      raw(%Q{<input type="range" min="1" max="100" value="#{params[:per_page] || 25}" class='per_page_slider' onchange="update_per_page(this.value)"/>})
     end
   end
 end
