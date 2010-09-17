@@ -1,12 +1,13 @@
 <% div_for tip, :class => 'borderedbox' do %>
 	<%= voting_booth tip %>
-	<%= link_to tip.advice, tip %>
-	<%= add_to_list tip %>
+	<%= tip.advice %>
 	<%= link_to_comment_section_for tip %>
-	<%= tagger tip %>
 	<%= tag_display tip %>
 	<% if current_user.andand.admin? %>
 	  [<%= link_to 'x', tip_path(tip), :method => :delete, :title => 'delete' %>]
+	<% end %>
+	<%= tagger tip %>
+	<% div_for tip, 'tags', :style => 'display:none;' do %>
 	<% end %>
 	<%= comment_section_for tip %>
 <% end %>

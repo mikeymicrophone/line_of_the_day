@@ -2,7 +2,7 @@
 	<%= voting_booth line %>
   <span class='left'>
 		<%= link_to h(line.phrasing), line %>
-		<%= link_to_remote pluralize(line.comments.count, 'comment'), :url => line_comments_path(line), :title => 'comments', :method => :get, :update => dom_id(line, 'replies'), :complete => visual_effect(:toggle_slide, dom_id(line, 'comments')), :html => {:id => dom_id(line, 'comment_count')} %>
+		<%= link_to_comment_section_for line %>
 		<%#= '[' + link_to(line.approaches.count, line_approaches_path(line), :title => 'number of times this line has been used') + ']' if line.approaches.present? %>
 		<%= tag_display line %>
 		<% if current_user.andand.admin? || (current_user && line.user == current_user) %>
