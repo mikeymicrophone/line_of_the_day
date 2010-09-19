@@ -1,17 +1,6 @@
-<div class='videos'>
-	<object width="1280" height="745"><param name="movie" value="http://www.youtube.com/v/HsrARfNytLw&hl=en_US&fs=1&rel=0&hd=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/HsrARfNytLw&hl=en_US&fs=1&rel=0&hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="720" height="420"></embed></object>
-
-	<object width="1280" height="745"><param name="movie" value="http://www.youtube.com/v/1Nb0qsKP6PY&hl=en_US&fs=1&rel=0&hd=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/1Nb0qsKP6PY&hl=en_US&fs=1&rel=0&hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="720" height="420"></embed></object>
-
-	<object width="1280" height="745"><param name="movie" value="http://www.youtube.com/v/a0Yt2bN9WqA&hl=en_US&fs=1&rel=0&hd=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/a0Yt2bN9WqA&hl=en_US&fs=1&rel=0&hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="720" height="420"></embed></object>
-
-	<object width="1280" height="745"><param name="movie" value="http://www.youtube.com/v/sgr3Y0Vwz0s&hl=en_US&fs=1&rel=0&hd=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/sgr3Y0Vwz0s&hl=en_US&fs=1&rel=0&hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="720" height="420"></embed></object>
-
-	<object width="1280" height="745"><param name="movie" value="http://www.youtube.com/v/NlUmHn6d7uA&hl=en_US&fs=1&rel=0&hd=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/NlUmHn6d7uA&hl=en_US&fs=1&rel=0&hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="720" height="420"></embed></object>
-
-	<%= render :partial => @videos %>
-	<%= will_paginate @videos %>
-	<%= link_to 'new video', new_video_path %>
-
-</div>
-
+<% pagination_and_sorting_for @videos do %>
+	<div class='videos'>
+		<%= render :partial => @videos %>
+		<%= link_to 'new video', new_video_path %>
+	</div>
+<% end %>

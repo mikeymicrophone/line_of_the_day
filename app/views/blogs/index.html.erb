@@ -1,8 +1,8 @@
 <div class='all_posts'>
 	<%= link_to image_tag('all_posts.png', :alt => 'see all posts together'), posts_path %>
 </div>
-<%= sort_buttons %>
-<%= render :partial => @blogs %>
-<%= will_paginate @blogs %>
+<% pagination_and_sorting_for @blogs do %>
+	<%= render :partial => @blogs %>
+<% end %>
 <%= link_to image_tag('add_blog.png'), new_blog_path %><br>
 <%= link_to 'fetch any new posts (could take a while but you do not need to wait for it once you click it)', fetch_all_blogs_path %>

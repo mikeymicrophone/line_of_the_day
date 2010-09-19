@@ -1,0 +1,12 @@
+<% div_for scene, :class => 'borderedbox' do %>
+  <%= voting_booth scene %>
+	<%=h scene.name %>
+  <%= link_to(pluralize(scene.approaches.count, 'event'), scene_approaches_path(scene)) %>
+  <%= link_to 'report an incident', new_scene_approach_path(scene) %>
+  <%= link_to_comment_section_for scene %>
+  <%= tag_display scene %>
+  <%= tagger scene %>
+  <% div_for(scene, 'tags', :style => 'display:none') {} %>
+  <%= comment_section_for scene %>
+<% end %>
+<%= draggable_and_droppable_for scene %>

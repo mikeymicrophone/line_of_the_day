@@ -1,5 +1,5 @@
 class Scene < ActiveRecord::Base
-  include Taggable
+  include Taggable, Ratable, Commendable
   has_many :approaches
   has_many :stories
   has_many :locations

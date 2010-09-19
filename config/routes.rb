@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :approaches, :has_one => [:line, :scene, :result], :collection => {:auto_complete_for_line_phrasing => :post, :auto_complete_for_scene_name => :post, :auto_complete_for_result_name => :post}
 
-  map.resources :scenes, :has_many => [:approaches, :lines, :goals]
+  map.resources :scenes, :has_many => [:approaches, :lines, :goals, :comments]
 
   map.resources :publications, :has_one => [:line, :user, :group]
 
@@ -27,11 +27,11 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :ratings
   
-  map.resources :books, :has_many => [:list_items]
+  map.resources :books, :has_many => [:list_items, :comments]
   
   map.resources :quotes, :has_many => [:list_items]
   
-  map.resources :articles, :has_many => [:list_items]
+  map.resources :articles, :has_many => [:list_items, :comments]
 
   map.resources :users, :has_many => [:lines, :tips, :affirmations, :groups, :memberships, :publications, :comments, :goal_ownerships, :lists, :nicknames, :ratings, :goals], :member => {:avatar => :get} do |user|
     user.resources :students, :controller => 'guidances' do |student|
@@ -49,7 +49,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :lines, :has_one => [:user], :has_many => [:publications, :comments, :groups, :approaches, :goals, :list_items, :ratings, :tags], :collection => {:mine => :get, :random => :get}
 
-  map.resources :blogs, :has_many => [:posts, :list_items], :member => {:fetch => :get}, :collection => {:fetch_all => :get}
+  map.resources :blogs, :has_many => [:posts, :list_items, :comments], :member => {:fetch => :get}, :collection => {:fetch_all => :get}
   map.resources :posts, :has_one => [:blog], :has_many => [:list_items]
   
   map.resources :newsletters
@@ -64,37 +64,37 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :password_resets
   map.root :controller => 'lines'
   
-  map.resources :videos, :has_many => [:list_items]
+  map.resources :videos, :has_many => [:list_items, :comments]
   
-  map.resources :nicknames
+  map.resources :nicknames, :has_many => :comments
   
   map.resources :tags
   
   map.resources :concepts
   
-  map.resources :questions, :has_many => [:list_items]
+  map.resources :questions, :has_many => [:list_items, :comments]
   
   map.resources :exercises, :has_many => [:list_items, :goals, :ratings, :comments, :tags]
   map.connect "/:controller/:id/inspect_content/:user_id", :action => 'inspect_content'
   
-  map.resources :stories, :has_many => [:list_items]
+  map.resources :stories, :has_many => [:list_items, :comments]
 
-  map.resources :artists, :has_many => [:list_items]
+  map.resources :artists, :has_many => [:list_items, :comments]
   
-  map.resources :companies, :has_many => [:list_items]
+  map.resources :companies, :has_many => [:list_items, :comments]
   
-  map.resources :products, :has_many => [:list_items]
+  map.resources :products, :has_many => [:list_items, :comments]
   
-  map.resources :websites, :has_many => [:list_items]
+  map.resources :websites, :has_many => [:list_items, :comments]
   
   map.resources :feedbacks
   
   map.resources :invitations
   
-  map.resources :countries
-  map.resources :states
-  map.resources :cities
-  map.resources :neighborhoods
+  map.resources :countries, :has_many => [:comments, :list_items]
+  map.resources :states, :has_many => [:comments, :list_items]
+  map.resources :cities, :has_many => [:comments, :list_items]
+  map.resources :neighborhoods, :has_many => [:comments, :list_items]
   map.resources :positions
   map.resources :locations
   

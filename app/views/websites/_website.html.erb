@@ -1,10 +1,13 @@
 <% div_for website, :class => 'borderedbox' do %>
   <%= voting_booth website %>
   <%= link_to website.name, website %>
-  <%= add_to_list website %>
-  <%= tagger website %>
+  <%= link_to_comment_section_for website %>
   <%= tag_display website %>
   <% if current_user.andand.admin? %>
 	  [<%= link_to 'x', website_path(website), :method => :delete, :title => 'delete' %>]
 	<% end %>
+	<%= tagger website %>
+	<% div_for(website, 'tags', :style => 'display:none') {} %>
+	<%= comment_section_for website %>
 <% end %>
+<%= draggable_and_droppable_for website %>

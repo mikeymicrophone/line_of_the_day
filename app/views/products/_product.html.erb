@@ -1,10 +1,14 @@
 <% div_for product, :class => 'borderedbox' do %>
   <%= voting_booth product %>
-	<%= link_to product.name, product %>
-	<%= add_to_list product %>
-	<%= tagger product %>
+	<%= product.name %>
+	<%= link_to_comment_section_for product %>
 	<%= tag_display product %>
 	<% if current_user.andand.admin?  %>
 	  [<%= link_to 'x', product_path(product), :method => :delete, :title => 'delete' %>]
 	<% end %>
+	<%= tagger product %>
+	<% div_for product, 'tags', :style => 'display:none;' do %>
+	<% end %>
+	<%= comment_section_for product %>
 <% end %>
+<%= draggable_and_droppable_for product %>

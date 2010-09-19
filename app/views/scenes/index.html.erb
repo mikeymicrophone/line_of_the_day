@@ -1,14 +1,5 @@
 <h1>scenes</h1>
 <h3>Here are some of the places where guys are practicing their conversation skills.  You can use the iPhone app Talk To Her to meet up with a wingman near you!</h3>
-<table>
-<% @scenes.each do |scene| %>
-  <tr>
-    <td><%=h scene.name %></td>
-    <td><%= link_to(pluralize(scene.approaches.count, 'event'), scene_approaches_path(scene)) %></td>
-    <td><%= link_to 'report an incident', new_scene_approach_path(scene) %></td>
-    <td><%= link_to 'virtually go', scene %></td>
-  </tr>
+<% pagination_and_sorting_for @scenes do %>
+  <%= render :partial => @scenes %>
 <% end %>
-</table>
-
-<br />

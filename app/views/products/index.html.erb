@@ -1,4 +1,4 @@
-<%= sort_buttons %>
-<%= render :partial => @products %>
-<%= will_paginate @products %>
+<% pagination_and_sorting_for @products do %>
+	<%= render :partial => @products %>
+<% end %>
 <%= link_to 'new product', new_product_path %>

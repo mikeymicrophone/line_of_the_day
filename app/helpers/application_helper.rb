@@ -96,4 +96,16 @@ module ApplicationHelper
     	});
     </script>"
   end
+  
+  def draggable_content_piece obj, &block
+    concat(div_for(obj, :class => 'borderedbox') do
+      voting_booth(obj) + 
+      capture(&block) +
+    	tagger(obj) +
+    	tag_display(obj) +
+    	div_for(obj, 'tags', :style => 'display:none;') do
+    	end +
+    	comment_section_for(obj)
+    end) + draggable_and_droppable_for(obj)
+  end
 end

@@ -4,7 +4,7 @@ class NeighborhoodsController < ApplicationController
   end
   
   def index
-    @neighborhoods = Neighborhood.all
+    @neighborhoods = Neighborhood.all.paginate :page => params[:page], :per_page => params[:per_page]
   end
   
   def new

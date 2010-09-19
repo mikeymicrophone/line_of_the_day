@@ -1,7 +1,10 @@
 <% div_for article, :class => 'borderedbox' do %>
   <%= voting_booth article %>
   <%= link_to article.title, article %>
-  <%= add_to_list article %>
-  <%= tagger article %>
+  <%= link_to_comment_section_for article %>
   <%= tag_display article %>
+	<%= tagger article %>
+	<% div_for(article, 'tags', :style => 'display:none') {} %>
+	<%= comment_section_for article %>
 <% end %>
+<%= draggable_and_droppable_for article %>

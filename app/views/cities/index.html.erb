@@ -1,5 +1,3 @@
-<% @cities.each do |c| %>
-  <% div_for c do %>
-		<%= link_to c.name, c %>
-	<% end %>
+<% pagination_and_sorting_for @cities do %>
+  <%= render :partial => @cities %>
 <% end %>

@@ -1,3 +1,4 @@
-<%= render :partial => @books %>
-<%= will_paginate @books %>
+<% pagination_and_sorting_for @books do %>
+	<%= render :partial => @books %>
+<% end %>
 <%= link_to 'new book', new_book_path %>

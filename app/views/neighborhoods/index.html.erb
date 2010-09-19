@@ -1,5 +1,3 @@
-<% @neighborhoods.each do |n| %>
-	<% div_for n do %>
-	  <%= link_to n.name, n %>
-	<% end %>
+<% pagination_and_sorting_for @neighborhoods do %>
+  <%= render :partial => @neighborhoods %>
 <% end %>
