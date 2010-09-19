@@ -15,6 +15,7 @@ class ApproachesController < ApplicationController
     respond_to do |format|
       format.html
       format.xml  { render :xml => @approaches }
+      format.js { render :layout => false }
     end
   end
 
