@@ -4,5 +4,9 @@
 	<%= tagger blog %>
 	<%= link_to pluralize(blog.posts.count, 'post'), blog_posts_path(blog) %>
 	<%= "updated: #{time_ago_in_words blog.recent_update} ago." if blog.recent_update %>
-	<%= add_to_list blog %>
+	<%= link_to_comment_section_for blog %>
+	<%= tag_display blog %>
+	<% div_for(blog, 'tags', :style => 'display:none') {} %>
+	<%= comment_section_for blog %>
 <% end %>
+<%= draggable_and_droppable_for blog %>

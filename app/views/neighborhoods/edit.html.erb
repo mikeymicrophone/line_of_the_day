@@ -1,0 +1,5 @@
+<% form_for @neighborhood do |f| %>
+	<%= f.text_field :name %><br>
+	<%= f.select :city_id, City.all.map { |c| [c.name, c.id] } %><br>
+	<%= f.submit %>
+<% end %>

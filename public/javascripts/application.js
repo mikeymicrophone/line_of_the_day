@@ -23,7 +23,51 @@ function vote_slider(type, id, vote) {
 	})
 }
 
-function capitalizeFirstLetter(string)
-{
+function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+function update_per_page(count) {
+	$$('.per_page_count').each(function(s){s.innerHTML = count});
+	$$('.per_page_slider').each(function(s){s.value = count});
+	$$('.sort, .pagination a, .refresh').each(function(s) {
+		var params = s.href.toQueryParams();
+		params['per_page'] = count;
+		s.href = s.href.split('?')[0].concat('?' + Object.toQueryString(params));
+	});
+}
+
+function ajaxify_links() {
+	$$('.sort, .pagination a, .refresh').each(function(s) {
+		Event.observe(s, 'click', function(event) {
+			new Ajax.Updater('content_home', this.href, {method: 'get', onComplete: ajaxify_links, evalScripts: true});
+			event.stop();
+		});
+	});
+}
+
+function transform_login_form(event) {
+	new Effect.Appear($('sign_up_fields'));
+	new Effect.Fade($('remember_box'));
+	$('new_user_session').action = "/users";
+	$('user_session_username').name = "user[username]";
+	$('user_session_password').name = "user[password]";
+	new Effect.Fade($('i_m_new'));
+	$('login_button').src = "/images/join.png";
+	new Effect.Appear($('terms_link'));
+	event.stop();
+}
+
+document.observe('dom:loaded', function() {
+	ajaxify_links();
+	Event.observe($('login'), 'click', function(event) {
+		new Effect.SlideDown('login_space');
+		event.stop();
+	});
+	$$('#navigation a, #footer a').each(function(s) {
+		Event.observe(s, 'click', function(event) {
+			new Ajax.Updater('content_home', this.href, {method: 'get', onComplete: ajaxify_links, evalScripts: true});
+			event.stop();
+		});
+	});
+})

@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :goals
   has_many :goal_ownerships
   has_many :blogs
-  has_many :lists
+  has_many :lists, :order => :position
   has_many :list_items
   has_many :nicknames
   has_many :ratings

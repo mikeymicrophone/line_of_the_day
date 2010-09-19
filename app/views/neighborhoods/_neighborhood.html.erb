@@ -1,0 +1,10 @@
+<% div_for neighborhood, :class => 'borderedbox' do %>
+  <%= voting_booth neighborhood %>
+	<%= neighborhood.name %>
+	<%= link_to_comment_section_for neighborhood %>
+	<%= tag_display neighborhood %>
+	<%= tagger neighborhood %>
+	<% div_for(neighborhood, 'tags', :style => 'display:none') {} %>
+	<%= comment_section_for neighborhood %>
+<% end %>
+<%= draggable_and_droppable_for neighborhood %>

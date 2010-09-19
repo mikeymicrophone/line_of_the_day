@@ -1,6 +1,6 @@
 class ConceptsController < ApplicationController
   def index
-    @concepts = Concept.paginate :page => params[:page]
+    @concepts = Concept.paginate :page => params[:page], :per_page => params[:per_page]
   end
   
   def show

@@ -1,0 +1,6 @@
+<% @positions.each do |p| %>
+  <% div_for p do %>
+		<%= link_to p.name, p %>
+		<%= pluralize p.locations.count, 'location' %>
+	<% end %>
+<% end %>

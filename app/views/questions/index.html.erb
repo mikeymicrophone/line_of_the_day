@@ -1,7 +1,8 @@
-<div id='questions'>
-	<%= render :partial => @questions %>
-</div>
-<%= will_paginate @questions %>
+<% pagination_and_sorting_for @questions do %>
+	<div id='questions'>
+		<%= render :partial => @questions %>
+	</div>
+<% end %>
 
 <% if current_user %>
 	<% form_remote_for Question.new, :update => 'questions', :position => 'bottom', :loading => "$('question_name').clear();" do |f| %>

@@ -1,0 +1,5 @@
+<% form_for @location do |f| %>
+	<%= f.select :scene_id, Scene.all.map { |s| [s.name, s.id] } %><br>
+	<%= f.select :position_id, Position.all.map { |p| [p.name, p.id] } %><br>
+	<%= f.submit %>
+<% end %>

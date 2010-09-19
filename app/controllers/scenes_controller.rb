@@ -2,11 +2,12 @@ class ScenesController < ApplicationController
   before_filter :require_user, :except => [:index, :show]
 
   def index
-    @scenes = Scene.all
+    @scenes = Scene.all.paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|
       format.html
       format.xml  { render :xml => @scenes }
+      format.js { render :layout => false }
     end
   end
 

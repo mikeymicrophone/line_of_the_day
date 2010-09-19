@@ -1,11 +1,11 @@
-<%= sort_buttons %>
-<div id='tips'>
-	<%= render :partial => @tips %>
-</div>
+<% pagination_and_sorting_for @tips do %>
+	<div id='tips'>
+		<%= render :partial => @tips %>
+	</div>
+<% end %>
 <% if current_user %>
 	<% form_remote_for Tip.new, :update => 'tips', :position => 'bottom', :loading => "$('tip_advice').clear();$('tip_submit').writeAttribute('src', '/images/#{tip_submit}')" do |f| %>
 	  <%= f.text_area :advice, :size => '49x4' %>
 	  <%= image_submit_tag tip_submit, :id => 'tip_submit' %>
 	<% end %>
 <% end %>
-<%= will_paginate @tips %>

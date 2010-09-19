@@ -1,7 +1,14 @@
 <% div_for nickname, :class => 'borderedbox' do %>
+	<%= voting_booth nickname %>
   <%= link_to nickname.name, nickname %>
+  <%= link_to_comment_section_for nickname %>
+  <%= tag_display nickname %>
 	<% if current_user.andand.admin? %>
 	  [<%= link_to 'x', nickname_path(nickname), :method => :delete, :title => 'delete' %>]
 	<% end %>
+	<%= tagger nickname %>
+	<% div_for(nickname, 'tags', :style => 'display:none') {} %>
+	<%= comment_section_for nickname %>
   <%#= link_to nickname.user.username, user_nicknames_path(nickname.user), :class => 'pick-up-artist' %>
 <% end %>
+<%= draggable_and_droppable_for nickname %>

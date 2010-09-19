@@ -1,7 +1,7 @@
 <% if params[:user_id] %>
   <%= "lists by #{User.find(params[:user_id]).username}" %>
 <% end %>
-<%= sort_buttons %>
-<%= render :partial => @lists %>
-<%= will_paginate @lists %>
+<% pagination_and_sorting_for @lists do %>
+	<%= render :partial => @lists %>
+<% end %>
 <%= link_to image_tag('make_list.png', :alt => 'make a list'), new_list_path %>

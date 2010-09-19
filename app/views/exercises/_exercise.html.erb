@@ -1,11 +1,14 @@
 <% div_for exercise, :class => 'borderedbox' do %>
   <%= voting_booth exercise %>
-	<%= link_to exercise.moniker, exercise %>
+	<%= exercise.moniker %>
 	<%= exercise.instruction %>
-	<%= add_to_list exercise %>
 	<%= tagger exercise %>
 	<%= tag_display exercise %>
 	<% if current_user.andand.admin? %>
 	  [<%= link_to 'x', exercise_path(exercise), :method => :delete, :title => 'delete' %>]
 	<% end %>
+	<% div_for exercise, 'tags', :style => 'display:none;' do %>
+	<% end %>
+	<%= comment_section_for exercise %>
 <% end %>
+<%= draggable_and_droppable_for exercise %>

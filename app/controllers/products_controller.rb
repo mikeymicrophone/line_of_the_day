@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
       Product.randomized
     else
       Product
-    end.paginate :page => params[:page]
+    end.paginate :page => params[:page], :per_page => params[:per_page]
   end
   
   def show

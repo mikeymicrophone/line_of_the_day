@@ -2,9 +2,15 @@
 	<%= voting_booth story %>
 	<%= link_to story.name, story %>
   <%= 'at ' + link_to(story.scene.name, story.scene) if story.scene %>
-	<%= add_to_list story %> <%= tagger story %> <%= tag_display story %>
+  <%= link_to_comment_section_for story %>
+  <%= tag_display story %>
 	<% if current_user.andand.admin? || (current_user && story.user == current_user) %>
 	  [<%= link_to 'x', story_path(story), :method => :delete, :title => 'delete' %>]
-	<% end %><hr>
+	<% end %>
+	<%= tagger story %>
+	<hr>
 	<%= story.telling %>
+	<% div_for(story, 'tags', :style => 'display:none') {} %>
+	<%= comment_section_for story %>
 <% end %>
+<%= draggable_and_droppable_for story %>

@@ -1,4 +1,4 @@
-<%= sort_buttons %>
-<%= render :partial => @websites %>
-<%= will_paginate @websites %>
+<% pagination_and_sorting_for @websites do %>
+	<%= render :partial => @websites %>
+<% end %>
 <%= link_to 'new website', new_website_path %>

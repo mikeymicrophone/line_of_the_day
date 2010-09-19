@@ -1,8 +1,12 @@
-<% div_for video do %>
+<% div_for video, :class => 'borderedbox' do %>
 	<%= voting_booth video %>
 	<h3><%= video.name %></h3>
-	<%= video.embed %>
- 	<%= add_to_list video %>
- 	<%= tagger video %>
+	<%= video.embed %><br>
+	<%= link_to_comment_section_for video %>
  	<%= tag_display video %>
+ 	<%= tagger video %>
+  <% div_for video, 'tags', :style => 'display:none' do %>
+  <% end %>
+  <%= comment_section_for video %>
 <% end %>
+<%= draggable_and_droppable_for video %>

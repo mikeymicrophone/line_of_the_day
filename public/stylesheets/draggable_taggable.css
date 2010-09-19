@@ -1,0 +1,22 @@
+#draggable_lists {
+	width: 36%;
+	float: 	right;
+}
+
+#draggable_lists div.list {
+	text-align: center;
+}
+
+.tagging a {
+	color: red;
+}
+
+div.this_list.list.borderedbox {
+	border-color: red;
+}
+
+a.list_toggle {
+	text-decoration: none;
+	font-size: 1.2em;
+	color: black;
+}

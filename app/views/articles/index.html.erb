@@ -1,3 +1,4 @@
+<% pagination_and_sorting_for @articles do %>
 <%= render :partial => @articles %>
-<%= will_paginate @articles %>
+<% end %>
 <%= link_to 'new article', new_article_path %>

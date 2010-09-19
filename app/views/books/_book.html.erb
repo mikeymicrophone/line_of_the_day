@@ -2,7 +2,10 @@
   <%= voting_booth book %>
   <%= link_to book.title, book %>
   by <%= book.author %>
-  <%= add_to_list book %>
-  <%= tagger book %>
+  <%= link_to_comment_section_for book %>
   <%= tag_display book %>
+  <%= tagger book %>
+  <% div_for(book, 'tags', :style => 'display:none') {} %>
+  <%= comment_section_for book %>
 <% end %>
+<%= draggable_and_droppable_for book %>

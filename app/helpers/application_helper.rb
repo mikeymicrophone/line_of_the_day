@@ -15,11 +15,9 @@ module ApplicationHelper
   end
   
   def sort_buttons
-    "<div class='clearfix'></div>" +
-    link_to(image_tag('top_rated.png'), {:sort => 'rating'}, :class => 'sort borderedbox') +
-    link_to(image_tag('recent.png'), {:sort => 'recent'}, :class => 'sort borderedbox') +
-    link_to(image_tag('randomize.png'), {:sort => 'random'}, :class => 'sort borderedbox') +
-    "<div class='clearfix'></div>"
+    link_to(image_tag('top_rated.png'), {:sort => 'rating', :per_page => params[:per_page]}, :class => 'sort borderedbox') +
+    link_to(image_tag('recent.png'), {:sort => 'recent', :per_page => params[:per_page]}, :class => 'sort borderedbox') +
+    link_to(image_tag('randomize.png'), {:sort => 'random', :per_page => params[:per_page]}, :class => 'sort borderedbox')
   end
   
   def voting_booth target
@@ -61,5 +59,53 @@ module ApplicationHelper
       })();
 
     </script>!
+  end
+  
+  def will_paginate_unless_random collection, opts = {}
+    (if params[:sort] == 'random'
+      link_to 'refresh', {:sort => params[:sort]}, :class => 'refresh'
+    else
+      will_paginate collection, opts
+    end || '') + 
+    content_tag(:div, :class => 'per_page') do
+      raw("<span class='per_page_count'>#{params[:per_page] || 25}</span>") +
+      raw(%Q{<input type="range" min="1" max="100" value="#{params[:per_page] || 25}" class='per_page_slider' onchange="update_per_page(this.value)"/>})
+    end
+  end
+  
+  def pagination_and_sorting_for collection, &block
+    concat(raw(sort_buttons) +
+    raw(will_paginate_unless_random(collection)) +
+    raw("<div class='clearfix'></div>") +
+    raw(capture(&block)) +
+    raw(sort_buttons) +
+    raw(will_paginate_unless_random(collection)) +
+    raw("<div class='clearfix'></div>"))
+  end
+  
+  def draggable_and_droppable_for obj
+    "<script type='text/javascript'>
+    	new Draggable('#{obj.dom_id(nil)}', {revert: true, scroll: window});
+
+      Droppables.add('#{obj.dom_id(nil)}', {
+    	  hoverclass: 'tagging',
+    		onDrop: function(dragged, dropped, event) {
+    			new Ajax.Request('/tags?tag[target_type]=#{obj.class.name}&tag[target_id]=' + #{obj.id} + '&tag[subject_type]=' + dragged.className.split(' ')[0].capitalize() + '&tag[subject_id]=' + dragged.id.split('_')[dragged.id.split('_').length - 1]);
+    			$('#{dom_id(obj, 'tag_count')}').innerHTML = $('#{dom_id(obj, 'tag_count')}').innerHTML.gsub(/(\d+)/, function(match) {return match[1]*1 + 1});
+    		}
+    	});
+    </script>"
+  end
+  
+  def draggable_content_piece obj, &block
+    concat(div_for(obj, :class => 'borderedbox') do
+      voting_booth(obj) + 
+      capture(&block) +
+    	tagger(obj) +
+    	tag_display(obj) +
+    	div_for(obj, 'tags', :style => 'display:none;') do
+    	end +
+    	comment_section_for(obj)
+    end) + draggable_and_droppable_for(obj)
   end
 end

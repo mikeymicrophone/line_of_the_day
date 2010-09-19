@@ -1,0 +1,10 @@
+<% div_for city, :class => 'borderedbox' do %>
+	<%= voting_booth city %>
+	<%= city.name %>
+	<%= link_to_comment_section_for city %>
+	<%= tag_display city %>
+	<%= tagger city %>
+	<% div_for(city, 'tags', :style => 'display:none') {} %>
+	<%= comment_section_for city %>
+<% end %>
+<%= draggable_and_droppable_for city %>

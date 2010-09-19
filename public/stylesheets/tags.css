@@ -1,5 +1,6 @@
 .tag_creation {
-	border: 2px solid black;
+	display: block;
+	top: 10px;
 }
 
 .tags {
@@ -8,6 +9,12 @@
 
 .line .list {
 	font-size: 13px;
+}
+
+.tagger {
+	float: right;
+	position: relative;
+	bottom: 14px;
 }
 
 .tag {

@@ -2,10 +2,8 @@
 	<%= voting_booth line %>
   <span class='left'>
 		<%= link_to h(line.phrasing), line %>
-		<%='[' + link_to(line.comments.count, line_path(line), :title => 'comments on this line') + ']' if line.comments.present? %>
-		<%= '[' + link_to(line.approaches.count, line_approaches_path(line), :title => 'number of times this line has been used') + ']' if line.approaches.present? %>
-		<%= add_to_list line %>
-		<%= tagger line %>
+		<%= link_to_comment_section_for line %>
+		<%#= '[' + link_to(line.approaches.count, line_approaches_path(line), :title => 'number of times this line has been used') + ']' if line.approaches.present? %>
 		<%= tag_display line %>
 		<% if current_user.andand.admin? || (current_user && line.user == current_user) %>
 		  [<%= link_to 'x', line_path(line), :method => :delete, :title => 'delete' %>]
@@ -16,5 +14,20 @@
   <span class='right'><%=h line.context %></span>
   <span class='left'><%= publish_link line %></span>
   <span class='left', id='<%= dom_id(line, 'publicize') %>'><%= publicize_link line %></span>
+	<%= tagger line %>
+	<% div_for line, 'tags', :style => 'display:none;' do %>
+	<% end %>
+	<%= comment_section_for line %>
 <% end %>
 <div class='clearfix'></div>
+<script type='text/javascript'>
+	new Draggable('line_' + <%= line.id %>, {revert: true, scroll: window});
+
+  Droppables.add('line_' + <%= line.id %>, {
+	  hoverclass: 'tagging',
+		onDrop: function(dragged, dropped, event) {
+			new Ajax.Request('/tags?tag[target_type]=Line&tag[target_id]=' + <%= line.id %> + '&tag[subject_type]=' + dragged.className.split(' ')[0].capitalize() + '&tag[subject_id]=' + dragged.id.split('_')[dragged.id.split('_').length - 1]);
+			$('<%= dom_id(line, 'tag_count') %>').innerHTML = $('<%= dom_id(line, 'tag_count') %>').innerHTML.gsub(/(\d+)/, function(match) {return match[1]*1 + 1});
+		}
+	});
+</script>

@@ -11,11 +11,28 @@ class CommentsController < ApplicationController
       (@tip = Tip.find(params[:tip_id])).comments
     elsif params[:exercise_id]
       (@exercise = Exercise.find(params[:exercise_id])).comments
+    elsif params[:product_id]
+      Product.find(params[:product_id]).comments
+    elsif params[:video_id]
+      Video.find(params[:video_id]).comments
+    elsif params[:article_id]
+      Article.find(params[:article_id]).comments
+    elsif params[:nickname_id]
+      Nickname.find(params[:nickname_id]).comments
+    elsif params[:story_id]
+      Story.find(params[:story_id]).comments
+    elsif params[:artist_id]
+      Artist.find(params[:artist_id]).comments
+    elsif params[:company_id]
+      Company.find(params[:company_id]).comments
+    elsif params[:website_id]
+      Website.find(params[:website_id]).comments
     else
       Comment.all
     end
     respond_to do |format|
-      format.html
+      format.js { render :partial => @comments }
+      format.html { render :partial => @comments }
       format.xml  { render :xml => @comments }
     end
   end

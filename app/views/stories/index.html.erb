@@ -1,8 +1,8 @@
-<%= sort_buttons %>
-<div id='stories'>
-	<%= render :partial => @stories %>
-</div>
-<%= will_paginate @stories %>
+<% pagination_and_sorting_for @stories do %>
+	<div id='stories'>
+		<%= render :partial => @stories %>
+	</div>
+<% end %>
 Your story can be either a funny or poignant story you would tell in a conversation, or just a story about what happened to you when you started a conversation.
 <% if current_user %>
 	<% form_remote_for Story.new, :update => 'stories', :position => 'bottom', :loading => "$('new_story').reset()" do |f| %>

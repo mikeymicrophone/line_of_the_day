@@ -10,7 +10,12 @@ class ListItemsController < ApplicationController
       end
     else
       ListItem
-    end.paginate :page => params[:page]
+    end.paginate :page => params[:page], :per_page => params[:per_page]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => 'shared/list_items' }
+    end
   end
   
   def show
@@ -62,8 +67,13 @@ class ListItemsController < ApplicationController
   
   def create
     params[:list_item][:user] = current_user
+    params[:list_item][:list_id] ||= params[:list_id]
     @list_item = ListItem.create params[:list_item]
-    render :partial => 'shared/close_box'
+    if @list_item.valid?
+      render :partial => 'shared/list_items', :locals => {:list_items => [@list_item], :list => @list_item.list}
+    else
+      render :nothing => true
+    end
   end
   
   def edit
@@ -90,8 +100,9 @@ class ListItemsController < ApplicationController
   
   def destroy
     @list_item = ListItem.find params[:id]
+    @list = @list_item.list
     # do I need to call #remove_from_list
     @list_item.destroy
-    redirect_to list_items_path
+    redirect_to list_list_items_path(@list)
   end
 end

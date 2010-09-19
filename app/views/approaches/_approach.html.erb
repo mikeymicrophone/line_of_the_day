@@ -1,1 +1,16 @@
-<%= link_to approach.scene.name, approach.scene %><%= approach.hotness / 10.0 %><%= link_to approach.result.name, approach.result %>
+<% div_for approach, :class => 'borderedbox' do %>
+  <%= voting_booth approach %>
+	<%= approach.hotness.to_i / 10.0 -%>
+	<%= approach.context %>
+	<br>
+	<%= link_to truncate(approach.line.phrasing, 110), approach.line if approach.line %>
+	<br>
+	<%= link_to_name approach.scene, nil, :class => 'scene' %>
+	<%= link_to_name approach.result, nil, :class => 'result' %>
+	<%= link_to_comment_section_for approach %>
+	<%= tag_display approach %>
+	<%= tagger approach %>
+	<% div_for(approach, 'tags', :style => 'display:none') {} %>
+	<%= comment_section_for approach %>
+<% end %>
+<%= draggable_and_droppable_for approach %>

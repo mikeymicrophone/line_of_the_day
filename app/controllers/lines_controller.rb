@@ -11,6 +11,8 @@ class LinesController < ApplicationController
   def index
     @published_lines = User.find(params[:user_id]).publications.to_group(params[:group_id]).map &:line if params[:user_id] and params[:group_id]
     
+    params[:sort] ||= 'random'
+    
     @public_lines = if current_user
       @lines = Line.public_to(current_user)
       if params[:sort] == 'rating'
@@ -29,13 +31,14 @@ class LinesController < ApplicationController
       else
         @lines.sort_by { |l| rand }
       end      
-    end.paginate(:page => params[:page])
+    end.paginate(:page => params[:page], :per_page => params[:per_page])
     
     @shared_lines = current_user.joined_groups.map { |g| g.lines }.flatten.select { |l| l.user_id != current_user.id }.sort_by { |l| l.created_at } if current_user
 
     respond_to do |format|
       format.html
       format.xml  { render :xml => @public_lines }
+      format.js { render :layout => false }
     end
   end
     

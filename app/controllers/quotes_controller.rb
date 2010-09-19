@@ -1,7 +1,7 @@
 class QuotesController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
   def index
-    @quotes = Quote.paginate :page => params[:page]
+    @quotes = Quote.paginate :page => params[:page], :per_page => params[:per_page]
   end
   
   def show

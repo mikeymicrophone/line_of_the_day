@@ -9,7 +9,12 @@ class StoriesController < ApplicationController
       Story.public_to(current_user).sort_by { |s| s.average_rating }.reverse
     else
       Story.public_to(current_user)
-    end.paginate :page => params[:page]
+    end.paginate :page => params[:page], :per_page => params[:per_page]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :layout => false }
+    end
   end
   
   def show

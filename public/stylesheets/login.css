@@ -1,6 +1,6 @@
 #new_user_session input, #new_user input {
-	position: absolute;
-	left: 350px;
+	position: relative;
+	right: 1px;
 }
 
 input#recaptcha_response_field { 
@@ -11,3 +11,14 @@ input#recaptcha_response_field {
 	margin-left: 80px;
 	margin-right: 80px;
 }
+
+#login_space {
+	text-align: center;
+	padding-top: 12px;
+}
+
+#login_space img {
+	vertical-align: bottom;
+	padding-top: 9px;
+}
+

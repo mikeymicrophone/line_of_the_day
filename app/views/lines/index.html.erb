@@ -1,13 +1,11 @@
 <%= sort_buttons %>
+<%= will_paginate_unless_random @public_lines if @public_lines %>
+<div class='clearfix'></div>
 <div id="line_bin">
-  <%= render :partial => @published_lines if @published_lines %>
-  <hr>
-
-  <%= render :partial => @public_lines if @public_lines %>
-
-  <hr>
-
+  <%= render :partial => @published_lines if @published_lines %><hr>
+  <%= render :partial => @public_lines if @public_lines %><hr>
   <%= render :partial => @shared_lines if @shared_lines %>
-
-  <%= will_paginate @public_lines if @public_lines %>
 </div>
+<%= sort_buttons %>
+<%= will_paginate_unless_random @public_lines if @public_lines %>
+<div class='clearfix'></div>

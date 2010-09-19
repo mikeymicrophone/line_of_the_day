@@ -1,4 +1,4 @@
-<%= sort_buttons %>
-<%= render :partial => @artists %>
-<%= will_paginate @artists %>
+<% pagination_and_sorting_for @artists do %>
+	<%= render :partial => @artists %>
+<% end %>
 <%= link_to 'add an artist', new_artist_path %>
