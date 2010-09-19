@@ -1,7 +1,12 @@
 class GoalsController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
   def index
-    @goals = Goal.paginate :page => params[:page]
+    @goals = Goal.paginate :page => params[:page], :per_page => params[:per_page]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :layout => false }
+    end
   end
   
   def show

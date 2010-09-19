@@ -10,7 +10,7 @@ class ListItemsController < ApplicationController
       end
     else
       ListItem
-    end.paginate :page => params[:page]
+    end.paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html

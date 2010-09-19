@@ -50,7 +50,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :lines, :has_one => [:user], :has_many => [:publications, :comments, :groups, :approaches, :goals, :list_items, :ratings, :tags], :collection => {:mine => :get, :random => :get}
 
   map.resources :blogs, :has_many => [:posts, :list_items, :comments], :member => {:fetch => :get}, :collection => {:fetch_all => :get}
-  map.resources :posts, :has_one => [:blog], :has_many => [:list_items]
+  map.resources :posts, :has_one => [:blog], :has_many => [:list_items, :comments]
   
   map.resources :newsletters
   

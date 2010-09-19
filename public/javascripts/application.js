@@ -38,7 +38,7 @@ function update_per_page(count) {
 }
 
 function ajaxify_links() {
-	$$('.sort, .pagination a, .refresh, .navigate a').each(function(s) {
+	$$('.sort, .pagination a, .refresh').each(function(s) {
 		Event.observe(s, 'click', function(event) {
 			new Ajax.Updater('content_home', this.href, {method: 'get', onComplete: ajaxify_links, evalScripts: true});
 			event.stop();
@@ -63,5 +63,11 @@ document.observe('dom:loaded', function() {
 	Event.observe($('login'), 'click', function(event) {
 		new Effect.SlideDown('login_space');
 		event.stop();
+	});
+	$$('#navigation a').each(function(s) {
+		Event.observe(s, 'click', function(event) {
+			new Ajax.Updater('content_home', this.href, {method: 'get', onComplete: ajaxify_links, evalScripts: true});
+			event.stop();
+		});
 	});
 })

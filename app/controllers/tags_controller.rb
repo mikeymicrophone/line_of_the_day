@@ -11,7 +11,7 @@ class TagsController < ApplicationController
     elsif params[:target_type]
       params[:target_type].constantize.send(:find, params[:target_id]).tags
     else 
-      Tag.paginate :page => params[:page]
+      Tag.paginate :page => params[:page], :per_page => params[:per_page]
     end
 
     respond_to do |format|

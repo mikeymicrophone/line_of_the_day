@@ -1,6 +1,11 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.paginate :page => params[:page]
+    @questions = Question.paginate :page => params[:page], :per_page => params[:per_page]
+
+    respond_to do |format|
+      format.html
+      format.js { render :layout => false }
+    end
   end
   
   def show

@@ -12,7 +12,7 @@ class RatingsController < ApplicationController
       User.find(params[:user_id]).ratings
     else
       Rating
-    end.paginate :page => params[:page], :order => 'created_at desc'
+    end.paginate :page => params[:page], :per_page => params[:per_page], :order => 'created_at desc'
     
     respond_to do |format|
       format.html
