@@ -7,6 +7,7 @@ class ScenesController < ApplicationController
     respond_to do |format|
       format.html
       format.xml  { render :xml => @scenes }
+      format.js { render :layout => false }
     end
   end
 

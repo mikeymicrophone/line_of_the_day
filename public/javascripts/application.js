@@ -64,7 +64,7 @@ document.observe('dom:loaded', function() {
 		new Effect.SlideDown('login_space');
 		event.stop();
 	});
-	$$('#navigation a').each(function(s) {
+	$$('#navigation a, #footer a').each(function(s) {
 		Event.observe(s, 'click', function(event) {
 			new Ajax.Updater('content_home', this.href, {method: 'get', onComplete: ajaxify_links, evalScripts: true});
 			event.stop();

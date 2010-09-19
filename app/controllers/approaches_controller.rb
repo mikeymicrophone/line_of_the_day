@@ -6,11 +6,11 @@ class ApproachesController < ApplicationController
   before_filter :require_user
 
   def index
-    if @line = Line.find_by_id(params[:line_id])
-      @approaches = @line.approaches
+    @approaches = if @line = Line.find_by_id(params[:line_id])
+       @line.approaches
     else
-      @approaches = Approach.all
-    end
+      Approach.all
+    end.paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|
       format.html

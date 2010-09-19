@@ -1,5 +1,5 @@
 class Approach < ActiveRecord::Base
-  include Taggable
+  include Taggable, Ratable, Commendable
   belongs_to :result
   belongs_to :line
   belongs_to :user

@@ -1,20 +1,4 @@
-<h1>approaches</h1>
 <%= link_to 'I did one', new_approach_path %>
-<table>
-<% @approaches.each do |approach| %>
-  <div>
-    <%= approach.hotness.to_i / 10.0 -%>
-    <%= approach.context %>
-	<br>
-    <%= link_to truncate(approach.line.phrasing, 110), approach.line if approach.line %>
-    <br>
-    <%= link_to_name approach.scene, nil, :class => 'scene' %>
-    <%= link_to_name approach.result, nil, :class => 'result' %>
-    <%= link_to 'investigate', approach %>
-    <br><br>
-  </div>
+<% pagination_and_sorting_for @approaches do %>
+  <%= render :partial => @approaches %>
 <% end %>
-</table>
-
-<br />
-
