@@ -27,8 +27,26 @@ class CommentsController < ApplicationController
       Company.find(params[:company_id]).comments
     elsif params[:website_id]
       Website.find(params[:website_id]).comments
-    else
-      Comment.all
+    elsif params[:question_id]
+      Question.find(params[:question_id]).comments
+    elsif params[:affirmation_id]
+      Affirmation.find(params[:affirmation_id]).comments
+    elsif params[:group_id]
+      Group.find(params[:group_id]).comments
+    elsif params[:goal_id]
+      Goal.find(params[:goal_id]).comments
+    elsif params[:blog_id]
+      Blog.find(params[:blog_id]).comments
+    elsif params[:book_id]
+      Book.find(params[:book_id]).comments
+    elsif params[:scene_id]
+      Scene.find(params[:scene_id]).comments
+    elsif params[:neighborhood_id]
+      Neighborhood.find(params[:neighborhood_id]).comments
+    elsif params[:city_id]
+      City.find(params[:city_id]).comments
+    elsif params[:approach_id]
+      Approach.find(params[:approach_id]).comments
     end
     respond_to do |format|
       format.js { render :partial => @comments }
