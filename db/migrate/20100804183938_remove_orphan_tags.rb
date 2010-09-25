@@ -1,30 +1,30 @@
 class RemoveOrphanTags < ActiveRecord::Migration
   def self.up
-    Tag.all.each do |t|
+    Tag.find_each(:batch_size => 10) do |t|
       if t.target == nil
         t.destroy
       end
     end
     
-    Comment.all.each do |c|
+    Comment.find_each(:batch_size => 10) do |c|
       if c.target == nil
         c.destroy
       end
     end
     
-    Publication.all.each do |p|
+    Publication.find_each(:batch_size => 10) do |p|
       if p.line == nil
         p.destroy
       end
     end
     
-    Rating.all.each do |r|
+    Rating.find_each(:batch_size => 10) do |r|
       if r.target == nil
         r.destroy
       end
     end
     
-    Approach.all.each do |a|
+    Approach.find_each(:batch_size => 10) do |a|
       if a.line == nil
         a.update_attributes :line_id => nil
       end
