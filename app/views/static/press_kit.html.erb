@@ -8,7 +8,9 @@
     You can tell the clerks and business owners that a future version of the app will let users promote locations, a la <%= link_to 'Foursquare', 'http://foursquare.com' %>.<br>
     Planned features include both spontaneous mentions (check-in style) and future plans (e-vite style).<br>
     If their customers start using the app now, their businesses will be the first to benefit from this free publicity.  Also, their patrons will be chattier and flirtier!<hr>
-    If they don't agree to display it prominently behind the bar, just surreptitiously hang it in the men's room ;)
+    If they don't agree to display it prominently behind the bar, just surreptitiously hang it in the men's room ;)<hr>
+    If you have an iPhone, iPod Touch, or iPad, <%= link_to 'install the app', 'http://itunes.apple.com/us/app/talktoher/id384896043' %> so you can show them a demo.  If your phone can play YouTube videos, <%= link_to "here's one you can show them", 'http://www.youtube.com/watch?v=44bTbEKATBc' %>.<hr>
+    Lastly, <%= link_to 'here is the pitch.', :controller => 'talktoher', :action => :index %>
   </div>
   <hr>
 	<%= link_to 'Download PDF', '/talk to her small flier.pdf' %><br>
@@ -22,6 +24,7 @@
 	<%= link_to image_tag('talk to her flier narrow.jpg', :width => 500), '/talk to her flier narrow.pdf' %><br>
 	<%= link_to 'Download PDF', '/talk to her flier narrow.pdf' %><br>
 	<div class="instructions">
-	  In case your printer can't handle the first poster, this one has bigger margins.
+	  In case your printer can't handle the first poster, this one has bigger margins.<hr>
+	  To inquire about interviewing me or reviewing the app, you can contact <%= mail_to 'schwabsauce@lineoftheday.com', 'schwabsauce@lineoftheday.com', :encrypt => :javascript %>.  Also feel free to send general comments and questions.
 	</div>
 </div>
