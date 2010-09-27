@@ -1,5 +1,5 @@
 <% list_items.each do |item| %>
-  <hr>
+  <hr class="list_item <%= item.item.class.name.underscore %>">
   <% div_for item.item, dom_id(list) do %>
 	  <%= item.item.name %>
   <% end %>

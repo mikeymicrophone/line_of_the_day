@@ -17,4 +17,8 @@ class StaticController < ApplicationController
   def faq
     render :template => 'shared/faq'
   end
+  
+  def press_kit
+    
+  end
 end

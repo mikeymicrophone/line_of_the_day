@@ -20,3 +20,7 @@ a.list_toggle {
 	font-size: 1.2em;
 	color: black;
 }
+
+hr.list_item.line {
+	background-color: #99511A;
+}

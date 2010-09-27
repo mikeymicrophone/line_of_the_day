@@ -1,0 +1,14 @@
+#press_kit {
+	text-align: center;
+	font-size: 3em;
+	line-height: 1em;
+}
+
+#press_kit a {
+	color: black;
+	font-weight: bold;
+}
+
+#press_kit .instructions {
+	font-size: .6em;
+}
