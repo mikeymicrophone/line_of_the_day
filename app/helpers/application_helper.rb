@@ -69,7 +69,7 @@ module ApplicationHelper
     end || '') + 
     content_tag(:div, :class => 'per_page') do
       raw("<span class='per_page_count'>#{params[:per_page] || 25}</span>") +
-      raw(%Q{<input type="range" min="1" max="100" value="#{params[:per_page] || 25}" class='per_page_slider' onchange="update_per_page(this.value)"/>})
+      raw(%Q{<input type="range" min="1" max="100" value="#{params[:per_page] || 25}" class='per_page_slider' onchange="update_per_page(this.value)"/>}) + image_tag('ajax-loader.gif', :class => 'activity_indicator', :style => 'display:none')
     end
   end
   

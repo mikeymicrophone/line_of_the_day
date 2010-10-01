@@ -40,6 +40,7 @@ function update_per_page(count) {
 function ajaxify_links() {
 	$$('.sort, .pagination a, .refresh').each(function(s) {
 		Event.observe(s, 'click', function(event) {
+			$$('.activity_indicator').each(Element.show);
 			new Ajax.Updater('content_home', this.href, {method: 'get', onComplete: ajaxify_links, evalScripts: true});
 			event.stop();
 		});
@@ -66,6 +67,7 @@ document.observe('dom:loaded', function() {
 	});
 	$$('#navigation a, #footer a').each(function(s) {
 		Event.observe(s, 'click', function(event) {
+			$$('.activity_indicator').each(Element.show);
 			new Ajax.Updater('content_home', this.href, {method: 'get', onComplete: ajaxify_links, evalScripts: true});
 			event.stop();
 		});
