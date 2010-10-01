@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :coaches, :through => :guidings
   has_many :affirmations
   has_many :tips
+  has_many :exercises
   has_many :goals
   has_many :goal_ownerships
   has_many :blogs

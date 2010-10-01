@@ -34,8 +34,8 @@
 					  <%= recaptcha_tags %>
 					</span>
 				  <br />
-				  <%= image_submit_tag('new.png', :class => 'borderedbox', :id => 'i_m_new', :onclick => "transform_login_form(event)") %>
-				  <%= image_submit_tag('login_button.png', :class => 'borderedbox', :id => 'login_button') %>
+				  <%= image_tag('new.png', :class => 'borderedbox', :id => 'i_m_new', :onclick => "transform_login_form(event)") %>
+				  <%= image_submit_tag('login_button.png', :class => 'borderedbox', :id => 'login_button', :tab_order => '3') %>
 				<% end %>
 				  <p id='terms_link' class='borderedbox' style="display:none">
 					  By clicking "join" you indicate that you have read and agreed to these <%= link_to_function 'terms', "new Effect.SlideDown($('terms_conditions'));" %>.
