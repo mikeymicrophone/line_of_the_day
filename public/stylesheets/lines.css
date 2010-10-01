@@ -82,7 +82,7 @@ img.goal {
 
 .current_value {
 	position: absolute;
-	left: 13px;
+	left: -28px;
 }
 
 .random_line {
