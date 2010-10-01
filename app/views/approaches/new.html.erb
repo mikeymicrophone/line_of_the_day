@@ -22,7 +22,7 @@
   <p>
     <%= f.label :hotness, 'hotness' %><br />
     <%= slider_stylesheet %>
-    <%= slider_field :approach, :hotness, :range => 1..100 %>
+    <%= slider_field(:approach, :hotness, :range => 1..100).html_safe %>
   </p>
   <% if @approach.result %>
     <%= f.hidden_field :result_id %>

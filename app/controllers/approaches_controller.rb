@@ -7,7 +7,11 @@ class ApproachesController < ApplicationController
 
   def index
     @approaches = if @line = Line.find_by_id(params[:line_id])
-       @line.approaches
+      @line.approaches
+    elsif params[:scene_id]
+      Scene.find(params[:scene_id]).approaches
+    elsif params[:result_id]
+      Result.find(params[:result_id]).approaches
     else
       Approach.all
     end.paginate :page => params[:page], :per_page => params[:per_page]

@@ -46,7 +46,7 @@
 
 .borderedbox {
 	font-size: 1.4em;
-	-webkit-border-radius: 10px;
+	border-radius: 10px;
 	margin: 4px;
 	padding: 9px;
 	background-color: #fff;

@@ -9,6 +9,6 @@
 #about p {
 	border: 1px solid #710067;
 	padding: 6px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border-radius: 5px;
 }
