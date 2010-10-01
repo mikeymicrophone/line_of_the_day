@@ -21,8 +21,7 @@
   <% end %>
   <p>
     <%= f.label :hotness, 'hotness' %><br />
-    <%= slider_stylesheet %>
-    <%= slider_field(:approach, :hotness, :range => 1..100).html_safe %>
+		<input type="range" min="1" max="100" name="approach[hotness]">
   </p>
   <% if @approach.result %>
     <%= f.hidden_field :result_id %>
