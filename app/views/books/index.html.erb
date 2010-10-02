@@ -1,4 +1,11 @@
 <% pagination_and_sorting_for @books do %>
-	<%= render :partial => @books %>
+  <div id="books">
+		<%= render :partial => @books %>
+	</div>
 <% end %>
-<%= link_to 'new book', new_book_path %>
+<% form_remote_for Book.new, :update => 'books', :position => 'bottom', :loading => "$('new_book').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
+	<%= f.text_field :title %><%= f.label :title %><br>
+  <%= f.text_field :author %><%= f.label :author %><br>
+  <%= f.text_field :isbn %><%= f.label :isbn, 'ISBN' %><br>
+  <%= f.submit %>
+<% end %>

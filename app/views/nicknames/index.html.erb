@@ -4,7 +4,7 @@
 </div>
 <% end %>
 <% if current_user %>
-	<% form_remote_for Nickname.new, :update => 'nicknames', :position => 'bottom', :loading => "$('new_nickname').reset();" do |f| %>
+	<% form_remote_for Nickname.new, :update => 'nicknames', :position => 'bottom', :loading => "$('new_nickname').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
 		<%= f.text_field :name %>
 		<%= image_submit_tag 'name.png', :id => 'name_button' %>
 	<% end %>

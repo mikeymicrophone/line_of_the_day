@@ -1,4 +1,11 @@
 <% pagination_and_sorting_for @articles do %>
-<%= render :partial => @articles %>
+  <div id="articles">
+		<%= render :partial => @articles %>
+	</div>
 <% end %>
-<%= link_to 'new article', new_article_path %>
+<% form_remote_for Article.new, :update => 'articles', :position => 'bottom', :loading => "$('new_article').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
+	<%= f.text_field :url %><%= f.label :url %><br>
+	<%= f.text_field :title %><%= f.label :title %><br>
+	<%= f.text_field :source %><%= f.label :source %><br>
+	<%= f.submit %>
+<% end %>

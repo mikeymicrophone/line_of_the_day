@@ -40,7 +40,7 @@ function update_per_page(count) {
 function ajaxify_links() {
 	$$('.sort, .pagination a, .refresh').each(function(s) {
 		Event.observe(s, 'click', function(event) {
-			$$('.activity_indicator').each(Element.show);
+			show_activity_indicator();
 			new Ajax.Updater('content_home', this.href, {method: 'get', onComplete: ajaxify_links, evalScripts: true});
 			event.stop();
 		});
@@ -59,6 +59,14 @@ function transform_login_form(event) {
 	event.stop();
 }
 
+function show_activity_indicator() {
+	$$('.activity_indicator').each(Element.show);
+}
+
+function hide_activity_indicator() {
+	$$('.activity_indicator').each(Element.hide);
+}
+
 document.observe('dom:loaded', function() {
 	ajaxify_links();
 	Event.observe($('login'), 'click', function(event) {
@@ -67,7 +75,7 @@ document.observe('dom:loaded', function() {
 	});
 	$$('#navigation a, #footer a').each(function(s) {
 		Event.observe(s, 'click', function(event) {
-			$$('.activity_indicator').each(Element.show);
+			show_activity_indicator();
 			new Ajax.Updater('content_home', this.href, {method: 'get', onComplete: ajaxify_links, evalScripts: true});
 			event.stop();
 		});

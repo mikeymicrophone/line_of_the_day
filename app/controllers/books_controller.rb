@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
   def index
-    @books = Book.paginate :page => params[:page], :per_page => params[:per_page]
+    @books = Book.randomized.paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html
@@ -20,6 +20,6 @@ class BooksController < ApplicationController
   def create
     params[:book][:user] = current_user
     @book = Book.create params[:book]
-    redirect_to books_path
+    render :partial => @book
   end
 end

@@ -5,7 +5,7 @@
 <% end %>
 Your story can be either a funny or poignant story you would tell in a conversation, or just a story about what happened to you when you started a conversation.
 <% if current_user %>
-	<% form_remote_for Story.new, :update => 'stories', :position => 'bottom', :loading => "$('new_story').reset()" do |f| %>
+	<% form_remote_for Story.new, :update => 'stories', :position => 'bottom', :loading => "$('new_story').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
 	  <div style='float:left'>
 		  <%= f.text_field :name, :size => 68 %><br>
 			<%= f.text_area :telling, :size => '49x5' %><br>

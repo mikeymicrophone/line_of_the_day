@@ -3,7 +3,7 @@
 		<%= render :partial => @videos %>
 	</div>
 <% end %>
-<% form_remote_for Video.new, :update => 'videos', :position => 'bottom' do |f| %>
+<% form_remote_for Video.new, :update => 'videos', :position => 'bottom', :loading => "$('new_video').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
   <%= f.text_field :name %><%= f.label :name, 'name' %><br>
 	<%= f.text_field :embed %><%= f.label :embed, 'embed code' %><br>
 	<%= f.submit :submit %>

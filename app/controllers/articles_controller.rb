@@ -20,6 +20,6 @@ class ArticlesController < ApplicationController
   def create
     params[:article][:user] = current_user
     @article = Article.create params[:article]
-    redirect_to articles_path
+    render :partial => @article
   end
 end

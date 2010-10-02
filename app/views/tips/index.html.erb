@@ -4,7 +4,7 @@
 	</div>
 <% end %>
 <% if current_user %>
-	<% form_remote_for Tip.new, :update => 'tips', :position => 'bottom', :loading => "$('tip_advice').clear();$('tip_submit').writeAttribute('src', '/images/#{tip_submit}')" do |f| %>
+	<% form_remote_for Tip.new, :update => 'tips', :position => 'bottom', :loading => "$('tip_advice').clear();$('tip_submit').writeAttribute('src', '/images/#{tip_submit}');show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
 	  <%= f.text_area :advice, :size => '49x4' %>
 	  <%= image_submit_tag tip_submit, :id => 'tip_submit' %>
 	<% end %>

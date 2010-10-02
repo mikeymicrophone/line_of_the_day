@@ -5,7 +5,7 @@
 <% end %>
 
 <% if current_user %>
-	<% form_remote_for Question.new, :update => 'questions', :position => 'bottom', :loading => "$('question_name').clear();" do |f| %>
+	<% form_remote_for Question.new, :update => 'questions', :position => 'bottom', :loading => "$('question_name').clear();show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
 	  <%= f.text_area :name, :size => '49x4' %>
 	  <%= image_submit_tag 'ask.png' %>
 	<% end %>
