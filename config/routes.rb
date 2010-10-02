@@ -91,9 +91,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :invitations
   
-  map.resources :countries, :has_many => [:comments, :list_items]
-  map.resources :states, :has_many => [:comments, :list_items]
-  map.resources :cities, :has_many => [:comments, :list_items]
+  map.resources :countries, :has_many => [:comments, :list_items, :cities, :states]
+  map.resources :states, :has_many => [:comments, :list_items, :cities, :neighborhoods]
+  map.resources :cities, :has_many => [:comments, :list_items, :neighborhoods]
   map.resources :neighborhoods, :has_many => [:comments, :list_items]
   map.resources :positions
   map.resources :locations

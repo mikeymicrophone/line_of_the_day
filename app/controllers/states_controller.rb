@@ -1,10 +1,23 @@
 class StatesController < ApplicationController
   def show
     @state = State.find params[:id]
+    
+    respond_to do |format|
+      format.js { render :partial => @state }
+    end
   end
   
   def index
-    @states = State.all
+    @states = if params[:country_id]
+      Country.find(params[:country_id]).states
+    else
+      State.randomized
+    end.paginate :page => params[:page], :per_page => params[:per_page]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :layout => false }
+    end
   end
   
   def new

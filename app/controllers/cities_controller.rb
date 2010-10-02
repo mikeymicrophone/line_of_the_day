@@ -1,10 +1,21 @@
 class CitiesController < ApplicationController
   def show
     @city = City.find params[:id]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => @city }
+    end
   end
   
   def index
-    @cities = City.all.paginate :page => params[:page], :per_page => params[:per_page]
+    @cities = if params[:country_id]
+      Country.find(params[:country_id]).cities
+    elsif params[:state_id]
+      State.find(params[:state_id]).cities
+    else
+      City.all
+    end.paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html
@@ -18,7 +29,7 @@ class CitiesController < ApplicationController
   
   def create
     @city = City.create params[:city]
-    redirect_to @city
+    render :partial => @city
   end
   
   def edit

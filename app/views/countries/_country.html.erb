@@ -1,0 +1,15 @@
+<% div_for country, :class => 'borderedbox' do %>
+	<%= voting_booth country %>
+	<%= country.name %>
+	<%= link_to pluralize(country.states.count, 'state'), country_states_path(country) %>
+	<%= link_to pluralize(country.cities.count, 'city'), country_cities_path(country) %>
+	<%= link_to_comment_section_for country %>
+	<%= tag_display country %>
+	<% if current_user.andand.admin? %>
+	  [<%= link_to 'x', country_path(country), :method => :delete, :title => 'delete' %>]
+	<% end %>
+	<%= tagger country %>
+	<% div_for(country, 'tags', :style => 'display:none') {} %>
+	<%= comment_section_for country %>
+<% end %>
+<%= draggable_and_droppable_for country %>

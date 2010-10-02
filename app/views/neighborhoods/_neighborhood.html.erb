@@ -1,6 +1,7 @@
 <% div_for neighborhood, :class => 'borderedbox' do %>
   <%= voting_booth neighborhood %>
 	<%= neighborhood.name %>
+	<%= link_to_remote neighborhood.city.name, :url => city_path(neighborhood.city), :update => dom_id(neighborhood), :position => :after, :method => :get %>
 	<%= link_to_comment_section_for neighborhood %>
 	<%= tag_display neighborhood %>
 	<%= tagger neighborhood %>

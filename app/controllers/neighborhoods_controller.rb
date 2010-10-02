@@ -4,7 +4,13 @@ class NeighborhoodsController < ApplicationController
   end
   
   def index
-    @neighborhoods = Neighborhood.all.paginate :page => params[:page], :per_page => params[:per_page]
+    @neighborhoods = if params[:state_id]
+      State.find(params[:state_id]).neighborhoods.randomized
+    elsif params[:city_id]
+      City.find(params[:city_id]).neighborhoods.randomized
+    else
+      Neighborhood.randomized
+    end.paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html
@@ -18,7 +24,7 @@ class NeighborhoodsController < ApplicationController
   
   def create
     @neighborhood = Neighborhood.create params[:neighborhood]
-    redirect_to @neighborhood
+    render :partial => 'neighborhood'
   end
   
   def edit

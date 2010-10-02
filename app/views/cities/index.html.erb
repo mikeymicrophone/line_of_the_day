@@ -1,3 +1,10 @@
 <% pagination_and_sorting_for @cities do %>
-  <%= render :partial => @cities %>
+  <div id="cities">
+	  <%= render :partial => @cities %>
+	</div>
+<% end %>
+<% form_remote_for City.new, :update => 'cities', :position => 'bottom', :loading => "$('new_city').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
+	<%= f.text_field :name %>
+	<%= f.select :state_id, State.all.map { |s| [s.name, s.id] } %>
+	<%= f.submit 'add city' %>
 <% end %>

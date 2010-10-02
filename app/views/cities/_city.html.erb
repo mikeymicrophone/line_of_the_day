@@ -1,6 +1,8 @@
 <% div_for city, :class => 'borderedbox' do %>
 	<%= voting_booth city %>
 	<%= city.name %>
+	<%= link_to_remote city.state.name, :url => state_path(city.state), :update => dom_id(city), :position => :after, :method => :get %>
+	<%= link_to pluralize(city.neighborhoods.count, 'neighborhood'), city_neighborhoods_path(city) %>
 	<%= link_to_comment_section_for city %>
 	<%= tag_display city %>
 	<%= tagger city %>

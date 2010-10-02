@@ -1,6 +1,10 @@
 class CountriesController < ApplicationController
   def show
     @country = Country.find params[:id]
+    
+    respond_to do |format|
+      format.js { render :partial => @country }
+    end
   end
   
   def index
@@ -13,7 +17,7 @@ class CountriesController < ApplicationController
   
   def create
     @country = Country.create params[:country]
-    redirect_to @country
+    render :partial => @country
   end
   
   def edit

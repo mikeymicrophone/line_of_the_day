@@ -1,6 +1,9 @@
-<h1>Here are some of the countries where guys are getting it done.</h1>
-<% @countries.each do |c| %>
-	<% draggable_content_piece c do %>
-		<%= c.name %>
-	<% end %>
+<% pagination_and_sorting_for @countries do %>
+  <div id="countries">
+		<% render :partial => @countries %>
+	</div>
+<% end %>
+<% form_remote_for Country.new, :update => 'countries', :position => "bottom", :loading => "$('new_country').reset;show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
+	<%= f.text_field :name %><br>
+	<%= f.submit %>
 <% end %>

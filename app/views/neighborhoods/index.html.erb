@@ -1,3 +1,10 @@
 <% pagination_and_sorting_for @neighborhoods do %>
-  <%= render :partial => @neighborhoods %>
+  <div id="neighborhoods">
+	  <%= render :partial => @neighborhoods %>
+	</div>
+<% end %>
+<% form_remote_for Neighborhood.new, :update => 'neighborhoods', :position => 'bottom', :loading => "$('new_neighborhood').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
+	<%= f.text_field :name %>
+	<%= f.select :city_id, City.all.map { |c| [c.name, c.id] } %>
+	<%= f.submit 'add neighborhood' %>
 <% end %>

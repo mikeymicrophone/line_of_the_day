@@ -1,0 +1,13 @@
+<% div_for state, :class => 'borderedbox' do %>
+	<%= voting_booth state %>
+	<%= state.name %>
+	<%= link_to_remote state.country.name, :url => country_path(state.country), :update => dom_id(state), :position => :after, :method => :get %>
+	<%= link_to pluralize(state.cities.count, 'city'), state_cities_path(state) %>
+	<%= link_to pluralize(state.neighborhoods.count, 'neighborhood'), state_neighborhoods_path(state) %>
+	<%= link_to_comment_section_for state %>
+	<%= tag_display state %>
+	<%= tagger state %>
+	<% div_for(state, 'tags', :style => 'display:none') {} %>
+	<%= comment_section_for state %>
+<% end %>
+<%= draggable_and_droppable_for state %>
