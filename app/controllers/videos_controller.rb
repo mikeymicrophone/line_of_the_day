@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
   def index
-    @videos = Video.paginate :page => params[:page], :per_page => params[:per_page]
+    @videos = Video.randomized.paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html
@@ -19,6 +19,6 @@ class VideosController < ApplicationController
   
   def create
     @video = Video.create params[:video]
-    render :action => 'show'
+    render :partial => @video
   end
 end

@@ -47,9 +47,11 @@ class GroupsController < ApplicationController
       if @group.save
         format.html { redirect_to @group }
         format.xml  { render :xml => @group, :status => :created, :location => @group }
+        format.js   { render :partial => @group }
       else
         format.html { render :action => 'new' }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
+        format.js   { render :nothing => true }
       end
     end
   end

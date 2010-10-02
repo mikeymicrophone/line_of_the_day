@@ -1,3 +1,17 @@
-<%= render :partial => @groups %>
+<div id="groups">
+	<%= render :partial => @groups %>
+</div>
 <%= will_paginate @groups %>
-<%= link_to image_tag('form_group.png'), new_group_path %>
+<% form_remote_for(Group.new, :update => 'groups', :position => 'bottom') do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.text_field :name, :size => 47 %>    <%= f.label :name, 'name' %>
+  </p>
+  <p>
+    <%= f.select :rules, Group.rules_select %>    <%= f.label :rules, 'entry policy' %>
+  </p>
+  <p>
+    <%= image_submit_tag 'save_group.png' %>
+  </p>
+<% end %>
