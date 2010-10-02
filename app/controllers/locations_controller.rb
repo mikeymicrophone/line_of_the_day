@@ -12,7 +12,7 @@ class LocationsController < ApplicationController
   end
   
   def create
-    @location = @location.create params[:location]
+    @location = Location.create params[:location]
     redirect_to @location
   end
   

@@ -5,6 +5,6 @@
 <% end %>
 <% form_remote_for Neighborhood.new, :update => 'neighborhoods', :position => 'bottom', :loading => "$('new_neighborhood').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
 	<%= f.text_field :name %>
-	<%= f.select :city_id, City.all.map { |c| [c.name, c.id] } %>
+	<%= f.select :city_id, City.all.map { |c| [c.name, c.id] }, :selected => params[:city_id].to_i %>
 	<%= f.submit 'add neighborhood' %>
 <% end %>

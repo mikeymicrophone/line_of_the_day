@@ -5,6 +5,6 @@
 <% end %>
 <% form_remote_for State.new, :update => 'states', :position => 'bottom', :loading => "$('new_state').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
 	<%= f.text_field :name %>
-	<%= f.select :country_id, Country.all.map { |c| [c.name, c.id] } %>
+	<%= f.select :country_id, Country.all.map { |c| [c.name, c.id] }, :selected => params[:country_id].to_i %>
 	<%= f.submit 'add state' %>
 <% end %>

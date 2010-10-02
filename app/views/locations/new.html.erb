@@ -1,5 +1,6 @@
 <% form_for @location do |f| %>
-	<%= f.select :scene_id, Scene.all.map { |s| [s.name, s.id] } %><br>
-	<%= f.select :position_id, Position.all.map { |p| [p.name, p.id] } %><br>
-	<%= f.submit %>
+	<%= f.select :scene_id, Scene.all.map { |s| [s.name, s.id] } %>
+	<%= f.select :position_id, Position.all.map { |p| [p.name, p.id] } %>
+	<%= f.select :neighborhood_id, Neighborhood.all.map { |n| [n.name, n.id] } %>
+	<%= f.submit 'save location' %>
 <% end %>

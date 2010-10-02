@@ -1,5 +1,8 @@
-<h1>scenes</h1>
-<h3>Here are some of the places where guys are practicing their conversation skills.  You can use the iPhone app Talk To Her to meet up with a wingman near you!</h3>
 <% pagination_and_sorting_for @scenes do %>
-  <%= render :partial => @scenes %>
+  <div id="scenes">
+	  <%= render :partial => @scenes %>
+  </div>
+<% end %>
+<% form_for Scene.new, :update => 'scenes', :position => 'bottom', :loading => "$('new_scene').reset();show_activity_indicator()", :complete => 'hide_activity_indicator' do |f| %>
+  <%= f.text_field :name %><%= f.submit 'add scene' %>
 <% end %>
