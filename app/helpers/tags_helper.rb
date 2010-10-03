@@ -12,7 +12,7 @@ module TagsHelper
   def display_tag tag
     '<hr>' +
     div_for(tag, :class => tag.subject_type.downcase) do
-      link_to_remote tag.subject.name, :url => tag.subject, :title => tag.subject.name
+      link_to_remote tag.subject.name, :url => tag.subject, :title => tag.subject.name, :update => dom_id(tag.target), :position => :after, :method => :get
     end
   end
 end

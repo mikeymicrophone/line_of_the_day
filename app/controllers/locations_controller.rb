@@ -1,6 +1,11 @@
 class LocationsController < ApplicationController
   def show
     @location = Location.find params[:id]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => @nickname }
+    end
   end
   
   def index

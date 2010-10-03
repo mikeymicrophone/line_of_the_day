@@ -22,6 +22,11 @@ class RatingsController < ApplicationController
   
   def show
     @rating = Rating.find params[:id]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => @nickname }
+    end
   end
   
   def new

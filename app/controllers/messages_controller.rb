@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.html
       format.xml  { render :xml => @message }
+      format.js { render :partial => @message }
     end
   end
 

@@ -15,6 +15,7 @@ class ResultsController < ApplicationController
     respond_to do |format|
       format.html
       format.xml  { render :xml => @result }
+      format.js { render :partial => @result }
     end
   end
 

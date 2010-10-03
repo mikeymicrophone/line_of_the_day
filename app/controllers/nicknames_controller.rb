@@ -14,6 +14,11 @@ class NicknamesController < ApplicationController
   
   def show
     @nickname = Nickname.find params[:id]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => @nickname }
+    end
   end
   
   def new

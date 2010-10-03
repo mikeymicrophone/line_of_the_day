@@ -1,6 +1,11 @@
 class NeighborhoodsController < ApplicationController
   def show
     @neighborhood = Neighborhood.find params[:id]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => @nickname }
+    end
   end
   
   def index

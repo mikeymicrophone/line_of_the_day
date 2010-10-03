@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.paginate :page => params[:page], :per_page => params[:per_page]
+    @questions = Question.randomized.paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|
       format.html
@@ -10,6 +10,11 @@ class QuestionsController < ApplicationController
   
   def show
     @question = Question.find params[:id]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => @nickname }
+    end
   end
   
   def new

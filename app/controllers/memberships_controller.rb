@@ -16,6 +16,7 @@ class MembershipsController < ApplicationController
     respond_to do |format|
       format.html
       format.xml  { render :xml => @membership }
+      format.js { render :partial => @membership }
     end
   end
 

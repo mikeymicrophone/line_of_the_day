@@ -9,6 +9,7 @@ class ConceptsController < ApplicationController
     respond_to do |format|
       format.html
       format.xml { render :xml => @concept }
+      format.js { render :partial => @concept }
     end
   end
   

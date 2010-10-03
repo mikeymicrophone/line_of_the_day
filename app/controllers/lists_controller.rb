@@ -30,6 +30,11 @@ class ListsController < ApplicationController
   
   def show
     @list = List.find params[:id]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => @nickname }
+    end
   end
   
   def tag

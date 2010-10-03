@@ -57,7 +57,13 @@ class LinesController < ApplicationController
       respond_to do |format|
         format.html
         format.xml { render :xml => (@line.to_xml :include => [:comments, :ratings, :tags]) }
+        format.js { render :partial => @line }
       end
+    end
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => @line }
     end
   end
 

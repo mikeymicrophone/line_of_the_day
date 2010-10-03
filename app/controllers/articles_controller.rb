@@ -11,6 +11,11 @@ class ArticlesController < ApplicationController
   
   def show
     @article = Article.find params[:id]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => @nickname }
+    end
   end
   
   def new

@@ -11,6 +11,11 @@ class GoalsController < ApplicationController
   
   def show
     @goal = Goal.find params[:id]
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => @nickname }
+    end
   end
   
   def new

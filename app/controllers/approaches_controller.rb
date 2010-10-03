@@ -29,6 +29,7 @@ class ApproachesController < ApplicationController
     respond_to do |format|
       format.html
       format.xml  { render :xml => @approach }
+      format.js { render :partial => @approach }
     end
   end
 
