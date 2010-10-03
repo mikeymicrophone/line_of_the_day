@@ -68,7 +68,7 @@ function hide_activity_indicator() {
 }
 
 function adjust_list_spacing(val) {
-	$('list_spacer').setStyle({height:val * 10 + 'px'});
+	$('list_spacer').setStyle({height:val * 14 + 'px'});
 }
 
 document.observe('dom:loaded', function() {
