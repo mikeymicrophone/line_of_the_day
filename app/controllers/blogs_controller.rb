@@ -11,7 +11,7 @@ class BlogsController < ApplicationController
     elsif params[:sort] == 'recent'
       Blog.all.sort_by { |b| b.recent_update }.reverse
     else
-      Blog
+      Blog.randomized
     end.paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|

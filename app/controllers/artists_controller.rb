@@ -3,10 +3,10 @@ class ArtistsController < ApplicationController
   def index
     @artists = if params[:sort] == 'rating'
       Artist.all.sort_by(&:average_rating).reverse
-    elsif params[:sort] == 'random'
-      Artist.randomized
+    elsif params[:sort] == 'recent'
+      Artist.recent
     else
-      Artist
+      Artist.randomized
     end.paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|

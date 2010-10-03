@@ -62,7 +62,7 @@ module ApplicationHelper
   end
   
   def will_paginate_unless_random collection, opts = {}
-    (if params[:sort] == 'random'
+    (if params[:sort] == 'random' || params[:sort].blank?
       link_to 'refresh', {:sort => params[:sort]}, :class => 'refresh'
     else
       will_paginate collection, opts

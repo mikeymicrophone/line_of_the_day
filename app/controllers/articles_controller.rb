@@ -1,7 +1,13 @@
 class ArticlesController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
   def index
-    @articles = Article.randomized.paginate :page => params[:page], :per_page => params[:per_page]
+    @articles = if params[:sort] == 'recent'
+      Article.recent
+    elsif params[:sort] = 'rating'
+      Article.all.sort_by { |l| l.average_rating }.reverse
+    else
+      Article.randomized
+    end.paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html

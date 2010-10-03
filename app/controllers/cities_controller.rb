@@ -10,11 +10,11 @@ class CitiesController < ApplicationController
   
   def index
     @cities = if params[:country_id]
-      Country.find(params[:country_id]).cities
+      Country.find(params[:country_id]).cities.randomized
     elsif params[:state_id]
-      State.find(params[:state_id]).cities
+      State.find(params[:state_id]).cities.randomized
     else
-      City.all
+      City.randomized
     end.paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
