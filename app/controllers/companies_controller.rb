@@ -20,7 +20,7 @@ class CompaniesController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.js { render :partial => @nickname }
+      format.js { render :partial => @company }
     end
   end
   

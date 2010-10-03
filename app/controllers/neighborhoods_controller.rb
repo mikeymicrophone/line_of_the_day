@@ -4,7 +4,7 @@ class NeighborhoodsController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.js { render :partial => @nickname }
+      format.js { render :partial => @neighborhood }
     end
   end
   

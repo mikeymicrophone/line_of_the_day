@@ -13,6 +13,12 @@ class ConceptsController < ApplicationController
     end
   end
   
+  def applied_tags
+    @concept = Concept.find params[:id]
+    
+    render :partial => 'applied_tag', :collection => @concept.applied_tags.map(&:target)
+  end
+  
   def new
     @concept = Concept.new params[:concept]
   end

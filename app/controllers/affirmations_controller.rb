@@ -26,7 +26,7 @@ class AffirmationsController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.js { render :partial => @nickname }
+      format.js { render :partial => @affirmation }
     end
   end
   

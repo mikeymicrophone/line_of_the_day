@@ -1,7 +1,8 @@
 <% div_for concept, :class => 'borderedbox' do %>
 	<%= link_to concept.name, concept %>
-	<%= link_to concept.applied_tags.count, concept %>
+	<%= link_to_remote concept.applied_tags.count, :url => applied_tags_concept_path(concept), :update => dom_id(concept, 'tags'), :method => :get %>
 	<% if current_user.andand.admin? %>
 	  [<%= link_to 'x', concept_path(concept), :method => :delete, :title => 'delete' %>]
 	<% end %>
+	<% div_for(concept, 'tags') {} %>
 <% end %>
