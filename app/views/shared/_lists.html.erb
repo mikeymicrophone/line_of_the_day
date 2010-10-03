@@ -1,4 +1,5 @@
 <div id='draggable_lists'>
+	<div id='list_spacer'></div>
 	<% current_user.lists.each do |list| %>
 	  <% div_for list, :class => 'borderedbox' do %>
 			<%= link_to_function list.name, "Effect.toggle($('#{dom_id(list, 'items')}'), 'slide')", :class => 'list_toggle' %>
@@ -28,4 +29,5 @@
 		<% end %>
 	</div>
 </div>
+<input type='range' id='list_spacer_control', onchange="adjust_list_spacing(this.value);" value='0'>
 <%#= sortable_element 'draggable_lists', :tag => :div, :url => sort_lists_path %>

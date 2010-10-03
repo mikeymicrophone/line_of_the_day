@@ -24,3 +24,9 @@ a.list_toggle {
 hr.list_item.line {
 	background-color: #99511A;
 }
+
+#list_spacer_control {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+}

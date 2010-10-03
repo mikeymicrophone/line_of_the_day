@@ -67,6 +67,10 @@ function hide_activity_indicator() {
 	$$('.activity_indicator').each(Element.hide);
 }
 
+function adjust_list_spacing(val) {
+	$('list_spacer').setStyle({height:val * 10 + 'px'});
+}
+
 document.observe('dom:loaded', function() {
 	ajaxify_links();
 	Event.observe($('login'), 'click', function(event) {
