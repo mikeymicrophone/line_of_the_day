@@ -37,6 +37,13 @@ class ListsController < ApplicationController
     end
   end
   
+  def reorder
+    @list = List.find params[:id]
+    respond_to do |format|
+      format.js { render :partial => 'reorder_list', :object => @list }
+    end
+  end
+  
   def tag
     @list = List.find params[:id]
     render :layout => false

@@ -1,0 +1,5 @@
+<% @list.list_items.map do |i| %>
+	<% div_for i.item, :class => 'borderedbox' do %>
+	  <%= i.item.name %>
+	<% end.map(&:html_safe) %>
+<% end %>

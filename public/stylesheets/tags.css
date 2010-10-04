@@ -22,6 +22,102 @@
 	padding: 1px;
 }
 
+.tag.tip a {
+	color: #52032E;
+}
+
+.tag.line a {
+	color: #974B16;
+}
+
+.tag.exercise a {
+	color: #144505;
+}
+
+.tag.affirmation a {
+	color: #440B89;
+}
+
+.tag.video a {
+	color: #210053;
+}
+
+.tag.group a {
+	color: #144423;
+}
+
+.tag.goal a {
+	color: #122E46;
+}
+
+.tag.list a {
+	color: #071554;
+}
+
+.tag.blog a {
+	color: #000;
+}
+
+.tag.article a {
+	color: #401C89;
+}
+
+.tag.nickname a {
+	color: #531530;
+}
+
+.tag.question a {
+	color: #724829;
+}
+
+.tag.story a {
+	color: #0A224B;
+}
+
+.tag.book a {
+	color: #000;
+}
+
+.tag.artist a {
+	color: #3C0007;
+}
+
+.tag.company a {
+	color: #865B12;
+}
+
+.tag.product a {
+	color: #134123;
+}
+
+.tag.website a {
+	color: #0F1A68;
+}
+
+.tag.approach a {
+	color: #3F030C;
+}
+
+.tag.scene a {
+	color: #855B10;
+}
+
+.tag.neighborhood a {
+	color: #123F25;
+}
+
+.tag.city a {
+	color: #102167;
+}
+
+.tag.concept a {
+	color: #CE041A;
+}
+
+.tag a:hover {
+	text-decoration:underline;
+}
+
 .tags .tip {
 	background-color: #8B575B;
 }

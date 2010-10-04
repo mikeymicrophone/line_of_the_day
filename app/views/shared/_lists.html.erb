@@ -3,6 +3,7 @@
 	<% current_user.lists.each do |list| %>
 	  <% div_for list, :class => 'borderedbox' do %>
 			<%= link_to_function list.name, "Effect.toggle($('#{dom_id(list, 'items')}'), 'slide')", :class => 'list_toggle' %>
+			<%#= link_to 'reorder', reorder_list_path(list), :rel => 'shadowbox;height=600;width=400', :class => 'reorder' %>
 			<% div_for list, 'items', :style => 'display:none;' do %>
 			  <%= render :partial => 'shared/list_items', :locals => {:list_items => list.list_items, :list => list} %>
 			<% end %>

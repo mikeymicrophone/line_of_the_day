@@ -30,3 +30,8 @@ hr.list_item.line {
 	right: 20px;
 	bottom: 20px;
 }
+
+.reorder{
+	float: right;
+	font-size: 10px;
+}
