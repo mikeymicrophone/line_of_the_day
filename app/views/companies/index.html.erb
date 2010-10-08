@@ -1,4 +1,10 @@
 <% pagination_and_sorting_for @companies do %>
-	<%= render :partial => @companies %>
+  <div id='companies'>
+		<%= render :partial => @companies %>
+	</div>
 <% end %>
-<%= link_to 'new company', new_company_path %>
+<% form_remote_for Company.new, :update => 'companies', :position => 'bottom', :loading => "$('new_company').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
+	<%= f.text_field :name %><%= f.label :name %><br>
+	<%= f.text_field :url %><%= f.label :url %><br>
+	<%= f.submit 'add company' %>
+<% end %>

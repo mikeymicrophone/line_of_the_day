@@ -1,12 +1,13 @@
 <% div_for company, :class => 'borderedbox' do %>
 	<%= voting_booth company %>
-	<%= link_to company.name, company %>
+	<%= company.name %>
 	<%= link_to_comment_section_for company %>
 	<%= tag_display company %>
 	<% if current_user.andand.admin? %>
 	  [<%= link_to 'x', company_path(company), :method => :delete, :title => 'delete' %>]
 	<% end %>
 	<%= tagger company %>
+	<%= "<hr>" + link_to(company.url, company.url) if company.url.present? %>
 	<% div_for(company, 'tags', :style => 'display:none') {} %>
 	<%= comment_section_for company %>
 <% end %>

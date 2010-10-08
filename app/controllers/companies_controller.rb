@@ -31,7 +31,11 @@ class CompaniesController < ApplicationController
   def create
     params[:company][:user] = current_user
     @company = Company.create params[:company]
-    render :action => 'show'
+    
+    respond_to do |format|
+      format.html { render :action => 'show' }
+      format.js { render :partial => 'company' }
+    end
   end
   
   def edit
