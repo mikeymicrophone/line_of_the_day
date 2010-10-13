@@ -25,3 +25,7 @@ end
 Blog.blueprint do
   
 end
+
+Tip.blueprint do
+  advice { Forgery(:lorem_ipsum).sentence }
+end

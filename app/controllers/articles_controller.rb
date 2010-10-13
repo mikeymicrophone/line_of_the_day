@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = if params[:sort] == 'recent'
       Article.recent
-    elsif params[:sort] = 'rating'
+    elsif params[:sort] == 'rating'
       Article.all.sort_by { |l| l.average_rating }.reverse
     else
       Article.randomized

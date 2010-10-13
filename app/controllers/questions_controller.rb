@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   def index
     @questions = if params[:sort] == 'recent'
       Question.recent
-    elsif params[:sort] = 'rating'
+    elsif params[:sort] == 'rating'
       Question.all.sort_by { |l| l.average_rating }.reverse
     else
       Question.randomized

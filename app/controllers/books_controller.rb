@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   def index
     @books = if params[:sort] == 'recent'
       Book.recent
-    elsif params[:sort] = 'rating'
+    elsif params[:sort] == 'rating'
       Book.all.sort_by { |l| l.average_rating }.reverse
     else
       Book.randomized

@@ -1,6 +1,7 @@
 module Ratable
   def self.included base
     base.has_many :ratings, :as => :target, :dependent => :destroy
+    base.named_scope :rated, :joins => :ratings, :group => 'target_id', :select => "#{base.table_name}.*, avg(ratings.opinion) as 'average_rating'", :order => 'average_rating desc'
   end
   
   def average_rating
