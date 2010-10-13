@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
     @questions = if params[:sort] == 'recent'
       Question.recent
     elsif params[:sort] == 'rating'
-      Question.all.sort_by { |l| l.average_rating }.reverse
+      Question.rated
     else
       Question.randomized
     end.paginate :page => params[:page], :per_page => params[:per_page]

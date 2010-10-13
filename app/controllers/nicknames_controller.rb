@@ -3,7 +3,7 @@ class NicknamesController < ApplicationController
     @nicknames = if params[:user_id]
       User.find(params[:user_id]).nicknames.randomized
     else
-      Nickname.randomzied
+      Nickname.randomized
     end.paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|

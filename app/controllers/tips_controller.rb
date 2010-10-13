@@ -6,7 +6,7 @@ class TipsController < ApplicationController
   def index
     @tips = if params[:user_id]
       if params[:sort] == 'rating'
-        User.find(params[:user_id]).tips.sort_by(&:average_rating).reverse
+        User.find(params[:user_id]).tips.rated
       elsif params[:sort] == 'recent'
         User.find(params[:user_id]).tips.recent
       else
@@ -14,7 +14,7 @@ class TipsController < ApplicationController
       end
     else
       if params[:sort] == 'rating'
-        Tip.all.sort_by(&:average_rating).reverse
+        Tip.rated
       elsif params[:sort] == 'recent'
         Tip.recent
       else

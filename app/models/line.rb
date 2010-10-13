@@ -10,8 +10,9 @@ class Line < ActiveRecord::Base
   has_many :approaches, :dependent => :nullify
   has_many :goals, :as => :objective
   named_scope :public, :conditions => {:public => true}, :order => 'created_at desc'
-  named_scope :public_to, lambda { |artist| {:conditions => ['lines.public = ? or lines.user_id = ?', true, artist.id], :order => 'created_at desc' } }
+  named_scope :public_to, lambda { |artist| {:conditions => ['lines.public = ? or lines.user_id = ?', true, artist.id] } }
   named_scope :novel_to, lambda { |artist| {:conditions => ['lines.user_id is not ?', artist.id], :order => 'created_at desc' } }
+  named_scope :randomized, :order => db_random
   
   validates_uniqueness_of :phrasing
   

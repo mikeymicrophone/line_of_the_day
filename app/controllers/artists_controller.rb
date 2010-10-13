@@ -2,7 +2,7 @@ class ArtistsController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
   def index
     @artists = if params[:sort] == 'rating'
-      Artist.all.sort_by(&:average_rating).reverse
+      Artist.rated
     elsif params[:sort] == 'recent'
       Artist.recent
     else

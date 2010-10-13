@@ -2,7 +2,7 @@ class ListItemsController < ApplicationController
   def index
     @list_items = if params[:list_id]
       if params[:sort] == 'rating'
-        List.find(params[:list_id]).list_items.sort_by &:average_rating
+        List.find(params[:list_id]).list_items.rated
       elsif params[:sort] == 'random'
         ListItem.randomized.find_all_by_list_id(params[:list_id])
       else

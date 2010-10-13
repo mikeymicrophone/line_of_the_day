@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
     @articles = if params[:sort] == 'recent'
       Article.recent
     elsif params[:sort] == 'rating'
-      Article.all.sort_by { |l| l.average_rating }.reverse
+      Article.rated
     else
       Article.randomized
     end.paginate :page => params[:page], :per_page => params[:per_page]

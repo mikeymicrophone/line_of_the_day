@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
   def index
     @products = if params[:sort] == 'rating'
-      Product.all.sort_by(&:average_rating).reverse
+      Product.rated
     elsif params[:sort] == 'random'
       Product.randomized
     else

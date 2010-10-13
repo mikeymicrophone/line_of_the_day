@@ -6,7 +6,7 @@ class StoriesController < ApplicationController
     @stories = if params[:sort] == 'random'
       Story.randomized.public_to(current_user)
     elsif params[:sort] == 'rating'
-      Story.public_to(current_user).sort_by { |s| s.average_rating }.reverse
+      Story.public_to(current_user).rated
     else
       Story.public_to(current_user)
     end.paginate :page => params[:page], :per_page => params[:per_page]

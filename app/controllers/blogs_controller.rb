@@ -7,7 +7,7 @@ class BlogsController < ApplicationController
   
   def index
     @blogs = if params[:sort] == 'rating'
-      Blog.all.sort_by { |b| b.average_rating }.reverse
+      Blog.rated
     elsif params[:sort] == 'recent'
       Blog.all.sort_by { |b| b.recent_update }.reverse
     else

@@ -2,13 +2,13 @@ class PostsController < ApplicationController
   def index
     @posts = if params[:blog_id]
       if params[:sort] == 'rating'
-        Blog.find(params[:blog_id]).posts.sort_by { |p| p.average_rating }.reverse
+        Blog.find(params[:blog_id]).posts.rated
       else
         Blog.find(params[:blog_id]).posts
       end
     else
       if params[:sort] == 'rating'
-        Post.all.sort_by { |p| p.average_rating }.reverse
+        Post.rated
       else
         Post
       end

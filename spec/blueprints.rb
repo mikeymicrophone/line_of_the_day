@@ -29,3 +29,6 @@ end
 Tip.blueprint do
   advice { Forgery(:lorem_ipsum).sentence }
 end
+
+State.blueprint {}
+City.blueprint {}
