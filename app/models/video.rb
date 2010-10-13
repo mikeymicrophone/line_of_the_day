@@ -1,7 +1,5 @@
 class Video < ActiveRecord::Base
-  include Ratable
-  include Taggable
-  has_many :comments, :as => :target
+  include Ratable, Taggable, Commendable
   belongs_to :user
   
   extend Random

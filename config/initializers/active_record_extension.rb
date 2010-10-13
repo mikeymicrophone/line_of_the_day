@@ -1,4 +1,15 @@
 class ActiveRecord::Base
+  def self.sorted order
+    case order
+    when 'rating'
+      rated
+    when 'recent'
+      recent
+    else
+      randomized
+    end
+  end
+
   def id_of record
     if record.is_a? Integer
       record
