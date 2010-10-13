@@ -15,6 +15,7 @@
 	</head>
 	<body>
 		<%= link_to image_tag('logo.png', :id => 'logo'), lines_path %>
+		<%= link_to image_tag('TTHlogo.png'), '/talktoher' %>
 		<%= render :partial => 'shared/lines_and_links', :locals => {:current_user => current_user} unless action_name == 'random' %>
 		<% unless current_user %>
 			<div id='login_space' style="display:none">

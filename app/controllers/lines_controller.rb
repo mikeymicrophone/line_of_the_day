@@ -15,22 +15,10 @@ class LinesController < ApplicationController
     
     @public_lines = if current_user
       @lines = Line.public_to(current_user)
-      if params[:sort] == 'rating'
-        @lines.rated
-      elsif params[:sort] == 'recent'
-        @lines.recent
-      else
-        @lines.randomized
-      end
+      @lines.sorted params[:sort]
     else
       @lines = Line.public
-      if params[:sort] == 'rating'
-        @lines.rated
-      elsif params[:sort] == 'recent'
-        @lines.recent
-      else
-        @lines.randomized
-      end      
+      @lines.sorted params[:sort]
     end.paginate(:page => params[:page], :per_page => params[:per_page])
     
     @shared_lines = current_user.joined_groups.map { |g| g.lines }.flatten.select { |l| l.user_id != current_user.id }.sort_by { |l| l.created_at } if current_user

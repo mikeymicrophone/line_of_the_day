@@ -5,21 +5,9 @@ class TipsController < ApplicationController
   
   def index
     @tips = if params[:user_id]
-      if params[:sort] == 'rating'
-        User.find(params[:user_id]).tips.rated
-      elsif params[:sort] == 'recent'
-        User.find(params[:user_id]).tips.recent
-      else
-        User.find(params[:user_id]).tips.randomized
-      end
+      User.find(params[:user_id]).tips.sorted params[:sort]
     else
-      if params[:sort] == 'rating'
-        Tip.rated
-      elsif params[:sort] == 'recent'
-        Tip.recent
-      else
-        Tip.randomized
-      end
+      Tip.sorted params[:sort]
     end.paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
