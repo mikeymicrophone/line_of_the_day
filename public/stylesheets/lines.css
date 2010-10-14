@@ -4,6 +4,20 @@
 	font-family: Trebuchet MS;
 }
 
+#new_line {
+	width: 100%;
+	text-align: center;
+}
+
+#new_line input {
+	top: -4px;
+}
+
+#new_line, #dare {
+	border: 1px #75C3DA solid;
+	border-radius: 6px;
+}
+
 .line.borderedbox {
 	border: 1px #75C3DA solid;
 }

@@ -1,16 +1,18 @@
-<p>
-  <h3><%=h @group.name %></h3>
-</p>
+<% div_for @group, :class => 'borderedbox' do %>
+	<p>
+	  <h3><%=h @group.name %></h3>
+	</p>
 
-<% if @group.avatar.present? %>
-  <%= image_tag "/images/avatars/#{@group.avatar}" %>
+	<% if @group.avatar.present? %>
+	  <%= image_tag "/images/avatars/#{@group.avatar}" %>
+	<% end %>
+
+	<% if current_user == @group.user %>
+	  <br><%= link_to 'choose group avatar', avatar_group_path(@group) %>
+	<% end %>
 <% end %>
 
-<% if current_user == @group.user %>
-  <br><%= link_to 'choose group avatar', avatar_group_path(@group) %>
-<% end %>
-
-<div id='my-membership'>
+<div id='my-membership', class='borderedbox'>
   <% if current_user.andand.is_a_member_of @group %>
     <%= "you have been a member for #{link_to(time_ago_in_words(Membership.find_by_group_id_and_user_id(@group.id, current_user.id).created_at), Membership.find_by_group_id_and_user_id(@group.id, current_user.id))}"%>
   <% elsif @group.rules != 3 %>
@@ -19,5 +21,7 @@
 </div>
 
 <% @group.memberships.each do |m| %>
-  <%= m.user.username %><br>
+  <% div_for m, :class => 'borderedbox' do %>
+	  <%= m.user.username %>
+	<% end %>
 <% end %>

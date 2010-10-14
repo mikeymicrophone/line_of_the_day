@@ -1,4 +1,12 @@
 <% pagination_and_sorting_for @artists do %>
-	<%= render :partial => @artists %>
+  <div id='artists'>
+		<%= render :partial => @artists %>
+	</div>
 <% end %>
-<%= link_to 'add an artist', new_artist_path %>
+<% form_remote_for Artist.new, :update => 'artists', :position => 'bottom', :loading => "$('new_artist').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()', :html => {:class => 'borderedbox'} do |f| %>
+	<%= f.text_field :name %><%= f.label :name %><br>
+	<%= f.text_field :alias %><%= f.label :alias %><br>
+	<%= f.text_field :email %><%= f.label :email %><br>
+	<%= f.select :company_id, Company.alphabetized.map { |c| [c.name, c.id] }, :include_blank => true %><%= f.label :company_id %><br>
+	<%= f.submit :save %>
+<% end %>

@@ -35,13 +35,25 @@
 	padding: 10px;
 }
 
-#new_line {
+/*#new_line {
 	float: left;
 }
-
+*/
 #search {
-	float: left;
-	margin-left: 25px;
+	float: right;
+}
+
+#search input {
+	line-height: 28px;
+	font-family: Trebuchet MS;
+	font-size: 17px;
+}
+
+#search_button {
+	position: relative;
+	top: 7px;
+	border: 1px solid black;
+	border-radius: 5px;
 }
 
 .borderedbox {

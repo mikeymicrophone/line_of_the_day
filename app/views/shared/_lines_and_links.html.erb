@@ -1,11 +1,13 @@
 <div class='clearfix'></div>
-<% unless (controller_name == 'approaches' && action_name == 'new') || !current_user %>
-  <% form_remote_for Line.new, :update => 'content_home', :position => 'top', :loading => "$('new_line').reset()" do |f| %>
-    <%= f.text_field :phrasing, :size => 90 %>
-    <%= f.submit "drop a line" %>
-  <% end %>
-<% end %>
+<%# unless (controller_name == 'approaches' && action_name == 'new') || !current_user %>
+  <%# form_remote_for Line.new, :update => 'content_home', :position => 'top', :loading => "$('new_line').reset()" do |f| %>
+    <%#= f.text_field :phrasing, :size => 90 %>
+    <%#= f.submit "drop a line" %>
+  <%# end %>
+<%# end %>
 <%= render :partial => 'shared/search_form' %>
+
+<iframe src="http://www.facebook.com/plugins/likebox.php?id=127810987260311&amp;width=292&amp;connections=0&amp;stream=false&amp;header=false&amp;height=62" scrolling="no" frameborder="0" style="border:1px solid #C9C9C9; border-radius: 10px; background-color: #fff; overflow:hidden; width:292px; height:62px;" allowTransparency="true"></iframe>
 
 <iframe src="http://www.facebook.com/plugins/likebox.php?id=139372379436714&amp;width=292&amp;connections=0&amp;stream=false&amp;header=false&amp;height=62" scrolling="no" frameborder="0" style="border:1px solid #C9C9C9; border-radius: 10px; background-color: #fff; overflow:hidden; width:292px; height:62px;" allowTransparency="true"></iframe>
 

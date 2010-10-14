@@ -1,14 +1,10 @@
 <h1>contributors & commentators</h1>
 
-<table>
-
 <% @memberships.each do |membership| %>
-  <tr>
-    <td><%= link_to_name membership.group %></td>
-    <td><%= link_to_name membership.user, 'username' %></td>
-    <td><%= link_to pluralize(membership.user.publications.to_group(membership.group).count, 'line') + ' shared', user_group_lines_path(membership.user, membership.group) %></td>
-    <td><%= link_to pluralize(membership.shared_thoughts.length, 'thought') + ' shared', membership_comments_path(membership) %></td>
-    <td><%= link_to 'detail', membership %></td>
-  </tr>
+  <div class='borderedbox'>
+	    <%= link_to_name membership.group %>
+	    <%= link_to_name membership.user, 'username' %>
+	    <%= link_to pluralize(membership.user.publications.to_group(membership.group).count, 'line') + ' shared', user_group_lines_path(membership.user, membership.group) %>
+	    <%= link_to pluralize(membership.shared_thoughts.length, 'thought') + ' shared', membership_comments_path(membership) %>
+  </div>
 <% end %>
-</table>

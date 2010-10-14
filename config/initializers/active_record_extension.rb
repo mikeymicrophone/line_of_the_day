@@ -40,6 +40,12 @@ class ActiveRecord::Base
   
   named_scope :recent, :order => 'created_at desc'
   
+  def self.alphabetizable_attribute
+    "name"
+  end
+  
+  named_scope :alphabetized, :order => "#{alphabetizable_attribute} asc"
+  
   # extend Random
   # named_scope :randomized, :order => db_random
 end

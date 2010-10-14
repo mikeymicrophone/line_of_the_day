@@ -1,3 +1,11 @@
+<div id='line_sharing'>
+	<% form_remote_for Line.new do |f| %>
+	  <%= image_tag 'line_cta.png' %><br>
+	  <%= f.text_field :phrasing, :size => '70%x50px' %>
+	  <%= image_submit_tag 'dare_to_share.png', :id => 'dare' %>
+	<% end %>
+</div>
+<div class='clearfix'></div>
 <%= sort_buttons %>
 <%= will_paginate_unless_random @public_lines if @public_lines %>
 <div class='clearfix'></div>
