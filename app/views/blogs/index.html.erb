@@ -6,13 +6,13 @@
 		<%= render :partial => @blogs %>
 	</div>
 <% end %>
-<% form_remote_for Blog.new, :update => 'blogs', :position => 'bottom', :loading => "$('new_article').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()', :html => {:class => 'borderedbox'} do |f| %>
-	<%= f.text_field :name %>
+<% form_remote_for Blog.new, :update => 'blogs', :position => 'bottom', :loading => "$('new_blog').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()', :html => {:class => 'borderedbox'} do |f| %>
+	<%= image_submit_tag 'add_blog.png', :style => 'float:right;padding-bottom:5px' %>
+	<%= f.text_field :name, :size => '45%' %>
 	<%= f.label :name %><br>
-	<%= f.text_field :url %>
+	<%= f.text_field :url, :size => '45%' %>
 	<%= f.label :url %><br>
-	<%= f.text_field :feed_url %>
-	<%= f.label :feed_url %><br>
-	<%= f.submit :add %>
+	<%= f.text_field :feed_url, :size => '45%' %>
+	<%= f.label :feed_url %>
 <% end %>
 <%= link_to 'fetch any new posts (could take a while but you do not need to wait for it once you click it)', fetch_all_blogs_path %>
