@@ -27,6 +27,6 @@ module CommentsHelper
   end
   
   def link_to_comment_section_for obj
-    link_to_remote pluralize(obj.comments.count, 'comment'), :url => send("#{obj.class.name.underscore}_comments_path", obj), :title => 'comments', :method => :get, :update => dom_id(obj, 'replies'), :complete => visual_effect(:toggle_slide, dom_id(obj, 'comments')), :html => {:id => dom_id(obj, 'comment_count')}
+    "<br>" + link_to_remote(pluralize(obj.comments.count, 'comment'), :url => send("#{obj.class.name.underscore}_comments_path", obj), :title => 'comments', :method => :get, :update => dom_id(obj, 'replies'), :complete => visual_effect(:toggle_slide, dom_id(obj, 'comments')), :html => {:id => dom_id(obj, 'comment_count')})
   end
 end

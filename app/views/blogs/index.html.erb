@@ -2,7 +2,17 @@
 	<%= link_to image_tag('all_posts.png', :alt => 'see all posts together'), posts_path %>
 </div>
 <% pagination_and_sorting_for @blogs do %>
-	<%= render :partial => @blogs %>
+  <div id='blogs'>
+		<%= render :partial => @blogs %>
+	</div>
 <% end %>
-<%= link_to image_tag('add_blog.png'), new_blog_path %><br>
+<% form_remote_for Blog.new, :update => 'blogs', :position => 'bottom', :loading => "$('new_article').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()', :html => {:class => 'borderedbox'} do |f| %>
+	<%= f.text_field :name %>
+	<%= f.label :name %><br>
+	<%= f.text_field :url %>
+	<%= f.label :url %><br>
+	<%= f.text_field :feed_url %>
+	<%= f.label :feed_url %><br>
+	<%= f.submit :add %>
+<% end %>
 <%= link_to 'fetch any new posts (could take a while but you do not need to wait for it once you click it)', fetch_all_blogs_path %>

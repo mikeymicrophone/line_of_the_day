@@ -2,6 +2,7 @@
   <%= voting_booth exercise %>
 	<%= exercise.moniker %><hr>
 	<%= exercise.instruction %>
+	<%= link_to_comment_section_for exercise %>
 	<%= tagger exercise %>
 	<%= tag_display exercise %>
 	<% if current_user.andand.admin? %>
