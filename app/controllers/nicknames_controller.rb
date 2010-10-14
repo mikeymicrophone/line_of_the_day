@@ -1,9 +1,9 @@
 class NicknamesController < ApplicationController
   def index
     @nicknames = if params[:user_id]
-      User.find(params[:user_id]).nicknames.randomized
+      User.find(params[:user_id]).nicknames.sorted(params[:sort])
     else
-      Nickname.randomized
+      Nickname.sorted(params[:sort])
     end.paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|

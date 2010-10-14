@@ -37,6 +37,8 @@ class CommentsController < ApplicationController
       Goal.find(params[:goal_id]).comments
     elsif params[:blog_id]
       Blog.find(params[:blog_id]).comments
+    elsif params[:post_id]
+      Post.find(params[:post_id]).comments
     elsif params[:book_id]
       Book.find(params[:book_id]).comments
     elsif params[:scene_id]

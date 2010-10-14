@@ -1,13 +1,7 @@
 class ProductsController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
   def index
-    @products = if params[:sort] == 'rating'
-      Product.rated
-    elsif params[:sort] == 'random'
-      Product.randomized
-    else
-      Product
-    end.paginate :page => params[:page], :per_page => params[:per_page]
+    @products = Product.sorted(params[:sort]).paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html

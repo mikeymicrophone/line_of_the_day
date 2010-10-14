@@ -1,12 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = if params[:sort] == 'recent'
-      Question.recent
-    elsif params[:sort] == 'rating'
-      Question.rated
-    else
-      Question.randomized
-    end.paginate :page => params[:page], :per_page => params[:per_page]
+    @questions = Question.sorted(params[:sort]).paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|
       format.html

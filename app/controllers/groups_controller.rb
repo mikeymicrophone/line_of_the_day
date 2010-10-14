@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
     @groups = if params[:user_id]
       User.find(params[:user_id]).cliques
     else
-      Group.all
+      Group.sorted(params[:sort])
     end.paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|

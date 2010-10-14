@@ -1,13 +1,7 @@
 class BooksController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
   def index
-    @books = if params[:sort] == 'recent'
-      Book.recent
-    elsif params[:sort] == 'rating'
-      Book.rated
-    else
-      Book.randomized
-    end.paginate :page => params[:page], :per_page => params[:per_page]
+    @books = Book.sorted(params[:sort]).paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html

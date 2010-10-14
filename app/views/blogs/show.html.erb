@@ -1,8 +1,12 @@
-<%= voting_booth @blog %>
-<%= @blog.name %>
-<%= link_to @blog.url, @blog.url %>
-<%= link_to pluralize(@blog.posts.count, 'post'), blog_posts_path(@blog) %>
-<%= link_to 'fetch any updates', fetch_blog_path(@blog) %><br>
-<%= tag_display @blog %><br>
-<%= add_quote @blog %>
-<%= post_display @blog.posts.first unless @blog.posts.empty? %>
+<% div_for @blog, :class => 'borderedbox' do %>
+	<%= voting_booth @blog %>
+	<%= @blog.name %>
+	<%= link_to @blog.url, @blog.url %>
+	<%= link_to pluralize(@blog.posts.count, 'post'), blog_posts_path(@blog) %>
+	<%= link_to 'fetch any updates', fetch_blog_path(@blog) %><br>
+	<%= tag_display @blog %><br>
+	<%= add_quote @blog %>
+<% end %>
+<% div_for @blog.posts.first, :class => 'borderedbox' do%>
+	<%= post_display @blog.posts.first unless @blog.posts.empty? %>
+<% end %>

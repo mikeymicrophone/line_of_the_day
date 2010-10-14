@@ -2,7 +2,7 @@ class ScenesController < ApplicationController
   before_filter :require_user, :except => [:index, :show]
 
   def index
-    @scenes = Scene.all.paginate :page => params[:page], :per_page => params[:per_page]
+    @scenes = Scene.sorted(params[:sort]).paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|
       format.html

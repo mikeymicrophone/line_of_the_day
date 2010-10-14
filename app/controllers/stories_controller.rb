@@ -3,13 +3,7 @@ class StoriesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:auto_complete_for_scene_name]
   
   def index
-    @stories = if params[:sort] == 'random'
-      Story.randomized.public_to(current_user)
-    elsif params[:sort] == 'rating'
-      Story.public_to(current_user).rated
-    else
-      Story.public_to(current_user)
-    end.paginate :page => params[:page], :per_page => params[:per_page]
+    @stories = Story.public_to(current_user).sorted(params[:sort]).paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html

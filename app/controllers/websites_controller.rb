@@ -1,13 +1,7 @@
 class WebsitesController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
   def index
-    @websites = if params[:sort] == 'rating'
-      Website.rated
-    elsif params[:sort] == 'random'
-      Website.randomized
-    else
-      Website
-    end.paginate :page => params[:page], :per_page => params[:per_page]
+    @websites = Website.sorted(params[:sort]).paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html

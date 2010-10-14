@@ -1,7 +1,8 @@
-<div id="groups">
-	<%= render :partial => @groups %>
-</div>
-<%= will_paginate @groups %>
+<% pagination_and_sorting_for @groups do %>
+	<div id="groups">
+		<%= render :partial => @groups %>
+	</div>
+<% end %>
 <% form_remote_for(Group.new, :update => 'groups', :position => 'bottom', :loading => "$('new_group').reset();show_activity_indicator()", :complete => 'hide_activity_indicator()') do |f| %>
   <%= f.error_messages %>
 

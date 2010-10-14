@@ -1,5 +1,7 @@
 class Group < ActiveRecord::Base
-  include Taggable
+  include Taggable, Ratable, Commendable
+  extend Random
+  named_scope :randomized, :order => db_random
   belongs_to :user
   has_many :memberships
   has_many :publications

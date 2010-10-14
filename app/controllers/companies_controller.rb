@@ -1,13 +1,7 @@
 class CompaniesController < ApplicationController
   before_filter :require_user, :only => [:new, :create]
   def index
-    @companies = if params[:sort] == 'rating'
-      Company.rated
-    elsif params[:sort] == 'random'
-      Company.randomized
-    else
-      Company
-    end.paginate :page => params[:page], :per_page => params[:per_page]
+    @companies = Company.sorted(params[:sort]).paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html

@@ -2,13 +2,7 @@ class ExercisesController < ApplicationController
   skip_before_filter :verify_authenticity_token
   include ExposedContent
   def index
-    @exercises = if params[:sort] == 'recent'
-      Exercise.recent
-    elsif params[:sort] == 'rating'
-      Exercise.rated
-    else
-      Exercise.randomized
-    end.paginate :page => params[:page], :per_page => params[:per_page]
+    @exercises = Exercise.sorted(params[:sort]).paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html
