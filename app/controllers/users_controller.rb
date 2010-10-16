@@ -35,11 +35,17 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new params[:user]
-    
-    if verify_recaptcha && @user.save
-      redirect_back_or_default lines_path
+    debugger
+    if request.format == Mime::HTML
+      if verify_recaptcha && @user.save
+        redirect_back_or_default lines_path
+      else
+        render :action => :new
+      end
     else
-      render :action => :new
+      if @user.save
+        render :nothing => true
+      end
     end
   end
   
