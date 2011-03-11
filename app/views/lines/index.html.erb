@@ -1,5 +1,5 @@
 <div id='line_sharing'>
-	<% form_remote_for Line.new do |f| %>
+	<% form_remote_for Line.new, :update => 'line_bin', :position => 'top', :loading => "$('line_phrasing').clear();show_activity_indicator()", :complete => 'hide_activity_indicator()' do |f| %>
 	  <%= image_tag 'line_cta.png' %><br>
 	  <%= f.text_field :phrasing, :size => '70%x50px' %>
 	  <%= image_submit_tag 'dare_to_share.png', :id => 'dare' %>
