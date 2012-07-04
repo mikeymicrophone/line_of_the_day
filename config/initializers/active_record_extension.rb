@@ -46,6 +46,6 @@ class ActiveRecord::Base
   
   named_scope :alphabetized, :order => "#{alphabetizable_attribute} asc"
   
-  # extend Random
+  # extend RandomData
   # named_scope :randomized, :order => db_random
 end

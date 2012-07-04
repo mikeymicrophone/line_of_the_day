@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
   include Ratable
   include Taggable
-  extend Random
+  extend RandomData
   named_scope :randomized, :order => db_random
   
   belongs_to :target, :polymorphic => true

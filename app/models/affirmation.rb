@@ -3,7 +3,7 @@ class Affirmation < ActiveRecord::Base
   belongs_to :user
   has_many :goals, :as => :objective
   
-  extend Random
+  extend RandomData
   named_scope :randomized, :order => db_random
   
   def list_display

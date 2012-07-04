@@ -1,7 +1,7 @@
 class Company < ActiveRecord::Base
   include Ratable
   include Taggable
-  extend Random
+  extend RandomData
   has_many :artists
   has_many :products
   has_many :websites

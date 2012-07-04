@@ -1,7 +1,7 @@
 class Website < ActiveRecord::Base
   include Taggable
   include Ratable
-  extend Random
+  extend RandomData
   belongs_to :company
   has_many :comments, :as => :target
   belongs_to :user

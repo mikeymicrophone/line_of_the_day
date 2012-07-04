@@ -8,6 +8,6 @@ class ListItem < ActiveRecord::Base
   acts_as_list :scope => :list
   validates_uniqueness_of :item_id, :scope => [:item_type, :list_id]
   
-  extend Random
+  extend RandomData
   named_scope :randomized, :order => db_random
 end

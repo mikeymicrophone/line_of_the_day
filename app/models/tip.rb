@@ -15,7 +15,7 @@ class Tip < ActiveRecord::Base
     end
     }
     
-  extend Random
+  extend RandomData
   named_scope :randomized, :order => db_random
 
   def self.random

@@ -1,4 +1,4 @@
-module Random
+module RandomData
   def db_random
     case ActiveRecord::Base.connection.adapter_name
     when 'MySQL'

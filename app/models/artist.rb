@@ -6,7 +6,7 @@ class Artist < ActiveRecord::Base
   
   has_many :comments, :as => :target
   
-  extend Random
+  extend RandomData
   named_scope :randomized, :order => db_random
   
   def preferred_name

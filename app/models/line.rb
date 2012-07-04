@@ -2,7 +2,7 @@ class Line < ActiveRecord::Base
   include Ratable
   include Taggable
   include Commendable
-  extend Random
+  extend RandomData
   belongs_to :user
   validates_presence_of :phrasing
   has_many :publications, :dependent => :destroy

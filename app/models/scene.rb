@@ -1,6 +1,6 @@
 class Scene < ActiveRecord::Base
   include Taggable, Ratable, Commendable
-  extend Random
+  extend RandomData
   named_scope :randomized, :order => db_random
   has_many :approaches
   has_many :stories

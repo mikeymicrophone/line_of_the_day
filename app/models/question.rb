@@ -3,7 +3,7 @@ class Question < ActiveRecord::Base
   include Ratable
   include Commendable
   belongs_to :user
-  extend Random
+  extend RandomData
   named_scope :randomized, :order => db_random
   
   validates_uniqueness_of :name

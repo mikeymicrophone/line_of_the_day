@@ -6,7 +6,7 @@ class Blog < ActiveRecord::Base
   belongs_to :user
   belongs_to :author
   
-  extend Random
+  extend RandomData
   named_scope :randomized, :order => db_random
   
   validates_uniqueness_of :url, :feed_url, :allow_nil => true

@@ -1,6 +1,6 @@
 class City < ActiveRecord::Base
   include Commendable, Ratable, Taggable
-  extend Random
+  extend RandomData
   named_scope :randomized, :order => db_random
   
   named_scope :scoped, lambda { |params| 
